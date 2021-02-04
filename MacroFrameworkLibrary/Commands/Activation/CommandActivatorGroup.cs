@@ -1,4 +1,5 @@
-﻿using MacroFramework.Input;
+﻿using MacroFramework.Commands.Activation;
+using MacroFramework.Input;
 using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
@@ -13,25 +14,19 @@ namespace MacroFramework.Commands {
     public class CommandActivatorGroup {
 
         #region fields
-        public List<CommandActivator> Activators { get; }
+        public List<ICommandActivator> Activators { get; }
         #endregion
 
         public CommandActivatorGroup() {
-            Activators = new List<CommandActivator>();
+            Activators = new List<ICommandActivator>();
         }
 
         #region new activators
         #region regular bind
-        public CommandActivatorGroup Bind(Command.CommandCallbackParameterless cb, params VKey[] keys) {
-            return Bind((cmd) => cb.Invoke(), ActivationEventType.OnRelease, false, keys);
-        }
         public CommandActivatorGroup Bind(Command.CommandCallback cb, params VKey[] keys) {
             return Bind(cb, ActivationEventType.OnRelease, false, keys);
         }
 
-        public CommandActivatorGroup Bind(Command.CommandCallbackParameterless cb, ActivationEventType activationType, bool ordered, params VKey[] keys) {
-            return Bind((cmd) => cb.Invoke(), activationType, ordered, keys);
-        }
         public CommandActivatorGroup Bind(Command.CommandCallback cb, ActivationEventType activationType, bool ordered, params VKey[] keys) {
             Activators.Add(new BindActivator(cb, activationType, ordered, keys));
             return this;
@@ -48,16 +43,16 @@ namespace MacroFramework.Commands {
         #endregion
 
         #region text command
-        public CommandActivatorGroup TextCommand(Command.CommandCallbackParameterless cb, params RegexWrapper[] matchers) {
+        public CommandActivatorGroup TextCommand(Command.CommandCallback cb, params RegexWrapper[] matchers) {
             return TextCommand((cmd) => cb?.Invoke(), matchers);
         }
-        public CommandActivatorGroup TextCommand(Command.CommandCallback cb, params RegexWrapper[] matchers) {
+        public CommandActivatorGroup TextCommand(Command.TextCommandCallback cb, params RegexWrapper[] matchers) {
             Activators.Add(new TextActivator(cb, matchers));
             return this;
         }
         #endregion
 
-        public void AddActivator(CommandActivator activator) {
+        public void AddActivator(ICommandActivator activator) {
             Activators.Add(activator);
         }
         #endregion

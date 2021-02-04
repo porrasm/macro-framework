@@ -1,6 +1,9 @@
-﻿using System;
+﻿using MacroFramework.Commands.Activation;
+using MacroFramework.Commands.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,17 +11,48 @@ namespace MacroFramework.Commands {
     public abstract class Command {
 
         #region fields
-        public delegate void CommandCallback(string command);
-        public delegate void CommandCallbackParameterless();
+        public delegate void TextCommandCallback(string command);
+        public delegate void CommandCallback();
 
         protected CommandActivatorGroup activator;
         public bool UsesActivator => activator.Activators.Count > 0;
 
         public virtual bool GetContext() => true;
+
+        private struct MethodInfoAttributeCont {
+            public MethodInfo Method;
+            public ActivatorAttribute Attribute;
+            public MethodInfoAttributeCont(MethodInfo method, ActivatorAttribute activator) {
+                Method = method;
+                Attribute = activator;
+            }
+        }
         #endregion
 
+        #region initialization
         public Command() {
             InitializeActivators(out activator);
+            InitializeAttributeActivators();
+        }
+
+        private void InitializeAttributeActivators() {
+            MethodInfoAttributeCont[] methods = GetActivatorAttributeMethods();
+            foreach (MethodInfoAttributeCont cont in methods) {
+                activator.AddActivator(cont.Attribute.GetCommandActivator(cont.Method));
+            }
+        }
+
+        private MethodInfoAttributeCont[] GetActivatorAttributeMethods() {
+            return GetType().Assembly.GetTypes()
+                      .SelectMany(t => t.GetMethods())
+                      .Where(m => m.GetCustomAttributes(typeof(ICommandActivator), false).Length > 0)
+                      .Select(m => {
+                          if (m.GetParameters().Length > 0) {
+                              throw new InvalidOperationException("A method with an ActivatorAttribute may not take any arguments.");
+                          }
+                          return new MethodInfoAttributeCont(m, (ActivatorAttribute)m.GetCustomAttribute(typeof(ActivatorAttribute)));
+                      })
+                      .ToArray();
         }
 
         /// <summary>
@@ -27,6 +61,7 @@ namespace MacroFramework.Commands {
         protected virtual void InitializeActivators(out CommandActivatorGroup activator) {
             activator = new CommandActivatorGroup();
         }
+        #endregion
 
         /// <summary>
         /// Called before the execution starts.
@@ -54,7 +89,7 @@ namespace MacroFramework.Commands {
         /// This method is called whenever a text command is executed, even if it doesn't match any of the activators.
         /// </summary>
         /// <param name="command"></param>
-        public virtual void OnCommand(string command) {  }
+        public virtual void OnCommand(string command) { }
 
         public void ExecuteIfActive() {
             try {

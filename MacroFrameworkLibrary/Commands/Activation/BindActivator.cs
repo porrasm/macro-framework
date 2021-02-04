@@ -1,7 +1,10 @@
-﻿using MacroFramework.Input;
+﻿using MacroFramework.Commands.Activation;
+using MacroFramework.Commands.Attributes;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +28,7 @@ namespace MacroFramework.Commands {
         /// <param name="activationType">The eventy type filter</param>
         /// <param name="ordered">Determines whether keys should be pressed in the given parameter order</param>
         /// <param name="keys"></param>
-        public BindActivator(Command.CommandCallback command, ActivationEventType activationType, bool ordered, VKey[] keys) : base(command) {
+        public BindActivator(Command.CommandCallback command, ActivationEventType activationType, bool ordered, VKey[] keys) : base((s) => command()) {
             this.activationType = activationType;
             this.ordered = ordered;
             this.Keys = keys;
@@ -51,6 +54,32 @@ namespace MacroFramework.Commands {
 
         protected override void ExecuteCallback() {
             command?.Invoke(null);
+        }
+    }
+
+    public class BindActivatorAttribute : ActivatorAttribute {
+
+        #region fields
+        private ActivationEventType activationType;
+        private bool ordered;
+
+        public VKey[] Keys { get; }
+        #endregion
+
+        /// <summary>
+        /// Creates a new <see cref="BindActivator"/> instance
+        /// </summary>
+        /// <param name="activationType">The eventy type filter</param>
+        /// <param name="ordered">Determines whether keys should be pressed in the given parameter order</param>
+        /// <param name="keys"></param>
+        public BindActivatorAttribute(ActivationEventType activationType, bool ordered, params VKey[] keys) {
+            this.activationType = activationType;
+            this.ordered = ordered;
+            this.Keys = keys;
+        }
+
+        public override ICommandActivator GetCommandActivator(MethodInfo m) {
+            return new BindActivator(() => m.Invoke(this, null), activationType, ordered, Keys);
         }
     }
 }

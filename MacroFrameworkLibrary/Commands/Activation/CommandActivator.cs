@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Commands.Activation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace MacroFramework.Commands {
     /// <summary>
     /// The base class for all activators. Inherit this class for custom functionality.
     /// </summary>
-    public abstract class CommandActivator {
-        protected Command.CommandCallback command;
-        public CommandActivator(Command.CommandCallback command) {
+    public abstract class CommandActivator : ICommandActivator {
+        protected Command.TextCommandCallback command;
+        public CommandActivator(Command.TextCommandCallback command) {
             this.command = command;
         }
 
