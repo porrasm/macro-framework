@@ -21,8 +21,8 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-            if (Macros.macroAssembly != null) {
-                foreach (var c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.macroAssembly)) {
+            if (Setup.Instance.MainAssembly != null) {
+                foreach (var c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.MainAssembly)) {
                     Commands.Add(c);
                 }
             }

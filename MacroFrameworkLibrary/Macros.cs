@@ -11,19 +11,17 @@ namespace MacroFramework {
 
         public static bool Running { get; private set; }
 
-        internal static Assembly macroAssembly;
-
         /// <summary>
         /// Starts the synchronous MacrosFramework application. Give an assembly as a parameter to automatically load all <see cref="Command"/> instances.
         /// </summary>
         /// <param name="macroAssembly">The assembly of your implementation</param>
         [STAThread]
-        public static void Start(Assembly macroAssembly = null) {
+        public static void Start(Setup setup) {
             if (Running) {
                 return;
             }
+            Setup.SetInstance(setup);
             Running = true;
-            Macros.macroAssembly = macroAssembly;
             InputHook.StartHooks();
             CommandContainer.Start();
             Application.Run();
@@ -35,8 +33,8 @@ namespace MacroFramework {
         public static void Stop() {
             InputHook.StopHooks();
             CommandContainer.OnClose();
-            macroAssembly = null;
             Application.Exit();
+            Setup.SetInstance(null);
             Running = false;
         }
 

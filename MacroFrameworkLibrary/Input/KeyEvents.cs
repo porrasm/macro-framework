@@ -55,11 +55,11 @@ namespace MacroFramework.Input {
             KeyState.AddAbsoluteEvent(k);
 
             #region check enabled
-            if (k.Key == MacroSettings.ListenerEnableKey) {
+            if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
                 MacroSettings.KeyListenerEnabled = true;
                 KeyState.ResetKeys();
                 return true;
-            } else if (k.Key == MacroSettings.ListenerDisableKey) {
+            } else if (k.Key == Setup.Instance.Settings.ListenerDisableKey) {
                 MacroSettings.KeyListenerEnabled = false;
                 KeyState.ResetKeys();
                 return true;
@@ -72,11 +72,11 @@ namespace MacroFramework.Input {
             keyEventQueue.Enqueue(k);
 
             #region blocking keys
-            if (k.Key == MacroSettings.GeneralBindKey) {
+            if (k.Key == Setup.Instance.Settings.GeneralBindKey && Setup.Instance.Settings.InterceptGeneralBindKey) {
                 GeneralKeyBind = k.KeyState;
                 return true;
             }
-            if (k.Key == MacroSettings.CommandKey && !CommandMode) {
+            if (k.Key == Setup.Instance.Settings.CommandKey && !CommandMode) {
                 if (k.KeyState) {
                     CommandKeyPress(true, true);
                 }
@@ -94,7 +94,7 @@ namespace MacroFramework.Input {
             if (CommandMode) {
                 long timeSince = KeyState.TimeSinceLastKeyPress();
 
-                if (timeSince >= MacroSettings.TextCommandTimeout) {
+                if (timeSince >= Setup.Instance.Settings.TextCommandTimeout) {
                     Console.WriteLine("End timeout");
                     CommandKeyPress(false, false);
                     return false;
@@ -146,7 +146,7 @@ namespace MacroFramework.Input {
 
         private static void OnCommandMode(KeyEvent k, bool isUniqueKeyPress) {
 
-            if (k.Key == MacroSettings.CommandKey) {
+            if (k.Key == Setup.Instance.Settings.CommandKey) {
                 return;
             }
 
@@ -154,7 +154,7 @@ namespace MacroFramework.Input {
                 return;
             }
 
-            if (k.Key == MacroSettings.CommandActivateKey) {
+            if (k.Key == Setup.Instance.Settings.CommandActivateKey) {
                 CommandKeyPress(false, true);
                 return;
             }

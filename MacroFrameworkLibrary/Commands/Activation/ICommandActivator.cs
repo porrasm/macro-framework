@@ -7,6 +7,10 @@ namespace MacroFramework.Commands.Activation {
     /// Interface for command activators
     /// </summary>
     public interface ICommandActivator {
+        /// <summary>
+        /// Return true if activator is active
+        /// </summary>
+        /// <returns></returns>
         bool IsActive();
         void Execute();
     }

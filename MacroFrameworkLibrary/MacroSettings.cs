@@ -4,37 +4,43 @@ using System.Text;
 using MacroFramework.Input;
 
 namespace MacroFramework {
-    public static class MacroSettings {
+    public class MacroSettings {
 
         public static bool KeyListenerEnabled = true;
 
         /// <summary>
-        /// The dedicated key on a the keyboard which activates the text command mode.
+        /// The dedicated key on the keyboard which activates the text command mode.
         /// </summary>
-        public const VKey CommandKey = VKey.F13;
-        public const VKey GeneralBindKey = VKey.F14;
+        public VKey CommandKey = VKey.NONE;
 
-        public const VKey MouseFrontKey = VKey.HOME;
-        public const VKey MouseBackKey = VKey.END;
-        public const VKey DPIKey = VKey.F15;
+        /// <summary>
+        /// A dedicated bind key which can be intercepted
+        /// </summary>
+        public VKey GeneralBindKey = VKey.NONE;
 
-        public const VKey CommandCancelKey = VKey.ESCAPE;
-        public const VKey CommandActivateKey = VKey.RETURN;
+        /// <summary>
+        /// The dedicated key on the keyboard which executes the current command mode
+        /// </summary>
+        public VKey CommandActivateKey = VKey.RETURN;
 
-        public const VKey ListenerEnableKey = VKey.PAGEUP;
-        public const VKey ListenerDisableKey = VKey.PAGEDOWN;
+        /// <summary>
+        /// The dedicated key which enabled the <see cref="InputHook"/>
+        /// </summary>
+        public VKey ListenerEnableKey = VKey.NONE;
 
-        public static bool InterceptGeneralBindKey = true;
+        /// <summary>
+        /// The dedicated key which disables the <see cref="InputHook"/>
+        /// </summary>
+        public VKey ListenerDisableKey = VKey.NONE;
 
-        #region time settings
-        public static int MainUpdateTime = 250;
-        public static int TextCommandUpdate = 250;
+        /// <summary>
+        /// If true the <see cref="MacroSettings.GeneralBindKey"/> is intercepted such that other applications do not register it (not abosolutely certain)
+        /// </summary>
+        public bool InterceptGeneralBindKey = true;
 
-        public static int TextCommandTimeout = 2500;
-
-        public const int PORT = 8000;
-        #endregion
-
-        public static string BATCH_DIRECTORY = "P:/Stuff/BatchScripts";
+        /// <summary>
+        /// The timeout after the last keypress after which command mode is canceled
+        /// </summary>
+        public int TextCommandTimeout = 2500;
     }
 }
