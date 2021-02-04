@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>MacroFrameworkLibrary</PackageId>
+    <PackageId>MacroFramework</PackageId>
     <Authors>Eetu Ikonen</Authors>
     <Company />
     <Product>MacroFramework</Product>
@@ -10,6 +10,8 @@
     <Version>0.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A simple framework for creating macros on Windows.</Description>
+    <AssemblyName>MacroFramework</AssemblyName>
+    <RootNamespace>MacroFramework</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

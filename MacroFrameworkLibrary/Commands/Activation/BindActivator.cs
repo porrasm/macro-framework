@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// <see cref="CommandActivator"/> instance for keybind callbacks
+    /// </summary>
     public class BindActivator : CommandActivator {
 
         #region fields
@@ -15,6 +18,13 @@ namespace MacroFramework.Commands {
         public VKey[] Keys { get; }
         #endregion
 
+        /// <summary>
+        /// Creates a new <see cref="BindActivator"/> instance
+        /// </summary>
+        /// <param name="command">The callback which is executed when this becomes active</param>
+        /// <param name="activationType">The eventy type filter</param>
+        /// <param name="ordered">Determines whether keys should be pressed in the given parameter order</param>
+        /// <param name="keys"></param>
         public BindActivator(Command.CommandCallback command, ActivationEventType activationType, bool ordered, VKey[] keys) : base(command) {
             this.activationType = activationType;
             this.ordered = ordered;

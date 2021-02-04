@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// A wrapper class for multiple <see cref="CommandActivator"/> instances
+    /// </summary>
     public class CommandActivatorGroup {
 
         #region fields

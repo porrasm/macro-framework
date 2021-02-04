@@ -5,20 +5,26 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// The base class for all activators. Inherit this class for custom functionality.
+    /// </summary>
     public abstract class CommandActivator {
         protected Command.CommandCallback command;
         public CommandActivator(Command.CommandCallback command) {
             this.command = command;
         }
 
+        /// <summary>
+        /// Returns true if the activator is active
+        /// </summary>
+        /// <returns></returns>
         public abstract bool IsActive();
 
-        public virtual void Execute() {
-            try {
-                ExecuteCallback();
-            } catch (Exception e) {
-                Console.WriteLine("Error executing command: \n\n" + e);
-            }
+        /// <summary>
+        /// Executes the callback
+        /// </summary>
+        public void Execute() {
+            ExecuteCallback();
         }
 
         protected abstract void ExecuteCallback();

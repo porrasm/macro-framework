@@ -57,10 +57,14 @@ namespace MacroFramework.Commands {
         public virtual void OnCommand(string command) {  }
 
         public void ExecuteIfActive() {
-            if (activator.IsActive(out CommandActivator a) && GetContext()) {
-                OnExecuteStart();
-                a.Execute();
-                OnExecutionComplete();
+            try {
+                if (activator.IsActive(out CommandActivator a) && GetContext()) {
+                    OnExecuteStart();
+                    a.Execute();
+                    OnExecutionComplete();
+                }
+            } catch (Exception e) {
+                Console.WriteLine("Error executing command: " + e.Message);
             }
         }
     }
