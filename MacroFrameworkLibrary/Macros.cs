@@ -19,6 +19,10 @@ namespace MacroFramework {
         /// <param name="macroAssembly">The assembly of your implementation</param>
         [STAThread]
         public static void Start(Assembly macroAssembly = null) {
+            if (Running) {
+                return;
+            }
+            Running = true;
             Macros.macroAssembly = macroAssembly;
             InputHook.StartHooks();
             CommandContainer.Start();
@@ -33,6 +37,7 @@ namespace MacroFramework {
             CommandContainer.OnClose();
             macroAssembly = null;
             Application.Exit();
+            Running = false;
         }
 
         #region tools

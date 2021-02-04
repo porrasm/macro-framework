@@ -30,7 +30,7 @@ namespace MacroFramework.Commands {
             keyCommand.Clear();
         }
 
-        public static void QueueTextCommand(string command) {
+        internal static void QueueTextCommand(string command) {
             Console.WriteLine("Executing text command: " + command);
             if (command == null || command.Length == 0) {
                 return;

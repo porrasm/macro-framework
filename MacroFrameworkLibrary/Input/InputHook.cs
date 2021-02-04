@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace MacroFramework.Input {
-    public static class InputHook {
+    internal static class InputHook {
 
         #region variables
         public static bool Enabled { get; private set; }

@@ -21,17 +21,15 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-
             if (Macros.macroAssembly != null) {
                 foreach (var c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.macroAssembly)) {
                     Commands.Add(c);
                 }
             }
-            
-            Console.WriteLine("Initialized application with " + Commands.Count + " commands");
 
             queueCallbacks = new Queue<QueueCallback>();
         }
+
         private static void Deinitialize() {
             Commands = new List<Command>();
             queueCallbacks = null;
@@ -79,6 +77,11 @@ namespace MacroFramework.Commands {
             }
             Deinitialize();
         }
+
+        /// <summary>
+        /// Adds a command to the active command pool
+        /// </summary>
+        /// <param name="c"></param>
         public static void AddCommand(Command c) {
             Commands.Add(c);
         }

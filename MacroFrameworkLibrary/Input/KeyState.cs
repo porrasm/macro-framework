@@ -131,7 +131,6 @@ namespace MacroFramework.Input {
             }
             foreach (VKey key in VKey) {
                 if (!PressingKey(key)) {
-                    Console.WriteLine("Not pressing: " + key);
                     return false;
                 }
             }

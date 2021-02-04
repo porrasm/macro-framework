@@ -2,6 +2,7 @@
 using MacroFramework.Commands.Attributes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -36,24 +37,23 @@ namespace MacroFramework.Commands {
         }
 
         private void InitializeAttributeActivators() {
-            MethodInfoAttributeCont[] methods = GetActivatorAttributeMethods();
-            foreach (MethodInfoAttributeCont cont in methods) {
-                activator.AddActivator(cont.Attribute.GetCommandActivator(cont.Method));
+            try {
+                MethodInfoAttributeCont[] methods = GetAttributeMethods();
+                foreach (MethodInfoAttributeCont cont in methods) {
+                    activator.AddActivator(cont.Attribute.GetCommandActivator(this, cont.Method));
+                }
+            } catch (Exception e) {
+                throw new Exception("Unable to load Attributes from Assembly on type " + GetType(), e);
             }
         }
 
-        private MethodInfoAttributeCont[] GetActivatorAttributeMethods() {
-            return GetType().Assembly.GetTypes()
-                      .SelectMany(t => t.GetMethods())
-                      .Where(m => m.GetCustomAttributes(typeof(ICommandActivator), false).Length > 0)
-                      .Select(m => {
-                          if (m.GetParameters().Length > 0) {
-                              throw new InvalidOperationException("A method with an ActivatorAttribute may not take any arguments.");
-                          }
-                          return new MethodInfoAttributeCont(m, (ActivatorAttribute)m.GetCustomAttribute(typeof(ActivatorAttribute)));
-                      })
-                      .ToArray();
+        private MethodInfoAttributeCont[] GetAttributeMethods() {
+            return GetType()
+                .GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                .Where(m => m.GetCustomAttributes(typeof(ActivatorAttribute), false).Length > 0)
+                .Select(m => new MethodInfoAttributeCont(m, m.GetCustomAttribute<ActivatorAttribute>())).ToArray();
         }
+
 
         /// <summary>
         /// Abstract method for initializing CommandActivators and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.

@@ -37,12 +37,6 @@ namespace MacroFramework.Commands {
         public override bool IsActive() {
             ActivationEventType currentType = KeyEvents.CurrentKeyEvent.KeyState ? ActivationEventType.OnPress : ActivationEventType.OnRelease;
             if (activationType == ActivationEventType.Any || activationType == currentType) {
-                Console.WriteLine("Current matching activation type: " + currentType);
-
-                foreach (var k in Keys) {
-                    Console.WriteLine("    Current Keys: " + k);
-                }
-
                 if (ordered) {
                     return KeyState.PressingKeysInOrder(Keys);
                 } else {
@@ -57,6 +51,9 @@ namespace MacroFramework.Commands {
         }
     }
 
+    /// <summary>
+    /// Activator attribute for <see cref="BindActivator"/>
+    /// </summary>
     public class BindActivatorAttribute : ActivatorAttribute {
 
         #region fields
@@ -78,8 +75,8 @@ namespace MacroFramework.Commands {
             this.Keys = keys;
         }
 
-        public override ICommandActivator GetCommandActivator(MethodInfo m) {
-            return new BindActivator(() => m.Invoke(this, null), activationType, ordered, Keys);
+        public override ICommandActivator GetCommandActivator(Command c, MethodInfo m) {
+            return new BindActivator(() => m.Invoke(c, null), activationType, ordered, Keys);
         }
     }
 }

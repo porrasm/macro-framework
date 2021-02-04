@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Tools {
-    public class VKeysToCommand {
+    internal class VKeysToCommand {
 
         private StringBuilder b;
         public VKeysToCommand() {

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// Single key activator
+    /// </summary>
     public class KeyActivator : CommandActivator {
 
         #region fields
@@ -15,6 +18,11 @@ namespace MacroFramework.Commands {
         private KeyCallback cb;
         #endregion
 
+        /// <summary>
+        /// Creates a key activator instance
+        /// </summary>
+        /// <param name="callback">The callback method</param>
+        /// <param name="key"></param>
         public KeyActivator(KeyCallback callback, VKey key) : base(null) {
             this.key = key;
             this.cb = callback;
