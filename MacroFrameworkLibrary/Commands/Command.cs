@@ -1,6 +1,4 @@
-﻿using MacroFramework.Commands.Activation;
-using MacroFramework.Commands.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,15 +7,33 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// Base class for all macro functionality
+    /// </summary>
     public abstract class Command {
 
         #region fields
+        /// <summary>
+        /// Callback for commands which use text commands as activators
+        /// </summary>
+        /// <param name="command"></param>
         public delegate void TextCommandCallback(string command);
+
+        /// <summary>
+        /// Callback for regular commands
+        /// </summary>
         public delegate void CommandCallback();
 
+        /// <summary>
+        /// Container for the set of <see cref="CommandActivator"/> instances of this command
+        /// </summary>
         protected CommandActivatorGroup activator;
-        public bool UsesActivator => activator.Activators.Count > 0;
+        internal CommandActivatorGroup Activator => activator;
 
+        /// <summary>
+        /// Additional method for declaring contexts. Return false to disable all command functionality.
+        /// </summary>
+        /// <returns></returns>
         public virtual bool GetContext() => true;
 
         private struct MethodInfoAttributeCont {
@@ -31,6 +47,9 @@ namespace MacroFramework.Commands {
         #endregion
 
         #region initialization
+        /// <summary>
+        /// Initializes a new command instance
+        /// </summary>
         public Command() {
             InitializeActivators(out activator);
             InitializeAttributeActivators();
@@ -66,14 +85,12 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Called before the execution of any command starts.
         /// </summary>
-        /// <param name="command"></param>
-        protected virtual void OnExecuteStart() { }
+        protected internal virtual void OnExecuteStart() { }
 
         /// <summary>
         /// Called after the execution of every command
         /// </summary>
-        /// <param name="command"></param>
-        protected virtual void OnExecutionComplete() { }
+        protected internal virtual void OnExecutionComplete() { }
 
         /// <summary>
         /// Called when the application starts.
@@ -92,15 +109,14 @@ namespace MacroFramework.Commands {
         /// <param name="commandWasAccepted">True if any of the <see cref="Command"/> classes executed the text command. False if nonexistent text command.</param>
         public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
 
+        /// <summary>
+        /// Executes an active activator
+        /// </summary>
         public void ExecuteIfActive() {
-            try {
-                if (activator.IsActive(out CommandActivator a) && GetContext()) {
-                    OnExecuteStart();
-                    a.Execute();
-                    OnExecutionComplete();
-                }
-            } catch (Exception e) {
-                Console.WriteLine("Error executing command: " + e.Message);
+            if (activator.IsActive(out CommandActivator a) && GetContext()) {
+                OnExecuteStart();
+                a.Execute();
+                OnExecutionComplete();
             }
         }
     }

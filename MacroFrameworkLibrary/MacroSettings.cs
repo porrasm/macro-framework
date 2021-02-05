@@ -42,5 +42,10 @@ namespace MacroFramework {
         /// The timeout after the last keypress after which command mode is canceled
         /// </summary>
         public int TextCommandTimeout = 2500;
+
+        /// <summary>
+        /// The delay in milliseconds between every iteration of the main loop
+        /// </summary>
+        public int MainLoopTimestep = 1000;
     }
 }

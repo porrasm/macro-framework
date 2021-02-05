@@ -128,7 +128,7 @@ namespace MacroFramework.Input {
             if (CommandMode) {
                 KeyState.AddKeyEvent(k);
                 OnCommandMode(k, unique);
-                CommandContainer.ExecuteCommands();
+                CommandContainer.UpdateAllCommands();
                 return;
             }
 
@@ -139,7 +139,7 @@ namespace MacroFramework.Input {
             CurrentKeyEvent = k;
 
             if (unique) {
-                CommandContainer.ExecuteCommands();
+                CommandContainer.UpdateAllCommands();
             }
 
             if (!k.KeyState) {

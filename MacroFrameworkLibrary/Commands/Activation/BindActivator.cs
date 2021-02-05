@@ -1,6 +1,4 @@
-﻿using MacroFramework.Commands.Activation;
-using MacroFramework.Commands.Attributes;
-using MacroFramework.Input;
+﻿using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,10 +42,6 @@ namespace MacroFramework.Commands {
                 }
             }
             return false;
-        }
-
-        protected override void ExecuteCallback() {
-            command?.Invoke(null);
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using MacroFramework.Commands.Activation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,24 +9,26 @@ namespace MacroFramework.Commands {
     /// The base class for all activators. Inherit this class for custom functionality.
     /// </summary>
     public abstract class CommandActivator : ICommandActivator {
-        protected Command.TextCommandCallback command;
-        public CommandActivator(Command.TextCommandCallback command) {
-            this.command = command;
-        }
+
+        public Command Owner { get; set; }
 
         /// <summary>
-        /// Returns true if the activator is active
+        /// The current callback of this activator
         /// </summary>
-        /// <returns></returns>
+        protected Command.TextCommandCallback commandCallback;
+
+        /// <summary>
+        /// Initializes this activator with a callback
+        /// </summary>
+        /// <param name="command"></param>
+        public CommandActivator( Command.TextCommandCallback command) {
+            this.commandCallback = command;
+        }
+
         public abstract bool IsActive();
 
-        /// <summary>
-        /// Executes the callback
-        /// </summary>
-        public void Execute() {
-            ExecuteCallback();
+        public virtual void Execute() {
+            commandCallback?.Invoke(null);
         }
-
-        protected abstract void ExecuteCallback();
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MacroFramework.Commands.Activation {
+namespace MacroFramework.Commands {
     /// <summary>
     /// Interface for command activators
     /// </summary>
@@ -12,6 +12,14 @@ namespace MacroFramework.Commands.Activation {
         /// </summary>
         /// <returns></returns>
         bool IsActive();
+        /// <summary>
+        /// Executes the action related to this activator
+        /// </summary>
         void Execute();
+
+        /// <summary>
+        /// Owner of this activator or null if it is used independently
+        /// </summary>
+        Command Owner { get; set; }
     }
 }

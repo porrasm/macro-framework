@@ -1,5 +1,4 @@
-﻿using MacroFramework.Commands.Activation;
-using MacroFramework.Input;
+﻿using MacroFramework.Input;
 using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
@@ -14,10 +13,12 @@ namespace MacroFramework.Commands {
     public class CommandActivatorGroup {
 
         #region fields
+        private Command owner;
         public List<ICommandActivator> Activators { get; }
         #endregion
 
-        public CommandActivatorGroup() {
+        public CommandActivatorGroup(Command owner = null) {
+            this.owner = owner;
             Activators = new List<ICommandActivator>();
         }
 
@@ -34,7 +35,7 @@ namespace MacroFramework.Commands {
         /// Adds a <see cref="BindActivator"/>
         /// </summary>
         public CommandActivatorGroup Bind(Command.CommandCallback cb, ActivationEventType activationType, KeyPressOrder order, params VKey[] keys) {
-            Activators.Add(new BindActivator(cb, activationType, order, keys));
+            AddActivator(new BindActivator(cb, activationType, order, keys));
             return this;
         }
         #endregion
@@ -45,7 +46,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public CommandActivatorGroup KeyBind(KeyActivator.KeyCallback cb, params VKey[] keys) {
             foreach (VKey k in keys) {
-                Activators.Add(new KeyActivator(cb, k));
+                AddActivator(new KeyActivator(cb, k));
             }
             return this;
         }
@@ -63,7 +64,7 @@ namespace MacroFramework.Commands {
         /// Adds a <see cref="TextActivator"/>
         /// </summary>
         public CommandActivatorGroup TextCommand(Command.TextCommandCallback cb, params RegexWrapper[] matchers) {
-            Activators.Add(new TextActivator(cb, matchers));
+            AddActivator(new TextActivator(cb, matchers));
             return this;
         }
         #endregion
@@ -73,6 +74,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="activator"></param>
         public void AddActivator(ICommandActivator activator) {
+            activator.Owner = owner;
             Activators.Add(activator);
         }
         #endregion

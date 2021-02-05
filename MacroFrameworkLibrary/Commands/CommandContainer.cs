@@ -10,6 +10,7 @@ namespace MacroFramework.Commands {
 
         #region fields
         public static List<Command> Commands { get; private set; }
+        private static Dictionary<Type, List<ICommandActivator>> TypeActivators { get; set; }
 
         private static Queue<QueueCallback> queueCallbacks;
 
@@ -23,7 +24,7 @@ namespace MacroFramework.Commands {
         private static void Initialize() {
             if (Setup.Instance.MainAssembly != null) {
                 foreach (var c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.MainAssembly)) {
-                    Commands.Add(c);
+                    AddCommand(c);
                 }
             }
 
@@ -32,15 +33,47 @@ namespace MacroFramework.Commands {
 
         private static void Deinitialize() {
             Commands = new List<Command>();
+            TypeActivators = new Dictionary<Type, List<ICommandActivator>>();
             queueCallbacks = null;
         }
 
         /// <summary>
         /// Executes all commands and binds which are active.
         /// </summary>
-        public static void ExecuteCommands() {
+        public static void UpdateAllCommands() {
             foreach (Command c in Commands) {
-                c.ExecuteIfActive();
+                try {
+                    c.ExecuteIfActive();
+                } catch (Exception e) {
+                    Console.WriteLine("Error executing command of type " + c.GetType() + ": " + e.Message);
+                }
+            }
+        }
+        /// <summary>
+        /// Executes all activatos of certain type. This may call multiple activators from a single command instance
+        /// </summary>
+        /// <typeparam name="T">The type of activators which are checked</typeparam>
+        /// <param name="executeCount">The count of activators to be executed. Set as 0 to execute every active activator</param>
+        public static void UpdateCommands<T>(int executeCount = 1) where T : ICommandActivator {
+            Type t = typeof(T);
+            if (!TypeActivators.ContainsKey(t)) {
+                return;
+            }
+            int executed = 0;
+            foreach (ICommandActivator act in TypeActivators[t]) {
+                if (act.IsActive()) {
+                    try {
+                        act.Owner?.OnExecuteStart();
+                        act.Execute();
+                        act.Owner?.OnExecutionComplete();
+                    } catch (Exception e) {
+                        Console.WriteLine("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
+                    }
+                }
+                executed++;
+                if (executeCount > 0 && executed >= executeCount) {
+                    break;
+                }
             }
         }
 
@@ -97,6 +130,19 @@ namespace MacroFramework.Commands {
         /// <param name="c"></param>
         public static void AddCommand(Command c) {
             Commands.Add(c);
+            AddActivators(c);
+        }
+
+        private static void AddActivators(Command c) {
+            foreach (ICommandActivator act in c.Activator.Activators) {
+                Type t = act.GetType();
+                if (TypeActivators.ContainsKey(t)) {
+                    TypeActivators[t].Add(act);
+                } else {
+                    TypeActivators.Add(t, new List<ICommandActivator>());
+                    TypeActivators[t].Add(act);
+                }
+            }
         }
     }
 }

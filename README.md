@@ -37,7 +37,7 @@ public class MySetup : Setup {
 
 ### 3 Create a macro
 
-This command will open Notepad when 
+This command will open Notepad when the 'left control' and 'n' are pressed in order.
 
 ```C#
 using MacroFramework.Commands;

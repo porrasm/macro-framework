@@ -1,10 +1,9 @@
-﻿using MacroFramework.Commands.Activation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summaryICommandActivator
     /// The base class for all <see cref="CommandActivator"/> attributes
     /// </summary>
