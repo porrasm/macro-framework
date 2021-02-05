@@ -50,6 +50,14 @@ public class NotepadCommand : Command {
 }
 ```
 
+If you did not setup the executing assembly you need to activate the command manually using:
+
+```C#
+using MacroFramework.Commands;
+...
+CommandContainer.AddCommand(new NotepadCommand());
+```
+
 ### 4 Start the Macro framework on a STA thread
 
 Start the Macro framework with your custom setup class as a paremeter.
