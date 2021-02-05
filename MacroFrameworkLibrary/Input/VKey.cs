@@ -674,6 +674,10 @@ namespace MacroFramework {
         /// <summary>PA1 key</summary>
         PA1 = 0xFD,
         /// <summary>Clear key</summary>
-        OEM_CLEAR = 0xFE
+        OEM_CLEAR = 0xFE,  
+        /// <summary>
+        /// The <see cref="MacroSettings.GeneralBindKey"/> is transformed into this value when caught by <see cref="MacroFramework.Input.KeyEvents"/>
+        /// </summary>
+        GENERAL_BIND_KEY
     }
 }

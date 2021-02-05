@@ -14,7 +14,7 @@ namespace MacroFramework {
         public VKey CommandKey = VKey.NONE;
 
         /// <summary>
-        /// A dedicated bind key which can be intercepted
+        /// A dedicated bind key which is always intercepted and tranformed into <see cref="VKey.GENERAL_BIND_KEY"/>
         /// </summary>
         public VKey GeneralBindKey = VKey.NONE;
 

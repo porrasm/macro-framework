@@ -49,6 +49,9 @@ namespace MacroFramework.Input {
             if (KeyState.IsInvalidKey(k.Key)) {
                 return false;
             }
+            if (k.Key == Setup.Instance.Settings.GeneralBindKey) {
+                k.Key = VKey.GENERAL_BIND_KEY;
+            }
 
             HandleQueuedKeyEventsNonBlocking();
 
@@ -72,7 +75,7 @@ namespace MacroFramework.Input {
             keyEventQueue.Enqueue(k);
 
             #region blocking keys
-            if (k.Key == Setup.Instance.Settings.GeneralBindKey && Setup.Instance.Settings.InterceptGeneralBindKey) {
+            if (k.Key == VKey.GENERAL_BIND_KEY && Setup.Instance.Settings.InterceptGeneralBindKey) {
                 GeneralKeyBind = k.KeyState;
                 return true;
             }

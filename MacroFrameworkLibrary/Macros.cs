@@ -12,10 +12,9 @@ namespace MacroFramework {
         public static bool Running { get; private set; }
 
         /// <summary>
-        /// Starts the synchronous MacrosFramework application. Give an assembly as a parameter to automatically load all <see cref="Command"/> instances.
+        /// Starts the synchronous MacrosFramework application. Give an assembly as a parameter to automatically load all <see cref="Command"/> instances. Should be called with an <see cref="STAThreadAttribute"/>.
         /// </summary>
         /// <param name="macroAssembly">The assembly of your implementation</param>
-        [STAThread]
         public static void Start(Setup setup) {
             if (Running) {
                 return;
