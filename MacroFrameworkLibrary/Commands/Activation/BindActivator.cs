@@ -16,7 +16,7 @@ namespace MacroFramework.Commands {
 
         #region fields
         private ActivationEventType activationType;
-        private bool ordered;
+        private KeyPressOrder order;
 
         public VKey[] Keys { get; }
         #endregion
@@ -26,18 +26,18 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The callback which is executed when this becomes active</param>
         /// <param name="activationType">The eventy type filter</param>
-        /// <param name="ordered">Determines whether keys should be pressed in the given parameter order</param>
+        /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
         /// <param name="keys"></param>
-        public BindActivator(Command.CommandCallback command, ActivationEventType activationType, bool ordered, VKey[] keys) : base((s) => command()) {
+        public BindActivator(Command.CommandCallback command, ActivationEventType activationType, KeyPressOrder order, VKey[] keys) : base((s) => command()) {
             this.activationType = activationType;
-            this.ordered = ordered;
+            this.order = order;
             this.Keys = keys;
         }
 
         public override bool IsActive() {
             ActivationEventType currentType = KeyEvents.CurrentKeyEvent.KeyState ? ActivationEventType.OnPress : ActivationEventType.OnRelease;
             if (activationType == ActivationEventType.Any || activationType == currentType) {
-                if (ordered) {
+                if (order == KeyPressOrder.Ordered) {
                     return KeyState.PressingKeysInOrder(Keys);
                 } else {
                     return KeyState.PressingKeys(Keys);
@@ -58,7 +58,7 @@ namespace MacroFramework.Commands {
 
         #region fields
         private ActivationEventType activationType;
-        private bool ordered;
+        private KeyPressOrder order;
 
         public VKey[] Keys { get; }
         #endregion
@@ -67,16 +67,16 @@ namespace MacroFramework.Commands {
         /// Creates a new <see cref="BindActivator"/> instance
         /// </summary>
         /// <param name="activationType">The eventy type filter</param>
-        /// <param name="ordered">Determines whether keys should be pressed in the given parameter order</param>
+        /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
         /// <param name="keys"></param>
-        public BindActivatorAttribute(ActivationEventType activationType, bool ordered, params VKey[] keys) {
+        public BindActivatorAttribute(ActivationEventType activationType, KeyPressOrder order, params VKey[] keys) {
             this.activationType = activationType;
-            this.ordered = ordered;
+            this.order = order;
             this.Keys = keys;
         }
 
         public override ICommandActivator GetCommandActivator(Command c, MethodInfo m) {
-            return new BindActivator(() => m.Invoke(c, null), activationType, ordered, Keys);
+            return new BindActivator(() => m.Invoke(c, null), activationType, order, Keys);
         }
     }
 }

@@ -27,14 +27,14 @@ namespace MacroFramework.Commands {
         /// Adds a <see cref="BindActivator"/>
         /// </summary>
         public CommandActivatorGroup Bind(Command.CommandCallback cb, params VKey[] keys) {
-            return Bind(cb, ActivationEventType.OnRelease, false, keys);
+            return Bind(cb, ActivationEventType.OnRelease, KeyPressOrder.Ordered, keys);
         }
 
         /// <summary>
         /// Adds a <see cref="BindActivator"/>
         /// </summary>
-        public CommandActivatorGroup Bind(Command.CommandCallback cb, ActivationEventType activationType, bool ordered, params VKey[] keys) {
-            Activators.Add(new BindActivator(cb, activationType, ordered, keys));
+        public CommandActivatorGroup Bind(Command.CommandCallback cb, ActivationEventType activationType, KeyPressOrder order, params VKey[] keys) {
+            Activators.Add(new BindActivator(cb, activationType, order, keys));
             return this;
         }
         #endregion

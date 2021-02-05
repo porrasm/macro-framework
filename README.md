@@ -43,7 +43,7 @@ This command will open Notepad when
 using MacroFramework.Commands;
 
 public class NotepadCommand : Command {
-    [BindActivator(ActivationEventType.OnPress, true, VKey.LCONTROL, VKey.N)]
+    [BindActivator(ActivationEventType.OnPress, KeyPressOrder.Ordered, VKey.LCONTROL, VKey.N)]
     private void OpenNotepad() {
         System.Diagnostics.Process.Start("Notepad.exe");
     }
