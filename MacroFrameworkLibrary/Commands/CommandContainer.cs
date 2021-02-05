@@ -44,6 +44,19 @@ namespace MacroFramework.Commands {
             }
         }
 
+        /// <summary>
+        /// Calls the <see cref="Command.OnTextCommand(string, bool)"/> on every <see cref="Command"/> instance
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="commandWasAccepted"></param>
+        internal static void CallOnTextCommand(string command, bool commandWasAccepted) {
+            foreach (Command c in Commands) {
+                c.OnTextCommand(command, commandWasAccepted);
+            }
+            TextCommandCreator.CallRemainingCommands(false);
+            TextCommandCreator.Clear();
+        }
+
         public static void OnClose() {
             foreach (Command c in Commands) {
                 c.OnClose();

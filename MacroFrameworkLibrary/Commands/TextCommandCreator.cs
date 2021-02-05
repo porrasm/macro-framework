@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
-    public static class TextCommandCreator {
+    internal static class TextCommandCreator {
         private static VKeysToCommand keyCommand = new VKeysToCommand();
 
         private static List<string> sentCommands = new List<string>();
@@ -38,6 +38,11 @@ namespace MacroFramework.Commands {
             sentCommands.Add(command);
         }
 
+        internal static void CallRemainingCommands(bool commandWasAccepted) {
+            foreach (string c in sentCommands) {
+                CommandContainer.CallOnTextCommand(c, commandWasAccepted);
+            }
+        }
         public static void Clear() {
             sentCommands.Clear();
         }

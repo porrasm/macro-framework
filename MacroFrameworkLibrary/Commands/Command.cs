@@ -64,13 +64,13 @@ namespace MacroFramework.Commands {
         #endregion
 
         /// <summary>
-        /// Called before the execution starts.
+        /// Called before the execution of any command starts.
         /// </summary>
         /// <param name="command"></param>
         protected virtual void OnExecuteStart() { }
 
         /// <summary>
-        /// Called after the execution is complete.
+        /// Called after the execution of every command
         /// </summary>
         /// <param name="command"></param>
         protected virtual void OnExecutionComplete() { }
@@ -88,8 +88,9 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// This method is called whenever a text command is executed, even if it doesn't match any of the activators.
         /// </summary>
-        /// <param name="command"></param>
-        public virtual void OnCommand(string command) { }
+        /// <param name="command">The text command which was executed</param>
+        /// <param name="commandWasAccepted">True if any of the <see cref="Command"/> classes executed the text command. False if nonexistent text command.</param>
+        public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
 
         public void ExecuteIfActive() {
             try {
