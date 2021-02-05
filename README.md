@@ -1,5 +1,9 @@
 # Windows Macro Framework
 
+## Warning
+
+Project is in very early stage. Many things will change. There are bugs and prepare to refactor things after updating.
+
 ## Quick setup
 
 The package is available on [Nuget](https://www.nuget.org/packages/MacroFramework/)
@@ -17,18 +21,18 @@ using MacroFramework;
 
 public class MySetup : Setup {
 
-        // Return the executing Assembly for automatic Command activation 
-        // or null if you don't want this feature.
-        protected override Assembly GetMainAssembly() {
-            return Assembly.GetExecutingAssembly();
-        }
-
-        protected override MacroSettings GetSettings() {
-            MacroSettings settings = new MacroSettings();
-            // Set settings here
-            return settings;
-        }
+    // Return the executing Assembly for automatic Command activation 
+    // or null if you don't want this feature.
+    protected override Assembly GetMainAssembly() {
+        return Assembly.GetExecutingAssembly();
     }
+
+    protected override MacroSettings GetSettings() {
+        MacroSettings settings = new MacroSettings();
+        // Set settings here
+        return settings;
+    }
+}
 ```
 
 ### 3 Create a macro
@@ -39,14 +43,16 @@ This command will open Notepad when
 using MacroFramework.Commands;
 
 public class NotepadCommand : Command {
-        [BindActivator(ActivationEventType.OnPress, true, VKey.LCONTROL, VKey.N)]
-        private void OpenNotepad() {
-            System.Diagnostics.Process.Start("Notepad.exe");
-        }
+    [BindActivator(ActivationEventType.OnPress, true, VKey.LCONTROL, VKey.N)]
+    private void OpenNotepad() {
+        System.Diagnostics.Process.Start("Notepad.exe");
     }
+}
 ```
 
 ### 4 Start the Macro framework on a STA thread
+
+Start the Macro framework with your custom setup class as a paremeter.
 
 ```C#
 public static class Program {
