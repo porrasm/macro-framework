@@ -36,6 +36,7 @@ namespace MacroFramework.Commands {
                 return;
             }
             sentCommands.Add(command);
+            CommandContainer.UpdateActivators<TextActivator>();
         }
 
         internal static void CallRemainingCommands(bool commandWasAccepted) {

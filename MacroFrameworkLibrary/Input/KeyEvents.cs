@@ -45,17 +45,20 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Handles the key press event. When true is returned the key event is intercepted.
         /// </summary>
-        public static bool OnHookKeyPress(KeyEvent k) {
-            if (KeyState.IsInvalidKey(k.Key)) {
+        public static bool OnHookKeyPress(VKey key, bool state) {
+
+            if (KeyState.IsInvalidKey(key)) {
                 return false;
             }
-            if (k.Key == Setup.Instance.Settings.GeneralBindKey) {
-                k.Key = VKey.GENERAL_BIND_KEY;
+            if (key == Setup.Instance.Settings.GeneralBindKey) {
+                key = VKey.GENERAL_BIND_KEY;
             }
 
             HandleQueuedKeyEventsNonBlocking();
 
-            KeyState.AddAbsoluteEvent(k);
+            long timeSincePreviousEvent = KeyState.TimeSinceLastKeyPress();
+            KeyState.AddAbsoluteEvent(key, state);
+            KeyEvent k = new KeyEvent(key, state, KeyState.GetCurrentActivationEventType());
 
             #region check enabled
             if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
@@ -95,10 +98,8 @@ namespace MacroFramework.Input {
 
             // Text command mode
             if (CommandMode) {
-                long timeSince = KeyState.TimeSinceLastKeyPress();
-
-                if (timeSince >= Setup.Instance.Settings.TextCommandTimeout) {
-                    Console.WriteLine("End timeout");
+                if (timeSincePreviousEvent >= Setup.Instance.Settings.TextCommandTimeout) {
+                    Console.WriteLine("End timeout: " + timeSincePreviousEvent);
                     CommandKeyPress(false, false);
                     return false;
                 }
@@ -128,7 +129,7 @@ namespace MacroFramework.Input {
             if (CommandMode) {
                 KeyState.AddKeyEvent(k);
                 OnCommandMode(k, unique);
-                CommandContainer.UpdateAllCommands();
+                CommandContainer.UpdateActivators<BindActivator>();
                 return;
             }
 
@@ -139,7 +140,7 @@ namespace MacroFramework.Input {
             CurrentKeyEvent = k;
 
             if (unique) {
-                CommandContainer.UpdateAllCommands();
+                CommandContainer.UpdateActivators<BindActivator>();
             }
 
             if (!k.KeyState) {

@@ -14,19 +14,28 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for keybind callbacks
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.VKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
             <param name="command">The callback which is executed when this becomes active</param>
             <param name="activationType">The eventy type filter</param>
             <param name="order">Determines whether keys should be pressed in the given parameter order</param>
+            <param name="matchType">Match type corresponding to how the match is determined</param>
             <param name="keys"></param>
         </member>
         <member name="T:MacroFramework.Commands.BindActivatorAttribute">
             <summary>
             Activator attribute for <see cref="T:MacroFramework.Commands.BindActivator"/>
             </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.BindActivatorAttribute.#ctor(MacroFramework.VKey[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
+            </summary>
+            <param name="activationType">The eventy type filter</param>
+            <param name="order">Determines whether keys should be pressed in the given parameter order</param>
+            <param name="keys"></param>
         </member>
         <member name="M:MacroFramework.Commands.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
             <summary>
@@ -55,31 +64,6 @@
         <member name="T:MacroFramework.Commands.CommandActivatorGroup">
             <summary>
             A wrapper class for multiple <see cref="T:MacroFramework.Commands.CommandActivator"/> instances
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.Bind(MacroFramework.Commands.Command.CommandCallback,MacroFramework.VKey[])">
-            <summary>
-            Adds a <see cref="T:MacroFramework.Commands.BindActivator"/>
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.Bind(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
-            <summary>
-            Adds a <see cref="T:MacroFramework.Commands.BindActivator"/>
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.KeyBind(MacroFramework.Commands.KeyActivator.KeyCallback,MacroFramework.VKey[])">
-            <summary>
-            Adds a <see cref="T:MacroFramework.Commands.KeyActivator"/>
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.TextCommand(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Tools.RegexWrapper[])">
-            <summary>
-            Adds a <see cref="T:MacroFramework.Commands.TextActivator"/>
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.TextCommand(MacroFramework.Commands.Command.TextCommandCallback,MacroFramework.Tools.RegexWrapper[])">
-            <summary>
-            Adds a <see cref="T:MacroFramework.Commands.TextActivator"/>
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.CommandActivatorGroup.AddActivator(MacroFramework.Commands.ICommandActivator)">
@@ -139,6 +123,21 @@
             </summary>
             <param name="key">Key</param>
         </member>
+        <member name="T:MacroFramework.Commands.KeyMatchType">
+            <summary>
+            Determines how keypress combinations are checked for matches
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KeyMatchType.ExactKeyMatch">
+            <summary>
+            Match occurs if all of the selected keys and no other keys are pressed
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KeyMatchType.PartialMatch">
+            <summary>
+            Match occurs if all of the selected keys are pressed
+            </summary>
+        </member>
         <member name="T:MacroFramework.Commands.KeyPressOrder">
             <summary>
             Determines whether keys should be pressed in the give parameter order
@@ -148,6 +147,13 @@
             <summary>
             Text command activator
             </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Tools.RegexWrapper[])">
+            <summary>
+            Creates a new text command activator
+            </summary>
+            <param name="command">The command callback</param>
+            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects</param>
         </member>
         <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Command.TextCommandCallback,MacroFramework.Tools.RegexWrapper[])">
             <summary>
@@ -173,13 +179,21 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for timer based actions. Callback is called at least
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Int64,System.Boolean)">
+        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Int32,MacroFramework.Commands.TimerActivator.TimeUnit,System.Boolean)">
             <summary>
             Initializes a new timer activator instance
             </summary>
             <param name="command">Callback</param>
             <param name="delay">Minimum delay in milliseconds between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
             <param name="callAtStart">If true the command is called on the first update loop</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TimerActivator.ToMilliseconds(System.Int64,MacroFramework.Commands.TimerActivator.TimeUnit)">
+            <summary>
+            Converts given time unit to milliseconds
+            </summary>
+            <param name="time"></param>
+            <param name="unit"></param>
+            <returns></returns>
         </member>
         <member name="T:MacroFramework.Commands.TimerActivatorAttribute">
             <summary>
@@ -264,12 +278,19 @@
             Executes an active activator
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.UpdateAllCommands">
+        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.VKey[])">
             <summary>
-            Executes all commands and binds which are active.
+            Syntax macro for creating array of <see cref="T:MacroFramework.VKey"/> elements
+            </summary>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.CommandContainer.UpdateAllCommandss">
+            <summary>
+            Executes all commands and binds which are active. Calling without care may cause duplicate activations.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.UpdateCommands``1(System.Int32)">
+        <member name="M:MacroFramework.Commands.CommandContainer.UpdateActivators``1">
             <summary>
             Executes all activatos of certain type. This may call multiple activators from a single command instance
             </summary>
@@ -295,6 +316,26 @@
             </summary>
             <param name="c"></param>
         </member>
+        <member name="T:MacroFramework.Input.KeyEvent">
+            <summary>
+            Contains information about the current keyevent
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.KeyEvent.Key">
+            <summary>
+            The corresponding key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.KeyEvent.KeyState">
+            <summary>
+            The key up/down state of the key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.KeyEvent.ActivationType">
+            <summary>
+            The activation type of this keyevent
+            </summary>
+        </member>
         <member name="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent">
             <summary>
             Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
@@ -307,7 +348,7 @@
             <param name="key"></param>
             <param name="status"></param>
         </member>
-        <member name="M:MacroFramework.Input.KeyEvents.OnHookKeyPress(MacroFramework.Input.KeyEvent)">
+        <member name="M:MacroFramework.Input.KeyEvents.OnHookKeyPress(MacroFramework.VKey,System.Boolean)">
             <summary>
             Handles the key press event. When true is returned the key event is intercepted.
             </summary>
@@ -317,6 +358,27 @@
             Returns the dictionary containig VKeytates. This dictionary should not be used for keybinds.
             </summary>
         </member>
+        <member name="F:MacroFramework.Input.KeyState.prevKeyEventState">
+            <summary>
+            The key up/down states of the last two key events
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.KeyState.prevPrevKeyEventState">
+            <summary>
+            The key up/down states of the last two key events
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.KeyState.keyDownCount">
+            <summary>
+            How many keys are held down at any given moment
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.KeyState.TimeSinceLastKeyPress">
+            <summary>
+            Time since last keypress in milliseconds
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MacroFramework.Input.KeyState.IsInvalidKey(MacroFramework.VKey)">
             <summary>
             Checks for an invalid VKey code e.g. a nonkey event sent by a Gamepad.
@@ -324,12 +386,21 @@
             <param name="key"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.AddAbsoluteEvent(MacroFramework.Input.KeyEvent)">
+        <member name="M:MacroFramework.Input.KeyState.AddAbsoluteEvent(MacroFramework.VKey,System.Boolean)">
             <summary>
             This method is used to keep track on which VKey are pressed down.
             </summary>
             <param name="key"></param>
             <param name="value"></param>
+        </member>
+        <member name="M:MacroFramework.Input.KeyState.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
+            <summary>
+            Returns true if the current keystate matches the given parameters
+            </summary>
+            <param name="matchType">The match type</param>
+            <param name="order">Whether keyevents should be in the correct order</param>
+            <param name="keys">The keys to match</param>
+            <returns></returns>
         </member>
         <member name="M:MacroFramework.Input.KeyState.SubscribeToKeyEventOld(MacroFramework.VKey,MacroFramework.Input.KeyState.KeyCallback)">
             <summary>
@@ -337,6 +408,12 @@
             </summary>
             <param name="key"></param>
             <param name="callback"></param>
+        </member>
+        <member name="M:MacroFramework.Input.KeyState.GetCurrentActivationEventType">
+            <summary>
+            Returns the current activation type parameter
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:MacroFramework.VKey">
             <summary>Enum of virtual key codes.</summary>
@@ -1261,7 +1338,18 @@
             </summary>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MacroFramework.Setup.GetMainAssembly" -->
+        <member name="M:MacroFramework.Setup.GetMainAssembly">
+            <summary>
+            Return your projects main <see cref="T:System.Reflection.Assembly"/> (most likely using <see cref="M:System.Reflection.Assembly.GetExecutingAssembly"/>). This allows automatically enabling your <see cref="T:MacroFramework.Commands.Command"/>. Return null if you don't wish to use this feature. Add commands manually either using <see cref="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)"/> or define a list of them with <see cref="M:MacroFramework.Setup.GetActiveCommands"/>/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Setup.GetActiveCommands">
+            <summary>
+            Initialize active commands here. Return null if you defined the main assembly in <see cref="M:MacroFramework.Setup.GetMainAssembly"/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:MacroFramework.Tools.RegexWrapper">
             <summary>
             A simple wrapper class for Regexes. You can implicitly create a RegexWrapper instance from a string or a Regex.

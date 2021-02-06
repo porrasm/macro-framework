@@ -119,5 +119,14 @@ namespace MacroFramework.Commands {
                 OnExecutionComplete();
             }
         }
+
+        /// <summary>
+        /// Syntax macro for creating array of <see cref="VKey"/> elements
+        /// </summary>
+        /// <param name="keys"></param>
+        /// <returns></returns>
+        protected VKey[] Keys(params VKey[] keys) {
+            return keys;
+        }
     }
 }

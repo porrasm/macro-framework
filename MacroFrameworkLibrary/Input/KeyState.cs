@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MacroFramework.Commands;
+using MacroFramework.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,24 +10,34 @@ namespace MacroFramework.Input {
     public static class KeyState {
 
         #region fields
-        private static Dictionary<VKey, bool> absoluteVKeytates;
+        private static Dictionary<VKey, bool> absoluteKeystates;
         /// <summary>
         /// Returns the dictionary containig VKeytates. This dictionary should not be used for keybinds.
         /// </summary>
-        public static Dictionary<VKey, bool> AbsoluteVKeytates => absoluteVKeytates;
+        public static Dictionary<VKey, bool> AbsoluteVKeytates => absoluteKeystates;
 
         private static Dictionary<VKey, State> keyDown;
         private static Dictionary<VKey, State> keyUp;
 
         private static Dictionary<VKey, KeyCallback> keyCallbacks;
 
-        private static int globalIndex;
+        private static uint globalIndex;
 
         public delegate void KeyCallback(KeyEvent k);
 
+        /// <summary>
+        /// The key up/down states of the last two key events
+        /// </summary>
+        private static bool prevKeyEventState, prevPrevKeyEventState;
+
+        /// <summary>
+        /// How many keys are held down at any given moment
+        /// </summary>
+        private static int keyDownCount;
+
         private struct State {
-            public int localIndex;
-            public int globalIndex;
+            public uint localIndex;
+            public uint globalIndex;
         }
 
         public static long LastKeyPress { get; private set; }
@@ -39,17 +51,17 @@ namespace MacroFramework.Input {
 
             globalIndex = 0;
 
-            absoluteVKeytates = new Dictionary<VKey, bool>();
+            absoluteKeystates = new Dictionary<VKey, bool>();
             keyDown = new Dictionary<VKey, State>();
             keyUp = new Dictionary<VKey, State>();
 
             // RaspberryVKey = new RaspberryVKey();
 
             foreach (VKey key in Enum.GetValues(typeof(VKey))) {
-                if (absoluteVKeytates.ContainsKey(key)) {
+                if (absoluteKeystates.ContainsKey(key)) {
                     continue;
                 }
-                absoluteVKeytates.Add(key, false);
+                absoluteKeystates.Add(key, false);
                 keyDown.Add(key, new State());
                 keyUp.Add(key, new State());
             }
@@ -57,8 +69,12 @@ namespace MacroFramework.Input {
             keyCallbacks = new Dictionary<VKey, KeyCallback>();
         }
 
+        /// <summary>
+        /// Time since last keypress in milliseconds
+        /// </summary>
+        /// <returns></returns>
         public static long TimeSinceLastKeyPress() {
-            return DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() - LastKeyPress;
+            return Timer.PassedFrom(LastKeyPress);
         }
 
         /// <summary>
@@ -67,7 +83,7 @@ namespace MacroFramework.Input {
         /// <param name="key"></param>
         /// <returns></returns>
         public static bool IsInvalidKey(VKey key) {
-            return !absoluteVKeytates.ContainsKey(key);
+            return !absoluteKeystates.ContainsKey(key);
         }
 
         /// <summary>
@@ -75,14 +91,16 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void AddAbsoluteEvent(KeyEvent k) {
-            LastKeyPress = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-            absoluteVKeytates[k.Key] = k.KeyState;
+        public static void AddAbsoluteEvent(VKey key, bool state) {
+            LastKeyPress = Timer.Milliseconds;
+            prevPrevKeyEventState = prevKeyEventState;
+            prevKeyEventState = state;
+            absoluteKeystates[key] = state;
         }
 
         public static bool IsUniqueEvent(KeyEvent k) {
             if (k.KeyState) {
-                if (PressingKey(k.Key)) {
+                if (IsPressingKey(k.Key)) {
                     return false;
                 }
             }
@@ -98,6 +116,7 @@ namespace MacroFramework.Input {
             Console.WriteLine("Key event: " + k);
 
             if (k.KeyState) {
+                keyDownCount++;
                 State state = keyDown[k.Key];
                 SetState(ref state);
                 keyDown[k.Key] = state;
@@ -106,6 +125,7 @@ namespace MacroFramework.Input {
                     cb?.Invoke(k);
                 }
             } else {
+                keyDownCount--;
                 State state = keyUp[k.Key];
                 SetState(ref state);
                 keyUp[k.Key] = state;
@@ -124,27 +144,44 @@ namespace MacroFramework.Input {
             state.globalIndex = globalIndex;
         }
 
-        #region bind checks
-        public static bool PressingKeys(params VKey[] VKey) {
-            if (VKey == null || VKey.Length == 0) {
-                return false;
+        #region keystate matching
+        /// <summary>
+        /// Returns true if the current keystate matches the given parameters
+        /// </summary>
+        /// <param name="matchType">The match type</param>
+        /// <param name="order">Whether keyevents should be in the correct order</param>
+        /// <param name="keys">The keys to match</param>
+        /// <returns></returns>
+        public static bool IsMatchingKeyState(KeyMatchType matchType, KeyPressOrder order, params VKey[] keys) {
+            if (matchType == KeyMatchType.ExactKeyMatch) {
+                return IsExactKeyMatch(order, keys);
+            } else {
+                return IsPressingKeys(order, keys);
             }
-            foreach (VKey key in VKey) {
-                if (!PressingKey(key)) {
-                    return false;
-                }
-            }
-
-            //AddKeyEvent(new KeyEvent(MacroSettings.GeneralBindKey, false));
-            return true;
         }
-        public static bool PressingKeysInOrder(params VKey[] VKey) {
-            if (VKey == null || VKey.Length == 0) {
+
+        private static bool IsExactKeyMatch(KeyPressOrder order, params VKey[] keys) {
+            if (!IsPressingKeys(order, keys)) {
                 return false;
             }
-            int prevIndex = 0;
-            foreach (VKey k in VKey) {
-                if (!PressingKey(k)) {
+            return keys.Length == keyDownCount;
+        }
+
+        private static bool IsPressingKeys(KeyPressOrder order, params VKey[] keys) {
+            if (order == KeyPressOrder.Ordered) {
+                return IsPressingKeysInOrder(keys);
+            } else {
+                return IsPressingKeysInArbitraryOrder(keys);
+            }
+        }
+
+        private static bool IsPressingKeysInOrder(VKey[] keys) {
+            if (keys == null || keys.Length == 0) {
+                return false;
+            }
+            uint prevIndex = 0;
+            foreach (VKey k in keys) {
+                if (!IsPressingKey(k)) {
                     return false;
                 }
                 State state = keyDown[k];
@@ -154,10 +191,19 @@ namespace MacroFramework.Input {
                 prevIndex = state.globalIndex;
             }
 
-            //AddKeyEvent(new KeyEvent(MacroSettings.GeneralBindKey, false));
             return true;
         }
-        public static bool PressingKey(VKey key) {
+
+        private static bool IsPressingKeysInArbitraryOrder(VKey[] keys) {
+            foreach (VKey k in keys) {
+                if (!IsPressingKey(k)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool  IsPressingKey(VKey key) {
             return keyDown[key].globalIndex > keyUp[key].globalIndex;
         }
         #endregion
@@ -187,6 +233,22 @@ namespace MacroFramework.Input {
                 keyCallbacks[key] += callback;
             } else {
                 keyCallbacks.Add(key, callback);
+            }
+        }
+
+        /// <summary>
+        /// Returns the current activation type parameter
+        /// </summary>
+        /// <returns></returns>
+        public static ActivationEventType GetCurrentActivationEventType() {
+            if (prevKeyEventState) {
+                return ActivationEventType.OnPress;
+            } else {
+                if (prevPrevKeyEventState) {
+                    return ActivationEventType.OnFirstRelease;
+                } else {
+                    return ActivationEventType.OnAnyRelease;
+                }
             }
         }
     }

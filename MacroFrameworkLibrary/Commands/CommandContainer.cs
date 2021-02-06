@@ -22,8 +22,13 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-            if (Setup.Instance.MainAssembly != null) {
-                foreach (var c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.MainAssembly)) {
+            List<Command> setupCommands = Setup.Instance.GetActiveCommands();
+            if (Setup.Instance.MainAssembly != null && setupCommands == null) {
+                foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.MainAssembly)) {
+                    AddCommand(c);
+                }
+            } else {
+                foreach (Command c in setupCommands) {
                     AddCommand(c);
                 }
             }
@@ -38,9 +43,9 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Executes all commands and binds which are active.
+        /// Executes all commands and binds which are active. Calling without care may cause duplicate activations.
         /// </summary>
-        public static void UpdateAllCommands() {
+        public static void UpdateAllCommandss() {
             foreach (Command c in Commands) {
                 try {
                     c.ExecuteIfActive();
@@ -54,12 +59,12 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <typeparam name="T">The type of activators which are checked</typeparam>
         /// <param name="executeCount">The count of activators to be executed. Set as 0 to execute every active activator</param>
-        public static void UpdateCommands<T>(int executeCount = 1) where T : ICommandActivator {
+        public static void UpdateActivators<T>() where T : ICommandActivator {
             Type t = typeof(T);
             if (!TypeActivators.ContainsKey(t)) {
                 return;
             }
-            int executed = 0;
+
             foreach (ICommandActivator act in TypeActivators[t]) {
                 if (act.IsActive()) {
                     try {
@@ -69,10 +74,6 @@ namespace MacroFramework.Commands {
                     } catch (Exception e) {
                         Console.WriteLine("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
                     }
-                }
-                executed++;
-                if (executeCount > 0 && executed >= executeCount) {
-                    break;
                 }
             }
         }

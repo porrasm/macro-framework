@@ -10,7 +10,8 @@ namespace MacroFramework.Commands {
     /// </summary>
     public enum ActivationEventType {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        OnRelease,
+        OnFirstRelease,
+        OnAnyRelease,
         OnPress,
         Any
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member

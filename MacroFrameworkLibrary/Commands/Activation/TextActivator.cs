@@ -23,7 +23,20 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The command callback</param>
         /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
+        public TextActivator(Command.CommandCallback command, params RegexWrapper[] matchers) : base((s) => command()) {
+            Init(matchers);
+        }
+
+        /// <summary>
+        /// Creates a new text command activator
+        /// </summary>
+        /// <param name="command">The command callback</param>
+        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
         public TextActivator(Command.TextCommandCallback command, params RegexWrapper[] matchers) : base(command) {
+            Init(matchers);
+        }
+
+        private void Init( params RegexWrapper[] matchers) {
             if (matchers == null || matchers.Length == 0) {
                 throw new Exception("Matchers cannot be null or empty");
             }

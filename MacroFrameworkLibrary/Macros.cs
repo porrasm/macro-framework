@@ -36,7 +36,7 @@ namespace MacroFramework {
         private static async void MainLoop() {
             while (Running) {
                 OnMainLoop?.Invoke();
-                CommandContainer.UpdateCommands<TimerActivator>();
+                CommandContainer.UpdateActivators<TimerActivator>();
                 await Task.Delay(Setup.Instance.Settings.MainLoopTimestep);
             }
         }
@@ -59,9 +59,6 @@ namespace MacroFramework {
         /// <param name="command"></param>
         public static void ExecuteTextCommand(string command) {
             TextCommandCreator.QueueTextCommand(command);
-
-            // bug, may call keybinds twice
-            CommandContainer.UpdateAllCommands();
         }
         #endregion
     }

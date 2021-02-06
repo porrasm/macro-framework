@@ -22,53 +22,6 @@ namespace MacroFramework.Commands {
             Activators = new List<ICommandActivator>();
         }
 
-        #region new activators
-        #region regular bind
-        /// <summary>
-        /// Adds a <see cref="BindActivator"/>
-        /// </summary>
-        public CommandActivatorGroup Bind(Command.CommandCallback cb, params VKey[] keys) {
-            return Bind(cb, ActivationEventType.OnRelease, KeyPressOrder.Ordered, keys);
-        }
-
-        /// <summary>
-        /// Adds a <see cref="BindActivator"/>
-        /// </summary>
-        public CommandActivatorGroup Bind(Command.CommandCallback cb, ActivationEventType activationType, KeyPressOrder order, params VKey[] keys) {
-            AddActivator(new BindActivator(cb, activationType, order, keys));
-            return this;
-        }
-        #endregion
-
-        #region keybind
-        /// <summary>
-        /// Adds a <see cref="KeyActivator"/>
-        /// </summary>
-        public CommandActivatorGroup KeyBind(KeyActivator.KeyCallback cb, params VKey[] keys) {
-            foreach (VKey k in keys) {
-                AddActivator(new KeyActivator(cb, k));
-            }
-            return this;
-        }
-        #endregion
-
-        #region text command
-        /// <summary>
-        /// Adds a <see cref="TextActivator"/>
-        /// </summary>
-        public CommandActivatorGroup TextCommand(Command.CommandCallback cb, params RegexWrapper[] matchers) {
-            return TextCommand((cmd) => cb?.Invoke(), matchers);
-        }
-
-        /// <summary>
-        /// Adds a <see cref="TextActivator"/>
-        /// </summary>
-        public CommandActivatorGroup TextCommand(Command.TextCommandCallback cb, params RegexWrapper[] matchers) {
-            AddActivator(new TextActivator(cb, matchers));
-            return this;
-        }
-        #endregion
-
         /// <summary>
         /// Adds an activator to the group
         /// </summary>
@@ -77,7 +30,6 @@ namespace MacroFramework.Commands {
             activator.Owner = owner;
             Activators.Add(activator);
         }
-        #endregion
 
         /// <summary>
         /// Returns true if any of the <see cref="CommandActivator"/> instances is active

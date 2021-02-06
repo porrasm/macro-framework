@@ -62,11 +62,11 @@ namespace MacroFramework.Input {
                 VKey key = (VKey)Marshal.ReadInt32(lParam);
 
                 if (wParam == WM_KEYDOWN) {
-                    if (KeyEvents.OnHookKeyPress(new KeyEvent(key, true))) {
+                    if (KeyEvents.OnHookKeyPress(key, true)) {
                         return BlockCode;
                     }
                 } else if (wParam == WM_KEYUP) {
-                    if (KeyEvents.OnHookKeyPress(new KeyEvent(key, false))) {
+                    if (KeyEvents.OnHookKeyPress(key, false)) {
                         return BlockCode;
                     }
                 }
