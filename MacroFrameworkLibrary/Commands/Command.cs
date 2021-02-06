@@ -14,13 +14,7 @@ namespace MacroFramework.Commands {
 
         #region fields
         /// <summary>
-        /// Callback for commands which use text commands as activators
-        /// </summary>
-        /// <param name="command"></param>
-        public delegate void TextCommandCallback(string command);
-
-        /// <summary>
-        /// Callback for regular commands
+        /// Callback for command actions
         /// </summary>
         public delegate void CommandCallback();
 
@@ -108,17 +102,6 @@ namespace MacroFramework.Commands {
         /// <param name="command">The text command which was executed</param>
         /// <param name="commandWasAccepted">True if any of the <see cref="Command"/> classes executed the text command. False if nonexistent text command.</param>
         public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
-
-        /// <summary>
-        /// Executes an active activator
-        /// </summary>
-        public void ExecuteIfActive() {
-            if (activator.IsActive(out CommandActivator a) && GetContext()) {
-                OnExecuteStart();
-                a.Execute();
-                OnExecutionComplete();
-            }
-        }
 
         /// <summary>
         /// Syntax macro for creating array of <see cref="VKey"/> elements

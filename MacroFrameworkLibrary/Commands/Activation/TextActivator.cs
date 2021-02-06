@@ -14,7 +14,12 @@ namespace MacroFramework.Commands {
     public class TextActivator : CommandActivator {
 
         #region fields
-        private string commandString;
+        /// <summary>
+        /// Callback for text commands
+        /// </summary>
+        /// <param name="command">The command which is being executed</param>
+        public delegate void TextCommandCallback(string command);
+
         private RegexWrapper[] matchers;
         #endregion
 
@@ -23,7 +28,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The command callback</param>
         /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
-        public TextActivator(Command.CommandCallback command, params RegexWrapper[] matchers) : base((s) => command()) {
+        public TextActivator(Command.CommandCallback command, params RegexWrapper[] matchers) : base(command) {
             Init(matchers);
         }
 
@@ -32,7 +37,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The command callback</param>
         /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
-        public TextActivator(Command.TextCommandCallback command, params RegexWrapper[] matchers) : base(command) {
+        public TextActivator(TextCommandCallback command, params RegexWrapper[] matchers) : base(WrapTextCommand(command)) {
             Init(matchers);
         }
 
@@ -42,19 +47,18 @@ namespace MacroFramework.Commands {
             }
             this.matchers = matchers;
         }
+        private static Command.CommandCallback WrapTextCommand(TextCommandCallback cb) {
+            return () => cb?.Invoke(TextCommandCreator.CurrentTextCommand);
+        }
 
         public override bool IsActive() {
             foreach (RegexWrapper m in matchers) {
-                if (TextCommandCreator.CollectCommand(m, out commandString)) {
+                if (TextCommands.IsMatchForCommand(m)) {
                     return true;
                 }
             }
 
             return false;
-        }
-
-        public override void Execute() {
-            commandCallback?.Invoke(commandString);
         }
     }
 

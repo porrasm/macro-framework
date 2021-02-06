@@ -43,24 +43,29 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Executes all commands and binds which are active. Calling without care may cause duplicate activations.
+        /// Executes all activatos of certain type. This may call multiple activators from a single command instance.
         /// </summary>
-        public static void UpdateAllCommandss() {
-            foreach (Command c in Commands) {
-                try {
-                    c.ExecuteIfActive();
-                } catch (Exception e) {
-                    Console.WriteLine("Error executing command of type " + c.GetType() + ": " + e.Message);
-                }
+        /// <param name="types">The list of types to update which implement <see cref="ICommandActivator"/>"/></param>
+        public static void UpdateActivators(params Type[] types) {
+            if (types == null) {
+                return;
+            }
+            foreach (Type t in types) {
+                UpdateActivators(t);
             }
         }
         /// <summary>
-        /// Executes all activatos of certain type. This may call multiple activators from a single command instance
+        /// Executes all activatos of certain type. This may call multiple activators from a single command instance.
         /// </summary>
-        /// <typeparam name="T">The type of activators which are checked</typeparam>
-        /// <param name="executeCount">The count of activators to be executed. Set as 0 to execute every active activator</param>
+        /// <typeparam name="T">The type to update which implement <see cref="ICommandActivator"/>"/></param></typeparam>
         public static void UpdateActivators<T>() where T : ICommandActivator {
-            Type t = typeof(T);
+            UpdateActivators(typeof(T));
+        }
+
+        private static void UpdateActivators(Type t) {
+            if (!typeof(ICommandActivator).IsAssignableFrom(t)) {
+                throw new NotSupportedException("Invalid type argument given: " + t);
+            }
             if (!TypeActivators.ContainsKey(t)) {
                 return;
             }
@@ -68,27 +73,12 @@ namespace MacroFramework.Commands {
             foreach (ICommandActivator act in TypeActivators[t]) {
                 if (act.IsActive()) {
                     try {
-                        act.Owner?.OnExecuteStart();
                         act.Execute();
-                        act.Owner?.OnExecutionComplete();
                     } catch (Exception e) {
                         Console.WriteLine("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
                     }
                 }
             }
-        }
-
-        /// <summary>
-        /// Calls the <see cref="Command.OnTextCommand(string, bool)"/> on every <see cref="Command"/> instance
-        /// </summary>
-        /// <param name="command"></param>
-        /// <param name="commandWasAccepted"></param>
-        internal static void CallOnTextCommand(string command, bool commandWasAccepted) {
-            foreach (Command c in Commands) {
-                c.OnTextCommand(command, commandWasAccepted);
-            }
-            TextCommandCreator.CallRemainingCommands(false);
-            TextCommandCreator.Clear();
         }
 
         public static void OnClose() {

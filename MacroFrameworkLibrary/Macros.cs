@@ -51,15 +51,5 @@ namespace MacroFramework {
             Setup.SetInstance(null);
             Running = false;
         }
-
-        #region tools
-        /// <summary>
-        /// Executes a text command immediately.
-        /// </summary>
-        /// <param name="command"></param>
-        public static void ExecuteTextCommand(string command) {
-            TextCommandCreator.QueueTextCommand(command);
-        }
-        #endregion
     }
 }

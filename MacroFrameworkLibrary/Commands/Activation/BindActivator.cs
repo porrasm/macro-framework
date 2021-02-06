@@ -13,11 +13,10 @@ namespace MacroFramework.Commands {
     public class BindActivator : CommandActivator {
 
         #region fields
-        private ActivationEventType activationType;
-        private KeyMatchType matchType;
-        private KeyPressOrder order;
-
-        public VKey[] Keys { get; }
+        public ActivationEventType ActivationType { get; set; }
+        public KeyMatchType MatchType { get; set; }
+        public KeyPressOrder Order { get; set; }
+        public VKey[] Keys { get; set; }
         #endregion
 
         /// <summary>
@@ -28,29 +27,29 @@ namespace MacroFramework.Commands {
         /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
         /// <param name="matchType">Match type corresponding to how the match is determined</param>
         /// <param name="keys"></param>
-        public BindActivator(Command.CommandCallback command, VKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base((s) => command()) {
-            this.activationType = activationType;
-            this.matchType = matchType;
-            this.order = order;
+        public BindActivator(Command.CommandCallback command, VKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(command) {
+            this.ActivationType = activationType;
+            this.MatchType = matchType;
+            this.Order = order;
             this.Keys = keys;
         }
 
         public override bool IsActive() {
             KeyEvent k = KeyEvents.CurrentKeyEvent;
             if (IsMatchingActivationEventType(k.ActivationType)) {
-                return KeyState.IsMatchingKeyState(matchType, order, Keys);
+                return KeyState.IsMatchingKeyState(MatchType, Order, Keys);
             }
             return false;
         }
 
         private bool IsMatchingActivationEventType(ActivationEventType type) {
-            if (activationType == ActivationEventType.Any) {
+            if (ActivationType == ActivationEventType.Any) {
                 return true;
             }
-            if (activationType == ActivationEventType.OnAnyRelease && (type == ActivationEventType.OnFirstRelease || type == ActivationEventType.OnAnyRelease)) {
+            if (ActivationType == ActivationEventType.OnAnyRelease && (type == ActivationEventType.OnFirstRelease || type == ActivationEventType.OnAnyRelease)) {
                 return true;
             }
-            return activationType == type;
+            return ActivationType == type;
         }
     }
 

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Input {
+    // Soon to be rewritten, code is smelly
     public static class KeyEvents {
 
         #region fields
@@ -21,6 +22,13 @@ namespace MacroFramework.Input {
         private static Queue<KeyEvent> keyEventQueue;
 
         private static HashSet<VKey> blockKeys;
+
+        public delegate bool KeyCallbackFunc(VKey key, bool state);
+
+        /// <summary>
+        /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyState"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself.
+        /// </summary>
+        public static KeyCallbackFunc KeyCallback { get; set; }
         #endregion
 
         static KeyEvents() {
@@ -46,6 +54,10 @@ namespace MacroFramework.Input {
         /// Handles the key press event. When true is returned the key event is intercepted.
         /// </summary>
         public static bool OnHookKeyPress(VKey key, bool state) {
+
+            if (KeyCallback?.Invoke(key, state) ?? false) {
+                return true;
+            }
 
             if (KeyState.IsInvalidKey(key)) {
                 return false;
@@ -129,7 +141,7 @@ namespace MacroFramework.Input {
             if (CommandMode) {
                 KeyState.AddKeyEvent(k);
                 OnCommandMode(k, unique);
-                CommandContainer.UpdateActivators<BindActivator>();
+                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
                 return;
             }
 
@@ -140,7 +152,7 @@ namespace MacroFramework.Input {
             CurrentKeyEvent = k;
 
             if (unique) {
-                CommandContainer.UpdateActivators<BindActivator>();
+                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
             }
 
             if (!k.KeyState) {

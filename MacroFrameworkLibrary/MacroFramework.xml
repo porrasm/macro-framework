@@ -55,11 +55,16 @@
             The current callback of this activator
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.CommandActivator.#ctor(MacroFramework.Commands.Command.TextCommandCallback)">
+        <member name="M:MacroFramework.Commands.CommandActivator.#ctor(MacroFramework.Commands.Command.CommandCallback)">
             <summary>
             Initializes this activator with a callback
             </summary>
             <param name="command"></param>
+        </member>
+        <member name="M:MacroFramework.Commands.CommandActivator.Execute">
+            <summary>
+            Executes the callback of this activators
+            </summary>
         </member>
         <member name="T:MacroFramework.Commands.CommandActivatorGroup">
             <summary>
@@ -148,6 +153,12 @@
             Text command activator
             </summary>
         </member>
+        <member name="T:MacroFramework.Commands.TextActivator.TextCommandCallback">
+            <summary>
+            Callback for text commands
+            </summary>
+            <param name="command">The command which is being executed</param>
+        </member>
         <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Tools.RegexWrapper[])">
             <summary>
             Creates a new text command activator
@@ -155,7 +166,7 @@
             <param name="command">The command callback</param>
             <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Command.TextCommandCallback,MacroFramework.Tools.RegexWrapper[])">
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.TextActivator.TextCommandCallback,MacroFramework.Tools.RegexWrapper[])">
             <summary>
             Creates a new text command activator
             </summary>
@@ -179,15 +190,16 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for timer based actions. Callback is called at least
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Int32,MacroFramework.Commands.TimerActivator.TimeUnit,System.Boolean)">
+        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)">
             <summary>
             Initializes a new timer activator instance
             </summary>
             <param name="command">Callback</param>
-            <param name="delay">Minimum delay in milliseconds between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
+            <param name="delay">Minimum delay between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
             <param name="callAtStart">If true the command is called on the first update loop</param>
+            <param name="unit">The unit of time used</param>
         </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.ToMilliseconds(System.Int64,MacroFramework.Commands.TimerActivator.TimeUnit)">
+        <member name="M:MacroFramework.Commands.TimerActivator.ToMilliseconds(System.Int64,MacroFramework.Commands.TimeUnit)">
             <summary>
             Converts given time unit to milliseconds
             </summary>
@@ -199,6 +211,15 @@
             <summary>
             Attribute activator for <see cref="T:MacroFramework.Commands.TimerActivator"/>
             </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.TimerActivatorAttribute.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)">
+            <summary>
+            Initializes a new timer activator instance
+            </summary>
+            <param name="command">Callback</param>
+            <param name="delay">Minimum delay between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
+            <param name="callAtStart">If true the command is called on the first update loop</param>
+            <param name="unit">The unit of time used</param>
         </member>
         <!-- Badly formed XML comment ignored for member "T:MacroFramework.Commands.ActivatorAttribute" -->
         <member name="M:MacroFramework.Commands.ActivatorAttribute.GetCommandActivator(MacroFramework.Commands.Command,System.Reflection.MethodInfo)">
@@ -214,15 +235,9 @@
             Base class for all macro functionality
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.Command.TextCommandCallback">
-            <summary>
-            Callback for commands which use text commands as activators
-            </summary>
-            <param name="command"></param>
-        </member>
         <member name="T:MacroFramework.Commands.Command.CommandCallback">
             <summary>
-            Callback for regular commands
+            Callback for command actions
             </summary>
         </member>
         <member name="F:MacroFramework.Commands.Command.activator">
@@ -273,11 +288,6 @@
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any of the <see cref="T:MacroFramework.Commands.Command"/> classes executed the text command. False if nonexistent text command.</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.ExecuteIfActive">
-            <summary>
-            Executes an active activator
-            </summary>
-        </member>
         <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.VKey[])">
             <summary>
             Syntax macro for creating array of <see cref="T:MacroFramework.VKey"/> elements
@@ -285,25 +295,13 @@
             <param name="keys"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.UpdateAllCommandss">
+        <member name="M:MacroFramework.Commands.CommandContainer.UpdateActivators(System.Type[])">
             <summary>
-            Executes all commands and binds which are active. Calling without care may cause duplicate activations.
+            Executes all activatos of certain type. This may call multiple activators from a single command instance.
             </summary>
+            <param name="types">The list of types to update which implement <see cref="T:MacroFramework.Commands.ICommandActivator"/>"/></param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.UpdateActivators``1">
-            <summary>
-            Executes all activatos of certain type. This may call multiple activators from a single command instance
-            </summary>
-            <typeparam name="T">The type of activators which are checked</typeparam>
-            <param name="executeCount">The count of activators to be executed. Set as 0 to execute every active activator</param>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.CallOnTextCommand(System.String,System.Boolean)">
-            <summary>
-            Calls the <see cref="M:MacroFramework.Commands.Command.OnTextCommand(System.String,System.Boolean)"/> on every <see cref="T:MacroFramework.Commands.Command"/> instance
-            </summary>
-            <param name="command"></param>
-            <param name="commandWasAccepted"></param>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.CommandContainer.UpdateActivators``1" -->
         <member name="M:MacroFramework.Commands.CommandContainer.EnqueuePrimaryThreadJob(MacroFramework.Commands.CommandContainer.QueueCallback)">
             <summary>
             Queues a job which will be executed on the primary thread. You queue a job from a secondary thread.
@@ -315,6 +313,30 @@
             Adds a command to the active command pool
             </summary>
             <param name="c"></param>
+        </member>
+        <member name="T:MacroFramework.Commands.TextCommands">
+            <summary>
+            The class which handles the execution of text commands
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.TextCommands.CurrentTextCommand">
+            <summary>
+            Returns the current text command which is being executed
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.TextCommands.Execute(System.String)">
+            <summary>
+            Executes any given string command
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextCommands.IsMatchForCommand(MacroFramework.Tools.RegexWrapper)">
+            <summary>
+            Returns true if the command was accepted by the matcher.
+            </summary>
+            <param name="matcher">A regex wrapper object</param>
+            <param name="commandString">The command which is being executed</param>
+            <returns></returns>
         </member>
         <member name="T:MacroFramework.Input.KeyEvent">
             <summary>
@@ -339,6 +361,11 @@
         <member name="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent">
             <summary>
             Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.KeyEvents.KeyCallback">
+            <summary>
+            This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyState"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself.
             </summary>
         </member>
         <member name="M:MacroFramework.Input.KeyEvents.SetKeyBlockStatus(MacroFramework.VKey,System.Boolean)">
@@ -401,13 +428,6 @@
             <param name="order">Whether keyevents should be in the correct order</param>
             <param name="keys">The keys to match</param>
             <returns></returns>
-        </member>
-        <member name="M:MacroFramework.Input.KeyState.SubscribeToKeyEventOld(MacroFramework.VKey,MacroFramework.Input.KeyState.KeyCallback)">
-            <summary>
-            Calls the <paramref name="callback"/> function when a keyevent for <paramref name="key"/> happens.
-            </summary>
-            <param name="key"></param>
-            <param name="callback"></param>
         </member>
         <member name="M:MacroFramework.Input.KeyState.GetCurrentActivationEventType">
             <summary>
@@ -1280,12 +1300,6 @@
             <summary>
             Stops the MacroFramework application.
             </summary>
-        </member>
-        <member name="M:MacroFramework.Macros.ExecuteTextCommand(System.String)">
-            <summary>
-            Executes a text command immediately.
-            </summary>
-            <param name="command"></param>
         </member>
         <member name="F:MacroFramework.MacroSettings.CommandKey">
             <summary>

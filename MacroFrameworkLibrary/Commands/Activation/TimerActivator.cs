@@ -10,13 +10,6 @@ namespace MacroFramework.Commands {
     /// </summary>
     public class TimerActivator : CommandActivator {
 
-        public enum TimeUnit {
-            Milliseconds,
-            Seconds,
-            Minutes,
-            Hours
-        }
-
         private long lastExecute;
         private long delay;
 
@@ -24,9 +17,10 @@ namespace MacroFramework.Commands {
         /// Initializes a new timer activator instance
         /// </summary>
         /// <param name="command">Callback</param>
-        /// <param name="delay">Minimum delay in milliseconds between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="MacroSettings.MainLoopTimestep"/></param>
+        /// <param name="delay">Minimum delay between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="MacroSettings.MainLoopTimestep"/></param>
         /// <param name="callAtStart">If true the command is called on the first update loop</param>
-        public TimerActivator(Command.CommandCallback command, int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart = false) : base((s) => command()) {
+        /// <param name="unit">The unit of time used</param>
+        public TimerActivator(Command.CommandCallback command, int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart = false) : base(command) {
             this.delay = ToMilliseconds(delay, unit);
             if (!callAtStart) {
                 lastExecute = Timer.Milliseconds;
@@ -68,10 +62,17 @@ namespace MacroFramework.Commands {
     public class TimerActivatorAttribute : ActivatorAttribute {
 
         private int delay;
-        private TimerActivator.TimeUnit unit;
+        private TimeUnit unit;
         private bool callAtStart;
 
-        public TimerActivatorAttribute(int delay, TimerActivator.TimeUnit unit = TimerActivator.TimeUnit.Seconds, bool callAtStart= false) {
+        /// <summary>
+        /// Initializes a new timer activator instance
+        /// </summary>
+        /// <param name="command">Callback</param>
+        /// <param name="delay">Minimum delay between the end of last executionm and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="MacroSettings.MainLoopTimestep"/></param>
+        /// <param name="callAtStart">If true the command is called on the first update loop</param>
+        /// <param name="unit">The unit of time used</param>
+        public TimerActivatorAttribute(int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart= false) {
             this.delay = delay;
             this.unit = unit;
             this.callAtStart = callAtStart;

@@ -15,20 +15,25 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The current callback of this activator
         /// </summary>
-        protected Command.TextCommandCallback commandCallback;
+        protected Command.CommandCallback commandCallback;
 
         /// <summary>
         /// Initializes this activator with a callback
         /// </summary>
         /// <param name="command"></param>
-        public CommandActivator( Command.TextCommandCallback command) {
+        public CommandActivator( Command.CommandCallback command) {
             this.commandCallback = command;
         }
 
         public abstract bool IsActive();
 
+        /// <summary>
+        /// Executes the callback of this activators
+        /// </summary>
         public virtual void Execute() {
-            commandCallback?.Invoke(null);
+            Owner?.OnExecuteStart();
+            commandCallback?.Invoke();
+            Owner?.OnExecutionComplete();
         }
     }
 }

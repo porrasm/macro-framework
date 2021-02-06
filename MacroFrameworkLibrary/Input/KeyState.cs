@@ -19,11 +19,7 @@ namespace MacroFramework.Input {
         private static Dictionary<VKey, State> keyDown;
         private static Dictionary<VKey, State> keyUp;
 
-        private static Dictionary<VKey, KeyCallback> keyCallbacks;
-
         private static uint globalIndex;
-
-        public delegate void KeyCallback(KeyEvent k);
 
         /// <summary>
         /// The key up/down states of the last two key events
@@ -65,8 +61,6 @@ namespace MacroFramework.Input {
                 keyDown.Add(key, new State());
                 keyUp.Add(key, new State());
             }
-
-            keyCallbacks = new Dictionary<VKey, KeyCallback>();
         }
 
         /// <summary>
@@ -120,19 +114,11 @@ namespace MacroFramework.Input {
                 State state = keyDown[k.Key];
                 SetState(ref state);
                 keyDown[k.Key] = state;
-
-                if (keyCallbacks.TryGetValue(k.Key, out KeyCallback cb)) {
-                    cb?.Invoke(k);
-                }
             } else {
                 keyDownCount--;
                 State state = keyUp[k.Key];
                 SetState(ref state);
                 keyUp[k.Key] = state;
-
-                if (keyCallbacks.TryGetValue(k.Key, out KeyCallback cb)) {
-                    cb?.Invoke(k);
-                }
             }
 
             return true;
@@ -221,19 +207,6 @@ namespace MacroFramework.Input {
             //    WindowsInput.InputSimulator asd = new InputSimulator();
             //    asd.Keyboard.KeyUp((VirtualKeyCode)key);
             //}
-        }
-
-        /// <summary>
-        /// Calls the <paramref name="callback"/> function when a keyevent for <paramref name="key"/> happens.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="callback"></param>
-        public static void SubscribeToKeyEventOld(VKey key, KeyCallback callback) {
-            if (keyCallbacks.ContainsKey(key)) {
-                keyCallbacks[key] += callback;
-            } else {
-                keyCallbacks.Add(key, callback);
-            }
         }
 
         /// <summary>
