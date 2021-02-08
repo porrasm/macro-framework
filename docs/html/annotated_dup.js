@@ -33,6 +33,5 @@ var annotated_dup =
       [ "Macros", "class_macro_framework_1_1_macros.html", "class_macro_framework_1_1_macros" ],
       [ "MacroSettings", "class_macro_framework_1_1_macro_settings.html", "class_macro_framework_1_1_macro_settings" ],
       [ "Setup", "class_macro_framework_1_1_setup.html", "class_macro_framework_1_1_setup" ]
-    ] ],
-    [ "TextActivatorExample", "class_text_activator_example.html", "class_text_activator_example" ]
+    ] ]
 ];

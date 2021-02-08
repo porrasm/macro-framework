@@ -197,10 +197,10 @@ Command mode</h2>
 <h2><a class="anchor" id="autotoc_md10"></a>
 TextActivator</h2>
 <p>Below are some examples of text activators with different syntaxes. Use either an attribute or the AddActivator method to register commands but not both.</p>
-<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code" href="class_text_activator_example.html">TextActivatorExample</a> : <a class="code" href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">Command</a> {</div>
+<div class="fragment"><div class="line"><span class="keyword">class </span>TextActivatorExample : Command {</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Alternate to using attributes</span></div>
-<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_text_activator_example.html#a8b5aae33fa4aceab36f083c0a2d71d8a">InitializeActivators</a>(out CommandActivatorGroup activator) {</div>
+<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(out CommandActivatorGroup activator) {</div>
 <div class="line">        activator = <span class="keyword">new</span> CommandActivatorGroup(<span class="keyword">this</span>);</div>
 <div class="line"> </div>
 <div class="line">        activator.AddActivator(<span class="keyword">new</span> TextActivator(OnTestCommand, <span class="stringliteral">&quot;test command&quot;</span>));</div>
@@ -229,7 +229,7 @@ TextActivator</h2>
 <div class="line">        System.Console.WriteLine(param);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code" href="class_text_activator_example.html#ab5723416343d1380e3c859d7b4b4db33">OnTextCommand</a>(<span class="keywordtype">string</span> command, <span class="keywordtype">bool</span> commandWasAccepted) {</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnTextCommand(<span class="keywordtype">string</span> command, <span class="keywordtype">bool</span> commandWasAccepted) {</div>
 <div class="line">        <span class="keywordflow">if</span> (commandWasAccepted) {</div>
 <div class="line">            System.Console.WriteLine(<span class="stringliteral">&quot;The command &#39;&quot;</span> + command + <span class="stringliteral">&quot;&#39; was executed by at least 1 text activator&quot;</span>);</div>
 <div class="line">        } <span class="keywordflow">else</span> {</div>
@@ -242,12 +242,8 @@ TextActivator</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Execute from anywhere in code</span></div>
 <div class="line">TextCommands.Execute(<span class="stringliteral">&quot;test command&quot;</span>);</div>
-<div class="ttc" id="aclass_macro_framework_1_1_commands_1_1_command_html_a40a2ed5fcd8f183b8e2af9f2df25142f"><div class="ttname"><a href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">MacroFramework.Commands.Command.Command</a></div><div class="ttdeci">Command()</div><div class="ttdoc">Creates a new Command instance</div><div class="ttdef"><b>Definition:</b> Command.cs:39</div></div>
 <div class="ttc" id="aclass_macro_framework_1_1_macros_html"><div class="ttname"><a href="class_macro_framework_1_1_macros.html">MacroFramework.Macros</a></div><div class="ttdef"><b>Definition:</b> Macros.cs:11</div></div>
 <div class="ttc" id="aclass_macro_framework_1_1_macros_html_af2d95f12f5dfc8b066fa4f3f7ab28174"><div class="ttname"><a href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">MacroFramework.Macros.Stop</a></div><div class="ttdeci">static void Stop()</div><div class="ttdoc">Stops the MacroFramework application</div><div class="ttdef"><b>Definition:</b> Macros.cs:59</div></div>
-<div class="ttc" id="aclass_text_activator_example_html"><div class="ttname"><a href="class_text_activator_example.html">TextActivatorExample</a></div><div class="ttdef"><b>Definition:</b> TextActivatorExample.cs:6</div></div>
-<div class="ttc" id="aclass_text_activator_example_html_a8b5aae33fa4aceab36f083c0a2d71d8a"><div class="ttname"><a href="class_text_activator_example.html#a8b5aae33fa4aceab36f083c0a2d71d8a">TextActivatorExample.InitializeActivators</a></div><div class="ttdeci">override void InitializeActivators(out CommandActivatorGroup activator)</div><div class="ttdoc">Abstract method for initializing Commands.IActivator and class functionality. Use this like you would...</div><div class="ttdef"><b>Definition:</b> TextActivatorExample.cs:9</div></div>
-<div class="ttc" id="aclass_text_activator_example_html_ab5723416343d1380e3c859d7b4b4db33"><div class="ttname"><a href="class_text_activator_example.html#ab5723416343d1380e3c859d7b4b4db33">TextActivatorExample.OnTextCommand</a></div><div class="ttdeci">override void OnTextCommand(string command, bool commandWasAccepted)</div><div class="ttdoc">This method is called whenever a text command is executed</div><div class="ttdef"><b>Definition:</b> TextActivatorExample.cs:38</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

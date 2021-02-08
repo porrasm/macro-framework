@@ -3,7 +3,7 @@ var searchData=
   ['i_106',['I',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f',1,'MacroFramework']]],
   ['iactivator_107',['IActivator',['../interface_macro_framework_1_1_commands_1_1_i_activator.html',1,'MacroFramework::Commands']]],
   ['ignoreownercontext_108',['IgnoreOwnerContext',['../class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f',1,'MacroFramework::Commands::CommandActivator']]],
-  ['initializeactivators_109',['InitializeActivators',['../class_macro_framework_1_1_commands_1_1_command.html#a0381a01cd8a41d71ec9a30ce114e4ead',1,'MacroFramework.Commands.Command.InitializeActivators()'],['../class_text_activator_example.html#a8b5aae33fa4aceab36f083c0a2d71d8a',1,'TextActivatorExample.InitializeActivators()']]],
+  ['initializeactivators_109',['InitializeActivators',['../class_macro_framework_1_1_commands_1_1_command.html#a0381a01cd8a41d71ec9a30ce114e4ead',1,'MacroFramework::Commands::Command']]],
   ['insert_110',['INSERT',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b',1,'MacroFramework']]],
   ['instance_111',['Instance',['../class_macro_framework_1_1_setup.html#ac3cddb6b045dd78cc01163cd5f22f92a',1,'MacroFramework::Setup']]],
   ['interceptgeneralbindkey_112',['InterceptGeneralBindKey',['../class_macro_framework_1_1_macro_settings.html#a59ecf9579124f23810a16b4c9a8d2b52',1,'MacroFramework::MacroSettings']]],

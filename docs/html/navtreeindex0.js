@@ -133,9 +133,6 @@ var NAVTREEINDEX0 =
 "class_macro_framework_1_1_tools_1_1_timer.html":[2,0,0,2,2],
 "class_macro_framework_1_1_tools_1_1_timer.html#ad5ab6d4c7080e8e639c1649d17acdf02":[2,0,0,2,2,1],
 "class_macro_framework_1_1_tools_1_1_timer.html#afdb465b3462df1de6d1b89a6389c2c6e":[2,0,0,2,2,0],
-"class_text_activator_example.html":[2,0,1],
-"class_text_activator_example.html#a8b5aae33fa4aceab36f083c0a2d71d8a":[2,0,1,0],
-"class_text_activator_example.html#ab5723416343d1380e3c859d7b4b4db33":[2,0,1,1],
 "classes.html":[2,1],
 "functions.html":[2,3,0],
 "functions_enum.html":[2,3,3],
@@ -249,5 +246,8 @@ var NAVTREEINDEX0 =
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165":[1,0,0,6,150],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930":[1,0,0,6,83],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98":[1,0,0,6,122],
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52":[1,0,0,6,86]
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52":[1,0,0,6,86],
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24":[1,0,0,6,132],
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d":[1,0,0,6,136],
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e":[1,0,0,6,120]
 };

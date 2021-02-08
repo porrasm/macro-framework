@@ -21,7 +21,7 @@ var searchData=
   ['onmainloop_197',['OnMainLoop',['../class_macro_framework_1_1_macros.html#ad512f1970432c6e93562e386bbc8231b',1,'MacroFramework::Macros']]],
   ['onpress_198',['OnPress',['../namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6a57e237c183a80c0e3944cdce396356e9',1,'MacroFramework::Commands']]],
   ['onstart_199',['OnStart',['../class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c',1,'MacroFramework::Commands::Command']]],
-  ['ontextcommand_200',['OnTextCommand',['../class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5',1,'MacroFramework.Commands.Command.OnTextCommand()'],['../class_text_activator_example.html#ab5723416343d1380e3c859d7b4b4db33',1,'TextActivatorExample.OnTextCommand()']]],
+  ['ontextcommand_200',['OnTextCommand',['../class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5',1,'MacroFramework::Commands::Command']]],
   ['order_201',['Order',['../class_macro_framework_1_1_commands_1_1_bind_activator.html#a0e5ae0f03a3d993566dfbf2952e7d9b2',1,'MacroFramework::Commands::BindActivator']]],
   ['ordered_202',['Ordered',['../namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8a26e09a1ee1517389c7b07f42df65561a',1,'MacroFramework::Commands']]],
   ['owner_203',['Owner',['../interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569',1,'MacroFramework::Commands::IActivator']]]

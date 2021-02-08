@@ -8,9 +8,7 @@ var hierarchy =
         [ "MacroFramework.Commands.Attributes.TimerActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_timer_activator_attribute.html", null ]
       ] ]
     ] ],
-    [ "MacroFramework.Commands.Command", "class_macro_framework_1_1_commands_1_1_command.html", [
-      [ "TextActivatorExample", "class_text_activator_example.html", null ]
-    ] ],
+    [ "MacroFramework.Commands.Command", "class_macro_framework_1_1_commands_1_1_command.html", null ],
     [ "MacroFramework.Commands.CommandActivatorGroup", "class_macro_framework_1_1_commands_1_1_command_activator_group.html", null ],
     [ "MacroFramework.Commands.CommandContainer", "class_macro_framework_1_1_commands_1_1_command_container.html", null ],
     [ "MacroFramework.Commands.IActivator", "interface_macro_framework_1_1_commands_1_1_i_activator.html", [

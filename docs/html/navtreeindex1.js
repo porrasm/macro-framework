@@ -1,8 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24":[1,0,0,6,132],
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d":[1,0,0,6,136],
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e":[1,0,0,6,120],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9":[1,0,0,6,106],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa":[1,0,0,6,65],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2":[1,0,0,6,22],
