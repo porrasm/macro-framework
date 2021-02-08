@@ -7,14 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Input {
+    /// <summary>
+    /// The static class handling the key states
+    /// </summary>
     public static class KeyState {
 
         #region fields
-        private static Dictionary<VKey, bool> absoluteKeystates;
         /// <summary>
         /// Returns the dictionary containig VKeytates. This dictionary should not be used for keybinds.
         /// </summary>
-        public static Dictionary<VKey, bool> AbsoluteVKeytates => absoluteKeystates;
+        internal static Dictionary<VKey, bool> AbsoluteKeystates { get; private set; }
 
         private static Dictionary<VKey, State> keyDown;
         private static Dictionary<VKey, State> keyUp;
@@ -43,21 +45,21 @@ namespace MacroFramework.Input {
             Init();
         }
 
-        public static void Init() {
+        internal static void Init() {
 
             globalIndex = 0;
 
-            absoluteKeystates = new Dictionary<VKey, bool>();
+            AbsoluteKeystates = new Dictionary<VKey, bool>();
             keyDown = new Dictionary<VKey, State>();
             keyUp = new Dictionary<VKey, State>();
 
             // RaspberryVKey = new RaspberryVKey();
 
             foreach (VKey key in Enum.GetValues(typeof(VKey))) {
-                if (absoluteKeystates.ContainsKey(key)) {
+                if (AbsoluteKeystates.ContainsKey(key)) {
                     continue;
                 }
-                absoluteKeystates.Add(key, false);
+                AbsoluteKeystates.Add(key, false);
                 keyDown.Add(key, new State());
                 keyUp.Add(key, new State());
             }
@@ -76,8 +78,8 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public static bool IsInvalidKey(VKey key) {
-            return !absoluteKeystates.ContainsKey(key);
+        internal static bool IsInvalidKey(VKey key) {
+            return !AbsoluteKeystates.ContainsKey(key);
         }
 
         /// <summary>
@@ -85,14 +87,14 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        public static void AddAbsoluteEvent(VKey key, bool state) {
+        internal static void AddAbsoluteEvent(VKey key, bool state) {
             LastKeyPress = Timer.Milliseconds;
             prevPrevKeyEventState = prevKeyEventState;
             prevKeyEventState = state;
-            absoluteKeystates[key] = state;
+            AbsoluteKeystates[key] = state;
         }
 
-        public static bool IsUniqueEvent(KeyEvent k) {
+        internal static bool IsUniqueEvent(KeyEvent k) {
             if (k.KeyState) {
                 if (IsPressingKey(k.Key)) {
                     return false;
@@ -101,7 +103,7 @@ namespace MacroFramework.Input {
             return true;
         }
 
-        public static bool AddKeyEvent(KeyEvent k) {
+        internal static bool AddKeyEvent(KeyEvent k) {
 
             if (!IsUniqueEvent(k)) {
                 return false;
@@ -194,7 +196,7 @@ namespace MacroFramework.Input {
         }
         #endregion
 
-        public static void ResetKeys() {
+        internal static void ResetKeys() {
             throw new NotImplementedException();
             //List<VKey> pressedVKey = new List<VKey>();
             //foreach (var pair in keyDown) {

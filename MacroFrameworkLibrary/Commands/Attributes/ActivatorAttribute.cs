@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands {
-    /// <summaryICommandActivator
-    /// The base class for all <see cref="CommandActivator"/> attributes
+namespace MacroFramework.Commands.Attributes {
+    /// <summary>
+    /// The base class for all <see cref="IActivator"/> attributes
     /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     public abstract class ActivatorAttribute : Attribute {
         /// <summary>
-        /// Returns a corresponding <see cref="ICommandActivator"/> object
+        /// Returns a corresponding <see cref="IActivator"/> object
         /// </summary>
-        /// <param name="c">Command which owns <paramref name="m"/></param>
-        /// <param name="m">The method to call</param>
+        /// <param name="owner">Command which owns <paramref name="assignedMethod"/></param>
+        /// <param name="assignedMethod">The method to call</param>
         /// <returns></returns>
-        public abstract ICommandActivator GetCommandActivator(Command c, MethodInfo m);
+        public abstract IActivator GetCommandActivator(Command owner, MethodInfo assignedMethod);
     }
 }

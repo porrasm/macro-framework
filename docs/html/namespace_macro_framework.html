@@ -94,8 +94,6 @@ $(document).ready(function(){initNavTree('namespace_macro_framework.html',''); i
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>Delegates</b></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>Macros</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a></td></tr>
@@ -114,7 +112,7 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3">MBUTTON</a> = 0x04
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf">XBUTTON1</a> = 0x05
-, <b>XBUTTON2</b> = 0x06
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5937d704209f456f093453cba963ac68">XBUTTON2</a> = 0x06
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0db45d2a4141101bdfe48e3314cfbca3">UNDEFINED</a> = 0x07
 , <br />
 &#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0">BACK</a> = 0x08
@@ -308,7 +306,7 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0">OEM_8</a> = 0xDF
 , <br />
 &#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac">OEM_102</a> = 0xE2
-, <b>PROCESSKEY</b> = 0xE5
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3d8a9773d698588afc94fe487e3868d1">PROCESSKEY</a> = 0xE5
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0334b8669eb43f45f9bccb223186be65">PACKET</a> = 0xE7
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9ba19928f8580dddc1034f923f100c61">ATTN</a> = 0xF6
 , <br />
@@ -352,333 +350,335 @@ Enumerations</h2></td></tr>
 <p>Enum of virtual key codes. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>Does not represent any key, has value 0. </p>
-<p>summary&gt; Left mouse button /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45"></a>LBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Right mouse button /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45"></a>LBUTTON&#160;</td><td class="fielddoc"><p>Left mouse button </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2"></a>RBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Control-break processing /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2"></a>RBUTTON&#160;</td><td class="fielddoc"><p>Right mouse button </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36"></a>CANCEL&#160;</td><td class="fielddoc"><p>summary&gt; Middle mouse button (three-button mouse) /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36"></a>CANCEL&#160;</td><td class="fielddoc"><p>Control-break processing </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3"></a>MBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: X1 mouse button /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3"></a>MBUTTON&#160;</td><td class="fielddoc"><p>Middle mouse button (three-button mouse) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf"></a>XBUTTON1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: X2 mouse button /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf"></a>XBUTTON1&#160;</td><td class="fielddoc"><p>Windows 2000/XP: X1 mouse button </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5937d704209f456f093453cba963ac68"></a>XBUTTON2&#160;</td><td class="fielddoc"><p>Windows 2000/XP: X2 mouse button </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0db45d2a4141101bdfe48e3314cfbca3"></a>UNDEFINED&#160;</td><td class="fielddoc"><p>This key is undefined </p>
-<p>summary&gt; BACKSPACE key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0"></a>BACK&#160;</td><td class="fielddoc"><p>summary&gt; TAB key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0"></a>BACK&#160;</td><td class="fielddoc"><p>BACKSPACE key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1"></a>TAB&#160;</td><td class="fielddoc"><p>summary&gt; CLEAR key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1"></a>TAB&#160;</td><td class="fielddoc"><p>TAB key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec"></a>CLEAR&#160;</td><td class="fielddoc"><p>summary&gt; ENTER key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec"></a>CLEAR&#160;</td><td class="fielddoc"><p>CLEAR key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa2bec276a54439fe011eb523b845dac5"></a>RETURN&#160;</td><td class="fielddoc"><p>summary&gt; SHIFT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa2bec276a54439fe011eb523b845dac5"></a>RETURN&#160;</td><td class="fielddoc"><p>ENTER key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c"></a>SHIFT&#160;</td><td class="fielddoc"><p>summary&gt; CTRL key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c"></a>SHIFT&#160;</td><td class="fielddoc"><p>SHIFT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130"></a>CONTROL&#160;</td><td class="fielddoc"><p>summary&gt; ALT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130"></a>CONTROL&#160;</td><td class="fielddoc"><p>CTRL key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfbfc9cc7a235560f04cb1a5faf1ec3e"></a>ALT&#160;</td><td class="fielddoc"><p>summary&gt; PAUSE key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfbfc9cc7a235560f04cb1a5faf1ec3e"></a>ALT&#160;</td><td class="fielddoc"><p>ALT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891"></a>PAUSE&#160;</td><td class="fielddoc"><p>summary&gt; CAPS LOCK key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891"></a>PAUSE&#160;</td><td class="fielddoc"><p>PAUSE key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05"></a>CAPITAL&#160;</td><td class="fielddoc"><p>summary&gt; <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> Method Editor (IME) Kana mode /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05"></a>CAPITAL&#160;</td><td class="fielddoc"><p>CAPS LOCK key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219"></a>KANA&#160;</td><td class="fielddoc"><p>summary&gt; IME Junja mode /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219"></a>KANA&#160;</td><td class="fielddoc"><p><a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> Method Editor (IME) Kana mode </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a"></a>JUNJA&#160;</td><td class="fielddoc"><p>summary&gt; IME final mode /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a"></a>JUNJA&#160;</td><td class="fielddoc"><p>IME Junja mode </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6c8361dc2036c0559376fe4957699f69"></a>FINAL&#160;</td><td class="fielddoc"><p>summary&gt; IME Kanji mode /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6c8361dc2036c0559376fe4957699f69"></a>FINAL&#160;</td><td class="fielddoc"><p>IME final mode </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109"></a>KANJI&#160;</td><td class="fielddoc"><p>summary&gt; ESC key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109"></a>KANJI&#160;</td><td class="fielddoc"><p>IME Kanji mode </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d"></a>ESCAPE&#160;</td><td class="fielddoc"><p>summary&gt; IME convert /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d"></a>ESCAPE&#160;</td><td class="fielddoc"><p>ESC key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2"></a>CONVERT&#160;</td><td class="fielddoc"><p>summary&gt; IME nonconvert /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2"></a>CONVERT&#160;</td><td class="fielddoc"><p>IME convert </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba18f1eefe90bfb7e983bfafa5e3e72286"></a>NONCONVERT&#160;</td><td class="fielddoc"><p>summary&gt; IME accept /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba18f1eefe90bfb7e983bfafa5e3e72286"></a>NONCONVERT&#160;</td><td class="fielddoc"><p>IME nonconvert </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3"></a>ACCEPT&#160;</td><td class="fielddoc"><p>summary&gt; IME mode change request /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3"></a>ACCEPT&#160;</td><td class="fielddoc"><p>IME accept </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570"></a>MODECHANGE&#160;</td><td class="fielddoc"><p>summary&gt; SPACEBAR /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570"></a>MODECHANGE&#160;</td><td class="fielddoc"><p>IME mode change request </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6506ae39fdca9845e3a6de3865183e57"></a>SPACE&#160;</td><td class="fielddoc"><p>summary&gt; PAGE UP key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6506ae39fdca9845e3a6de3865183e57"></a>SPACE&#160;</td><td class="fielddoc"><p>SPACEBAR </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56a1033a2d5368d197deb9f853cd8ed1"></a>PAGEUP&#160;</td><td class="fielddoc"><p>summary&gt; PAGE DOWN key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56a1033a2d5368d197deb9f853cd8ed1"></a>PAGEUP&#160;</td><td class="fielddoc"><p>PAGE UP key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba960aeda56eda2981ab0ab39faa825826"></a>PAGEDOWN&#160;</td><td class="fielddoc"><p>summary&gt; END key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba960aeda56eda2981ab0ab39faa825826"></a>PAGEDOWN&#160;</td><td class="fielddoc"><p>PAGE DOWN key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905"></a>END&#160;</td><td class="fielddoc"><p>summary&gt; HOME key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905"></a>END&#160;</td><td class="fielddoc"><p>END key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba710533dd879dd1202e5c73b27705bf02"></a>HOME&#160;</td><td class="fielddoc"><p>summary&gt; LEFT ARROW key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba710533dd879dd1202e5c73b27705bf02"></a>HOME&#160;</td><td class="fielddoc"><p>HOME key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba684d325a7303f52e64011467ff5c5758"></a>LEFT&#160;</td><td class="fielddoc"><p>summary&gt; UP ARROW key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba684d325a7303f52e64011467ff5c5758"></a>LEFT&#160;</td><td class="fielddoc"><p>LEFT ARROW key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1"></a>UP&#160;</td><td class="fielddoc"><p>summary&gt; RIGHT ARROW key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1"></a>UP&#160;</td><td class="fielddoc"><p>UP ARROW key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"><p>summary&gt; DOWN ARROW key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"><p>RIGHT ARROW key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4e0e4e3118472beeb2ae75827450f1f"></a>DOWN&#160;</td><td class="fielddoc"><p>summary&gt; SELECT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4e0e4e3118472beeb2ae75827450f1f"></a>DOWN&#160;</td><td class="fielddoc"><p>DOWN ARROW key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba63225f19fccb18e7c709f1fa11bc738e"></a>SELECT&#160;</td><td class="fielddoc"><p>summary&gt; PRINT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba63225f19fccb18e7c709f1fa11bc738e"></a>SELECT&#160;</td><td class="fielddoc"><p>SELECT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b"></a>PRINT&#160;</td><td class="fielddoc"><p>summary&gt; EXECUTE key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b"></a>PRINT&#160;</td><td class="fielddoc"><p>PRINT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a"></a>EXECUTE&#160;</td><td class="fielddoc"><p>summary&gt; PRINT SCREEN key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a"></a>EXECUTE&#160;</td><td class="fielddoc"><p>EXECUTE key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5bb7b84f8c648d0226d6908893635a59"></a>PRINTSCREEN&#160;</td><td class="fielddoc"><p>summary&gt; INS key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5bb7b84f8c648d0226d6908893635a59"></a>PRINTSCREEN&#160;</td><td class="fielddoc"><p>PRINT SCREEN key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b"></a>INSERT&#160;</td><td class="fielddoc"><p>summary&gt; DEL key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b"></a>INSERT&#160;</td><td class="fielddoc"><p>INS key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e"></a>DELETE&#160;</td><td class="fielddoc"><p>summary&gt; HELP key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e"></a>DELETE&#160;</td><td class="fielddoc"><p>DEL key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff"></a>HELP&#160;</td><td class="fielddoc"><p>summary&gt; 0 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff"></a>HELP&#160;</td><td class="fielddoc"><p>HELP key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0e3e06c992d1ead056a6861bb46b28a8"></a>D0&#160;</td><td class="fielddoc"><p>summary&gt; 1 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0e3e06c992d1ead056a6861bb46b28a8"></a>D0&#160;</td><td class="fielddoc"><p>0 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4a4079e06eb2f7ba7a12821c7c58a3f6"></a>D1&#160;</td><td class="fielddoc"><p>summary&gt; 2 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4a4079e06eb2f7ba7a12821c7c58a3f6"></a>D1&#160;</td><td class="fielddoc"><p>1 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859"></a>D2&#160;</td><td class="fielddoc"><p>summary&gt; 3 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859"></a>D2&#160;</td><td class="fielddoc"><p>2 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401"></a>D3&#160;</td><td class="fielddoc"><p>summary&gt; 4 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401"></a>D3&#160;</td><td class="fielddoc"><p>3 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2521dc256a4368da87585c936b451dd7"></a>D4&#160;</td><td class="fielddoc"><p>summary&gt; 5 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2521dc256a4368da87585c936b451dd7"></a>D4&#160;</td><td class="fielddoc"><p>4 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baea8ea3bfaa27cf4c2f61470447c87eea"></a>D5&#160;</td><td class="fielddoc"><p>summary&gt; 6 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baea8ea3bfaa27cf4c2f61470447c87eea"></a>D5&#160;</td><td class="fielddoc"><p>5 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a"></a>D6&#160;</td><td class="fielddoc"><p>summary&gt; 7 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a"></a>D6&#160;</td><td class="fielddoc"><p>6 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d"></a>D7&#160;</td><td class="fielddoc"><p>summary&gt; 8 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d"></a>D7&#160;</td><td class="fielddoc"><p>7 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1522194d726a396729c3148c2b3a0bd"></a>D8&#160;</td><td class="fielddoc"><p>summary&gt; 9 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1522194d726a396729c3148c2b3a0bd"></a>D8&#160;</td><td class="fielddoc"><p>8 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baadb7bf1cff0c81595de38f51cd60c62c"></a>D9&#160;</td><td class="fielddoc"><p>summary&gt; A key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baadb7bf1cff0c81595de38f51cd60c62c"></a>D9&#160;</td><td class="fielddoc"><p>9 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29"></a>A&#160;</td><td class="fielddoc"><p>summary&gt; B key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29"></a>A&#160;</td><td class="fielddoc"><p>A key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571"></a>B&#160;</td><td class="fielddoc"><p>summary&gt; C key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571"></a>B&#160;</td><td class="fielddoc"><p>B key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257"></a>C&#160;</td><td class="fielddoc"><p>summary&gt; D key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257"></a>C&#160;</td><td class="fielddoc"><p>C key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf623e75af30e62bbd73d6df5b50bb7b5"></a>D&#160;</td><td class="fielddoc"><p>summary&gt; E key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf623e75af30e62bbd73d6df5b50bb7b5"></a>D&#160;</td><td class="fielddoc"><p>D key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da"></a>E&#160;</td><td class="fielddoc"><p>summary&gt; F key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da"></a>E&#160;</td><td class="fielddoc"><p>E key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012"></a>F&#160;</td><td class="fielddoc"><p>summary&gt; G key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012"></a>F&#160;</td><td class="fielddoc"><p>F key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfcf28d0734569a6a693bc8194de62bf"></a>G&#160;</td><td class="fielddoc"><p>summary&gt; H key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfcf28d0734569a6a693bc8194de62bf"></a>G&#160;</td><td class="fielddoc"><p>G key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac1d9f50f86825a1a2302ec2449c17196"></a>H&#160;</td><td class="fielddoc"><p>summary&gt; I key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac1d9f50f86825a1a2302ec2449c17196"></a>H&#160;</td><td class="fielddoc"><p>H key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f"></a>I&#160;</td><td class="fielddoc"><p>summary&gt; J key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f"></a>I&#160;</td><td class="fielddoc"><p>I key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85"></a>J&#160;</td><td class="fielddoc"><p>summary&gt; K key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85"></a>J&#160;</td><td class="fielddoc"><p>J key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa5f3c6a11b03839d46af9fb43c97c188"></a>K&#160;</td><td class="fielddoc"><p>summary&gt; L key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa5f3c6a11b03839d46af9fb43c97c188"></a>K&#160;</td><td class="fielddoc"><p>K key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad20caec3b48a1eef164cb4ca81ba2587"></a>L&#160;</td><td class="fielddoc"><p>summary&gt; M key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad20caec3b48a1eef164cb4ca81ba2587"></a>L&#160;</td><td class="fielddoc"><p>L key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc"><p>summary&gt; N key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc"><p>M key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa"></a>N&#160;</td><td class="fielddoc"><p>summary&gt; O key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa"></a>N&#160;</td><td class="fielddoc"><p>N key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf186217753c37b9b9f958d906208506e"></a>O&#160;</td><td class="fielddoc"><p>summary&gt; P key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf186217753c37b9b9f958d906208506e"></a>O&#160;</td><td class="fielddoc"><p>O key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba44c29edb103a2872f519ad0c9a0fdaaa"></a>P&#160;</td><td class="fielddoc"><p>summary&gt; Q key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba44c29edb103a2872f519ad0c9a0fdaaa"></a>P&#160;</td><td class="fielddoc"><p>P key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee"></a>Q&#160;</td><td class="fielddoc"><p>summary&gt; R key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee"></a>Q&#160;</td><td class="fielddoc"><p>Q key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6"></a>R&#160;</td><td class="fielddoc"><p>summary&gt; S key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6"></a>R&#160;</td><td class="fielddoc"><p>R key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5dbc98dcc983a70728bd082d1a47546e"></a>S&#160;</td><td class="fielddoc"><p>summary&gt; T key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5dbc98dcc983a70728bd082d1a47546e"></a>S&#160;</td><td class="fielddoc"><p>S key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab9ece18c950afbfa6b0fdbfa4ff731d3"></a>T&#160;</td><td class="fielddoc"><p>summary&gt; U key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab9ece18c950afbfa6b0fdbfa4ff731d3"></a>T&#160;</td><td class="fielddoc"><p>T key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb"></a>U&#160;</td><td class="fielddoc"><p>summary&gt; V key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb"></a>U&#160;</td><td class="fielddoc"><p>U key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce"></a>V&#160;</td><td class="fielddoc"><p>summary&gt; W key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce"></a>V&#160;</td><td class="fielddoc"><p>V key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61e9c06ea9a85a5088a499df6458d276"></a>W&#160;</td><td class="fielddoc"><p>summary&gt; X key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61e9c06ea9a85a5088a499df6458d276"></a>W&#160;</td><td class="fielddoc"><p>W key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"><p>summary&gt; Y key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"><p>X key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"><p>summary&gt; Z key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"><p>Y key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"><p>summary&gt; Left Windows key (Microsoft Natural keyboard) /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"><p>Z key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba708f5ef3cba310fb0cb0d6254a71e220"></a>LWIN&#160;</td><td class="fielddoc"><p>summary&gt; Right Windows key (Natural keyboard) /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba708f5ef3cba310fb0cb0d6254a71e220"></a>LWIN&#160;</td><td class="fielddoc"><p>Left Windows key (Microsoft Natural keyboard) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83"></a>RWIN&#160;</td><td class="fielddoc"><p>summary&gt; Applications key (Natural keyboard) /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83"></a>RWIN&#160;</td><td class="fielddoc"><p>Right Windows key (Natural keyboard) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17"></a>APPS&#160;</td><td class="fielddoc"><p>summary&gt; Computer Sleep key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17"></a>APPS&#160;</td><td class="fielddoc"><p>Applications key (Natural keyboard) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596"></a>SLEEP&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 0 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596"></a>SLEEP&#160;</td><td class="fielddoc"><p>Computer Sleep key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c9303c9722b2b2c0b6be432b8553b7b"></a>NUMPAD0&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 1 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c9303c9722b2b2c0b6be432b8553b7b"></a>NUMPAD0&#160;</td><td class="fielddoc"><p>Numeric keypad 0 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930"></a>NUMPAD1&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 2 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930"></a>NUMPAD1&#160;</td><td class="fielddoc"><p>Numeric keypad 1 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a"></a>NUMPAD2&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 3 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a"></a>NUMPAD2&#160;</td><td class="fielddoc"><p>Numeric keypad 2 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367"></a>NUMPAD3&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 4 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367"></a>NUMPAD3&#160;</td><td class="fielddoc"><p>Numeric keypad 3 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52"></a>NUMPAD4&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 5 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52"></a>NUMPAD4&#160;</td><td class="fielddoc"><p>Numeric keypad 4 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9f19473b6cdbced0dd74c756218df969"></a>NUMPAD5&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 6 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9f19473b6cdbced0dd74c756218df969"></a>NUMPAD5&#160;</td><td class="fielddoc"><p>Numeric keypad 5 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921"></a>NUMPAD6&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 7 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921"></a>NUMPAD6&#160;</td><td class="fielddoc"><p>Numeric keypad 6 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178"></a>NUMPAD7&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 8 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178"></a>NUMPAD7&#160;</td><td class="fielddoc"><p>Numeric keypad 7 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7d4b79e0c3dc50fbce01eba1cb17489a"></a>NUMPAD8&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 9 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7d4b79e0c3dc50fbce01eba1cb17489a"></a>NUMPAD8&#160;</td><td class="fielddoc"><p>Numeric keypad 8 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddba9d70ff7b75782aad0b8d17577fd1"></a>NUMPAD9&#160;</td><td class="fielddoc"><p>summary&gt; Multiply key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddba9d70ff7b75782aad0b8d17577fd1"></a>NUMPAD9&#160;</td><td class="fielddoc"><p>Numeric keypad 9 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>summary&gt; Add key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>Multiply key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d"></a>ADD&#160;</td><td class="fielddoc"><p>summary&gt; Separator key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d"></a>ADD&#160;</td><td class="fielddoc"><p>Add key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba70bb8dc90aa233a66b91ae2e9dc1a850"></a>SEPARATOR&#160;</td><td class="fielddoc"><p>summary&gt; Subtract key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba70bb8dc90aa233a66b91ae2e9dc1a850"></a>SEPARATOR&#160;</td><td class="fielddoc"><p>Separator key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba23ebcc4776b613af25dfbe7c8ce4813e"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>summary&gt; Decimal key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba23ebcc4776b613af25dfbe7c8ce4813e"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>Subtract key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4"></a>DECIMAL&#160;</td><td class="fielddoc"><p>summary&gt; Divide key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4"></a>DECIMAL&#160;</td><td class="fielddoc"><p>Decimal key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b"></a>DIVIDE&#160;</td><td class="fielddoc"><p>summary&gt; F1 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b"></a>DIVIDE&#160;</td><td class="fielddoc"><p>Divide key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1dffc8709f31a4987c8a88334107e89"></a>F1&#160;</td><td class="fielddoc"><p>summary&gt; F2 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1dffc8709f31a4987c8a88334107e89"></a>F1&#160;</td><td class="fielddoc"><p>F1 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafe5c3684dce76cdd9f7f42430868aa74"></a>F2&#160;</td><td class="fielddoc"><p>summary&gt; F3 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafe5c3684dce76cdd9f7f42430868aa74"></a>F2&#160;</td><td class="fielddoc"><p>F2 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627"></a>F3&#160;</td><td class="fielddoc"><p>summary&gt; F4 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627"></a>F3&#160;</td><td class="fielddoc"><p>F3 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702"></a>F4&#160;</td><td class="fielddoc"><p>summary&gt; F5 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702"></a>F4&#160;</td><td class="fielddoc"><p>F4 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba37f438df6a6d5ba4c17ef8ca58562f00"></a>F5&#160;</td><td class="fielddoc"><p>summary&gt; F6 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba37f438df6a6d5ba4c17ef8ca58562f00"></a>F5&#160;</td><td class="fielddoc"><p>F5 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1faf42f2823f184eb2c9f0dffe5d73f2"></a>F6&#160;</td><td class="fielddoc"><p>summary&gt; F7 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1faf42f2823f184eb2c9f0dffe5d73f2"></a>F6&#160;</td><td class="fielddoc"><p>F6 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839"></a>F7&#160;</td><td class="fielddoc"><p>summary&gt; F8 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839"></a>F7&#160;</td><td class="fielddoc"><p>F7 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7"></a>F8&#160;</td><td class="fielddoc"><p>summary&gt; F9 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7"></a>F8&#160;</td><td class="fielddoc"><p>F8 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9"></a>F9&#160;</td><td class="fielddoc"><p>summary&gt; F10 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9"></a>F9&#160;</td><td class="fielddoc"><p>F9 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab213ce22ca6ad4eda8db82966b9b6e5a"></a>F10&#160;</td><td class="fielddoc"><p>summary&gt; F11 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab213ce22ca6ad4eda8db82966b9b6e5a"></a>F10&#160;</td><td class="fielddoc"><p>F10 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8"></a>F11&#160;</td><td class="fielddoc"><p>summary&gt; F12 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8"></a>F11&#160;</td><td class="fielddoc"><p>F11 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3"></a>F12&#160;</td><td class="fielddoc"><p>summary&gt; F13 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3"></a>F12&#160;</td><td class="fielddoc"><p>F12 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba95dfde4807d4d6a9eec499203b3c24a0"></a>F13&#160;</td><td class="fielddoc"><p>summary&gt; F14 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba95dfde4807d4d6a9eec499203b3c24a0"></a>F13&#160;</td><td class="fielddoc"><p>F13 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2468649b6215c4cdd2aef5095b3f5932"></a>F14&#160;</td><td class="fielddoc"><p>summary&gt; F15 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2468649b6215c4cdd2aef5095b3f5932"></a>F14&#160;</td><td class="fielddoc"><p>F14 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138"></a>F15&#160;</td><td class="fielddoc"><p>summary&gt; F16 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138"></a>F15&#160;</td><td class="fielddoc"><p>F15 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94"></a>F16&#160;</td><td class="fielddoc"><p>summary&gt; F17 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94"></a>F16&#160;</td><td class="fielddoc"><p>F16 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baffa5882d1ddcf903bf0d0dbc30bfc604"></a>F17&#160;</td><td class="fielddoc"><p>summary&gt; F18 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baffa5882d1ddcf903bf0d0dbc30bfc604"></a>F17&#160;</td><td class="fielddoc"><p>F17 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba810b30cdfc07fd7fff553a94b828ff78"></a>F18&#160;</td><td class="fielddoc"><p>summary&gt; F19 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba810b30cdfc07fd7fff553a94b828ff78"></a>F18&#160;</td><td class="fielddoc"><p>F18 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054"></a>F19&#160;</td><td class="fielddoc"><p>summary&gt; F20 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054"></a>F19&#160;</td><td class="fielddoc"><p>F19 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc"></a>F20&#160;</td><td class="fielddoc"><p>summary&gt; F21 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc"></a>F20&#160;</td><td class="fielddoc"><p>F20 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba77e9eee7c579eef5f3731ecf1053c02e"></a>F21&#160;</td><td class="fielddoc"><p>summary&gt; F22 key, (PPC only) Key used to lock device. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba77e9eee7c579eef5f3731ecf1053c02e"></a>F21&#160;</td><td class="fielddoc"><p>F21 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fa06ead699fcbd63132370ffe13335a"></a>F22&#160;</td><td class="fielddoc"><p>summary&gt; F23 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fa06ead699fcbd63132370ffe13335a"></a>F22&#160;</td><td class="fielddoc"><p>F22 key, (PPC only) Key used to lock device. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e"></a>F23&#160;</td><td class="fielddoc"><p>summary&gt; F24 key <br  />
- /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e"></a>F23&#160;</td><td class="fielddoc"><p>F23 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273"></a>F24&#160;</td><td class="fielddoc"><p>summary&gt; NUM LOCK key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273"></a>F24&#160;</td><td class="fielddoc"><p>F24 key <br  />
+ </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98"></a>NUMLOCK&#160;</td><td class="fielddoc"><p>summary&gt; SCROLL LOCK key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98"></a>NUMLOCK&#160;</td><td class="fielddoc"><p>NUM LOCK key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba71574275cadb387a5082e87e9dd60c25"></a>SCROLL&#160;</td><td class="fielddoc"><p>summary&gt; Left SHIFT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba71574275cadb387a5082e87e9dd60c25"></a>SCROLL&#160;</td><td class="fielddoc"><p>SCROLL LOCK key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7"></a>LSHIFT&#160;</td><td class="fielddoc"><p>summary&gt; Right SHIFT key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7"></a>LSHIFT&#160;</td><td class="fielddoc"><p>Left SHIFT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963"></a>RSHIFT&#160;</td><td class="fielddoc"><p>summary&gt; Left CONTROL key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963"></a>RSHIFT&#160;</td><td class="fielddoc"><p>Right SHIFT key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba00a5bbecd1f43df5cd19f7f3762ab1e6"></a>LCONTROL&#160;</td><td class="fielddoc"><p>summary&gt; Right CONTROL key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba00a5bbecd1f43df5cd19f7f3762ab1e6"></a>LCONTROL&#160;</td><td class="fielddoc"><p>Left CONTROL key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa14ff7768c5b5ce4bd9bdd94f73fd530"></a>RCONTROL&#160;</td><td class="fielddoc"><p>summary&gt; Left MENU key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa14ff7768c5b5ce4bd9bdd94f73fd530"></a>RCONTROL&#160;</td><td class="fielddoc"><p>Right CONTROL key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371"></a>LMENU&#160;</td><td class="fielddoc"><p>summary&gt; Right MENU key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371"></a>LMENU&#160;</td><td class="fielddoc"><p>Left MENU key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6"></a>RMENU&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Back key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6"></a>RMENU&#160;</td><td class="fielddoc"><p>Right MENU key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafec322bf4681601a7f6f6b027b0f9c9d"></a>BROWSER_BACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Forward key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafec322bf4681601a7f6f6b027b0f9c9d"></a>BROWSER_BACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Back key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad7060c8bd4fe49ffa95f59feac4bd6cb"></a>BROWSER_FORWARD&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Refresh key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad7060c8bd4fe49ffa95f59feac4bd6cb"></a>BROWSER_FORWARD&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Forward key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24"></a>BROWSER_REFRESH&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Stop key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24"></a>BROWSER_REFRESH&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Refresh key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f"></a>BROWSER_STOP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Search key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f"></a>BROWSER_STOP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Stop key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1d2693c1ec7044ebd2f6b9cc78197147"></a>BROWSER_SEARCH&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Favorites key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1d2693c1ec7044ebd2f6b9cc78197147"></a>BROWSER_SEARCH&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Search key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baec1f7958f4ad39ffcba494afd9e2d766"></a>BROWSER_FAVORITES&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Start and Home key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baec1f7958f4ad39ffcba494afd9e2d766"></a>BROWSER_FAVORITES&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Favorites key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d"></a>BROWSER_HOME&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Mute key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d"></a>BROWSER_HOME&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Start and Home key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552"></a>VOLUME_MUTE&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Down key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552"></a>VOLUME_MUTE&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Mute key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab51dc9db6e5110cf7e1bdc44b218ad66"></a>VOLUME_DOWN&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Up key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab51dc9db6e5110cf7e1bdc44b218ad66"></a>VOLUME_DOWN&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Down key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6749145ac295af704786a39516c5bf40"></a>VOLUME_UP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Next Track key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6749145ac295af704786a39516c5bf40"></a>VOLUME_UP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Up key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081"></a>MEDIA_NEXT_TRACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Previous Track key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081"></a>MEDIA_NEXT_TRACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Next Track key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158"></a>MEDIA_PREV_TRACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Stop Media key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158"></a>MEDIA_PREV_TRACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Previous Track key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac0b5dbeb733e6653d4bda740b14b0429"></a>MEDIA_STOP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Play/Pause Media key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac0b5dbeb733e6653d4bda740b14b0429"></a>MEDIA_STOP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Stop Media key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9ef9c6dff07300fccd32e9cfab4975d7"></a>MEDIA_PLAY_PAUSE&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Mail key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9ef9c6dff07300fccd32e9cfab4975d7"></a>MEDIA_PLAY_PAUSE&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Play/Pause Media key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244"></a>LAUNCH_MAIL&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Select Media key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244"></a>LAUNCH_MAIL&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Mail key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca"></a>LAUNCH_MEDIA_SELECT&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Application 1 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca"></a>LAUNCH_MEDIA_SELECT&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Select Media key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca"></a>LAUNCH_APP1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Application 2 key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca"></a>LAUNCH_APP1&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Application 1 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba03947a404ce77023f33d6aae54865370"></a>LAUNCH_APP2&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba03947a404ce77023f33d6aae54865370"></a>LAUNCH_APP2&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Application 2 key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3"></a>OEM_1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '+' key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3"></a>OEM_1&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33"></a>OEM_PLUS&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the ',' key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33"></a>OEM_PLUS&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '+' key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165"></a>OEM_COMMA&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '-' key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165"></a>OEM_COMMA&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the ',' key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba394d7ff659ae0eb05e57cba3dade96e0"></a>OEM_MINUS&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '.' key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba394d7ff659ae0eb05e57cba3dade96e0"></a>OEM_MINUS&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '-' key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63"></a>OEM_PERIOD&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63"></a>OEM_PERIOD&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '.' key </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf"></a>OEM_2&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf"></a>OEM_2&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae3755e95125ee8953e36af77261a51a1"></a>OEM_3&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae3755e95125ee8953e36af77261a51a1"></a>OEM_3&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9bc809e39ba8b36b7b0a2acbf071228e"></a>OEM_4&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9bc809e39ba8b36b7b0a2acbf071228e"></a>OEM_4&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625"></a>OEM_5&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625"></a>OEM_5&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c"></a>OEM_6&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c"></a>OEM_6&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1e6ab2bcef5e704ea5c213c6360bdc90"></a>OEM_7&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1e6ab2bcef5e704ea5c213c6360bdc90"></a>OEM_7&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0"></a>OEM_8&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0"></a>OEM_8&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac"></a>OEM_102&#160;</td><td class="fielddoc"><p>summary&gt; Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key /summary&gt; </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac"></a>OEM_102&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3d8a9773d698588afc94fe487e3868d1"></a>PROCESSKEY&#160;</td><td class="fielddoc"><p>Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0334b8669eb43f45f9bccb223186be65"></a>PACKET&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Used to pass Unicode characters as if they were VKeytrokes. The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information, see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP </p>
 </td></tr>

@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_macro_framework_1_1_commands_1_1_bind_activator-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -92,7 +93,7 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instance for keybind callbacks  
+<p><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for keybind callbacks  
  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for MacroFramework.Commands.BindActivator:</div>
@@ -100,49 +101,58 @@ Inheritance diagram for MacroFramework.Commands.BindActivator:</div>
  <div class="center">
   <img src="class_macro_framework_1_1_commands_1_1_bind_activator.png" usemap="#MacroFramework.Commands.BindActivator_map" alt=""/>
   <map id="MacroFramework.Commands.BindActivator_map" name="MacroFramework.Commands.BindActivator_map">
-<area href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality." alt="MacroFramework.Commands.CommandActivator" shape="rect" coords="0,56,290,80"/>
-<area href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html" title="Interface for command activators" alt="MacroFramework.Commands.ICommandActivator" shape="rect" coords="0,0,290,24"/>
+<area href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun..." alt="MacroFramework.Commands.CommandActivator" shape="rect" coords="0,56,287,80"/>
+<area href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators" alt="MacroFramework.Commands.IActivator" shape="rect" coords="0,0,287,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5a73de84b7049851e87d4fe73456cc72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a5a73de84b7049851e87d4fe73456cc72">BindActivator</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> command, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a>[] keys, <a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a> activationType=ActivationEventType.OnFirstRelease, <a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a> matchType=<a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514ac406fdf301259aec103ccf71ca75df5e">KeyMatchType.ExactKeyMatch</a>, <a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a> order=KeyPressOrder.Ordered)</td></tr>
+<tr class="memitem:a5a73de84b7049851e87d4fe73456cc72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a5a73de84b7049851e87d4fe73456cc72">BindActivator</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> command, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a>[] keys, <a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a> activationType=<a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6af556947e34ed4e02ebeded4c712b2e1d">ActivationEventType.OnFirstRelease</a>, <a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a> matchType=<a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514ac406fdf301259aec103ccf71ca75df5e">KeyMatchType.ExactKeyMatch</a>, <a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a> order=<a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8a26e09a1ee1517389c7b07f42df65561a">KeyPressOrder.Ordered</a>)</td></tr>
 <tr class="memdesc:a5a73de84b7049851e87d4fe73456cc72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html" title="CommandActivator instance for keybind callbacks">BindActivator</a> instance  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a5a73de84b7049851e87d4fe73456cc72">More...</a><br /></td></tr>
 <tr class="separator:a5a73de84b7049851e87d4fe73456cc72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8b10684cd346ce59cc5648692f07ff2"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#af8b10684cd346ce59cc5648692f07ff2">IsActive</a> ()</td></tr>
-<tr class="memdesc:af8b10684cd346ce59cc5648692f07ff2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if activator is active  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#af8b10684cd346ce59cc5648692f07ff2">More...</a><br /></td></tr>
-<tr class="separator:af8b10684cd346ce59cc5648692f07ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_macro_framework_1_1_commands_1_1_command_activator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html">MacroFramework.Commands.CommandActivator</a></td></tr>
-<tr class="memitem:ac56c554f0a094ff5264f11da365d1c3c inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#ac56c554f0a094ff5264f11da365d1c3c">CommandActivator</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> command)</td></tr>
-<tr class="memdesc:ac56c554f0a094ff5264f11da365d1c3c inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes this activator with a callback  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#ac56c554f0a094ff5264f11da365d1c3c">More...</a><br /></td></tr>
-<tr class="separator:ac56c554f0a094ff5264f11da365d1c3c inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12762096b77710cebbff8a44c2e5f530 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12762096b77710cebbff8a44c2e5f530">CommandActivator</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> command, bool ignoreOwnerContext=false)</td></tr>
+<tr class="memdesc:a12762096b77710cebbff8a44c2e5f530 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes this activator with a callback  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12762096b77710cebbff8a44c2e5f530">More...</a><br /></td></tr>
+<tr class="separator:a12762096b77710cebbff8a44c2e5f530 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">IsActive</a> ()</td></tr>
+<tr class="memdesc:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the activator is active. Also takes into account the context of the owner: <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a71eb8bbd8a7026d3cec726b427233364" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive</a>  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">More...</a><br /></td></tr>
+<tr class="separator:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e76dd86a0da4fd522d6b47936d51ef7 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">Execute</a> ()</td></tr>
-<tr class="memdesc:a2e76dd86a0da4fd522d6b47936d51ef7 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the callback of this activators  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">More...</a><br /></td></tr>
+<tr class="memdesc:a2e76dd86a0da4fd522d6b47936d51ef7 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the callback of the activator as well as the Command.OnExecuteStart and Command.OnExecutionComplete methods if Owner is assigned  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">More...</a><br /></td></tr>
 <tr class="separator:a2e76dd86a0da4fd522d6b47936d51ef7 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a1d14b19be2cb63565f233b25c9354858"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a1d14b19be2cb63565f233b25c9354858">IsActivatorActive</a> ()</td></tr>
+<tr class="memdesc:a1d14b19be2cb63565f233b25c9354858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract bool for individual activator functionality. Override for custom functionality.  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a1d14b19be2cb63565f233b25c9354858">More...</a><br /></td></tr>
+<tr class="separator:a1d14b19be2cb63565f233b25c9354858"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a2cf17c06f88050fc19870b3c031996c6"><td class="memItemLeft" align="right" valign="top"><a id="a2cf17c06f88050fc19870b3c031996c6"></a>
-<a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ActivationType</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a2cf17c06f88050fc19870b3c031996c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a2cf17c06f88050fc19870b3c031996c6">ActivationType</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2cf17c06f88050fc19870b3c031996c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key event activation filter for this activator  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a2cf17c06f88050fc19870b3c031996c6">More...</a><br /></td></tr>
 <tr class="separator:a2cf17c06f88050fc19870b3c031996c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf85598df974614bb856fe55e9cc5da1"><td class="memItemLeft" align="right" valign="top"><a id="acf85598df974614bb856fe55e9cc5da1"></a>
-<a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MatchType</b><code> [get, set]</code></td></tr>
+<tr class="memitem:acf85598df974614bb856fe55e9cc5da1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#acf85598df974614bb856fe55e9cc5da1">MatchType</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:acf85598df974614bb856fe55e9cc5da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key match filter for this activator  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#acf85598df974614bb856fe55e9cc5da1">More...</a><br /></td></tr>
 <tr class="separator:acf85598df974614bb856fe55e9cc5da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e5ae0f03a3d993566dfbf2952e7d9b2"><td class="memItemLeft" align="right" valign="top"><a id="a0e5ae0f03a3d993566dfbf2952e7d9b2"></a>
-<a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Order</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a0e5ae0f03a3d993566dfbf2952e7d9b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a0e5ae0f03a3d993566dfbf2952e7d9b2">Order</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0e5ae0f03a3d993566dfbf2952e7d9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key order filter for this activator  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a0e5ae0f03a3d993566dfbf2952e7d9b2">More...</a><br /></td></tr>
 <tr class="separator:a0e5ae0f03a3d993566dfbf2952e7d9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d03fcf98bc25027ad99c927942aa095"><td class="memItemLeft" align="right" valign="top"><a id="a9d03fcf98bc25027ad99c927942aa095"></a>
-<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a>[]&#160;</td><td class="memItemRight" valign="bottom"><b>Keys</b><code> [get, set]</code></td></tr>
+<tr class="memitem:a9d03fcf98bc25027ad99c927942aa095"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a9d03fcf98bc25027ad99c927942aa095">Keys</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a9d03fcf98bc25027ad99c927942aa095"><td class="mdescLeft">&#160;</td><td class="mdescRight">The keys which need to be pressed  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a9d03fcf98bc25027ad99c927942aa095">More...</a><br /></td></tr>
 <tr class="separator:a9d03fcf98bc25027ad99c927942aa095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_macro_framework_1_1_commands_1_1_command_activator"><td colspan="2" onclick="javascript:toggleInherit('properties_class_macro_framework_1_1_commands_1_1_command_activator')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html">MacroFramework.Commands.CommandActivator</a></td></tr>
 <tr class="memitem:ad9276636979b79547dc109bec7ecc21b inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top"><a id="ad9276636979b79547dc109bec7ecc21b"></a>
 <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b><code> [get, set]</code></td></tr>
 <tr class="separator:ad9276636979b79547dc109bec7ecc21b inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header properties_interface_macro_framework_1_1_commands_1_1_i_command_activator"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_macro_framework_1_1_commands_1_1_i_command_activator')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html">MacroFramework.Commands.ICommandActivator</a></td></tr>
-<tr class="memitem:a292604ad195e213263042464281edb93 inherit properties_interface_macro_framework_1_1_commands_1_1_i_command_activator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html#a292604ad195e213263042464281edb93">Owner</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a292604ad195e213263042464281edb93 inherit properties_interface_macro_framework_1_1_commands_1_1_i_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Owner of this activator or null if it is used independently  <a href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html#a292604ad195e213263042464281edb93">More...</a><br /></td></tr>
-<tr class="separator:a292604ad195e213263042464281edb93 inherit properties_interface_macro_framework_1_1_commands_1_1_i_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">IgnoreOwnerContext</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the context <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a71eb8bbd8a7026d3cec726b427233364" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive()</a> of the owner is ignored  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">More...</a><br /></td></tr>
+<tr class="separator:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_macro_framework_1_1_commands_1_1_i_activator')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">MacroFramework.Commands.IActivator</a></td></tr>
+<tr class="memitem:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">Owner</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owner of this activator or null if it is used independently  <a href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">More...</a><br /></td></tr>
+<tr class="separator:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -152,7 +162,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a110f3065618abd5d599ac1a169038e5d inherit pro_attribs_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instance for keybind callbacks </p>
+<div class="textblock"><p><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for keybind callbacks </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5a73de84b7049851e87d4fe73456cc72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5a73de84b7049851e87d4fe73456cc72">&#9670;&nbsp;</a></span>BindActivator()</h2>
@@ -179,7 +189,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td>
-          <td class="paramname"><em>activationType</em> = <code>ActivationEventType.OnFirstRelease</code>, </td>
+          <td class="paramname"><em>activationType</em> = <code><a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6af556947e34ed4e02ebeded4c712b2e1d">ActivationEventType.OnFirstRelease</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -191,7 +201,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>&#160;</td>
-          <td class="paramname"><em>order</em> = <code>KeyPressOrder.Ordered</code>&#160;</td>
+          <td class="paramname"><em>order</em> = <code><a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8a26e09a1ee1517389c7b07f42df65561a">KeyPressOrder.Ordered</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -209,11 +219,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html" title="CommandActivator instance for keybind callbacks">BindActivator</a> instance </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">command</td><td>The callback which is executed when this becomes active</td></tr>
-    <tr><td class="paramname">activationType</td><td>The eventy type filter</td></tr>
-    <tr><td class="paramname">order</td><td>Determines whether keys should be pressed in the given parameter order</td></tr>
-    <tr><td class="paramname">matchType</td><td>Match type corresponding to how the match is determined</td></tr>
-    <tr><td class="paramname">keys</td><td></td></tr>
+    <tr><td class="paramname">command</td><td>The callback to be called when this activator becomes active</td></tr>
+    <tr><td class="paramname">keys</td><td><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a9d03fcf98bc25027ad99c927942aa095" title="The keys which need to be pressed">Keys</a></td></tr>
+    <tr><td class="paramname">activationType</td><td>see<a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a2cf17c06f88050fc19870b3c031996c6" title="The key event activation filter for this activator">ActivationType</a></td></tr>
+    <tr><td class="paramname">matchType</td><td><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#acf85598df974614bb856fe55e9cc5da1" title="The key match filter for this activator">MatchType</a></td></tr>
+    <tr><td class="paramname">order</td><td><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a0e5ae0f03a3d993566dfbf2952e7d9b2" title="The key order filter for this activator">Order</a></td></tr>
   </table>
   </dd>
 </dl>
@@ -221,8 +231,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af8b10684cd346ce59cc5648692f07ff2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8b10684cd346ce59cc5648692f07ff2">&#9670;&nbsp;</a></span>IsActive()</h2>
+<a id="a1d14b19be2cb63565f233b25c9354858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d14b19be2cb63565f233b25c9354858">&#9670;&nbsp;</a></span>IsActivatorActive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +241,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override bool MacroFramework.Commands.BindActivator.IsActive </td>
+          <td class="memname">override bool MacroFramework.Commands.BindActivator.IsActivatorActive </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -239,15 +249,112 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Return true if activator is active </p>
+<p>Abstract bool for individual activator functionality. Override for custom functionality. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p>Implements <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2144623b860ce448b5c776ae292837b9">MacroFramework.Commands.CommandActivator</a>.</p>
+<p>Implements <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#acf7fc62cbe0586d958db249930fb4dcd">MacroFramework.Commands.CommandActivator</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a2cf17c06f88050fc19870b3c031996c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf17c06f88050fc19870b3c031996c6">&#9670;&nbsp;</a></span>ActivationType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a> MacroFramework.Commands.BindActivator.ActivationType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The key event activation filter for this activator </p>
+
+</div>
+</div>
+<a id="a9d03fcf98bc25027ad99c927942aa095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d03fcf98bc25027ad99c927942aa095">&#9670;&nbsp;</a></span>Keys</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a> [] MacroFramework.Commands.BindActivator.Keys</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The keys which need to be pressed </p>
+
+</div>
+</div>
+<a id="acf85598df974614bb856fe55e9cc5da1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf85598df974614bb856fe55e9cc5da1">&#9670;&nbsp;</a></span>MatchType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a> MacroFramework.Commands.BindActivator.MatchType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The key match filter for this activator </p>
+
+</div>
+</div>
+<a id="a0e5ae0f03a3d993566dfbf2952e7d9b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e5ae0f03a3d993566dfbf2952e7d9b2">&#9670;&nbsp;</a></span>Order</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a> MacroFramework.Commands.BindActivator.Order</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The key order filter for this activator </p>
 
 </div>
 </div>

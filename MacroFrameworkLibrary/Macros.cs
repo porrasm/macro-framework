@@ -10,17 +10,24 @@ using System.Windows.Forms;
 namespace MacroFramework {
     public static class Macros {
 
+        /// <summary>
+        /// True if the framework is running
+        /// </summary>
         public static bool Running { get; private set; }
 
         /// <summary>
+        /// Void callback
+        /// </summary>
+        public delegate void MainLoopCallback();
+        /// <summary>
         /// The delegate which is called at the start of every main loop iteration
         /// </summary>
-        public static Delegates.Void OnMainLoop { get; set; }
+        public static MainLoopCallback OnMainLoop { get; set; }
 
         /// <summary>
-        /// Starts the synchronous MacrosFramework application. Give an assembly as a parameter to automatically load all <see cref="Command"/> instances. Should be called with an <see cref="STAThreadAttribute"/>.
+        /// Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="STAThreadAttribute"/>.
         /// </summary>
-        /// <param name="macroAssembly">The assembly of your implementation</param>
+        /// <param name="setup">The setup options</param>
         public static void Start(Setup setup) {
             if (Running) {
                 return;
@@ -42,11 +49,11 @@ namespace MacroFramework {
         }
 
         /// <summary>
-        /// Stops the MacroFramework application.
+        /// Stops the MacroFramework application
         /// </summary>
         public static void Stop() {
             InputHook.StopHooks();
-            CommandContainer.OnClose();
+            CommandContainer.Exit();
             Application.Exit();
             Setup.SetInstance(null);
             Running = false;

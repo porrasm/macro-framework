@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_setup.html',
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_macro_framework_1_1_setup-members.html">List of all members</a>  </div>
@@ -95,33 +96,67 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_setup.html',
 <p>Inherit this class in your project to finish the setup process  
  <a href="class_macro_framework_1_1_setup.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a0c2553836e422d9867ae85fc589bc879"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#a0c2553836e422d9867ae85fc589bc879">Setup</a> ()</td></tr>
+<tr class="memdesc:a0c2553836e422d9867ae85fc589bc879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_setup.html" title="Inherit this class in your project to finish the setup process">Setup</a> instance  <a href="class_macro_framework_1_1_setup.html#a0c2553836e422d9867ae85fc589bc879">More...</a><br /></td></tr>
+<tr class="separator:a0c2553836e422d9867ae85fc589bc879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2128bff604c87bc587f4b76c187fab0d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#a2128bff604c87bc587f4b76c187fab0d">GetSettings</a> ()</td></tr>
 <tr class="memdesc:a2128bff604c87bc587f4b76c187fab0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a> to fit your needs here  <a href="class_macro_framework_1_1_setup.html#a2128bff604c87bc587f4b76c187fab0d">More...</a><br /></td></tr>
 <tr class="separator:a2128bff604c87bc587f4b76c187fab0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9d7cb1936cb22857f759a5464c775b7"><td class="memItemLeft" align="right" valign="top">virtual Assembly&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7">GetMainAssembly</a> ()</td></tr>
-<tr class="memdesc:aa9d7cb1936cb22857f759a5464c775b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return your projects main Assembly (most likely using Assembly.GetExecutingAssembly). This allows automatically enabling your <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Commands.Command</a>. Return null if you don't wish to use this feature. Add commands manually either using CommandContainer.AddCommand(Command) or define a list of them with <a class="el" href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd" title="Initialize active commands here. Return null if you defined the main assembly in GetMainAssembly">GetActiveCommands</a>/&gt;  <a href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7">More...</a><br /></td></tr>
+<tr class="memdesc:aa9d7cb1936cb22857f759a5464c775b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the Assembly in which your Command instances reside in (most likely Assembly.GetExecutingAssembly). This allows automatically enabling your <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Commands.Command</a>. Return null if you don't wish to use this feature. Add commands manually either using CommandContainer.AddCommand(Command) or define a list of them with <a class="el" href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd" title="Initialize active commands here. Return null if you defined the main assembly in GetMainAssembly or i...">GetActiveCommands</a>/&gt;  <a href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7">More...</a><br /></td></tr>
 <tr class="separator:aa9d7cb1936cb22857f759a5464c775b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6615e34709c7f9cc339f37d870fd49fd"><td class="memItemLeft" align="right" valign="top">virtual List&lt; <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd">GetActiveCommands</a> ()</td></tr>
-<tr class="memdesc:a6615e34709c7f9cc339f37d870fd49fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize active commands here. Return null if you defined the main assembly in <a class="el" href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7" title="Return your projects main Assembly (most likely using Assembly.GetExecutingAssembly)....">GetMainAssembly</a>  <a href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd">More...</a><br /></td></tr>
+<tr class="memdesc:a6615e34709c7f9cc339f37d870fd49fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize active commands here. Return null if you defined the main assembly in <a class="el" href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7" title="Return the Assembly in which your Command instances reside in (most likely Assembly....">GetMainAssembly</a> or if you wish to use CommandContainer.AddCommand(Command)  <a href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd">More...</a><br /></td></tr>
 <tr class="separator:a6615e34709c7f9cc339f37d870fd49fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:ac3cddb6b045dd78cc01163cd5f22f92a"><td class="memItemLeft" align="right" valign="top"><a id="ac3cddb6b045dd78cc01163cd5f22f92a"></a>
-static <a class="el" href="class_macro_framework_1_1_setup.html">Setup</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Instance</b><code> [get]</code></td></tr>
+<tr class="memitem:ac3cddb6b045dd78cc01163cd5f22f92a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_setup.html">Setup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#ac3cddb6b045dd78cc01163cd5f22f92a">Instance</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac3cddb6b045dd78cc01163cd5f22f92a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current singleton setup instance  <a href="class_macro_framework_1_1_setup.html#ac3cddb6b045dd78cc01163cd5f22f92a">More...</a><br /></td></tr>
 <tr class="separator:ac3cddb6b045dd78cc01163cd5f22f92a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7c01d9bd7b91dd89d0e557c6641008d"><td class="memItemLeft" align="right" valign="top"><a id="ab7c01d9bd7b91dd89d0e557c6641008d"></a>
-Assembly&#160;</td><td class="memItemRight" valign="bottom"><b>MainAssembly</b><code> [get]</code></td></tr>
-<tr class="separator:ab7c01d9bd7b91dd89d0e557c6641008d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a695520b6165b3f9e7d772a611bb0c9e4"><td class="memItemLeft" align="right" valign="top"><a id="a695520b6165b3f9e7d772a611bb0c9e4"></a>
-<a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Settings</b><code> [get]</code></td></tr>
+<tr class="memitem:a231179d8ef121db88dbbe5c3d3bbf1aa"><td class="memItemLeft" align="right" valign="top">Assembly&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#a231179d8ef121db88dbbe5c3d3bbf1aa">CommandAssembly</a><code> [get]</code></td></tr>
+<tr class="memdesc:a231179d8ef121db88dbbe5c3d3bbf1aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The assembly in which your custom Command classes reside in (can be null).  <a href="class_macro_framework_1_1_setup.html#a231179d8ef121db88dbbe5c3d3bbf1aa">More...</a><br /></td></tr>
+<tr class="separator:a231179d8ef121db88dbbe5c3d3bbf1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a695520b6165b3f9e7d772a611bb0c9e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4">Settings</a><code> [get]</code></td></tr>
+<tr class="memdesc:a695520b6165b3f9e7d772a611bb0c9e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The settings you wish to use  <a href="class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4">More...</a><br /></td></tr>
 <tr class="separator:a695520b6165b3f9e7d772a611bb0c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Inherit this class in your project to finish the setup process </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0c2553836e422d9867ae85fc589bc879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2553836e422d9867ae85fc589bc879">&#9670;&nbsp;</a></span>Setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MacroFramework.Setup.Setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a new <a class="el" href="class_macro_framework_1_1_setup.html" title="Inherit this class in your project to finish the setup process">Setup</a> instance </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6615e34709c7f9cc339f37d870fd49fd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6615e34709c7f9cc339f37d870fd49fd">&#9670;&nbsp;</a></span>GetActiveCommands()</h2>
 
@@ -145,7 +180,7 @@ Assembly&#160;</td><td class="memItemRight" valign="bottom"><b>MainAssembly</b><
 </table>
 </div><div class="memdoc">
 
-<p>Initialize active commands here. Return null if you defined the main assembly in <a class="el" href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7" title="Return your projects main Assembly (most likely using Assembly.GetExecutingAssembly)....">GetMainAssembly</a> </p>
+<p>Initialize active commands here. Return null if you defined the main assembly in <a class="el" href="class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7" title="Return the Assembly in which your Command instances reside in (most likely Assembly....">GetMainAssembly</a> or if you wish to use CommandContainer.AddCommand(Command) </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
@@ -173,7 +208,7 @@ Assembly&#160;</td><td class="memItemRight" valign="bottom"><b>MainAssembly</b><
 </table>
 </div><div class="memdoc">
 
-<p>Return your projects main Assembly (most likely using Assembly.GetExecutingAssembly). This allows automatically enabling your <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Commands.Command</a>. Return null if you don't wish to use this feature. Add commands manually either using CommandContainer.AddCommand(Command) or define a list of them with <a class="el" href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd" title="Initialize active commands here. Return null if you defined the main assembly in GetMainAssembly">GetActiveCommands</a>/&gt; </p>
+<p>Return the Assembly in which your Command instances reside in (most likely Assembly.GetExecutingAssembly). This allows automatically enabling your <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Commands.Command</a>. Return null if you don't wish to use this feature. Add commands manually either using CommandContainer.AddCommand(Command) or define a list of them with <a class="el" href="class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd" title="Initialize active commands here. Return null if you defined the main assembly in GetMainAssembly or i...">GetActiveCommands</a>/&gt; </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
@@ -203,6 +238,79 @@ Assembly&#160;</td><td class="memItemRight" valign="bottom"><b>MainAssembly</b><
 
 <p>Set the <a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a> to fit your needs here </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a231179d8ef121db88dbbe5c3d3bbf1aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231179d8ef121db88dbbe5c3d3bbf1aa">&#9670;&nbsp;</a></span>CommandAssembly</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Assembly MacroFramework.Setup.CommandAssembly</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The assembly in which your custom Command classes reside in (can be null). </p>
+
+</div>
+</div>
+<a id="ac3cddb6b045dd78cc01163cd5f22f92a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3cddb6b045dd78cc01163cd5f22f92a">&#9670;&nbsp;</a></span>Instance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_setup.html">Setup</a> MacroFramework.Setup.Instance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current singleton setup instance </p>
+
+</div>
+</div>
+<a id="a695520b6165b3f9e7d772a611bb0c9e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a695520b6165b3f9e7d772a611bb0c9e4">&#9670;&nbsp;</a></span>Settings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_macro_settings.html">MacroSettings</a> MacroFramework.Setup.Settings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The settings you wish to use </p>
 
 </div>
 </div>

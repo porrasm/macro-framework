@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MacroFramework.Input {
     // Soon to be rewritten, code is smelly
+    /// <summary>
+    /// The static class handling all input key events.
+    /// </summary>
     public static class KeyEvents {
 
         #region fields
@@ -15,9 +18,9 @@ namespace MacroFramework.Input {
         /// </summary>
         public static KeyEvent CurrentKeyEvent { get; private set; }
 
-        public static bool CommandMode { get; private set; }
+        internal static bool CommandMode { get; private set; }
 
-        public static bool GeneralKeyBind { get; private set; }
+        internal static bool GeneralKeyBind { get; private set; }
 
         private static Queue<KeyEvent> keyEventQueue;
 
@@ -26,7 +29,7 @@ namespace MacroFramework.Input {
         public delegate bool KeyCallbackFunc(VKey key, bool state);
 
         /// <summary>
-        /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyState"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself.
+        /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyState"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
         public static KeyCallbackFunc KeyCallback { get; set; }
         #endregion
@@ -41,7 +44,7 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <param name="status"></param>
-        public static void SetKeyBlockStatus(VKey key, bool status) {
+        internal static void SetKeyBlockStatus(VKey key, bool status) {
             if (status) {
                 blockKeys.Add(key);
             } else {
@@ -53,7 +56,7 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Handles the key press event. When true is returned the key event is intercepted.
         /// </summary>
-        public static bool OnHookKeyPress(VKey key, bool state) {
+        internal static bool OnHookKeyPress(VKey key, bool state) {
 
             if (KeyCallback?.Invoke(key, state) ?? false) {
                 return true;
@@ -124,11 +127,11 @@ namespace MacroFramework.Input {
         #endregion
 
         #region keyevent
-        public static async void HandleQueuedKeyEventsNonBlocking() {
+        internal static async void HandleQueuedKeyEventsNonBlocking() {
             await Task.Delay(1);
             HandleQueuedKeyEvents();
         }
-        public static void HandleQueuedKeyEvents() {
+        internal static void HandleQueuedKeyEvents() {
             while (keyEventQueue.Count > 0) {
                 OnKeyEvent(keyEventQueue.Dequeue());
             }

@@ -1,17 +1,13 @@
 var namespace_macro_framework_1_1_commands =
 [
+    [ "Attributes", "namespace_macro_framework_1_1_commands_1_1_attributes.html", "namespace_macro_framework_1_1_commands_1_1_attributes" ],
     [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html", "class_macro_framework_1_1_commands_1_1_bind_activator" ],
-    [ "BindActivatorAttribute", "class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_bind_activator_attribute" ],
     [ "CommandActivator", "class_macro_framework_1_1_commands_1_1_command_activator.html", "class_macro_framework_1_1_commands_1_1_command_activator" ],
     [ "CommandActivatorGroup", "class_macro_framework_1_1_commands_1_1_command_activator_group.html", "class_macro_framework_1_1_commands_1_1_command_activator_group" ],
-    [ "ICommandActivator", "interface_macro_framework_1_1_commands_1_1_i_command_activator.html", "interface_macro_framework_1_1_commands_1_1_i_command_activator" ],
+    [ "IActivator", "interface_macro_framework_1_1_commands_1_1_i_activator.html", "interface_macro_framework_1_1_commands_1_1_i_activator" ],
     [ "KeyActivator", "class_macro_framework_1_1_commands_1_1_key_activator.html", "class_macro_framework_1_1_commands_1_1_key_activator" ],
-    [ "KeyActivatorAttribute", "class_macro_framework_1_1_commands_1_1_key_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_key_activator_attribute" ],
     [ "TextActivator", "class_macro_framework_1_1_commands_1_1_text_activator.html", "class_macro_framework_1_1_commands_1_1_text_activator" ],
-    [ "TextActivatorAttribute", "class_macro_framework_1_1_commands_1_1_text_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_text_activator_attribute" ],
     [ "TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", "class_macro_framework_1_1_commands_1_1_timer_activator" ],
-    [ "TimerActivatorAttribute", "class_macro_framework_1_1_commands_1_1_timer_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_timer_activator_attribute" ],
-    [ "ActivatorAttribute", "class_macro_framework_1_1_commands_1_1_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_activator_attribute" ],
     [ "Command", "class_macro_framework_1_1_commands_1_1_command.html", "class_macro_framework_1_1_commands_1_1_command" ],
     [ "ActivationEventType", "namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6", [
       [ "OnFirstRelease", "namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6af556947e34ed4e02ebeded4c712b2e1d", null ],

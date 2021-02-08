@@ -4,11 +4,11 @@ using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// Interface for command activators
+    /// Interface for all command activators
     /// </summary>
-    public interface ICommandActivator {
+    public interface IActivator {
         /// <summary>
-        /// Return true if activator is active
+        /// Returns true if activator is active
         /// </summary>
         /// <returns></returns>
         bool IsActive();
@@ -18,7 +18,7 @@ namespace MacroFramework.Commands {
         void Execute();
 
         /// <summary>
-        /// Owner of this activator or null if it is used independently
+        /// The owner of this activator or null if it is used independently
         /// </summary>
         Command Owner { get; set; }
     }

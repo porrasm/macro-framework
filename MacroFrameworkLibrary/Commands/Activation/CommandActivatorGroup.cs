@@ -8,25 +8,35 @@ using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// A wrapper class for multiple <see cref="CommandActivator"/> instances
+    /// A wrapper class for storing multiple <see cref="IActivator"/> instances
     /// </summary>
     public class CommandActivatorGroup {
 
         #region fields
         private Command owner;
-        public List<ICommandActivator> Activators { get; }
+        /// <summary>
+        /// The list of all <see cref="IActivator"/> instances owner by this class.
+        /// </summary>
+        public List<IActivator> Activators { get; }
         #endregion
 
-        public CommandActivatorGroup(Command owner = null) {
+        /// <summary>
+        /// Creates a new <see cref="CommandActivatorGroup"/> instance
+        /// </summary>
+        /// <param name="owner">The owner command class of this activator group</param>
+        public CommandActivatorGroup(Command owner) {
+            if (owner == null) {
+                throw new Exception("A command activator group must have an owner");
+            }
             this.owner = owner;
-            Activators = new List<ICommandActivator>();
+            Activators = new List<IActivator>();
         }
 
         /// <summary>
-        /// Adds an activator to the group
+        /// Adds an activator to the group and sets the <see cref="IActivator.Owner"/> of the activator
         /// </summary>
-        /// <param name="activator"></param>
-        public void AddActivator(ICommandActivator activator) {
+        /// <param name="activator">The activator to add</param>
+        public void AddActivator(IActivator activator) {
             activator.Owner = owner;
             Activators.Add(activator);
         }

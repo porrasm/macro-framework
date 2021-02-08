@@ -8,27 +8,31 @@ using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// Single key activator
+    /// <see cref="CommandActivator"/> instance for key event callbacks
     /// </summary>
     public class KeyActivator : CommandActivator {
 
         #region fields
-        public delegate void KeyCallback(KeyEvent k);
+        /// <summary>
+        /// The delegate for a key event callback
+        /// </summary>
+        /// <param name="k"></param>
+        public delegate void KeyEventCallback(KeyEvent k);
         private VKey key;
-        private KeyCallback cb;
+        private KeyEventCallback cb;
         #endregion
 
         /// <summary>
-        /// Creates a key activator instance
+        /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
-        /// <param name="callback">The callback method</param>
-        /// <param name="key"></param>
-        public KeyActivator(KeyCallback callback, VKey key) : base(null) {
+        /// <param name="callback">The key event callback</param>
+        /// <param name="key">The key for which you wish to receive callbacks on</param>
+        public KeyActivator(KeyEventCallback callback, VKey key) : base(null) {
             this.key = key;
             this.cb = callback;
         }
 
-        public override bool IsActive() {
+        protected override bool IsActivatorActive() {
             return KeyEvents.CurrentKeyEvent.Key == key;
         }
 
@@ -38,26 +42,6 @@ namespace MacroFramework.Commands {
             } catch (Exception e) {
                 Console.WriteLine("Error executing KeyCallback: " + e.Message);
             }
-        }
-    }
-
-    /// <summary>
-    /// Attribute activator for <see cref="KeyActivator"/>. Use <see cref="KeyEvents.CurrentKeyEvent"/> to get current keyevent without a parameter.
-    /// </summary>
-    public class KeyActivatorAttribute : ActivatorAttribute {
-
-        private VKey key;
-
-        /// <summary>
-        /// Creates a key activator instance from this method
-        /// </summary>
-        /// <param name="key">Key</param>
-        public KeyActivatorAttribute(VKey key) {
-            this.key = key;
-        }
-
-        public override ICommandActivator GetCommandActivator(Command c, MethodInfo m) {
-            return new KeyActivator((k) => m.Invoke(c, null), key);
         }
     }
 }

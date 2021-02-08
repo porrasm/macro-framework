@@ -1,12 +1,15 @@
 # Windows Macro Framework
 
+## Links
+
+- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html)
+- [Nuget](https://www.nuget.org/packages/MacroFramework/)
+
 ## Warning
 
 Project is in very early stage. Many things will change. There are bugs and prepare to refactor things after updating.
 
 ## Quick setup
-
-The package is available on [Nuget](https://www.nuget.org/packages/MacroFramework/)
 
 ### 1 Install package via nuget: 
 

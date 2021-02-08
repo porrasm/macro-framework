@@ -92,32 +92,67 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 </div><!--header-->
 <div class="contents">
 
-<p>A wrapper class for multiple <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instances  
+<p>A wrapper class for storing multiple <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances  
  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5eb06b9a0cd3fbbe7e2f46a8adffb614"><td class="memItemLeft" align="right" valign="top"><a id="a5eb06b9a0cd3fbbe7e2f46a8adffb614"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CommandActivatorGroup</b> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a> owner=null)</td></tr>
-<tr class="separator:a5eb06b9a0cd3fbbe7e2f46a8adffb614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23f5a01f8ba47ccd655d72adc4ddf7b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#a23f5a01f8ba47ccd655d72adc4ddf7b4">AddActivator</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html">ICommandActivator</a> activator)</td></tr>
-<tr class="memdesc:a23f5a01f8ba47ccd655d72adc4ddf7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an activator to the group  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#a23f5a01f8ba47ccd655d72adc4ddf7b4">More...</a><br /></td></tr>
-<tr class="separator:a23f5a01f8ba47ccd655d72adc4ddf7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d">CommandActivatorGroup</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a> owner)</td></tr>
+<tr class="memdesc:a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html" title="A wrapper class for storing multiple IActivator instances">CommandActivatorGroup</a> instance  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d">More...</a><br /></td></tr>
+<tr class="separator:a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7eb5bab88a4dc0ead3a6bcf0c599d4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#ac7eb5bab88a4dc0ead3a6bcf0c599d4e">AddActivator</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">IActivator</a> activator)</td></tr>
+<tr class="memdesc:ac7eb5bab88a4dc0ead3a6bcf0c599d4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an activator to the group and sets the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569" title="The owner of this activator or null if it is used independently">IActivator.Owner</a> of the activator  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#ac7eb5bab88a4dc0ead3a6bcf0c599d4e">More...</a><br /></td></tr>
+<tr class="separator:ac7eb5bab88a4dc0ead3a6bcf0c599d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa14e4bbdf590bfbd8f0d0b26662efe72"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#aa14e4bbdf590bfbd8f0d0b26662efe72">IsActive</a> (out <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html">CommandActivator</a> activeActivator)</td></tr>
-<tr class="memdesc:aa14e4bbdf590bfbd8f0d0b26662efe72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if any of the <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instances is active  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#aa14e4bbdf590bfbd8f0d0b26662efe72">More...</a><br /></td></tr>
+<tr class="memdesc:aa14e4bbdf590bfbd8f0d0b26662efe72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if any of the <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instances is active  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#aa14e4bbdf590bfbd8f0d0b26662efe72">More...</a><br /></td></tr>
 <tr class="separator:aa14e4bbdf590bfbd8f0d0b26662efe72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a59d4847eec45534cced84896a694bf26"><td class="memItemLeft" align="right" valign="top"><a id="a59d4847eec45534cced84896a694bf26"></a>
-List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html">ICommandActivator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Activators</b><code> [get]</code></td></tr>
-<tr class="separator:a59d4847eec45534cced84896a694bf26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcbae077838ce2b6172560b6d91f5346"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">IActivator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#abcbae077838ce2b6172560b6d91f5346">Activators</a><code> [get]</code></td></tr>
+<tr class="memdesc:abcbae077838ce2b6172560b6d91f5346"><td class="mdescLeft">&#160;</td><td class="mdescRight">The list of all <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances owner by this class.  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#abcbae077838ce2b6172560b6d91f5346">More...</a><br /></td></tr>
+<tr class="separator:abcbae077838ce2b6172560b6d91f5346"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A wrapper class for multiple <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instances </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a23f5a01f8ba47ccd655d72adc4ddf7b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23f5a01f8ba47ccd655d72adc4ddf7b4">&#9670;&nbsp;</a></span>AddActivator()</h2>
+<div class="textblock"><p>A wrapper class for storing multiple <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ee28dbe9ad2ddb8d7d62c1fd66d9e8d">&#9670;&nbsp;</a></span>CommandActivatorGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MacroFramework.Commands.CommandActivatorGroup.CommandActivatorGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td>
+          <td class="paramname"><em>owner</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html" title="A wrapper class for storing multiple IActivator instances">CommandActivatorGroup</a> instance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">owner</td><td>The owner command class of this activator group</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac7eb5bab88a4dc0ead3a6bcf0c599d4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7eb5bab88a4dc0ead3a6bcf0c599d4e">&#9670;&nbsp;</a></span>AddActivator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -128,7 +163,7 @@ List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_comman
         <tr>
           <td class="memname">void MacroFramework.Commands.CommandActivatorGroup.AddActivator </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_command_activator.html">ICommandActivator</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">IActivator</a>&#160;</td>
           <td class="paramname"><em>activator</em></td><td>)</td>
           <td></td>
         </tr>
@@ -140,10 +175,10 @@ List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_comman
 </table>
 </div><div class="memdoc">
 
-<p>Adds an activator to the group </p>
+<p>Adds an activator to the group and sets the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569" title="The owner of this activator or null if it is used independently">IActivator.Owner</a> of the activator </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">activator</td><td></td></tr>
+    <tr><td class="paramname">activator</td><td>The activator to add</td></tr>
   </table>
   </dd>
 </dl>
@@ -174,7 +209,7 @@ List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_comman
 </table>
 </div><div class="memdoc">
 
-<p>Returns true if any of the <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all activators. Inherit this class for custom functionality.">CommandActivator</a> instances is active </p>
+<p>Returns true if any of the <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instances is active </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">activeActivator</td><td></td></tr>
@@ -182,6 +217,31 @@ List&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_comman
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="abcbae077838ce2b6172560b6d91f5346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbae077838ce2b6172560b6d91f5346">&#9670;&nbsp;</a></span>Activators</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">IActivator</a>&gt; MacroFramework.Commands.CommandActivatorGroup.Activators</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The list of all <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances owner by this class. </p>
 
 </div>
 </div>

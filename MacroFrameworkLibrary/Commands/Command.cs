@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Commands.Attributes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,31 +22,22 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Container for the set of <see cref="CommandActivator"/> instances of this command
         /// </summary>
-        protected CommandActivatorGroup activator;
-        internal CommandActivatorGroup Activator => activator;
+        protected CommandActivatorGroup commandActivators;
+        internal CommandActivatorGroup CommandActivators => commandActivators;
 
         /// <summary>
-        /// Additional method for declaring contexts. Return false to disable all command functionality.
+        /// Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="CommandActivators"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
         /// </summary>
         /// <returns></returns>
-        public virtual bool GetContext() => true;
-
-        private struct MethodInfoAttributeCont {
-            public MethodInfo Method;
-            public ActivatorAttribute Attribute;
-            public MethodInfoAttributeCont(MethodInfo method, ActivatorAttribute activator) {
-                Method = method;
-                Attribute = activator;
-            }
-        }
+        public virtual bool IsActive() => true;
         #endregion
 
         #region initialization
         /// <summary>
-        /// Initializes a new command instance
+        /// Creates a new <see cref="Command"/> instance
         /// </summary>
         public Command() {
-            InitializeActivators(out activator);
+            InitializeActivators(out commandActivators);
             InitializeAttributeActivators();
         }
 
@@ -53,7 +45,7 @@ namespace MacroFramework.Commands {
             try {
                 MethodInfoAttributeCont[] methods = GetAttributeMethods();
                 foreach (MethodInfoAttributeCont cont in methods) {
-                    activator.AddActivator(cont.Attribute.GetCommandActivator(this, cont.Method));
+                    commandActivators.AddActivator(cont.Attribute.GetCommandActivator(this, cont.Method));
                 }
             } catch (Exception e) {
                 throw new Exception("Unable to load Attributes from Assembly on type " + GetType(), e);
@@ -69,46 +61,49 @@ namespace MacroFramework.Commands {
 
 
         /// <summary>
-        /// Abstract method for initializing CommandActivators and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
+        /// Abstract method for initializing <see cref="Commands.IActivator"/> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
         /// </summary>
         protected virtual void InitializeActivators(out CommandActivatorGroup activator) {
-            activator = new CommandActivatorGroup();
+            activator = new CommandActivatorGroup(this);
         }
         #endregion
 
         /// <summary>
-        /// Called before the execution of any command starts.
+        /// Called before the execution of any <see cref="IActivator"/> starts
         /// </summary>
         protected internal virtual void OnExecuteStart() { }
 
         /// <summary>
-        /// Called after the execution of every command
+        /// Called after the execution of every <see cref="IActivator"/>
         /// </summary>
         protected internal virtual void OnExecutionComplete() { }
 
         /// <summary>
-        /// Called when the application starts.
+        /// Called after <see cref="Macros.Start(Setup)"/>
         /// </summary>
         public virtual void OnStart() { }
 
         /// <summary>
-        /// Called when the application quits.
+        /// Called after <see cref="Macros.Stop"/>
         /// </summary>
         public virtual void OnClose() { }
 
         /// <summary>
-        /// This method is called whenever a text command is executed, even if it doesn't match any of the activators.
+        /// This method is called whenever a text command is executed
         /// </summary>
         /// <param name="command">The text command which was executed</param>
-        /// <param name="commandWasAccepted">True if any of the <see cref="Command"/> classes executed the text command. False if nonexistent text command.</param>
+        /// <param name="commandWasAccepted">True if any <see cref="TextActivator"/> instance executed the text command. False if command was not executed.</param>
         public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
 
         /// <summary>
-        /// Syntax macro for creating array of <see cref="VKey"/> elements
+        /// Nicer syntax for creating array of <see cref="VKey"/> elements
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
         protected VKey[] Keys(params VKey[] keys) {
+            if (keys == null ||keys.Length == 0) {
+                throw new Exception("You need to add 1 or more keys.");
+            }
             return keys;
         }
     }

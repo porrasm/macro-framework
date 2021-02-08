@@ -6,7 +6,10 @@ using MacroFramework.Input;
 namespace MacroFramework {
     public class MacroSettings {
 
-        public static bool KeyListenerEnabled = true;
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        internal static bool KeyListenerEnabled = true;
 
         /// <summary>
         /// The dedicated key on the keyboard which activates the text command mode.

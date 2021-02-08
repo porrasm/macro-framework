@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// Text command activator
+    /// <see cref="CommandActivator"/> instance for text command callbacks
     /// </summary>
     public class TextActivator : CommandActivator {
 
@@ -24,19 +24,19 @@ namespace MacroFramework.Commands {
         #endregion
 
         /// <summary>
-        /// Creates a new text command activator
+        /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
         /// <param name="command">The command callback</param>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
+        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         public TextActivator(Command.CommandCallback command, params RegexWrapper[] matchers) : base(command) {
             Init(matchers);
         }
 
         /// <summary>
-        /// Creates a new text command activator
+        /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="command">The command callback</param>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects</param>
+        /// <param name="command">The text command callback</param>
+        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         public TextActivator(TextCommandCallback command, params RegexWrapper[] matchers) : base(WrapTextCommand(command)) {
             Init(matchers);
         }
@@ -51,7 +51,7 @@ namespace MacroFramework.Commands {
             return () => cb?.Invoke(TextCommandCreator.CurrentTextCommand);
         }
 
-        public override bool IsActive() {
+        protected override bool IsActivatorActive() {
             foreach (RegexWrapper m in matchers) {
                 if (TextCommands.IsMatchForCommand(m)) {
                     return true;
@@ -59,40 +59,6 @@ namespace MacroFramework.Commands {
             }
 
             return false;
-        }
-    }
-
-    /// <summary>
-    /// Attribute activator for <see cref="TextActivator"/>
-    /// </summary>
-    public class TextActivatorAttribute : ActivatorAttribute {
-
-        #region fields
-        private string match;
-        private MatchType type;
-
-        public enum MatchType {
-            StringMatch,
-            RegexPattern
-        }
-        #endregion
-
-        /// <summary>
-        /// Creates a new text command activator
-        /// </summary>
-        /// <param name="match">The exact string match or regex pattern</param>
-        /// <param name="type"></param>
-        public TextActivatorAttribute(string match, MatchType type = MatchType.StringMatch) {
-            this.match = match;
-            this.type = type;
-        }
-
-        public override ICommandActivator GetCommandActivator(Command c, MethodInfo m) {
-            if (type == MatchType.StringMatch) {
-                return new TextActivator((s) => m?.Invoke(c, null), match);
-            } else {
-                return new TextActivator((s) => m?.Invoke(c, null), new RegexWrapper(new Regex(match)));
-            }
         }
     }
 }

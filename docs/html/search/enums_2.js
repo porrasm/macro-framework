@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vkey_291',['VKey',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b',1,'MacroFramework']]]
+  ['matchtype_315',['MatchType',['../class_macro_framework_1_1_commands_1_1_attributes_1_1_text_activator_attribute.html#aa5906f921eefb38247431185940cdfe4',1,'MacroFramework::Commands::Attributes::TextActivatorAttribute']]]
 ];

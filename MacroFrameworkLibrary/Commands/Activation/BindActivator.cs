@@ -13,20 +13,32 @@ namespace MacroFramework.Commands {
     public class BindActivator : CommandActivator {
 
         #region fields
+        /// <summary>
+        /// The key event activation filter for this activator
+        /// </summary>
         public ActivationEventType ActivationType { get; set; }
+        /// <summary>
+        /// The key match filter for this activator
+        /// </summary>
         public KeyMatchType MatchType { get; set; }
+        /// <summary>
+        /// The key order filter for this activator
+        /// </summary>
         public KeyPressOrder Order { get; set; }
+        /// <summary>
+        /// The keys which need to be pressed
+        /// </summary>
         public VKey[] Keys { get; set; }
         #endregion
 
         /// <summary>
         /// Creates a new <see cref="BindActivator"/> instance
         /// </summary>
-        /// <param name="command">The callback which is executed when this becomes active</param>
-        /// <param name="activationType">The eventy type filter</param>
-        /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
-        /// <param name="matchType">Match type corresponding to how the match is determined</param>
-        /// <param name="keys"></param>
+        /// <param name="command">The callback to be called when this activator becomes active</param>
+        /// <param name="keys"><see cref="Keys"/></param>
+        /// <param name="activationType">see<see cref="ActivationType"/></param>
+        /// <param name="matchType"><see cref="MatchType"/></param>
+        /// <param name="order"><see cref="Order"/></param>
         public BindActivator(Command.CommandCallback command, VKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(command) {
             this.ActivationType = activationType;
             this.MatchType = matchType;
@@ -34,7 +46,7 @@ namespace MacroFramework.Commands {
             this.Keys = keys;
         }
 
-        public override bool IsActive() {
+        protected override bool IsActivatorActive() {
             KeyEvent k = KeyEvents.CurrentKeyEvent;
             if (IsMatchingActivationEventType(k.ActivationType)) {
                 return KeyState.IsMatchingKeyState(MatchType, Order, Keys);
@@ -50,50 +62,6 @@ namespace MacroFramework.Commands {
                 return true;
             }
             return ActivationType == type;
-        }
-    }
-
-    /// <summary>
-    /// Activator attribute for <see cref="BindActivator"/>
-    /// </summary>
-    public class BindActivatorAttribute : ActivatorAttribute {
-
-        #region fields
-        private bool useDefaults;
-        private ActivationEventType activationType;
-        private KeyPressOrder order;
-
-        public VKey[] Keys { get; }
-        #endregion
-
-        /// <summary>
-        /// Creates a new <see cref="BindActivator"/> instance
-        /// </summary>
-        /// <param name="activationType">The eventy type filter</param>
-        /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
-        /// <param name="keys"></param>
-        public BindActivatorAttribute(params VKey[] keys) {
-            this.Keys = keys;
-            useDefaults = true;
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="BindActivator"/> instance
-        /// </summary>
-        /// <param name="activationType">The eventy type filter</param>
-        /// <param name="order">Determines whether keys should be pressed in the given parameter order</param>
-        /// <param name="keys"></param>
-        public BindActivatorAttribute(ActivationEventType activationType, KeyPressOrder order, params VKey[] keys) {
-            this.activationType = activationType;
-            this.order = order;
-            this.Keys = keys;
-        }
-
-        public override ICommandActivator GetCommandActivator(Command c, MethodInfo m) {
-            if (useDefaults) {
-                return new BindActivator(() => m.Invoke(c, null), Keys);
-            }
-            return new BindActivator(() => m.Invoke(c, null), Keys, activationType: activationType, order: order);
         }
     }
 }
