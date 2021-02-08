@@ -7,7 +7,7 @@ namespace MacroFramework {
     public class MacroSettings {
 
         /// <summary>
-        /// Deprecated
+        /// Not yet implemented. Dooes not have any effect and the key listener is always active.
         /// </summary>
         internal static bool KeyListenerEnabled = true;
 
@@ -27,12 +27,12 @@ namespace MacroFramework {
         public VKey CommandActivateKey = VKey.RETURN;
 
         /// <summary>
-        /// The dedicated key which enabled the <see cref="InputHook"/>
+        /// Not yet implemented. The dedicated key which enabled the <see cref="InputHook"/>
         /// </summary>
         public VKey ListenerEnableKey = VKey.NONE;
 
         /// <summary>
-        /// The dedicated key which disables the <see cref="InputHook"/>
+        /// Not yet implemented. The dedicated key which disables the <see cref="InputHook"/>
         /// </summary>
         public VKey ListenerDisableKey = VKey.NONE;
 
@@ -49,6 +49,6 @@ namespace MacroFramework {
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop
         /// </summary>
-        public int MainLoopTimestep = 1000;
+        public int MainLoopTimestep = 250;
     }
 }

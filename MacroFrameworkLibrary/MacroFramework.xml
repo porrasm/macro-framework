@@ -447,14 +447,20 @@
         </member>
         <member name="P:MacroFramework.Commands.TextCommands.CommandWasAccepted">
             <summary>
-            True if the command was accepted by some <see cref="T:MacroFramework.Commands.TextActivator"/> instance. Remains the same value until the next <see cref="M:MacroFramework.Commands.TextCommands.Execute(System.String)"/>
+            True if the command was accepted by some <see cref="T:MacroFramework.Commands.TextActivator"/> instance. Remains the same value until the next <see cref="!:Execute(string)"/>
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.TextCommands.Execute(System.String)">
+        <member name="M:MacroFramework.Commands.TextCommands.Execute(System.String,System.Boolean)">
             <summary>
-            Executes any given string command and notifies all <see cref="T:MacroFramework.Commands.TextActivator"/> instances
+            Executes or queues any given string command and notifies all <see cref="T:MacroFramework.Commands.TextActivator"/> instances
             </summary>
-            <param name="s"></param>
+            <param name="command">The command to execute</param>
+            <param name="runImmediately">If true the command is executed immediately. This can cause infinite loops if a <see cref="T:MacroFramework.Commands.TextActivator"/> calls this method. Use with caution. If false the text command is executed at the next main update loop.</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextCommands.ExecuteTextCommandQueue">
+            <summary>
+            Executes the queued up string commands
+            </summary>
         </member>
         <member name="M:MacroFramework.Commands.TextCommands.IsMatchForCommand(MacroFramework.Tools.RegexWrapper)">
             <summary>
@@ -1449,7 +1455,7 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.KeyListenerEnabled">
             <summary>
-            Deprecated
+            Not yet implemented. Dooes not have any effect and the key listener is always active.
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.CommandKey">
@@ -1469,12 +1475,12 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.ListenerEnableKey">
             <summary>
-            The dedicated key which enabled the <see cref="T:MacroFramework.Input.InputHook"/>
+            Not yet implemented. The dedicated key which enabled the <see cref="T:MacroFramework.Input.InputHook"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.ListenerDisableKey">
             <summary>
-            The dedicated key which disables the <see cref="T:MacroFramework.Input.InputHook"/>
+            Not yet implemented. The dedicated key which disables the <see cref="T:MacroFramework.Input.InputHook"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.InterceptGeneralBindKey">

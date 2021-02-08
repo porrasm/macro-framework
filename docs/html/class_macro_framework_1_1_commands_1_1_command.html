@@ -95,6 +95,15 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 
 <p>Base class for all macro functionality  
  <a href="class_macro_framework_1_1_commands_1_1_command.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for MacroFramework.Commands.Command:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_macro_framework_1_1_commands_1_1_command.png" usemap="#MacroFramework.Commands.Command_map" alt=""/>
+  <map id="MacroFramework.Commands.Command_map" name="MacroFramework.Commands.Command_map">
+<area href="class_text_activator_example.html" alt="TextActivatorExample" shape="rect" coords="0,56,236,80"/>
+  </map>
+</div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,10 +117,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance  <a href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">More...</a><br /></td></tr>
 <tr class="separator:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c6e89629a063446aa913a83257fea8c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">OnStart</a> ()</td></tr>
-<tr class="memdesc:a3c6e89629a063446aa913a83257fea8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after Macros.Start(Setup)  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">More...</a><br /></td></tr>
+<tr class="memdesc:a3c6e89629a063446aa913a83257fea8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after <a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a" title="Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadA...">Macros.Start(Setup)</a>  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">More...</a><br /></td></tr>
 <tr class="separator:a3c6e89629a063446aa913a83257fea8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c2fcabd6dd4d73e76124dca374d777d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">OnClose</a> ()</td></tr>
-<tr class="memdesc:a3c2fcabd6dd4d73e76124dca374d777d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after Macros.Stop  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">More...</a><br /></td></tr>
+<tr class="memdesc:a3c2fcabd6dd4d73e76124dca374d777d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after <a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174" title="Stops the MacroFramework application">Macros.Stop</a>  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">More...</a><br /></td></tr>
 <tr class="separator:a3c2fcabd6dd4d73e76124dca374d777d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">OnTextCommand</a> (string command, bool commandWasAccepted)</td></tr>
 <tr class="memdesc:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called whenever a text command is executed  <a href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">More...</a><br /></td></tr>
@@ -208,6 +217,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Abstract method for initializing <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">Commands.IActivator</a> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator. </p>
 
+<p>Reimplemented in <a class="el" href="class_text_activator_example.html#a8b5aae33fa4aceab36f083c0a2d71d8a">TextActivatorExample</a>.</p>
+
 </div>
 </div>
 <a id="a71eb8bbd8a7026d3cec726b427233364"></a>
@@ -296,7 +307,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Called after Macros.Stop </p>
+<p>Called after <a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174" title="Stops the MacroFramework application">Macros.Stop</a> </p>
 
 </div>
 </div>
@@ -323,7 +334,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Called after Macros.Start(Setup) </p>
+<p>Called after <a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a" title="Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadA...">Macros.Start(Setup)</a> </p>
 
 </div>
 </div>
@@ -369,6 +380,8 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Reimplemented in <a class="el" href="class_text_activator_example.html#ab5723416343d1380e3c859d7b4b4db33">TextActivatorExample</a>.</p>
 
 </div>
 </div>

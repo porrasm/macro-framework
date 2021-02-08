@@ -3,6 +3,7 @@ var namespace_macro_framework =
     [ "Commands", "namespace_macro_framework_1_1_commands.html", "namespace_macro_framework_1_1_commands" ],
     [ "Input", "namespace_macro_framework_1_1_input.html", "namespace_macro_framework_1_1_input" ],
     [ "Tools", "namespace_macro_framework_1_1_tools.html", "namespace_macro_framework_1_1_tools" ],
+    [ "Macros", "class_macro_framework_1_1_macros.html", "class_macro_framework_1_1_macros" ],
     [ "MacroSettings", "class_macro_framework_1_1_macro_settings.html", "class_macro_framework_1_1_macro_settings" ],
     [ "Setup", "class_macro_framework_1_1_setup.html", "class_macro_framework_1_1_setup" ],
     [ "VKey", "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b", [

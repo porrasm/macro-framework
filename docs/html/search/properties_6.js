@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settings_510',['Settings',['../class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4',1,'MacroFramework::Setup']]]
+  ['running_561',['Running',['../class_macro_framework_1_1_macros.html#a9bd6c4eb3e62138f8a4d514f791ca3dd',1,'MacroFramework::Macros']]]
 ];

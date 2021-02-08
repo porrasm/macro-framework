@@ -16,15 +16,23 @@ var annotated_dup =
         [ "KeyActivator", "class_macro_framework_1_1_commands_1_1_key_activator.html", "class_macro_framework_1_1_commands_1_1_key_activator" ],
         [ "TextActivator", "class_macro_framework_1_1_commands_1_1_text_activator.html", "class_macro_framework_1_1_commands_1_1_text_activator" ],
         [ "TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", "class_macro_framework_1_1_commands_1_1_timer_activator" ],
-        [ "Command", "class_macro_framework_1_1_commands_1_1_command.html", "class_macro_framework_1_1_commands_1_1_command" ]
+        [ "Command", "class_macro_framework_1_1_commands_1_1_command.html", "class_macro_framework_1_1_commands_1_1_command" ],
+        [ "CommandContainer", "class_macro_framework_1_1_commands_1_1_command_container.html", "class_macro_framework_1_1_commands_1_1_command_container" ],
+        [ "TextCommands", "class_macro_framework_1_1_commands_1_1_text_commands.html", "class_macro_framework_1_1_commands_1_1_text_commands" ]
       ] ],
       [ "Input", "namespace_macro_framework_1_1_input.html", [
-        [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ]
+        [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
+        [ "KeyEvents", "class_macro_framework_1_1_input_1_1_key_events.html", "class_macro_framework_1_1_input_1_1_key_events" ],
+        [ "KeyState", "class_macro_framework_1_1_input_1_1_key_state.html", "class_macro_framework_1_1_input_1_1_key_state" ]
       ] ],
       [ "Tools", "namespace_macro_framework_1_1_tools.html", [
-        [ "RegexWrapper", "class_macro_framework_1_1_tools_1_1_regex_wrapper.html", "class_macro_framework_1_1_tools_1_1_regex_wrapper" ]
+        [ "Regexes", "class_macro_framework_1_1_tools_1_1_regexes.html", "class_macro_framework_1_1_tools_1_1_regexes" ],
+        [ "RegexWrapper", "class_macro_framework_1_1_tools_1_1_regex_wrapper.html", "class_macro_framework_1_1_tools_1_1_regex_wrapper" ],
+        [ "Timer", "class_macro_framework_1_1_tools_1_1_timer.html", "class_macro_framework_1_1_tools_1_1_timer" ]
       ] ],
+      [ "Macros", "class_macro_framework_1_1_macros.html", "class_macro_framework_1_1_macros" ],
       [ "MacroSettings", "class_macro_framework_1_1_macro_settings.html", "class_macro_framework_1_1_macro_settings" ],
       [ "Setup", "class_macro_framework_1_1_setup.html", "class_macro_framework_1_1_setup" ]
-    ] ]
+    ] ],
+    [ "TextActivatorExample", "class_text_activator_example.html", "class_text_activator_example" ]
 ];

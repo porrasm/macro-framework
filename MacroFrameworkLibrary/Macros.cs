@@ -44,8 +44,13 @@ namespace MacroFramework {
             while (Running) {
                 OnMainLoop?.Invoke();
                 CommandContainer.UpdateActivators<TimerActivator>();
-                await Task.Delay(Setup.Instance.Settings.MainLoopTimestep);
+                TextCommands.ExecuteTextCommandQueue();
+                await Task.Delay(Max(1, Setup.Instance.Settings.MainLoopTimestep));
             }
+        }
+
+        private static int Max(int a, int b) {
+            return a > b ? a : b;
         }
 
         /// <summary>

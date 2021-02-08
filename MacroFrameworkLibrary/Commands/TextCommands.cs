@@ -19,11 +19,35 @@ namespace MacroFramework.Commands {
         /// </summary>
         internal static bool CommandWasAccepted { get; private set; }
 
+        private static Queue<string> textCommandQueue;
+
+        static TextCommands() {
+            textCommandQueue = new Queue<string>();
+        }
+
         /// <summary>
-        /// Executes any given string command and notifies all <see cref="TextActivator"/> instances
+        /// Executes or queues any given string command and notifies all <see cref="TextActivator"/> instances
         /// </summary>
-        /// <param name="s"></param>
-        public static void Execute(string s) {
+        /// <param name="command">The command to execute</param>
+        /// <param name="runImmediately">If true the command is executed immediately. This can cause infinite loops if a <see cref="TextActivator"/> calls this method. Use with caution. If false the text command is executed at the next main update loop.</param>
+        public static void Execute(string command, bool runImmediately = false) {
+            if (runImmediately) {
+                ExecuteStringCommand(command);
+            } else {
+                textCommandQueue.Enqueue(command);
+            }
+        }
+
+        /// <summary>
+        /// Executes the queued up string commands
+        /// </summary>
+        internal static void ExecuteTextCommandQueue() {
+            while (textCommandQueue.Count > 0) {
+                ExecuteStringCommand(textCommandQueue.Dequeue());
+            }
+        }
+
+        private static void ExecuteStringCommand(string s) {
             CurrentTextCommand = s;
             CommandWasAccepted = false;
             CommandContainer.UpdateActivators<TextActivator>();

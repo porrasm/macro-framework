@@ -2,12 +2,13 @@
 
 ## Links
 
-- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html)
 - [Nuget](https://www.nuget.org/packages/MacroFramework/)
+- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html)
+- [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html)
 
 ## Warning
 
-Project is in very early stage. Many things will change. There are bugs and prepare to refactor things after updating.
+Project is in very early stage. Many things will change. Prepare to refactor things after each update.
 
 ## Quick setup
 
@@ -21,11 +22,10 @@ You only need to setup 1 thing for this library. Inherit the `Setup` class and i
 
 ```C#
 using MacroFramework;
-
 public class MySetup : Setup {
 
-    // Return the executing Assembly for automatic Command activation 
-    // or null if you don't want this feature.
+    // Return the Assembly containing your Command classes 
+    // or or null if you don't want automatic Command activation.
     protected override Assembly GetMainAssembly() {
         return Assembly.GetExecutingAssembly();
     }
@@ -40,13 +40,14 @@ public class MySetup : Setup {
 
 ### 3 Create a macro
 
-This command will open Notepad when the 'left control' and 'n' are pressed in order.
+This command will open Notepad when you press 'left control' and 'n' in order and release the keys.
 
 ```C#
 using MacroFramework.Commands;
+using MacroFramework.Commands.Attributes;
 
 public class NotepadCommand : Command {
-    [BindActivator(ActivationEventType.OnPress, KeyPressOrder.Ordered, VKey.LCONTROL, VKey.N)]
+    [BindActivator(VKey.LCONTROL, VKey.N)]
     private void OpenNotepad() {
         System.Diagnostics.Process.Start("Notepad.exe");
     }
@@ -66,7 +67,7 @@ CommandContainer.AddCommand(new NotepadCommand());
 Start the Macro framework with your custom setup class as a paremeter.
 
 ```C#
-public static class Program {
+public class QuickSetupCodeExample {
     [STAThread]
     static void Main(string[] args) {
         MacroFramework.Macros.Start(new MySetup());
@@ -74,6 +75,8 @@ public static class Program {
 }
 ```
 
+You have now started the application with a single macros. Ctrl+N will open the notepad for you!
+
 ### 5 Read the 'Geting started' guide
 
---link-to-guide
+For more in depth guide read the [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html) guide.

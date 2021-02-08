@@ -9,6 +9,8 @@ var namespace_macro_framework_1_1_commands =
     [ "TextActivator", "class_macro_framework_1_1_commands_1_1_text_activator.html", "class_macro_framework_1_1_commands_1_1_text_activator" ],
     [ "TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", "class_macro_framework_1_1_commands_1_1_timer_activator" ],
     [ "Command", "class_macro_framework_1_1_commands_1_1_command.html", "class_macro_framework_1_1_commands_1_1_command" ],
+    [ "CommandContainer", "class_macro_framework_1_1_commands_1_1_command_container.html", "class_macro_framework_1_1_commands_1_1_command_container" ],
+    [ "TextCommands", "class_macro_framework_1_1_commands_1_1_text_commands.html", "class_macro_framework_1_1_commands_1_1_text_commands" ],
     [ "ActivationEventType", "namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6", [
       [ "OnFirstRelease", "namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6af556947e34ed4e02ebeded4c712b2e1d", null ],
       [ "OnAnyRelease", "namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6a31bdfe07cd3896013434ce2cc2391174", null ],

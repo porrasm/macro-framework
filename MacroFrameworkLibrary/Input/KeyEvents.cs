@@ -76,18 +76,18 @@ namespace MacroFramework.Input {
             KeyEvent k = new KeyEvent(key, state, KeyState.GetCurrentActivationEventType());
 
             #region check enabled
-            if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
-                MacroSettings.KeyListenerEnabled = true;
-                KeyState.ResetKeys();
-                return true;
-            } else if (k.Key == Setup.Instance.Settings.ListenerDisableKey) {
-                MacroSettings.KeyListenerEnabled = false;
-                KeyState.ResetKeys();
-                return true;
-            }
-            if (!MacroSettings.KeyListenerEnabled) {
-                return false;
-            }
+            //if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
+            //    MacroSettings.KeyListenerEnabled = true;
+            //    KeyState.ResetKeys();
+            //    return true;
+            //} else if (k.Key == Setup.Instance.Settings.ListenerDisableKey) {
+            //    MacroSettings.KeyListenerEnabled = false;
+            //    KeyState.ResetKeys();
+            //    return true;
+            //}
+            //if (!MacroSettings.KeyListenerEnabled) {
+            //    return false;
+            //}
             #endregion
 
             keyEventQueue.Enqueue(k);

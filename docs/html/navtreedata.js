@@ -25,6 +25,21 @@
 var NAVTREE =
 [
   [ "MacroFramework", "index.html", [
+    [ "Getting started", "md_markdown_getting_started.html", [
+      [ "Setup", "md_markdown_getting_started.html#autotoc_md1", null ],
+      [ "Using the framework", "md_markdown_getting_started.html#autotoc_md2", null ],
+      [ "How it works", "md_markdown_getting_started.html#autotoc_md3", [
+        [ "The command class", "md_markdown_getting_started.html#autotoc_md4", null ]
+      ] ],
+      [ "Keybinds and keyevents", "md_markdown_getting_started.html#autotoc_md5", [
+        [ "The general bind key", "md_markdown_getting_started.html#autotoc_md6", null ]
+      ] ],
+      [ "TimerActivator", "md_markdown_getting_started.html#autotoc_md7", null ],
+      [ "Text commands", "md_markdown_getting_started.html#autotoc_md8", [
+        [ "Command mode", "md_markdown_getting_started.html#autotoc_md9", null ],
+        [ "TextActivator", "md_markdown_getting_started.html#autotoc_md10", null ]
+      ] ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -50,7 +65,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367"
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
