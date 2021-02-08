@@ -41,11 +41,12 @@ namespace MacroFramework {
         }
 
         private static async void MainLoop() {
+            int timeStep = Setup.Instance.Settings.MainLoopTimestep;
             while (Running) {
                 OnMainLoop?.Invoke();
                 CommandContainer.UpdateActivators<TimerActivator>();
                 TextCommands.ExecuteTextCommandQueue();
-                await Task.Delay(Max(1, Setup.Instance.Settings.MainLoopTimestep));
+                await Task.Delay(Max(1, timeStep));
             }
         }
 
