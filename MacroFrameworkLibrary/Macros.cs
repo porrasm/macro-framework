@@ -17,6 +17,11 @@ namespace MacroFramework {
         public static bool Running { get; private set; }
 
         /// <summary>
+        /// Pauses the application such that no activators are updated. Only the <see cref="OnMainLoop"/> delegate is called during pause mode.
+        /// </summary>
+        public static bool Paused { get; set; }
+
+        /// <summary>
         /// Void callback
         /// </summary>
         public delegate void MainLoopCallback();
@@ -35,6 +40,7 @@ namespace MacroFramework {
             }
             Setup.SetInstance(setup);
             Running = true;
+            KeyEvents.Initialize();
             DeviceHook.StartKeyboardHook();
             CommandContainer.Start();
             MainLoop();
@@ -45,6 +51,7 @@ namespace MacroFramework {
             int timeStep = Setup.Instance.Settings.MainLoopTimestep;
             while (Running) {
                 OnMainLoop?.Invoke();
+                KeyEvents.HandleQueuedKeyevents();
                 CommandContainer.UpdateActivators<TimerActivator>();
                 TextCommands.ExecuteTextCommandQueue();
                 await Task.Delay(Max(1, timeStep));

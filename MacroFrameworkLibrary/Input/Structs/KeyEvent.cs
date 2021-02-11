@@ -1,5 +1,6 @@
 ﻿using MacroFramework.Commands;
 using MacroFramework.Input;
+using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -46,11 +47,15 @@ namespace MacroFramework.Input {
 
         public bool IsMouse => false;
 
+        public long ReceiveTimestamp { get; }
 
         /// <summary>
         /// Creates a new <see cref="KeyEvent"/> instance from a low level input event
         /// </summary>
         internal KeyEvent(IntPtr wParam, KBDLLHOOKSTRUCT rawData) {
+
+            ReceiveTimestamp = Timer.Milliseconds;
+
             WindowsMessage msg = (WindowsMessage)wParam;
             State = msg == WindowsMessage.KEYDOWN || msg == WindowsMessage.SYSKEYDOWN;
             flags = rawData.flags;

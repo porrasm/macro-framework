@@ -28,7 +28,7 @@ namespace MacroFramework {
         public KKey CommandActivateKey = KKey.Enter;
 
         /// <summary>
-        /// Not yet implemented. The dedicated key which enabled the <see cref="InputHook"/>
+        /// Not yet implemented. The dedicated key which enables the framework.
         /// </summary>
         public KKey ListenerEnableKey = KKey.None;
 
@@ -36,11 +36,6 @@ namespace MacroFramework {
         /// Not yet implemented. The dedicated key which disables the <see cref="InputHook"/>
         /// </summary>
         public KKey ListenerDisableKey = KKey.None;
-
-        /// <summary>
-        /// If true the <see cref="MacroSettings.GeneralBindKey"/> is intercepted such that other applications do not register it (not abosolutely certain)
-        /// </summary>
-        public bool InterceptGeneralBindKey = true;
 
         /// <summary>
         /// The timeout after the last keypress after which command mode is canceled

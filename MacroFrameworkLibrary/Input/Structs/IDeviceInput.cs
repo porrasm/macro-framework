@@ -36,5 +36,10 @@ namespace MacroFramework.Input {
         /// Specifies if the event is a mouse key
         /// </summary>
         bool IsMouse { get; }
+
+        /// <summary>
+        /// The time in milliseconds when it was received. See <see cref="MacroFramework.Tools.Timer"/>.
+        /// </summary>
+        long ReceiveTimestamp { get; }
     }
 }

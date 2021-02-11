@@ -37,7 +37,12 @@ namespace MacroFramework.Input {
             public uint globalIndex;
         }
 
-        public static long LastKeyPress { get; private set; }
+        /// <summary>
+        /// The timestamp for the last keyevent
+        /// </summary>
+        public static long LastKeyEventTime { get; private set; }
+
+        private static long lastSafeReset;
         #endregion
 
         static KeyStates() {
@@ -50,6 +55,7 @@ namespace MacroFramework.Input {
             AbsoluteKeystates = new AutoDict<KKey, bool>();
             keyDown = new AutoDict<KKey, State>();
             keyUp = new AutoDict<KKey, State>();
+            lastSafeReset = Timer.Milliseconds;
         }
 
         /// <summary>
@@ -57,18 +63,7 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <returns></returns>
         public static long TimeSinceLastKeyPress() {
-            return Timer.PassedFrom(LastKeyPress);
-        }
-
-        /// <summary>
-        /// Checks for an invalid VKey code e.g. a nonkey event sent by a Gamepad.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        // DEPRECATED
-        internal static bool IsInvalidKey(VKey key) {
-            return false;
-            // return !AbsoluteKeystates.ContainsKey(key);
+            return Timer.PassedFrom(LastKeyEventTime);
         }
 
         /// <summary>
@@ -77,34 +72,20 @@ namespace MacroFramework.Input {
         /// <param name="key"></param>
         /// <param name="value"></param>
         internal static void AddAbsoluteEvent(KeyEvent k) {
-            if (k.Unique) {
-                if (k.State && !IsPressingKey(k.Key)) {
-                    keyDownCount++;
-                } else if (IsPressingKey(k.Key)) {
-                    keyDownCount--;
-                }
-            }
-
-            LastKeyPress = Timer.Milliseconds;
+            LastKeyEventTime = Timer.Milliseconds;
             currentKeyEvent = k;
             AbsoluteKeystates[k.Key] = k.State;
         }
 
         internal static bool IsUniqueEvent(KKey k, bool state) {
-            if (state) {
-                if (IsPressingKey(k)) {
-                    return false;
-                }
-            }
-            return true;
+            return state ? !AbsoluteKeystates[k] : true;
         }
 
         internal static bool AddKeyEvent(KeyEvent k) {
+            SafeReset();
             if (!k.Unique) {
                 return false;
             }
-
-            Console.WriteLine("Key event: " + k);
 
             // Bug with keydowncount
 
@@ -112,14 +93,31 @@ namespace MacroFramework.Input {
                 State state = keyDown[k.Key];
                 SetState(ref state);
                 keyDown[k.Key] = state;
+                keyDownCount++;
             } else {
                 State state = keyUp[k.Key];
                 SetState(ref state);
                 keyUp[k.Key] = state;
+                keyDownCount--;
             }
 
-            Console.WriteLine("KeyDown count: " + keyDownCount);
             return true;
+        }
+
+        /// <summary>
+        /// Temporary solution for possible state mismatch due to lag/exceptions
+        /// </summary>
+        private static void SafeReset() {
+            if (Timer.PassedFrom(lastSafeReset) < 5000) {
+                return;
+            }
+            lastSafeReset = Timer.Milliseconds;
+            keyDownCount = 0;
+            foreach (KKey k in keyDown.Dictionary.Keys) {
+                if (IsPressingKey(k)) {
+                    keyDownCount++;
+                }
+            }
         }
 
         private static void SetState(ref State state) {

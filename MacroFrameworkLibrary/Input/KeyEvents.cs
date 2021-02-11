@@ -1,193 +1,123 @@
 ﻿using MacroFramework.Commands;
-using MacroFramework.Input;
 using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Input {
-    // Soon to be rewritten, code is smelly
-    /// <summary>
-    /// The static class handling all input key events.
-    /// </summary>
     public static class KeyEvents {
 
         #region fields
         /// <summary>
-        /// Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
+        /// A delegate for receiving keyevents from the framework
         /// </summary>
-        public static KeyEvent CurrentKeyEvent { get; private set; }
-
-        internal static bool CommandMode { get; private set; }
-
-        internal static bool GeneralKeyBind { get; private set; }
-
-        private static Queue<KeyEvent> keyEventQueue;
-
-        private static HashSet<KKey> blockKeys;
-
         public delegate bool KeyCallbackFunc(KeyEvent k);
-
-
 
         /// <summary>
         /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
         public static KeyCallbackFunc KeyCallback { get; set; }
+
+        /// <summary>
+        /// Use this block keys from other applications
+        /// </summary>
+        public static HashSet<KKey> BlockedKeys { get; set; }
+
+        private static Queue<KeyEvent> keyEventQueue;
+
+        /// <summary>
+        /// Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
+        /// </summary>
+        public static KeyEvent CurrentKeyEvent { get; private set; }
         #endregion
 
-        static KeyEvents() {
+        public static void Initialize() {
             keyEventQueue = new Queue<KeyEvent>();
-            blockKeys = new HashSet<KKey>();
+            BlockedKeys = new HashSet<KKey>();
         }
 
+        #region hook key event
         /// <summary>
-        /// Set the block status for a given key. If true is set, the key is blocked and other applications won't get the keyevent. The blocking of the key is not absolutely certain.
+        /// You can use this method to send virtual input within the application.
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="status"></param>
-        internal static void SetKeyBlockStatus(KKey key, bool status) {
-            if (status) {
-                blockKeys.Add(key);
-            } else {
-                blockKeys.Remove(key);
-            }
-        }
-
-        #region hook
-        /// <summary>
-        /// Handles the key press event. When true is returned the key event is intercepted.
-        /// </summary>
-        internal static bool OnHookKeyEvent(KeyEvent k) {
+        /// <param name="k"></param>
+        /// <returns>True if key should be intercepted</returns>
+        public static bool RegisterHookKeyEvent(KeyEvent k) {
             KeyStates.AddAbsoluteEvent(k);
 
-            if (KeyCallback?.Invoke(k) ?? false) {
-                return true;
+            if (Macros.Paused) {
+                Console.WriteLine("Paused");
+                return false;
             }
 
-            HandleQueuedKeyEventsNonBlocking();
-
-            long timeSincePreviousEvent = KeyStates.TimeSinceLastKeyPress();
-
-            #region check enabled
-            //if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
-            //    MacroSettings.KeyListenerEnabled = true;
-            //    KeyState.ResetKeys();
-            //    return true;
-            //} else if (k.Key == Setup.Instance.Settings.ListenerDisableKey) {
-            //    MacroSettings.KeyListenerEnabled = false;
-            //    KeyState.ResetKeys();
-            //    return true;
-            //}
-            //if (!MacroSettings.KeyListenerEnabled) {
-            //    return false;
-            //}
-            #endregion
+            if (KeyCallback?.Invoke(k) ?? false) {
+                Console.WriteLine("Skip queue");
+                return true;
+            }
 
             keyEventQueue.Enqueue(k);
 
-            #region blocking keys
-            if (k.Key == KKey.GeneralBindKey && Setup.Instance.Settings.InterceptGeneralBindKey) {
-                GeneralKeyBind = k.State;
+            if (IsBlockedKey(k)) {
                 return true;
             }
-            if (k.Key == Setup.Instance.Settings.CommandKey && !CommandMode) {
+
+            return BlockedKeys.Contains(k.Key);
+        }
+
+        private static bool IsBlockedKey(KeyEvent k) {
+            if (KeyStates.AbsoluteKeystates[KKey.GeneralBindKey]) {
+                return true;
+            }
+
+            if (k.Key == Setup.Instance.Settings.CommandKey && !TextCommandCreator.IsCommandMode) {
                 if (k.State) {
-                    CommandKeyPress(true, true);
+                    TextCommandCreator.CommandKeyPress(true, true);
                 }
                 return true;
             }
-            #endregion
 
-            #region special modes
-            // General bind mode
-            if (GeneralKeyBind) {
-                return true;
-            }
-
-            // Text command mode
-            if (CommandMode) {
-                if (timeSincePreviousEvent >= Setup.Instance.Settings.TextCommandTimeout) {
-                    Console.WriteLine("End timeout: " + timeSincePreviousEvent);
-                    CommandKeyPress(false, false);
-                    return false;
-                }
-                return true;
-            }
-            #endregion
-
-            return blockKeys.Contains(k.Key);
+            return false;
         }
         #endregion
 
-        #region keyevent
-        internal static async void HandleQueuedKeyEventsNonBlocking() {
-            await Task.Delay(1);
-            HandleQueuedKeyEvents();
-        }
-        internal static void HandleQueuedKeyEvents() {
+        #region handle keyevents
+        public static void HandleQueuedKeyevents() {
             while (keyEventQueue.Count > 0) {
-                OnKeyEvent(keyEventQueue.Dequeue());
+                KeyEvent k = keyEventQueue.Dequeue();
+                HandleKeyEvent(k);
             }
         }
 
-        private static void OnKeyEvent(KeyEvent k) {
+        private static void HandleKeyEvent(KeyEvent k) {
+            Console.WriteLine("KeyEvent: " + k);
+            CurrentKeyEvent = k;
 
-            if (CommandMode) {
-                KeyStates.AddKeyEvent(k);
-                OnCommandMode(k);
-                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
+            if (CheckCommandMode()) {
                 return;
             }
 
             if (k.State) {
                 KeyStates.AddKeyEvent(k);
             }
-
-            CurrentKeyEvent = k;
-
             if (k.Unique) {
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
             }
-
             if (!k.State) {
                 KeyStates.AddKeyEvent(k);
             }
         }
 
-        private static void OnCommandMode(KeyEvent k) {
+        private static bool CheckCommandMode() {
 
-            if (k.Key == Setup.Instance.Settings.CommandKey) {
-                return;
+            // Check command mode
+            if (TextCommandCreator.IsCommandMode) {
+                KeyStates.AddKeyEvent(CurrentKeyEvent);
+                TextCommandCreator.OnCommandMode(CurrentKeyEvent);
+                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
+                return true;
             }
 
-            if (!k.State) {
-                return;
-            }
-
-            if (k.Key == Setup.Instance.Settings.CommandActivateKey) {
-                CommandKeyPress(false, true);
-                return;
-            }
-
-            if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
-                Console.WriteLine("End wrong key");
-                CommandKeyPress(false, false);
-                return;
-            }
-
-            TextCommandCreator.CommandKeyEvent(k);
-        }
-        private static void CommandKeyPress(bool state, bool acceptCommand) {
-            if (state && !CommandMode) {
-                Console.WriteLine("\n Command mode start");
-                TextCommandCreator.StartCommand();
-            } else if (!state && CommandMode) {
-                Console.WriteLine("\n Command mode end");
-                TextCommandCreator.EndCommand(acceptCommand);
-            }
-            CommandMode = state;
+            return false;
         }
         #endregion
     }

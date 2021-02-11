@@ -127,7 +127,7 @@ namespace MacroFramework.Input {
                 if (raw.vkCode != (uint)VKey.UNDEFINED) {
                     KeyEvent k = new KeyEvent(wParam, raw);
 
-                    if (KeyEvents.OnHookKeyEvent(k)) {
+                    if (KeyEvents.RegisterHookKeyEvent(k)) {
                         return BlockCode;
                     }
                 }

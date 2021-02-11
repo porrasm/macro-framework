@@ -69,6 +69,11 @@ namespace MacroFramework.Commands {
         }
 
         private static void UpdateActivators(Type t) {
+
+            if (Macros.Paused) {
+                return;
+            }
+
             if (!typeof(IActivator).IsAssignableFrom(t)) {
                 throw new NotSupportedException("Invalid type argument given: " + t);
             }
