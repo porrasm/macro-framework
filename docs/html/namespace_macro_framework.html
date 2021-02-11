@@ -104,229 +104,660 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:a0576915a83e0b252b11e6da1e20b8caa"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caa">KKey</a> : uint { <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaafa1330c4445ac376262796234d985c1f">F_Custom</a> = 1 &lt;&lt; 8
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaa3be168430f812012def4b45fb0601bf">F_Modifier</a> = F_Custom &lt;&lt; 1
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaad3da07765383008925d8f380fb48c01e">F_Mouse</a> = F_Custom &lt;&lt; 2
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa47998182e2df00dba8622072a28eafbc">F_Numpad</a> = F_Custom &lt;&lt; 3
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa0f543e5cfaa98b1a082f1647960dab66">F_Scroll</a> = F_Custom &lt;&lt; 4
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa8ec020aa6f7a9593d6493e8adcc9b1e0">F_Number</a> = F_Custom &lt;&lt; 5
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa813159b4f78ee76d203895730ee909f6">F_Extended</a> = F_Custom &lt;&lt; 6
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaab793a62071d04193c8a3165cad2327fc">F_Media</a> = F_Custom &lt;&lt; 7
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa8a8d0c86f5ce443df45cc5dbb0ccce62">F_Char</a> = F_Custom &lt;&lt; 8
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa37e5c960e4fff74faba6fe6b0bbe4dd6">F_Stateless</a> = F_Custom &lt;&lt; 10
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaad5240655d513765a421aadb175ae4679">F_Toggle</a> = F_Custom &lt;&lt; 11
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa825a3d98017bab11815ad2817201324c">Shift</a> = F_Custom &lt;&lt; 20 | F_Modifier
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa2b61e0d5977f2e38f06e16281c802b47">Ctrl</a> = F_Custom &lt;&lt; 21 | F_Modifier
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa119eac47719cc9be7b99124712e229da">Win</a> = F_Custom &lt;&lt; 22 | F_Modifier
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaa2e92861b757ab878312dd57993d60cf">Alt</a> = F_Custom &lt;&lt; 23 | F_Modifier
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaae9176594570a633acbd778127900d0d7">M_FlagMask</a> = 0xFFFFFF00
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaac2f0f4f2a98dde10808bbd18f6067364">M_KeyMask</a> = 0xFF
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaec0fc0100c4fc1ce4eea230c3dc10360">Undefined</a> = VKey.UNDEFINED
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaf8d7b8d6eeabd9468ed42e3f04a912a2">LButton</a> = VKey.LBUTTON | F_Mouse
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa6d4e0c82b9a585e331ed1effccd3e52a">RButton</a> = VKey.RBUTTON | F_Mouse
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa96f20306c02231ff2faeb463bf002010">MButton</a> = VKey.MBUTTON | F_Mouse
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaac8e5aa1a680bd64e6fb9313db5b4428">XButton1</a> = VKey.XBUTTON1 | F_Mouse
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa7af9d9a16f813c045a3dbe8068a13f4d">XButton2</a> = VKey.XBUTTON2 | F_Mouse
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa0e3e06c992d1ead056a6861bb46b28a8">D0</a> = VKey.D0 | F_Number | F_Char
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa4a4079e06eb2f7ba7a12821c7c58a3f6">D1</a> = VKey.D1 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaac4d62b6dcca08e5caf06c01889282859">D2</a> = VKey.D2 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaa3deb6e481689f1d3303caecb8a6c401">D3</a> = VKey.D3 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa2521dc256a4368da87585c936b451dd7">D4</a> = VKey.D4 | F_Number | F_Char
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaea8ea3bfaa27cf4c2f61470447c87eea">D5</a> = VKey.D5 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaae06ae0fa0b466d7a0d9696a11fc3246a">D6</a> = VKey.D6 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa94f5a64e61ba849a9213f6b6f62b151d">D7</a> = VKey.D7 | F_Number | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaab1522194d726a396729c3148c2b3a0bd">D8</a> = VKey.D8 | F_Number | F_Char
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaadb7bf1cff0c81595de38f51cd60c62c">D9</a> = VKey.D9 | F_Number | F_Char
+, <b>A</b> = VKey.A | F_Char
+, <b>B</b> = VKey.B | F_Char
+, <b>C</b> = VKey.C | F_Char
+, <br />
+&#160;&#160;<b>D</b> = VKey.D | F_Char
+, <b>E</b> = VKey.E | F_Char
+, <b>F</b> = VKey.F | F_Char
+, <b>G</b> = VKey.G | F_Char
+, <br />
+&#160;&#160;<b>H</b> = VKey.H | F_Char
+, <b>I</b> = VKey.I | F_Char
+, <b>J</b> = VKey.J | F_Char
+, <b>K</b> = VKey.K | F_Char
+, <br />
+&#160;&#160;<b>L</b> = VKey.L | F_Char
+, <b>M</b> = VKey.M | F_Char
+, <b>N</b> = VKey.N | F_Char
+, <b>O</b> = VKey.O | F_Char
+, <br />
+&#160;&#160;<b>P</b> = VKey.P | F_Char
+, <b>Q</b> = VKey.Q | F_Char
+, <b>R</b> = VKey.R | F_Char
+, <b>S</b> = VKey.S | F_Char
+, <br />
+&#160;&#160;<b>T</b> = VKey.T | F_Char
+, <b>U</b> = VKey.U | F_Char
+, <b>V</b> = VKey.V | F_Char
+, <b>W</b> = VKey.W | F_Char
+, <br />
+&#160;&#160;<b>X</b> = VKey.X | F_Char
+, <b>Y</b> = VKey.Y | F_Char
+, <b>Z</b> = VKey.Z | F_Char
+, <b>Numpad0</b> = VKey.NUMPAD0 | F_Numpad | F_Number | F_Char
+, <br />
+&#160;&#160;<b>Numpad1</b> = VKey.NUMPAD1 | F_Numpad | F_Number | F_Char
+, <b>Numpad2</b> = VKey.NUMPAD2 | F_Numpad | F_Number | F_Char
+, <b>Numpad3</b> = VKey.NUMPAD3 | F_Numpad | F_Number | F_Char
+, <b>Numpad4</b> = VKey.NUMPAD4 | F_Numpad | F_Number | F_Char
+, <br />
+&#160;&#160;<b>Numpad5</b> = VKey.NUMPAD5 | F_Numpad | F_Number | F_Char
+, <b>Numpad6</b> = VKey.NUMPAD6 | F_Numpad | F_Number | F_Char
+, <b>Numpad7</b> = VKey.NUMPAD7 | F_Numpad | F_Number | F_Char
+, <b>Numpad8</b> = VKey.NUMPAD8 | F_Numpad | F_Number | F_Char
+, <br />
+&#160;&#160;<b>Numpad9</b> = VKey.NUMPAD9 | F_Numpad | F_Number | F_Char
+, <b>NumpadDot</b> = VKey.DECIMAL | F_Numpad | F_Char
+, <b>NumpadIns</b> = VKey.INSERT | F_Numpad
+, <b>NumpadEnd</b> = VKey.END | F_Numpad
+, <br />
+&#160;&#160;<b>NumpadDown</b> = VKey.DOWN | F_Numpad
+, <b>NumpadPgDn</b> = VKey.NEXT | F_Numpad
+, <b>NumpadLeft</b> = VKey.LEFT | F_Numpad
+, <b>NumpadClear</b> = VKey.CLEAR | F_Numpad
+, <br />
+&#160;&#160;<b>NumpadRight</b> = VKey.RIGHT | F_Numpad
+, <b>NumpadHome</b> = VKey.HOME | F_Numpad
+, <b>NumpadUp</b> = VKey.UP | F_Numpad
+, <b>NumpadPgUp</b> = VKey.PRIOR | F_Numpad
+, <br />
+&#160;&#160;<b>NumpadDel</b> = VKey.DELETE | F_Numpad
+, <b>NumpadDiv</b> = VKey.DIVIDE | F_Numpad | F_Char | F_Extended
+, <b>NumpadMult</b> = VKey.MULTIPLY | F_Numpad | F_Char
+, <b>NumpadSub</b> = VKey.SUBTRACT | F_Numpad | F_Char
+, <br />
+&#160;&#160;<b>NumpadAdd</b> = VKey.ADD | F_Numpad | F_Char
+, <b>NumpadEnter</b> = VKey.RETURN | F_Numpad | F_Extended
+, <b>Numlock</b> = VKey.NUMLOCK | F_Numpad | F_Extended | F_Toggle
+, <b>ScrollLock</b> = VKey.SCROLL | F_Toggle
+, <br />
+&#160;&#160;<b>CapsLock</b> = VKey.CAPITAL | F_Toggle
+, <b>F1</b> = VKey.F1
+, <b>F2</b> = VKey.F2
+, <b>F3</b> = VKey.F3
+, <br />
+&#160;&#160;<b>F4</b> = VKey.F4
+, <b>F5</b> = VKey.F5
+, <b>F6</b> = VKey.F6
+, <b>F7</b> = VKey.F7
+, <br />
+&#160;&#160;<b>F8</b> = VKey.F8
+, <b>F9</b> = VKey.F9
+, <b>F10</b> = VKey.F10
+, <b>F11</b> = VKey.F11
+, <br />
+&#160;&#160;<b>F12</b> = VKey.F12
+, <b>F13</b> = VKey.F13
+, <b>F14</b> = VKey.F14
+, <b>F15</b> = VKey.F15
+, <br />
+&#160;&#160;<b>F16</b> = VKey.F16
+, <b>F17</b> = VKey.F17
+, <b>F18</b> = VKey.F18
+, <b>F19</b> = VKey.F19
+, <br />
+&#160;&#160;<b>F20</b> = VKey.F20
+, <b>F21</b> = VKey.F21
+, <b>F22</b> = VKey.F22
+, <b>F23</b> = VKey.F23
+, <br />
+&#160;&#160;<b>F24</b> = VKey.F24
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa945d5e233cf7d6240f6b783b36a374ff">Left</a> = VKey.LEFT | F_Extended
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa92b09c7c48c520c3c55e497875da437c">Right</a> = VKey.RIGHT | F_Extended
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa258f49887ef8d14ac268c92b02503aaa">Up</a> = VKey.UP | F_Extended
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa08a38277b0309070706f6652eeae9a53">Down</a> = VKey.DOWN | F_Extended
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa667d08af6165c1cb6e72970036a9f7d7">LShift</a> = VKey.LSHIFT | Shift
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa8e707c0a523c7ec2179a6b6821d6eba8">RShift</a> = VKey.RSHIFT | Shift
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa692ed49ff2182a144044181274242db5">LCtrl</a> = VKey.LCONTROL | Ctrl
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa60e5d1d82b2d0c1287331bfca0ab0061">RCtrl</a> = VKey.RCONTROL | Ctrl | F_Extended
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaab527e774a30bf52a69de316727ce4cd">LAlt</a> = VKey.LMENU | Alt
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa067967ae88a4f9ad8cf58e1bb88c32d8">RAlt</a> = VKey.RMENU | Alt | F_Extended
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaabbd44482cc5275bd7b7aee1c5fa60d4a">LWin</a> = VKey.LWIN | Win
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaf0397a08e78cd876d51ad583d3193909">RWin</a> = VKey.RWIN | Win
+, <b>Enter</b> = VKey.RETURN | F_Char
+, <b>Space</b> = VKey.SPACE | F_Char
+, <b>Tab</b> = VKey.TAB | F_Char
+, <br />
+&#160;&#160;<b>Backspace</b> = VKey.BACK
+, <b>Escape</b> = VKey.ESCAPE
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaac863f346e618f9a959b5c95d5d28941">App</a> = VKey.APPS
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaaad4e206408c1c59bfb8a057ba7857446">Context</a> = App
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaafb7fc0d4fce3906ebccad18c03cbbd7a">PrintScrn</a> = VKey.SNAPSHOT | F_Extended
+, <b>Pause</b> = VKey.PAUSE
+, <b>Insert</b> = VKey.INSERT | F_Extended
+, <b>Home</b> = VKey.HOME | F_Extended
+, <br />
+&#160;&#160;<b>End</b> = VKey.END | F_Extended
+, <b>Delete</b> = VKey.DELETE | F_Extended
+, <b>PageUp</b> = VKey.PRIOR | F_Extended
+, <b>PageDown</b> = VKey.NEXT | F_Extended
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa3b9bacad47d80ba436ab9fca2a0afe7d">BrowserBack</a> = VKey.BROWSER_BACK
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaadfef0402778ce8430205b2c875a39cba">BrowserForward</a> = VKey.BROWSER_FORWARD
+, <b>BrowserFavorites</b> = VKey.BROWSER_FAVORITES
+, <b>BrowserHome</b> = VKey.BROWSER_HOME
+, <br />
+&#160;&#160;<b>BrowserRefresh</b> = VKey.BROWSER_REFRESH
+, <b>BrowserSearch</b> = VKey.BROWSER_SEARCH
+, <b>BrowserStop</b> = VKey.BROWSER_STOP
+, <b>MediaNext</b> = VKey.MEDIA_NEXT_TRACK | F_Media
+, <br />
+&#160;&#160;<b>MediaPrev</b> = VKey.MEDIA_PREV_TRACK | F_Media
+, <b>MediaStop</b> = VKey.MEDIA_STOP | F_Media
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa126da17caa4a9238a8c6328cfe706fc1">MediaPlay</a> = VKey.MEDIA_PLAY_PAUSE | F_Media
+, <b>VolumeUp</b> = VKey.VOLUME_UP | F_Media
+, <br />
+&#160;&#160;<b>VolumeDown</b> = VKey.VOLUME_DOWN | F_Media
+, <b>VolumeMute</b> = VKey.VOLUME_MUTE | F_Media
+, <b>LaunchApp1</b> = VKey.LAUNCH_APP1
+, <b>LaunchApp2</b> = VKey.LAUNCH_APP2
+, <br />
+&#160;&#160;<b>LaunchMail</b> = VKey.LAUNCH_MAIL
+, <b>LaunchMediaSelect</b> = VKey.LAUNCH_MEDIA_SELECT
+, <b>Plus</b> = VKey.OEM_PLUS | F_Char
+, <b>Minus</b> = VKey.OEM_MINUS | F_Char
+, <br />
+&#160;&#160;<b>Comma</b> = VKey.OEM_COMMA | F_Char
+, <b>Period</b> = VKey.OEM_PERIOD | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa2422db5c30ae25931668ca0d14ceaa54">Umlaut</a> = VKey.OEM_1 | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaab6ac6f84bcb33f9b5186bda6b4c8b399">Apostrophe</a> = VKey.OEM_2 | F_Char
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaab3426522c7ec61900c76a863534f6a6a">Ö</a> = VKey.OEM_3 | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa8a30532e2e4fbac1d59983c62d910902">tilde</a> = VKey.OEM_4 | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaad2c24d59e0baff4d0155fbdf62590867">Section</a> = VKey.OEM_5 | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa3ea084eb8d3d4a5309d82a0f014842fa">Å</a> = VKey.OEM_6 | F_Char
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaab66491b03046f0846fe4206bc6a0f3c0">Ä</a> = VKey.OEM_7 | F_Char
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa1cfdf0e8d0c87a228c1f40d9bee7888b">Less</a> = VKey.OEM_102 | F_Char
+, <b>OEM_1</b> = Umlaut
+, <b>OEM_2</b> = Apostrophe
+, <br />
+&#160;&#160;<b>OEM_3</b> = Ö
+, <b>OEM_4</b> = tilde
+, <b>OEM_5</b> = Section
+, <b>OEM_6</b> = Å
+, <br />
+&#160;&#160;<b>OEM_7</b> = Ä
+, <b>OEM_8</b> = VKey.OEM_8
+, <b>OEM_102</b> = Less
+, <b>OEM_Clear</b> = VKey.OEM_CLEAR
+, <br />
+&#160;&#160;<b>OEM_Plus</b> = Plus
+, <b>OEM_Minus</b> = Minus
+, <b>OEM_Comma</b> = Comma
+, <b>OEM_Period</b> = Period
+, <br />
+&#160;&#160;<b>Packet</b> = VKey.PACKET
+, <b>Kana</b> = VKey.KANA
+, <b>Junja</b> = VKey.JUNJA
+, <b>Kanji</b> = VKey.KANJI
+, <br />
+&#160;&#160;<b>Convert</b> = VKey.CONVERT
+, <b>NonConvert</b> = VKey.NONCONVERT
+, <b>ModeChange</b> = VKey.MODECHANGE
+, <b>Break</b> = VKey.CANCEL | F_Extended
+, <br />
+&#160;&#160;<b>Clear</b> = VKey.CLEAR | F_Extended
+, <b>Print</b> = VKey.PRINT
+, <b>Final</b> = VKey.FINAL
+, <b>Accept</b> = VKey.ACCEPT
+, <br />
+&#160;&#160;<b>Select</b> = VKey.SELECT
+, <b>Execute</b> = VKey.EXECUTE
+, <b>Help</b> = VKey.HELP
+, <b>Sleep</b> = VKey.SLEEP
+, <br />
+&#160;&#160;<b>Separator</b> = VKey.SEPARATOR
+, <b>ProcessKey</b> = VKey.PROCESSKEY
+, <b>Attn</b> = VKey.ATTN
+, <b>CrSel</b> = VKey.CRSEL
+, <br />
+&#160;&#160;<b>ExSel</b> = VKey.EXSEL
+, <b>EraseEOF</b> = VKey.EREOF
+, <b>Play</b> = VKey.PLAY
+, <b>Zoom</b> = VKey.ZOOM
+, <br />
+&#160;&#160;<b>NoName</b> = VKey.NONAME
+, <b>Pa1</b> = VKey.PA1
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa45100f5f665ad1c0ed85e9cb3a4be8da">WheelLeft</a> = 1 | F_Scroll | F_Mouse | F_Custom | F_Stateless
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa6c94e7d23eef36c2e4d9ce65ebe15d51">WheelRight</a> = 2 | F_Scroll | F_Mouse | F_Custom | F_Stateless
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa050f568559dcada95ba3ecb63de39971">WheelUp</a> = 3 | F_Scroll | F_Mouse | F_Custom | F_Stateless
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa95cf2a3dc58aff6d85e53738a089d9d1">WheelDown</a> = 4 | F_Scroll | F_Mouse | F_Custom | F_Stateless
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaafd060c0c157323f1e43e0704d4f3ffc8">MouseMove</a> = 5 | F_Mouse | F_Custom | F_Stateless
+, <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaad9afa9b3c18e142932762a4270b45b1f">GeneralBindKey</a> = 6 | F_Custom
+, <br />
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caaa6adf97f83acf6453d4a6a4b1070f3754">None</a> = 7 | F_Custom
+<br />
+ }</td></tr>
+<tr class="memdesc:a0576915a83e0b252b11e6da1e20b8caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enhanced list of Virtual Keys.  <a href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caa">More...</a><br /></td></tr>
+<tr class="separator:a0576915a83e0b252b11e6da1e20b8caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1522692dfd9bb4f98d5af79dd9c30a6b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">VKey</a> : ushort { <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab50339a10e1de285ac99d4c3990b8693">NONE</a> = 0x00
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45">LBUTTON</a> = 0x01
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45">LBUTTON</a> = 0x01
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2">RBUTTON</a> = 0x02
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36">CANCEL</a> = 0x03
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3">MBUTTON</a> = 0x04
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3">MBUTTON</a> = 0x04
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf">XBUTTON1</a> = 0x05
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5937d704209f456f093453cba963ac68">XBUTTON2</a> = 0x06
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf">XBUTTON1</a> = 0x05
+, <b>XBUTTON2</b> = 0x06
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0db45d2a4141101bdfe48e3314cfbca3">UNDEFINED</a> = 0x07
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0">BACK</a> = 0x08
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0">BACK</a> = 0x08
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1">TAB</a> = 0x09
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1">TAB</a> = 0x09
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec">CLEAR</a> = 0x0C
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa2bec276a54439fe011eb523b845dac5">RETURN</a> = 0x0D
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c">SHIFT</a> = 0x10
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c">SHIFT</a> = 0x10
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130">CONTROL</a> = 0x11
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badfbfc9cc7a235560f04cb1a5faf1ec3e">ALT</a> = 0x12
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130">CONTROL</a> = 0x11
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3ed53fbeb1eab0443561b68ca0c0b5cf">MENU</a> = 0x12
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891">PAUSE</a> = 0x13
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05">CAPITAL</a> = 0x14
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05">CAPITAL</a> = 0x14
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219">KANA</a> = 0x15
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219">KANA</a> = 0x15
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a">JUNJA</a> = 0x17
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba6c8361dc2036c0559376fe4957699f69">FINAL</a> = 0x18
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109">KANJI</a> = 0x19
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109">KANJI</a> = 0x19
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d">ESCAPE</a> = 0x1B
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d">ESCAPE</a> = 0x1B
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2">CONVERT</a> = 0x1C
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba18f1eefe90bfb7e983bfafa5e3e72286">NONCONVERT</a> = 0x1D
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3">ACCEPT</a> = 0x1E
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3">ACCEPT</a> = 0x1E
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570">MODECHANGE</a> = 0x1F
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570">MODECHANGE</a> = 0x1F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba6506ae39fdca9845e3a6de3865183e57">SPACE</a> = 0x20
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba56a1033a2d5368d197deb9f853cd8ed1">PAGEUP</a> = 0x21
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae4bf0e3d9afa4b59492d1f1a22fb6a37">PRIOR</a> = 0x21
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba47559fb833ff58321570e5e877b467f6">NEXT</a> = 0x22
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba960aeda56eda2981ab0ab39faa825826">PAGEDOWN</a> = 0x22
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905">END</a> = 0x23
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905">END</a> = 0x23
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba710533dd879dd1202e5c73b27705bf02">HOME</a> = 0x24
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba684d325a7303f52e64011467ff5c5758">LEFT</a> = 0x25
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1">UP</a> = 0x26
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1">UP</a> = 0x26
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403">RIGHT</a> = 0x27
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403">RIGHT</a> = 0x27
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac4e0e4e3118472beeb2ae75827450f1f">DOWN</a> = 0x28
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba63225f19fccb18e7c709f1fa11bc738e">SELECT</a> = 0x29
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b">PRINT</a> = 0x2A
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b">PRINT</a> = 0x2A
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a">EXECUTE</a> = 0x2B
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5bb7b84f8c648d0226d6908893635a59">PRINTSCREEN</a> = 0x2C
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a">EXECUTE</a> = 0x2B
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba46b8744c6bc840d2cb241fa165f3e204">SNAPSHOT</a> = 0x2C
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b">INSERT</a> = 0x2D
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e">DELETE</a> = 0x2E
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e">DELETE</a> = 0x2E
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff">HELP</a> = 0x2F
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff">HELP</a> = 0x2F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0e3e06c992d1ead056a6861bb46b28a8">D0</a> = 0x30
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4a4079e06eb2f7ba7a12821c7c58a3f6">D1</a> = 0x31
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859">D2</a> = 0x32
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859">D2</a> = 0x32
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401">D3</a> = 0x33
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401">D3</a> = 0x33
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2521dc256a4368da87585c936b451dd7">D4</a> = 0x34
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baea8ea3bfaa27cf4c2f61470447c87eea">D5</a> = 0x35
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a">D6</a> = 0x36
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a">D6</a> = 0x36
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d">D7</a> = 0x37
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d">D7</a> = 0x37
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab1522194d726a396729c3148c2b3a0bd">D8</a> = 0x38
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baadb7bf1cff0c81595de38f51cd60c62c">D9</a> = 0x39
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29">A</a> = 0x41
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29">A</a> = 0x41
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571">B</a> = 0x42
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571">B</a> = 0x42
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257">C</a> = 0x43
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf623e75af30e62bbd73d6df5b50bb7b5">D</a> = 0x44
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da">E</a> = 0x45
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da">E</a> = 0x45
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012">F</a> = 0x46
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012">F</a> = 0x46
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badfcf28d0734569a6a693bc8194de62bf">G</a> = 0x47
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac1d9f50f86825a1a2302ec2449c17196">H</a> = 0x48
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f">I</a> = 0x49
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f">I</a> = 0x49
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85">J</a> = 0x4A
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85">J</a> = 0x4A
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa5f3c6a11b03839d46af9fb43c97c188">K</a> = 0x4B
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bad20caec3b48a1eef164cb4ca81ba2587">L</a> = 0x4C
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac">M</a> = 0x4D
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac">M</a> = 0x4D
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa">N</a> = 0x4E
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa">N</a> = 0x4E
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf186217753c37b9b9f958d906208506e">O</a> = 0x4F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba44c29edb103a2872f519ad0c9a0fdaaa">P</a> = 0x50
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee">Q</a> = 0x51
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee">Q</a> = 0x51
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6">R</a> = 0x52
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6">R</a> = 0x52
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5dbc98dcc983a70728bd082d1a47546e">S</a> = 0x53
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab9ece18c950afbfa6b0fdbfa4ff731d3">T</a> = 0x54
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb">U</a> = 0x55
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb">U</a> = 0x55
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce">V</a> = 0x56
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce">V</a> = 0x56
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba61e9c06ea9a85a5088a499df6458d276">W</a> = 0x57
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba02129bb861061d1a052c592e2dc6b383">X</a> = 0x58
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0">Y</a> = 0x59
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0">Y</a> = 0x59
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5">Z</a> = 0x5A
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5">Z</a> = 0x5A
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba708f5ef3cba310fb0cb0d6254a71e220">LWIN</a> = 0x5B
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83">RWIN</a> = 0x5C
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17">APPS</a> = 0x5D
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17">APPS</a> = 0x5D
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596">SLEEP</a> = 0x5F
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596">SLEEP</a> = 0x5F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5c9303c9722b2b2c0b6be432b8553b7b">NUMPAD0</a> = 0x60
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930">NUMPAD1</a> = 0x61
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a">NUMPAD2</a> = 0x62
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a">NUMPAD2</a> = 0x62
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367">NUMPAD3</a> = 0x63
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367">NUMPAD3</a> = 0x63
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52">NUMPAD4</a> = 0x64
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9f19473b6cdbced0dd74c756218df969">NUMPAD5</a> = 0x65
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921">NUMPAD6</a> = 0x66
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921">NUMPAD6</a> = 0x66
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178">NUMPAD7</a> = 0x67
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178">NUMPAD7</a> = 0x67
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba7d4b79e0c3dc50fbce01eba1cb17489a">NUMPAD8</a> = 0x68
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baddba9d70ff7b75782aad0b8d17577fd1">NUMPAD9</a> = 0x69
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30">MULTIPLY</a> = 0x6A
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30">MULTIPLY</a> = 0x6A
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d">ADD</a> = 0x6B
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d">ADD</a> = 0x6B
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba70bb8dc90aa233a66b91ae2e9dc1a850">SEPARATOR</a> = 0x6C
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba23ebcc4776b613af25dfbe7c8ce4813e">SUBTRACT</a> = 0x6D
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4">DECIMAL</a> = 0x6E
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4">DECIMAL</a> = 0x6E
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b">DIVIDE</a> = 0x6F
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b">DIVIDE</a> = 0x6F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae1dffc8709f31a4987c8a88334107e89">F1</a> = 0x70
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafe5c3684dce76cdd9f7f42430868aa74">F2</a> = 0x71
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627">F3</a> = 0x72
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627">F3</a> = 0x72
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702">F4</a> = 0x73
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702">F4</a> = 0x73
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba37f438df6a6d5ba4c17ef8ca58562f00">F5</a> = 0x74
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1faf42f2823f184eb2c9f0dffe5d73f2">F6</a> = 0x75
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839">F7</a> = 0x76
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839">F7</a> = 0x76
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7">F8</a> = 0x77
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7">F8</a> = 0x77
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9">F9</a> = 0x78
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab213ce22ca6ad4eda8db82966b9b6e5a">F10</a> = 0x79
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8">F11</a> = 0x7A
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8">F11</a> = 0x7A
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3">F12</a> = 0x7B
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3">F12</a> = 0x7B
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba95dfde4807d4d6a9eec499203b3c24a0">F13</a> = 0x7C
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2468649b6215c4cdd2aef5095b3f5932">F14</a> = 0x7D
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138">F15</a> = 0x7E
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138">F15</a> = 0x7E
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94">F16</a> = 0x7F
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94">F16</a> = 0x7F
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baffa5882d1ddcf903bf0d0dbc30bfc604">F17</a> = 0x80
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba810b30cdfc07fd7fff553a94b828ff78">F18</a> = 0x81
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054">F19</a> = 0x82
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054">F19</a> = 0x82
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc">F20</a> = 0x83
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc">F20</a> = 0x83
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba77e9eee7c579eef5f3731ecf1053c02e">F21</a> = 0x84
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba7fa06ead699fcbd63132370ffe13335a">F22</a> = 0x85
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e">F23</a> = 0x86
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e">F23</a> = 0x86
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273">F24</a> = 0x87
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273">F24</a> = 0x87
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98">NUMLOCK</a> = 0x90
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba71574275cadb387a5082e87e9dd60c25">SCROLL</a> = 0x91
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7">LSHIFT</a> = 0xA0
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7">LSHIFT</a> = 0xA0
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963">RSHIFT</a> = 0xA1
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963">RSHIFT</a> = 0xA1
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba00a5bbecd1f43df5cd19f7f3762ab1e6">LCONTROL</a> = 0xA2
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa14ff7768c5b5ce4bd9bdd94f73fd530">RCONTROL</a> = 0xA3
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371">LMENU</a> = 0xA4
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371">LMENU</a> = 0xA4
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6">RMENU</a> = 0xA5
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6">RMENU</a> = 0xA5
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bafec322bf4681601a7f6f6b027b0f9c9d">BROWSER_BACK</a> = 0xA6
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bad7060c8bd4fe49ffa95f59feac4bd6cb">BROWSER_FORWARD</a> = 0xA7
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24">BROWSER_REFRESH</a> = 0xA8
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24">BROWSER_REFRESH</a> = 0xA8
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f">BROWSER_STOP</a> = 0xA9
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f">BROWSER_STOP</a> = 0xA9
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1d2693c1ec7044ebd2f6b9cc78197147">BROWSER_SEARCH</a> = 0xAA
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baec1f7958f4ad39ffcba494afd9e2d766">BROWSER_FAVORITES</a> = 0xAB
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d">BROWSER_HOME</a> = 0xAC
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d">BROWSER_HOME</a> = 0xAC
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552">VOLUME_MUTE</a> = 0xAD
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552">VOLUME_MUTE</a> = 0xAD
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bab51dc9db6e5110cf7e1bdc44b218ad66">VOLUME_DOWN</a> = 0xAE
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba6749145ac295af704786a39516c5bf40">VOLUME_UP</a> = 0xAF
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081">MEDIA_NEXT_TRACK</a> = 0xB0
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081">MEDIA_NEXT_TRACK</a> = 0xB0
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158">MEDIA_PREV_TRACK</a> = 0xB1
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158">MEDIA_PREV_TRACK</a> = 0xB1
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac0b5dbeb733e6653d4bda740b14b0429">MEDIA_STOP</a> = 0xB2
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9ef9c6dff07300fccd32e9cfab4975d7">MEDIA_PLAY_PAUSE</a> = 0xB3
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244">LAUNCH_MAIL</a> = 0xB4
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244">LAUNCH_MAIL</a> = 0xB4
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca">LAUNCH_MEDIA_SELECT</a> = 0xB5
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca">LAUNCH_MEDIA_SELECT</a> = 0xB5
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca">LAUNCH_APP1</a> = 0xB6
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba03947a404ce77023f33d6aae54865370">LAUNCH_APP2</a> = 0xB7
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3">OEM_1</a> = 0xBA
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3">OEM_1</a> = 0xBA
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33">OEM_PLUS</a> = 0xBB
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33">OEM_PLUS</a> = 0xBB
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165">OEM_COMMA</a> = 0xBC
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba394d7ff659ae0eb05e57cba3dade96e0">OEM_MINUS</a> = 0xBD
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63">OEM_PERIOD</a> = 0xBE
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63">OEM_PERIOD</a> = 0xBE
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf">OEM_2</a> = 0xBF
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf">OEM_2</a> = 0xBF
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae3755e95125ee8953e36af77261a51a1">OEM_3</a> = 0xC0
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9bc809e39ba8b36b7b0a2acbf071228e">OEM_4</a> = 0xDB
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625">OEM_5</a> = 0xDC
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625">OEM_5</a> = 0xDC
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c">OEM_6</a> = 0xDD
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c">OEM_6</a> = 0xDD
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba1e6ab2bcef5e704ea5c213c6360bdc90">OEM_7</a> = 0xDE
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0">OEM_8</a> = 0xDF
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac">OEM_102</a> = 0xE2
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac">OEM_102</a> = 0xE2
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3d8a9773d698588afc94fe487e3868d1">PROCESSKEY</a> = 0xE5
+&#160;&#160;<b>PROCESSKEY</b> = 0xE5
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0334b8669eb43f45f9bccb223186be65">PACKET</a> = 0xE7
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9ba19928f8580dddc1034f923f100c61">ATTN</a> = 0xF6
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0636e7043179b1f82dc5c3895601f25b">CRSEL</a> = 0xF7
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0636e7043179b1f82dc5c3895601f25b">CRSEL</a> = 0xF7
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badeef77e3f3bc57e49c7cf50c3099d09e">EXSEL</a> = 0xF8
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badeef77e3f3bc57e49c7cf50c3099d09e">EXSEL</a> = 0xF8
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bae6331bffb378056de602baa3b4b0dc25">EREOF</a> = 0xF9
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba6a216efc529825c60a4a4c0bc99ad77f">PLAY</a> = 0xFA
+, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba66f276916d5a97cbb3b0008213bda1c3">ZOOM</a> = 0xFB
 , <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba66f276916d5a97cbb3b0008213bda1c3">ZOOM</a> = 0xFB
-, <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d3316769e7d6ec6cef0d40abfd714da">NONAME</a> = 0xFC
+&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba9d3316769e7d6ec6cef0d40abfd714da">NONAME</a> = 0xFC
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa710c83fe312da3eb8c7181f531aa942">PA1</a> = 0xFD
 , <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3f29c1e75a8cf7ee4857bb142816c104">OEM_CLEAR</a> = 0xFE
-, <br />
-&#160;&#160;<a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6baa443514cf0c9c5e29fd41d209187b01c">GENERAL_BIND_KEY</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a1522692dfd9bb4f98d5af79dd9c30a6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enum of virtual key codes.  <a href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b">More...</a><br /></td></tr>
 <tr class="separator:a1522692dfd9bb4f98d5af79dd9c30a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a0576915a83e0b252b11e6da1e20b8caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0576915a83e0b252b11e6da1e20b8caa">&#9670;&nbsp;</a></span>KKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_macro_framework.html#a0576915a83e0b252b11e6da1e20b8caa">MacroFramework.KKey</a> : uint</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An enhanced list of Virtual Keys. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaafa1330c4445ac376262796234d985c1f"></a>F_Custom&#160;</td><td class="fielddoc"><p>Flag for custom defined keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaa3be168430f812012def4b45fb0601bf"></a>F_Modifier&#160;</td><td class="fielddoc"><p>Flag for modifier keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaad3da07765383008925d8f380fb48c01e"></a>F_Mouse&#160;</td><td class="fielddoc"><p>Flag for mouse keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa47998182e2df00dba8622072a28eafbc"></a>F_Numpad&#160;</td><td class="fielddoc"><p>Flag for numpad keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa0f543e5cfaa98b1a082f1647960dab66"></a>F_Scroll&#160;</td><td class="fielddoc"><p>Flag for scroll keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa8ec020aa6f7a9593d6493e8adcc9b1e0"></a>F_Number&#160;</td><td class="fielddoc"><p>Flag for number keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa813159b4f78ee76d203895730ee909f6"></a>F_Extended&#160;</td><td class="fielddoc"><p>Flag for extended keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaab793a62071d04193c8a3165cad2327fc"></a>F_Media&#160;</td><td class="fielddoc"><p>Flag for media keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa8a8d0c86f5ce443df45cc5dbb0ccce62"></a>F_Char&#160;</td><td class="fielddoc"><p>Flag for keys that produce visible characters </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa37e5c960e4fff74faba6fe6b0bbe4dd6"></a>F_Stateless&#160;</td><td class="fielddoc"><p>Flag for stateless keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaad5240655d513765a421aadb175ae4679"></a>F_Toggle&#160;</td><td class="fielddoc"><p>Flag for toggle keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa825a3d98017bab11815ad2817201324c"></a>Shift&#160;</td><td class="fielddoc"><p>Flag for shift keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa2b61e0d5977f2e38f06e16281c802b47"></a>Ctrl&#160;</td><td class="fielddoc"><p>Flag for ctrl keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa119eac47719cc9be7b99124712e229da"></a>Win&#160;</td><td class="fielddoc"><p>Flag for win keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaa2e92861b757ab878312dd57993d60cf"></a>Alt&#160;</td><td class="fielddoc"><p>Flag for alt keys </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaae9176594570a633acbd778127900d0d7"></a>M_FlagMask&#160;</td><td class="fielddoc"><p>Mask for the flag bits </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaac2f0f4f2a98dde10808bbd18f6067364"></a>M_KeyMask&#160;</td><td class="fielddoc"><p>Mask for the Virtual Key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaec0fc0100c4fc1ce4eea230c3dc10360"></a>Undefined&#160;</td><td class="fielddoc"><p>Key is undefined </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaf8d7b8d6eeabd9468ed42e3f04a912a2"></a>LButton&#160;</td><td class="fielddoc"><p>Left mouse button </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa6d4e0c82b9a585e331ed1effccd3e52a"></a>RButton&#160;</td><td class="fielddoc"><p>Right mouse button </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa96f20306c02231ff2faeb463bf002010"></a>MButton&#160;</td><td class="fielddoc"><p>Middle mouse button </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaac8e5aa1a680bd64e6fb9313db5b4428"></a>XButton1&#160;</td><td class="fielddoc"><p>Extra mouse button 1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa7af9d9a16f813c045a3dbe8068a13f4d"></a>XButton2&#160;</td><td class="fielddoc"><p>Extra mouse button 2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa0e3e06c992d1ead056a6861bb46b28a8"></a>D0&#160;</td><td class="fielddoc"><p>Digit 0 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa4a4079e06eb2f7ba7a12821c7c58a3f6"></a>D1&#160;</td><td class="fielddoc"><p>Digit 1 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaac4d62b6dcca08e5caf06c01889282859"></a>D2&#160;</td><td class="fielddoc"><p>Digit 2 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaa3deb6e481689f1d3303caecb8a6c401"></a>D3&#160;</td><td class="fielddoc"><p>Digit 3 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa2521dc256a4368da87585c936b451dd7"></a>D4&#160;</td><td class="fielddoc"><p>Digit 4 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaea8ea3bfaa27cf4c2f61470447c87eea"></a>D5&#160;</td><td class="fielddoc"><p>Digit 5 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaae06ae0fa0b466d7a0d9696a11fc3246a"></a>D6&#160;</td><td class="fielddoc"><p>Digit 6 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa94f5a64e61ba849a9213f6b6f62b151d"></a>D7&#160;</td><td class="fielddoc"><p>Digit 7 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaab1522194d726a396729c3148c2b3a0bd"></a>D8&#160;</td><td class="fielddoc"><p>Digit 8 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaadb7bf1cff0c81595de38f51cd60c62c"></a>D9&#160;</td><td class="fielddoc"><p>Digit 9 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa945d5e233cf7d6240f6b783b36a374ff"></a>Left&#160;</td><td class="fielddoc"><p>Left arrow key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa92b09c7c48c520c3c55e497875da437c"></a>Right&#160;</td><td class="fielddoc"><p>Right arrow key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa258f49887ef8d14ac268c92b02503aaa"></a>Up&#160;</td><td class="fielddoc"><p>Up arrow key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa08a38277b0309070706f6652eeae9a53"></a>Down&#160;</td><td class="fielddoc"><p>Down arrow key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa667d08af6165c1cb6e72970036a9f7d7"></a>LShift&#160;</td><td class="fielddoc"><p>Left shift key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa8e707c0a523c7ec2179a6b6821d6eba8"></a>RShift&#160;</td><td class="fielddoc"><p>Right shift key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa692ed49ff2182a144044181274242db5"></a>LCtrl&#160;</td><td class="fielddoc"><p>Left control key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa60e5d1d82b2d0c1287331bfca0ab0061"></a>RCtrl&#160;</td><td class="fielddoc"><p>Right control key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaab527e774a30bf52a69de316727ce4cd"></a>LAlt&#160;</td><td class="fielddoc"><p>Left alt key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa067967ae88a4f9ad8cf58e1bb88c32d8"></a>RAlt&#160;</td><td class="fielddoc"><p>Right alt key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaabbd44482cc5275bd7b7aee1c5fa60d4a"></a>LWin&#160;</td><td class="fielddoc"><p>Left win key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaf0397a08e78cd876d51ad583d3193909"></a>RWin&#160;</td><td class="fielddoc"><p>Right win key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaac863f346e618f9a959b5c95d5d28941"></a>App&#160;</td><td class="fielddoc"><p>Context menu key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaaad4e206408c1c59bfb8a057ba7857446"></a>Context&#160;</td><td class="fielddoc"><p>Context menu key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaafb7fc0d4fce3906ebccad18c03cbbd7a"></a>PrintScrn&#160;</td><td class="fielddoc"><p>Print screen key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa3b9bacad47d80ba436ab9fca2a0afe7d"></a>BrowserBack&#160;</td><td class="fielddoc"><p>The general back key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaadfef0402778ce8430205b2c875a39cba"></a>BrowserForward&#160;</td><td class="fielddoc"><p>The general forward key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa126da17caa4a9238a8c6328cfe706fc1"></a>MediaPlay&#160;</td><td class="fielddoc"><p>Media play pause key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa2422db5c30ae25931668ca0d14ceaa54"></a>Umlaut&#160;</td><td class="fielddoc"><p>The ¨ key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaab6ac6f84bcb33f9b5186bda6b4c8b399"></a>Apostrophe&#160;</td><td class="fielddoc"><p>The ' key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaab3426522c7ec61900c76a863534f6a6a"></a>Ö&#160;</td><td class="fielddoc"><p>The Ö key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa8a30532e2e4fbac1d59983c62d910902"></a>tilde&#160;</td><td class="fielddoc"><p>The ´ key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaad2c24d59e0baff4d0155fbdf62590867"></a>Section&#160;</td><td class="fielddoc"><p>The § key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa3ea084eb8d3d4a5309d82a0f014842fa"></a>Å&#160;</td><td class="fielddoc"><p>The Å key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaab66491b03046f0846fe4206bc6a0f3c0"></a>Ä&#160;</td><td class="fielddoc"><p>The Ä key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa1cfdf0e8d0c87a228c1f40d9bee7888b"></a>Less&#160;</td><td class="fielddoc"><p>The &lt; key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa45100f5f665ad1c0ed85e9cb3a4be8da"></a>WheelLeft&#160;</td><td class="fielddoc"><p>Mouse wheel left </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa6c94e7d23eef36c2e4d9ce65ebe15d51"></a>WheelRight&#160;</td><td class="fielddoc"><p>Mouse wheel right </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa050f568559dcada95ba3ecb63de39971"></a>WheelUp&#160;</td><td class="fielddoc"><p>Mouse wheel up </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa95cf2a3dc58aff6d85e53738a089d9d1"></a>WheelDown&#160;</td><td class="fielddoc"><p>Mouse wheel down </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaafd060c0c157323f1e43e0704d4f3ffc8"></a>MouseMove&#160;</td><td class="fielddoc"><p>Mouse movement </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaad9afa9b3c18e142932762a4270b45b1f"></a>GeneralBindKey&#160;</td><td class="fielddoc"><p>The <a class="el" href="class_macro_framework_1_1_macro_settings.html#aa567e76c354751eedd23b37dd8b8af00" title="A dedicated bind key which is always intercepted and tranformed into VKey.GENERAL_BIND_KEY">MacroSettings.GeneralBindKey</a> key will always be transformed to this key </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0576915a83e0b252b11e6da1e20b8caaa6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"><p>Does not represent any key </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <a id="a1522692dfd9bb4f98d5af79dd9c30a6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1522692dfd9bb4f98d5af79dd9c30a6b">&#9670;&nbsp;</a></span>VKey</h2>
 
@@ -349,338 +780,333 @@ Enumerations</h2></td></tr>
 
 <p>Enum of virtual key codes. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"><p>Does not represent any key, has value 0. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45"></a>LBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Left mouse button /summary&gt; summary&gt; Right mouse button /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45"></a>LBUTTON&#160;</td><td class="fielddoc"><p>Left mouse button </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2"></a>RBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Control-break processing /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2"></a>RBUTTON&#160;</td><td class="fielddoc"><p>Right mouse button </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36"></a>CANCEL&#160;</td><td class="fielddoc"><p>summary&gt; Middle mouse button (three-button mouse) /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36"></a>CANCEL&#160;</td><td class="fielddoc"><p>Control-break processing </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3"></a>MBUTTON&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: X1 mouse button /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba64ac1904823470a2f38559f29eca5bb3"></a>MBUTTON&#160;</td><td class="fielddoc"><p>Middle mouse button (three-button mouse) </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf"></a>XBUTTON1&#160;</td><td class="fielddoc"><p>Windows 2000/XP: X1 mouse button </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5937d704209f456f093453cba963ac68"></a>XBUTTON2&#160;</td><td class="fielddoc"><p>Windows 2000/XP: X2 mouse button </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa669049043a4394767d9a666a8b08ebf"></a>XBUTTON1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: X2 mouse button /summary&gt; </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0db45d2a4141101bdfe48e3314cfbca3"></a>UNDEFINED&#160;</td><td class="fielddoc"><p>This key is undefined </p>
+<p>summary&gt; BACKSPACE key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0"></a>BACK&#160;</td><td class="fielddoc"><p>BACKSPACE key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1dd26f1f1790f0b56d5752fb0fbecef0"></a>BACK&#160;</td><td class="fielddoc"><p>summary&gt; TAB key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1"></a>TAB&#160;</td><td class="fielddoc"><p>TAB key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf684bf05fa3e81528c84d1d281d839f1"></a>TAB&#160;</td><td class="fielddoc"><p>summary&gt; CLEAR key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec"></a>CLEAR&#160;</td><td class="fielddoc"><p>CLEAR key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec"></a>CLEAR&#160;</td><td class="fielddoc"><p>summary&gt; ENTER key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa2bec276a54439fe011eb523b845dac5"></a>RETURN&#160;</td><td class="fielddoc"><p>ENTER key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa2bec276a54439fe011eb523b845dac5"></a>RETURN&#160;</td><td class="fielddoc"><p>summary&gt; SHIFT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c"></a>SHIFT&#160;</td><td class="fielddoc"><p>SHIFT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba46afff2b309b8b16a46d812172a9235c"></a>SHIFT&#160;</td><td class="fielddoc"><p>summary&gt; CTRL key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130"></a>CONTROL&#160;</td><td class="fielddoc"><p>CTRL key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130"></a>CONTROL&#160;</td><td class="fielddoc"><p>summary&gt; ALT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfbfc9cc7a235560f04cb1a5faf1ec3e"></a>ALT&#160;</td><td class="fielddoc"><p>ALT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3ed53fbeb1eab0443561b68ca0c0b5cf"></a>MENU&#160;</td><td class="fielddoc"><p>summary&gt; PAUSE key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891"></a>PAUSE&#160;</td><td class="fielddoc"><p>PAUSE key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891"></a>PAUSE&#160;</td><td class="fielddoc"><p>summary&gt; CAPS LOCK key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05"></a>CAPITAL&#160;</td><td class="fielddoc"><p>CAPS LOCK key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05"></a>CAPITAL&#160;</td><td class="fielddoc"><p>summary&gt; <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> Method Editor (IME) Kana mode /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219"></a>KANA&#160;</td><td class="fielddoc"><p><a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> Method Editor (IME) Kana mode </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba50d24f7424037b4de632578f68aab219"></a>KANA&#160;</td><td class="fielddoc"><p>summary&gt; IME Junja mode /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a"></a>JUNJA&#160;</td><td class="fielddoc"><p>IME Junja mode </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a"></a>JUNJA&#160;</td><td class="fielddoc"><p>summary&gt; IME final mode /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6c8361dc2036c0559376fe4957699f69"></a>FINAL&#160;</td><td class="fielddoc"><p>IME final mode </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6c8361dc2036c0559376fe4957699f69"></a>FINAL&#160;</td><td class="fielddoc"><p>summary&gt; IME Kanji mode /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109"></a>KANJI&#160;</td><td class="fielddoc"><p>IME Kanji mode </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badc73166a5cda804c4629197a02af4109"></a>KANJI&#160;</td><td class="fielddoc"><p>summary&gt; ESC key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d"></a>ESCAPE&#160;</td><td class="fielddoc"><p>ESC key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badaaedac409335b869929ea43fa44be5d"></a>ESCAPE&#160;</td><td class="fielddoc"><p>summary&gt; IME convert /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2"></a>CONVERT&#160;</td><td class="fielddoc"><p>IME convert </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2"></a>CONVERT&#160;</td><td class="fielddoc"><p>summary&gt; IME nonconvert /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba18f1eefe90bfb7e983bfafa5e3e72286"></a>NONCONVERT&#160;</td><td class="fielddoc"><p>IME nonconvert </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba18f1eefe90bfb7e983bfafa5e3e72286"></a>NONCONVERT&#160;</td><td class="fielddoc"><p>summary&gt; IME accept /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3"></a>ACCEPT&#160;</td><td class="fielddoc"><p>IME accept </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1fd72e016e8fbf2cf1f0c918dcd9bad3"></a>ACCEPT&#160;</td><td class="fielddoc"><p>summary&gt; IME mode change request /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570"></a>MODECHANGE&#160;</td><td class="fielddoc"><p>IME mode change request </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba35c3ec45f39f5e097392f4f77285e570"></a>MODECHANGE&#160;</td><td class="fielddoc"><p>summary&gt; SPACEBAR /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6506ae39fdca9845e3a6de3865183e57"></a>SPACE&#160;</td><td class="fielddoc"><p>SPACEBAR </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6506ae39fdca9845e3a6de3865183e57"></a>SPACE&#160;</td><td class="fielddoc"><p>summary&gt; PAGE UP key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56a1033a2d5368d197deb9f853cd8ed1"></a>PAGEUP&#160;</td><td class="fielddoc"><p>PAGE UP key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae4bf0e3d9afa4b59492d1f1a22fb6a37"></a>PRIOR&#160;</td><td class="fielddoc"><p>summary&gt; PAGE DOWN key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba960aeda56eda2981ab0ab39faa825826"></a>PAGEDOWN&#160;</td><td class="fielddoc"><p>PAGE DOWN key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba47559fb833ff58321570e5e877b467f6"></a>NEXT&#160;</td><td class="fielddoc"><p>summary&gt; END key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905"></a>END&#160;</td><td class="fielddoc"><p>END key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1a326c06d88bf042f73d70f50197905"></a>END&#160;</td><td class="fielddoc"><p>summary&gt; HOME key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba710533dd879dd1202e5c73b27705bf02"></a>HOME&#160;</td><td class="fielddoc"><p>HOME key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba710533dd879dd1202e5c73b27705bf02"></a>HOME&#160;</td><td class="fielddoc"><p>summary&gt; LEFT ARROW key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba684d325a7303f52e64011467ff5c5758"></a>LEFT&#160;</td><td class="fielddoc"><p>LEFT ARROW key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba684d325a7303f52e64011467ff5c5758"></a>LEFT&#160;</td><td class="fielddoc"><p>summary&gt; UP ARROW key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1"></a>UP&#160;</td><td class="fielddoc"><p>UP ARROW key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafbaedde498cdead4f2780217646e9ba1"></a>UP&#160;</td><td class="fielddoc"><p>summary&gt; RIGHT ARROW key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"><p>RIGHT ARROW key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21507b40c80068eda19865706fdc2403"></a>RIGHT&#160;</td><td class="fielddoc"><p>summary&gt; DOWN ARROW key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4e0e4e3118472beeb2ae75827450f1f"></a>DOWN&#160;</td><td class="fielddoc"><p>DOWN ARROW key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4e0e4e3118472beeb2ae75827450f1f"></a>DOWN&#160;</td><td class="fielddoc"><p>summary&gt; SELECT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba63225f19fccb18e7c709f1fa11bc738e"></a>SELECT&#160;</td><td class="fielddoc"><p>SELECT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba63225f19fccb18e7c709f1fa11bc738e"></a>SELECT&#160;</td><td class="fielddoc"><p>summary&gt; PRINT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b"></a>PRINT&#160;</td><td class="fielddoc"><p>PRINT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf96eee4e48ee90430f17fb3a8388507b"></a>PRINT&#160;</td><td class="fielddoc"><p>summary&gt; EXECUTE key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a"></a>EXECUTE&#160;</td><td class="fielddoc"><p>EXECUTE key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5d76688e2261e6805ee36ad961b3fa7a"></a>EXECUTE&#160;</td><td class="fielddoc"><p>summary&gt; PRINT SCREEN key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5bb7b84f8c648d0226d6908893635a59"></a>PRINTSCREEN&#160;</td><td class="fielddoc"><p>PRINT SCREEN key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba46b8744c6bc840d2cb241fa165f3e204"></a>SNAPSHOT&#160;</td><td class="fielddoc"><p>summary&gt; INS key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b"></a>INSERT&#160;</td><td class="fielddoc"><p>INS key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61ee777e7f71dc466c3b2c685d8d313b"></a>INSERT&#160;</td><td class="fielddoc"><p>summary&gt; DEL key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e"></a>DELETE&#160;</td><td class="fielddoc"><p>DEL key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e"></a>DELETE&#160;</td><td class="fielddoc"><p>summary&gt; HELP key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff"></a>HELP&#160;</td><td class="fielddoc"><p>HELP key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4fc963e213bba362778f5c175eb4d5ff"></a>HELP&#160;</td><td class="fielddoc"><p>summary&gt; 0 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0e3e06c992d1ead056a6861bb46b28a8"></a>D0&#160;</td><td class="fielddoc"><p>0 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0e3e06c992d1ead056a6861bb46b28a8"></a>D0&#160;</td><td class="fielddoc"><p>summary&gt; 1 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4a4079e06eb2f7ba7a12821c7c58a3f6"></a>D1&#160;</td><td class="fielddoc"><p>1 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4a4079e06eb2f7ba7a12821c7c58a3f6"></a>D1&#160;</td><td class="fielddoc"><p>summary&gt; 2 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859"></a>D2&#160;</td><td class="fielddoc"><p>2 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac4d62b6dcca08e5caf06c01889282859"></a>D2&#160;</td><td class="fielddoc"><p>summary&gt; 3 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401"></a>D3&#160;</td><td class="fielddoc"><p>3 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa3deb6e481689f1d3303caecb8a6c401"></a>D3&#160;</td><td class="fielddoc"><p>summary&gt; 4 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2521dc256a4368da87585c936b451dd7"></a>D4&#160;</td><td class="fielddoc"><p>4 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2521dc256a4368da87585c936b451dd7"></a>D4&#160;</td><td class="fielddoc"><p>summary&gt; 5 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baea8ea3bfaa27cf4c2f61470447c87eea"></a>D5&#160;</td><td class="fielddoc"><p>5 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baea8ea3bfaa27cf4c2f61470447c87eea"></a>D5&#160;</td><td class="fielddoc"><p>summary&gt; 6 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a"></a>D6&#160;</td><td class="fielddoc"><p>6 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae06ae0fa0b466d7a0d9696a11fc3246a"></a>D6&#160;</td><td class="fielddoc"><p>summary&gt; 7 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d"></a>D7&#160;</td><td class="fielddoc"><p>7 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba94f5a64e61ba849a9213f6b6f62b151d"></a>D7&#160;</td><td class="fielddoc"><p>summary&gt; 8 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1522194d726a396729c3148c2b3a0bd"></a>D8&#160;</td><td class="fielddoc"><p>8 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab1522194d726a396729c3148c2b3a0bd"></a>D8&#160;</td><td class="fielddoc"><p>summary&gt; 9 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baadb7bf1cff0c81595de38f51cd60c62c"></a>D9&#160;</td><td class="fielddoc"><p>9 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baadb7bf1cff0c81595de38f51cd60c62c"></a>D9&#160;</td><td class="fielddoc"><p>summary&gt; A key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29"></a>A&#160;</td><td class="fielddoc"><p>A key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fc56270e7a70fa81a5935b72eacbe29"></a>A&#160;</td><td class="fielddoc"><p>summary&gt; B key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571"></a>B&#160;</td><td class="fielddoc"><p>B key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d5ed678fe57bcca610140957afab571"></a>B&#160;</td><td class="fielddoc"><p>summary&gt; C key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257"></a>C&#160;</td><td class="fielddoc"><p>C key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257"></a>C&#160;</td><td class="fielddoc"><p>summary&gt; D key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf623e75af30e62bbd73d6df5b50bb7b5"></a>D&#160;</td><td class="fielddoc"><p>D key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf623e75af30e62bbd73d6df5b50bb7b5"></a>D&#160;</td><td class="fielddoc"><p>summary&gt; E key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da"></a>E&#160;</td><td class="fielddoc"><p>E key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3a3ea00cfc35332cedf6e5e9a32e94da"></a>E&#160;</td><td class="fielddoc"><p>summary&gt; F key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012"></a>F&#160;</td><td class="fielddoc"><p>F key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba800618943025315f869e4e1f09471012"></a>F&#160;</td><td class="fielddoc"><p>summary&gt; G key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfcf28d0734569a6a693bc8194de62bf"></a>G&#160;</td><td class="fielddoc"><p>G key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badfcf28d0734569a6a693bc8194de62bf"></a>G&#160;</td><td class="fielddoc"><p>summary&gt; H key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac1d9f50f86825a1a2302ec2449c17196"></a>H&#160;</td><td class="fielddoc"><p>H key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac1d9f50f86825a1a2302ec2449c17196"></a>H&#160;</td><td class="fielddoc"><p>summary&gt; I key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f"></a>I&#160;</td><td class="fielddoc"><p>I key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badd7536794b63bf90eccfd37f9b147d7f"></a>I&#160;</td><td class="fielddoc"><p>summary&gt; J key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85"></a>J&#160;</td><td class="fielddoc"><p>J key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baff44570aca8241914870afbc310cdb85"></a>J&#160;</td><td class="fielddoc"><p>summary&gt; K key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa5f3c6a11b03839d46af9fb43c97c188"></a>K&#160;</td><td class="fielddoc"><p>K key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa5f3c6a11b03839d46af9fb43c97c188"></a>K&#160;</td><td class="fielddoc"><p>summary&gt; L key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad20caec3b48a1eef164cb4ca81ba2587"></a>L&#160;</td><td class="fielddoc"><p>L key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad20caec3b48a1eef164cb4ca81ba2587"></a>L&#160;</td><td class="fielddoc"><p>summary&gt; M key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc"><p>M key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc"><p>summary&gt; N key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa"></a>N&#160;</td><td class="fielddoc"><p>N key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8d9c307cb7f3c4a32822a51922d1ceaa"></a>N&#160;</td><td class="fielddoc"><p>summary&gt; O key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf186217753c37b9b9f958d906208506e"></a>O&#160;</td><td class="fielddoc"><p>O key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf186217753c37b9b9f958d906208506e"></a>O&#160;</td><td class="fielddoc"><p>summary&gt; P key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba44c29edb103a2872f519ad0c9a0fdaaa"></a>P&#160;</td><td class="fielddoc"><p>P key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba44c29edb103a2872f519ad0c9a0fdaaa"></a>P&#160;</td><td class="fielddoc"><p>summary&gt; Q key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee"></a>Q&#160;</td><td class="fielddoc"><p>Q key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf09564c9ca56850d4cd6b3319e541aee"></a>Q&#160;</td><td class="fielddoc"><p>summary&gt; R key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6"></a>R&#160;</td><td class="fielddoc"><p>R key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1e1d3d40573127e9ee0480caf1283d6"></a>R&#160;</td><td class="fielddoc"><p>summary&gt; S key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5dbc98dcc983a70728bd082d1a47546e"></a>S&#160;</td><td class="fielddoc"><p>S key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5dbc98dcc983a70728bd082d1a47546e"></a>S&#160;</td><td class="fielddoc"><p>summary&gt; T key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab9ece18c950afbfa6b0fdbfa4ff731d3"></a>T&#160;</td><td class="fielddoc"><p>T key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab9ece18c950afbfa6b0fdbfa4ff731d3"></a>T&#160;</td><td class="fielddoc"><p>summary&gt; U key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb"></a>U&#160;</td><td class="fielddoc"><p>U key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4c614360da93c0a041b22e537de151eb"></a>U&#160;</td><td class="fielddoc"><p>summary&gt; V key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce"></a>V&#160;</td><td class="fielddoc"><p>V key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5206560a306a2e085a437fd258eb57ce"></a>V&#160;</td><td class="fielddoc"><p>summary&gt; W key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61e9c06ea9a85a5088a499df6458d276"></a>W&#160;</td><td class="fielddoc"><p>W key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba61e9c06ea9a85a5088a499df6458d276"></a>W&#160;</td><td class="fielddoc"><p>summary&gt; X key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"><p>X key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02129bb861061d1a052c592e2dc6b383"></a>X&#160;</td><td class="fielddoc"><p>summary&gt; Y key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"><p>Y key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba57cec4137b614c87cb4e24a3d003a3e0"></a>Y&#160;</td><td class="fielddoc"><p>summary&gt; Z key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"><p>Z key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba21c2e59531c8710156d34a3c30ac81d5"></a>Z&#160;</td><td class="fielddoc"><p>summary&gt; Left Windows key (Microsoft Natural keyboard) /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba708f5ef3cba310fb0cb0d6254a71e220"></a>LWIN&#160;</td><td class="fielddoc"><p>Left Windows key (Microsoft Natural keyboard) </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba708f5ef3cba310fb0cb0d6254a71e220"></a>LWIN&#160;</td><td class="fielddoc"><p>summary&gt; Right Windows key (Natural keyboard) /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83"></a>RWIN&#160;</td><td class="fielddoc"><p>Right Windows key (Natural keyboard) </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83"></a>RWIN&#160;</td><td class="fielddoc"><p>summary&gt; Applications key (Natural keyboard) /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17"></a>APPS&#160;</td><td class="fielddoc"><p>Applications key (Natural keyboard) </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baabe420fb3df647abe3f3a0eaa8abda17"></a>APPS&#160;</td><td class="fielddoc"><p>summary&gt; Computer Sleep key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596"></a>SLEEP&#160;</td><td class="fielddoc"><p>Computer Sleep key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab32bd403b93dc6deffdab7af55e82596"></a>SLEEP&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 0 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c9303c9722b2b2c0b6be432b8553b7b"></a>NUMPAD0&#160;</td><td class="fielddoc"><p>Numeric keypad 0 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c9303c9722b2b2c0b6be432b8553b7b"></a>NUMPAD0&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 1 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930"></a>NUMPAD1&#160;</td><td class="fielddoc"><p>Numeric keypad 1 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85363b71c044fcc9b1054994e5afd930"></a>NUMPAD1&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 2 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a"></a>NUMPAD2&#160;</td><td class="fielddoc"><p>Numeric keypad 2 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9d0bcfce0686425072757a4e5338b67a"></a>NUMPAD2&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 3 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367"></a>NUMPAD3&#160;</td><td class="fielddoc"><p>Numeric keypad 3 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae745d20a1bb5bbd1d5dbc1c3d45cc367"></a>NUMPAD3&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 4 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52"></a>NUMPAD4&#160;</td><td class="fielddoc"><p>Numeric keypad 4 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba8692bf75f6b6ccdccacb4237693b0f52"></a>NUMPAD4&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 5 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9f19473b6cdbced0dd74c756218df969"></a>NUMPAD5&#160;</td><td class="fielddoc"><p>Numeric keypad 5 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9f19473b6cdbced0dd74c756218df969"></a>NUMPAD5&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 6 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921"></a>NUMPAD6&#160;</td><td class="fielddoc"><p>Numeric keypad 6 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0de54b8a49d7ef2381db3c2a4fddb921"></a>NUMPAD6&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 7 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178"></a>NUMPAD7&#160;</td><td class="fielddoc"><p>Numeric keypad 7 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baed35ad1bd9d2eee6ceb1005f87d01178"></a>NUMPAD7&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 8 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7d4b79e0c3dc50fbce01eba1cb17489a"></a>NUMPAD8&#160;</td><td class="fielddoc"><p>Numeric keypad 8 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7d4b79e0c3dc50fbce01eba1cb17489a"></a>NUMPAD8&#160;</td><td class="fielddoc"><p>summary&gt; Numeric keypad 9 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddba9d70ff7b75782aad0b8d17577fd1"></a>NUMPAD9&#160;</td><td class="fielddoc"><p>Numeric keypad 9 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddba9d70ff7b75782aad0b8d17577fd1"></a>NUMPAD9&#160;</td><td class="fielddoc"><p>summary&gt; Multiply key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>Multiply key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba080aaf8d817ada96fca7096b7b55bd30"></a>MULTIPLY&#160;</td><td class="fielddoc"><p>summary&gt; Add key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d"></a>ADD&#160;</td><td class="fielddoc"><p>Add key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9eeb52badb613229884838847294b90d"></a>ADD&#160;</td><td class="fielddoc"><p>summary&gt; Separator key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba70bb8dc90aa233a66b91ae2e9dc1a850"></a>SEPARATOR&#160;</td><td class="fielddoc"><p>Separator key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba70bb8dc90aa233a66b91ae2e9dc1a850"></a>SEPARATOR&#160;</td><td class="fielddoc"><p>summary&gt; Subtract key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba23ebcc4776b613af25dfbe7c8ce4813e"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>Subtract key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba23ebcc4776b613af25dfbe7c8ce4813e"></a>SUBTRACT&#160;</td><td class="fielddoc"><p>summary&gt; Decimal key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4"></a>DECIMAL&#160;</td><td class="fielddoc"><p>Decimal key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba13d992d671957e9a2b3e936ca0cf14a4"></a>DECIMAL&#160;</td><td class="fielddoc"><p>summary&gt; Divide key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b"></a>DIVIDE&#160;</td><td class="fielddoc"><p>Divide key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba210c66d794cec40488f3f8f634d6c33b"></a>DIVIDE&#160;</td><td class="fielddoc"><p>summary&gt; F1 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1dffc8709f31a4987c8a88334107e89"></a>F1&#160;</td><td class="fielddoc"><p>F1 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae1dffc8709f31a4987c8a88334107e89"></a>F1&#160;</td><td class="fielddoc"><p>summary&gt; F2 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafe5c3684dce76cdd9f7f42430868aa74"></a>F2&#160;</td><td class="fielddoc"><p>F2 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafe5c3684dce76cdd9f7f42430868aa74"></a>F2&#160;</td><td class="fielddoc"><p>summary&gt; F3 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627"></a>F3&#160;</td><td class="fielddoc"><p>F3 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4b6bf4b531770872d4328ce69bef5627"></a>F3&#160;</td><td class="fielddoc"><p>summary&gt; F4 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702"></a>F4&#160;</td><td class="fielddoc"><p>F4 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae7e0e72401a9f2718ed0f39f2861d702"></a>F4&#160;</td><td class="fielddoc"><p>summary&gt; F5 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba37f438df6a6d5ba4c17ef8ca58562f00"></a>F5&#160;</td><td class="fielddoc"><p>F5 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba37f438df6a6d5ba4c17ef8ca58562f00"></a>F5&#160;</td><td class="fielddoc"><p>summary&gt; F6 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1faf42f2823f184eb2c9f0dffe5d73f2"></a>F6&#160;</td><td class="fielddoc"><p>F6 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1faf42f2823f184eb2c9f0dffe5d73f2"></a>F6&#160;</td><td class="fielddoc"><p>summary&gt; F7 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839"></a>F7&#160;</td><td class="fielddoc"><p>F7 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba47489eb597b7db34caa24b1fc78fc839"></a>F7&#160;</td><td class="fielddoc"><p>summary&gt; F8 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7"></a>F8&#160;</td><td class="fielddoc"><p>F8 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba4787509ad9f9d747a81a30e9dde3d4a7"></a>F8&#160;</td><td class="fielddoc"><p>summary&gt; F9 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9"></a>F9&#160;</td><td class="fielddoc"><p>F9 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba892a245e287c163080b23db737d3c4c9"></a>F9&#160;</td><td class="fielddoc"><p>summary&gt; F10 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab213ce22ca6ad4eda8db82966b9b6e5a"></a>F10&#160;</td><td class="fielddoc"><p>F10 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab213ce22ca6ad4eda8db82966b9b6e5a"></a>F10&#160;</td><td class="fielddoc"><p>summary&gt; F11 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8"></a>F11&#160;</td><td class="fielddoc"><p>F11 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba643b0662422d1d0dffa3fca2e2bf28a8"></a>F11&#160;</td><td class="fielddoc"><p>summary&gt; F12 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3"></a>F12&#160;</td><td class="fielddoc"><p>F12 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae902674982fc99aa343cdd94da7476c3"></a>F12&#160;</td><td class="fielddoc"><p>summary&gt; F13 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba95dfde4807d4d6a9eec499203b3c24a0"></a>F13&#160;</td><td class="fielddoc"><p>F13 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba95dfde4807d4d6a9eec499203b3c24a0"></a>F13&#160;</td><td class="fielddoc"><p>summary&gt; F14 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2468649b6215c4cdd2aef5095b3f5932"></a>F14&#160;</td><td class="fielddoc"><p>F14 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2468649b6215c4cdd2aef5095b3f5932"></a>F14&#160;</td><td class="fielddoc"><p>summary&gt; F15 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138"></a>F15&#160;</td><td class="fielddoc"><p>F15 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae53b55851b9ff4979f2c3ff434a4a138"></a>F15&#160;</td><td class="fielddoc"><p>summary&gt; F16 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94"></a>F16&#160;</td><td class="fielddoc"><p>F16 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56d8353718e6fdc78b8d69078a2cdb94"></a>F16&#160;</td><td class="fielddoc"><p>summary&gt; F17 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baffa5882d1ddcf903bf0d0dbc30bfc604"></a>F17&#160;</td><td class="fielddoc"><p>F17 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baffa5882d1ddcf903bf0d0dbc30bfc604"></a>F17&#160;</td><td class="fielddoc"><p>summary&gt; F18 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba810b30cdfc07fd7fff553a94b828ff78"></a>F18&#160;</td><td class="fielddoc"><p>F18 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba810b30cdfc07fd7fff553a94b828ff78"></a>F18&#160;</td><td class="fielddoc"><p>summary&gt; F19 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054"></a>F19&#160;</td><td class="fielddoc"><p>F19 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bacd7c2a221ef5d0a34acc0bcd679b2054"></a>F19&#160;</td><td class="fielddoc"><p>summary&gt; F20 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc"></a>F20&#160;</td><td class="fielddoc"><p>F20 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafc335adb3d69d3d8270769e1923ea4dc"></a>F20&#160;</td><td class="fielddoc"><p>summary&gt; F21 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba77e9eee7c579eef5f3731ecf1053c02e"></a>F21&#160;</td><td class="fielddoc"><p>F21 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba77e9eee7c579eef5f3731ecf1053c02e"></a>F21&#160;</td><td class="fielddoc"><p>summary&gt; F22 key, (PPC only) Key used to lock device. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fa06ead699fcbd63132370ffe13335a"></a>F22&#160;</td><td class="fielddoc"><p>F22 key, (PPC only) Key used to lock device. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba7fa06ead699fcbd63132370ffe13335a"></a>F22&#160;</td><td class="fielddoc"><p>summary&gt; F23 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e"></a>F23&#160;</td><td class="fielddoc"><p>F23 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba889645d530078147e7dc69a9caadc31e"></a>F23&#160;</td><td class="fielddoc"><p>summary&gt; F24 key <br  />
+ /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273"></a>F24&#160;</td><td class="fielddoc"><p>F24 key <br  />
- </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baebd7820c520d05eca2d775c37d141273"></a>F24&#160;</td><td class="fielddoc"><p>summary&gt; NUM LOCK key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98"></a>NUMLOCK&#160;</td><td class="fielddoc"><p>NUM LOCK key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba85d3da2efdb4dd062f1a97b86ba66f98"></a>NUMLOCK&#160;</td><td class="fielddoc"><p>summary&gt; SCROLL LOCK key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba71574275cadb387a5082e87e9dd60c25"></a>SCROLL&#160;</td><td class="fielddoc"><p>SCROLL LOCK key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba71574275cadb387a5082e87e9dd60c25"></a>SCROLL&#160;</td><td class="fielddoc"><p>summary&gt; Left SHIFT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7"></a>LSHIFT&#160;</td><td class="fielddoc"><p>Left SHIFT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badff23c74b1d8d80f33e8a894964c74d7"></a>LSHIFT&#160;</td><td class="fielddoc"><p>summary&gt; Right SHIFT key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963"></a>RSHIFT&#160;</td><td class="fielddoc"><p>Right SHIFT key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad13eccc8e378c60e2f9620ce4c77f963"></a>RSHIFT&#160;</td><td class="fielddoc"><p>summary&gt; Left CONTROL key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba00a5bbecd1f43df5cd19f7f3762ab1e6"></a>LCONTROL&#160;</td><td class="fielddoc"><p>Left CONTROL key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba00a5bbecd1f43df5cd19f7f3762ab1e6"></a>LCONTROL&#160;</td><td class="fielddoc"><p>summary&gt; Right CONTROL key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa14ff7768c5b5ce4bd9bdd94f73fd530"></a>RCONTROL&#160;</td><td class="fielddoc"><p>Right CONTROL key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa14ff7768c5b5ce4bd9bdd94f73fd530"></a>RCONTROL&#160;</td><td class="fielddoc"><p>summary&gt; Left MENU key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371"></a>LMENU&#160;</td><td class="fielddoc"><p>Left MENU key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba493415351759a0d19a5c59250aa98371"></a>LMENU&#160;</td><td class="fielddoc"><p>summary&gt; Right MENU key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6"></a>RMENU&#160;</td><td class="fielddoc"><p>Right MENU key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba02da89f129aa96c94571a928781510d6"></a>RMENU&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Back key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafec322bf4681601a7f6f6b027b0f9c9d"></a>BROWSER_BACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Back key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bafec322bf4681601a7f6f6b027b0f9c9d"></a>BROWSER_BACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Forward key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad7060c8bd4fe49ffa95f59feac4bd6cb"></a>BROWSER_FORWARD&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Forward key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bad7060c8bd4fe49ffa95f59feac4bd6cb"></a>BROWSER_FORWARD&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Refresh key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24"></a>BROWSER_REFRESH&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Refresh key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba876060b785e336530cf7313f3cbd7e24"></a>BROWSER_REFRESH&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Stop key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f"></a>BROWSER_STOP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Stop key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa6976f95399f177f1552ecc6cb82721f"></a>BROWSER_STOP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Search key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1d2693c1ec7044ebd2f6b9cc78197147"></a>BROWSER_SEARCH&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Search key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1d2693c1ec7044ebd2f6b9cc78197147"></a>BROWSER_SEARCH&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Favorites key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baec1f7958f4ad39ffcba494afd9e2d766"></a>BROWSER_FAVORITES&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Favorites key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baec1f7958f4ad39ffcba494afd9e2d766"></a>BROWSER_FAVORITES&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Browser Start and Home key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d"></a>BROWSER_HOME&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Browser Start and Home key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba881bca788b1afab5b2ac782a4b67bc1d"></a>BROWSER_HOME&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Mute key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552"></a>VOLUME_MUTE&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Mute key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baf4b6a6c38a1a1be2f1d3ab73d7b06552"></a>VOLUME_MUTE&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Down key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab51dc9db6e5110cf7e1bdc44b218ad66"></a>VOLUME_DOWN&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Down key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bab51dc9db6e5110cf7e1bdc44b218ad66"></a>VOLUME_DOWN&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Volume Up key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6749145ac295af704786a39516c5bf40"></a>VOLUME_UP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Volume Up key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba6749145ac295af704786a39516c5bf40"></a>VOLUME_UP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Next Track key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081"></a>MEDIA_NEXT_TRACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Next Track key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac614057529854f233c412d1a07532081"></a>MEDIA_NEXT_TRACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Previous Track key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158"></a>MEDIA_PREV_TRACK&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Previous Track key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baddb036ce273fa94a4b1556db4046d158"></a>MEDIA_PREV_TRACK&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Stop Media key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac0b5dbeb733e6653d4bda740b14b0429"></a>MEDIA_STOP&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Stop Media key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bac0b5dbeb733e6653d4bda740b14b0429"></a>MEDIA_STOP&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Play/Pause Media key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9ef9c6dff07300fccd32e9cfab4975d7"></a>MEDIA_PLAY_PAUSE&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Play/Pause Media key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9ef9c6dff07300fccd32e9cfab4975d7"></a>MEDIA_PLAY_PAUSE&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Mail key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244"></a>LAUNCH_MAIL&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Mail key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba454b5638a7c7d6b443e7049600ee1244"></a>LAUNCH_MAIL&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Select Media key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca"></a>LAUNCH_MEDIA_SELECT&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Select Media key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6badeebc821e9fc910521ee570fb5d6eaca"></a>LAUNCH_MEDIA_SELECT&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Application 1 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca"></a>LAUNCH_APP1&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Application 1 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca"></a>LAUNCH_APP1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Start Application 2 key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba03947a404ce77023f33d6aae54865370"></a>LAUNCH_APP2&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Start Application 2 key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba03947a404ce77023f33d6aae54865370"></a>LAUNCH_APP2&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3"></a>OEM_1&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae91938057eb9d9a998fb0c34e759cce3"></a>OEM_1&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '+' key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33"></a>OEM_PLUS&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '+' key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba56c34d73a7493ffce83b574976029b33"></a>OEM_PLUS&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the ',' key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165"></a>OEM_COMMA&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the ',' key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba82b25846b12e783db11ea65cb00b6165"></a>OEM_COMMA&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '-' key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba394d7ff659ae0eb05e57cba3dade96e0"></a>OEM_MINUS&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '-' key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba394d7ff659ae0eb05e57cba3dade96e0"></a>OEM_MINUS&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: For any country/region, the '.' key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63"></a>OEM_PERIOD&#160;</td><td class="fielddoc"><p>Windows 2000/XP: For any country/region, the '.' key </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9925b2afdc472eb4c262c66028163f63"></a>OEM_PERIOD&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf"></a>OEM_2&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf"></a>OEM_2&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae3755e95125ee8953e36af77261a51a1"></a>OEM_3&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6bae3755e95125ee8953e36af77261a51a1"></a>OEM_3&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9bc809e39ba8b36b7b0a2acbf071228e"></a>OEM_4&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9bc809e39ba8b36b7b0a2acbf071228e"></a>OEM_4&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625"></a>OEM_5&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baccac03142e511444812e4c81a7502625"></a>OEM_5&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c"></a>OEM_6&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9faadd3700669319a02bdd54098c7d5c"></a>OEM_6&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1e6ab2bcef5e704ea5c213c6360bdc90"></a>OEM_7&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba1e6ab2bcef5e704ea5c213c6360bdc90"></a>OEM_7&#160;</td><td class="fielddoc"><p>summary&gt; Used for miscellaneous characters; it can vary by keyboard. /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0"></a>OEM_8&#160;</td><td class="fielddoc"><p>Used for miscellaneous characters; it can vary by keyboard. </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba5c0e0a1c94c86141c47e9ae4553dadc0"></a>OEM_8&#160;</td><td class="fielddoc"><p>summary&gt; Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac"></a>OEM_102&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba81dca1e879f45bf043358f933eccd4ac"></a>OEM_102&#160;</td><td class="fielddoc"><p>summary&gt; Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key /summary&gt; </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3d8a9773d698588afc94fe487e3868d1"></a>PROCESSKEY&#160;</td><td class="fielddoc"><p>Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0334b8669eb43f45f9bccb223186be65"></a>PACKET&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Used to pass Unicode characters as if they were VKeytrokes. The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information, see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP </p>
+<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba0334b8669eb43f45f9bccb223186be65"></a>PACKET&#160;</td><td class="fielddoc"><p>Windows 2000/XP: Used to pass Unicode characters as if they were keystrokes. The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information, see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba9ba19928f8580dddc1034f923f100c61"></a>ATTN&#160;</td><td class="fielddoc"><p>Attn key </p>
 </td></tr>
@@ -699,8 +1125,6 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa710c83fe312da3eb8c7181f531aa942"></a>PA1&#160;</td><td class="fielddoc"><p>PA1 key </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6ba3f29c1e75a8cf7ee4857bb142816c104"></a>OEM_CLEAR&#160;</td><td class="fielddoc"><p>Clear key </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1522692dfd9bb4f98d5af79dd9c30a6baa443514cf0c9c5e29fd41d209187b01c"></a>GENERAL_BIND_KEY&#160;</td><td class="fielddoc"><p>The <a class="el" href="class_macro_framework_1_1_macro_settings.html#a86d5d0cebaef89890a850a042065542d" title="A dedicated bind key which is always intercepted and tranformed into VKey.GENERAL_BIND_KEY">MacroSettings.GeneralBindKey</a> is transformed into this value when caught by <a class="el" href="class_macro_framework_1_1_input_1_1_key_events.html" title="The static class handling all input key events.">MacroFramework.Input.KeyEvents</a> </p>
 </td></tr>
 </table>
 

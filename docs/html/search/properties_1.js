@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['commandassembly_546',['CommandAssembly',['../class_macro_framework_1_1_setup.html#a231179d8ef121db88dbbe5c3d3bbf1aa',1,'MacroFramework::Setup']]],
-  ['commands_547',['Commands',['../class_macro_framework_1_1_commands_1_1_command_container.html#aedce029e49eb386ccdf9d6ad82545f39',1,'MacroFramework::Commands::CommandContainer']]],
-  ['currentkeyevent_548',['CurrentKeyEvent',['../class_macro_framework_1_1_input_1_1_key_events.html#aeb416bbe4875883f01be37ba9ed7b475',1,'MacroFramework::Input::KeyEvents']]],
-  ['currenttextcommand_549',['CurrentTextCommand',['../class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9',1,'MacroFramework::Commands::TextCommands']]]
+  ['blockedkeys_747',['BlockedKeys',['../class_macro_framework_1_1_input_1_1_key_events.html#ab7729d1d2e4fe87f1bc6c3fd9765cdb3',1,'MacroFramework::Input::KeyEvents']]]
 ];

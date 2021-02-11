@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['keycallback_552',['KeyCallback',['../class_macro_framework_1_1_input_1_1_key_events.html#a91cdc324e2ab349e0ce3fb7d55b6e9d1',1,'MacroFramework::Input::KeyEvents']]],
-  ['keys_553',['Keys',['../class_macro_framework_1_1_commands_1_1_bind_activator.html#a9d03fcf98bc25027ad99c927942aa095',1,'MacroFramework::Commands::BindActivator']]]
+  ['extended_752',['Extended',['../struct_macro_framework_1_1_input_1_1_key_event.html#a63e6748f1c35b86b4e00a4c0dcdf949d',1,'MacroFramework::Input::KeyEvent']]],
+  ['extrainfo_753',['ExtraInfo',['../interface_macro_framework_1_1_input_1_1_i_device_input.html#a4c3f978947262dfaf0fdc635ed0d5a93',1,'MacroFramework::Input::IDeviceInput']]]
 ];

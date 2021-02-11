@@ -21,11 +21,16 @@ var annotated_dup =
         [ "TextCommands", "class_macro_framework_1_1_commands_1_1_text_commands.html", "class_macro_framework_1_1_commands_1_1_text_commands" ]
       ] ],
       [ "Input", "namespace_macro_framework_1_1_input.html", [
-        [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
+        [ "DeviceHook", "class_macro_framework_1_1_input_1_1_device_hook.html", "class_macro_framework_1_1_input_1_1_device_hook" ],
+        [ "EnhancedKey", "class_macro_framework_1_1_input_1_1_enhanced_key.html", "class_macro_framework_1_1_input_1_1_enhanced_key" ],
         [ "KeyEvents", "class_macro_framework_1_1_input_1_1_key_events.html", "class_macro_framework_1_1_input_1_1_key_events" ],
-        [ "KeyState", "class_macro_framework_1_1_input_1_1_key_state.html", "class_macro_framework_1_1_input_1_1_key_state" ]
+        [ "KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", "class_macro_framework_1_1_input_1_1_key_states" ],
+        [ "IDeviceInput", "interface_macro_framework_1_1_input_1_1_i_device_input.html", "interface_macro_framework_1_1_input_1_1_i_device_input" ],
+        [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
+        [ "POINT", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t" ]
       ] ],
       [ "Tools", "namespace_macro_framework_1_1_tools.html", [
+        [ "AutoDict", "class_macro_framework_1_1_tools_1_1_auto_dict.html", "class_macro_framework_1_1_tools_1_1_auto_dict" ],
         [ "Regexes", "class_macro_framework_1_1_tools_1_1_regexes.html", "class_macro_framework_1_1_tools_1_1_regexes" ],
         [ "RegexWrapper", "class_macro_framework_1_1_tools_1_1_regex_wrapper.html", "class_macro_framework_1_1_tools_1_1_regex_wrapper" ],
         [ "Timer", "class_macro_framework_1_1_tools_1_1_timer.html", "class_macro_framework_1_1_tools_1_1_timer" ]

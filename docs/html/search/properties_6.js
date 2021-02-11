@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['running_559',['Running',['../class_macro_framework_1_1_macros.html#a9bd6c4eb3e62138f8a4d514f791ca3dd',1,'MacroFramework::Macros']]]
+  ['lastkeyeventtime_765',['LastKeyEventTime',['../class_macro_framework_1_1_input_1_1_key_states.html#abe00b3376b0d326ecc776364f0d48cdd',1,'MacroFramework::Input::KeyStates']]]
 ];

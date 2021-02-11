@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['iactivator_280',['IActivator',['../interface_macro_framework_1_1_commands_1_1_i_activator.html',1,'MacroFramework::Commands']]]
+  ['devicehook_391',['DeviceHook',['../class_macro_framework_1_1_input_1_1_device_hook.html',1,'MacroFramework::Input']]]
 ];

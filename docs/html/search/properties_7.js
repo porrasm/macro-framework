@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['settings_560',['Settings',['../class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4',1,'MacroFramework::Setup']]]
+  ['matchtype_766',['MatchType',['../class_macro_framework_1_1_commands_1_1_bind_activator.html#acf85598df974614bb856fe55e9cc5da1',1,'MacroFramework::Commands::BindActivator']]],
+  ['milliseconds_767',['Milliseconds',['../class_macro_framework_1_1_tools_1_1_timer.html#ad5ab6d4c7080e8e639c1649d17acdf02',1,'MacroFramework::Tools::Timer']]],
+  ['mousehookrunning_768',['MouseHookRunning',['../class_macro_framework_1_1_input_1_1_device_hook.html#ad1fb6d4514f7ddca18a904f284262146',1,'MacroFramework::Input::DeviceHook']]]
 ];
