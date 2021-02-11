@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Commands.Attributes;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -100,7 +101,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        protected VKey[] Keys(params VKey[] keys) {
+        protected KKey[] Keys(params KKey[] keys) {
             if (keys == null ||keys.Length == 0) {
                 throw new Exception("You need to add 1 or more keys.");
             }

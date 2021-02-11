@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Input;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="k"></param>
         public delegate void KeyEventCallback(KeyEvent k);
-        private VKey key;
+        private KKey key;
         private KeyEventCallback cb;
         #endregion
 
@@ -27,7 +28,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="callback">The key event callback</param>
         /// <param name="key">The key for which you wish to receive callbacks on</param>
-        public KeyActivator(KeyEventCallback callback, VKey key) : base(null) {
+        public KeyActivator(KeyEventCallback callback, KKey key) : base(null) {
             this.key = key;
             this.cb = callback;
         }

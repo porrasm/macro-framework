@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Input;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -15,14 +16,14 @@ namespace MacroFramework.Commands.Attributes {
         private KeyMatchType matchType;
         private KeyPressOrder order;
 
-        private VKey[] keys;
+        private KKey[] keys;
         #endregion
 
         /// <summary>
         /// Creates a new <see cref="BindActivator"/> instance at the start of the application from this method
         /// </summary>
         /// <param name="keys"></param>
-        public BindActivatorAttribute(params VKey[] keys) {
+        public BindActivatorAttribute(params KKey[] keys) {
             this.keys = keys;
             useDefaults = true;
         }
@@ -34,7 +35,7 @@ namespace MacroFramework.Commands.Attributes {
         /// <param name="matchType"><see cref="BindActivator.MatchType"/></param>
         /// <param name="order"><see cref="BindActivator.Order"/></param>
         /// <param name="keys"><see cref="BindActivator.Keys"/></param>
-        public BindActivatorAttribute(ActivationEventType activationType, KeyMatchType matchType, KeyPressOrder order, params VKey[] keys) {
+        public BindActivatorAttribute(ActivationEventType activationType, KeyMatchType matchType, KeyPressOrder order, params KKey[] keys) {
             this.activationType = activationType;
             this.matchType = matchType;
             this.order = order;

@@ -1,5 +1,6 @@
 ﻿using MacroFramework.Commands;
 using MacroFramework.Input;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -34,7 +35,7 @@ namespace MacroFramework {
             }
             Setup.SetInstance(setup);
             Running = true;
-            InputHook.StartHooks();
+            DeviceHook.StartKeyboardHook();
             CommandContainer.Start();
             MainLoop();
             Application.Run();
@@ -58,7 +59,7 @@ namespace MacroFramework {
         /// Stops the MacroFramework application
         /// </summary>
         public static void Stop() {
-            InputHook.StopHooks();
+            DeviceHook.StopKeyboardHook();
             CommandContainer.Exit();
             Application.Exit();
             Setup.SetInstance(null);

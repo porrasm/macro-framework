@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Input;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -9,13 +10,13 @@ namespace MacroFramework.Commands.Attributes {
     /// </summary>
     public class KeyActivatorAttribute : ActivatorAttribute {
 
-        private VKey key;
+        private KKey key;
 
         /// <summary>
         /// Creates a new <see cref="KeyActivator"/> instance at the start of the application from this method
         /// </summary>
         /// <param name="key">Key</param>
-        public KeyActivatorAttribute(VKey key) {
+        public KeyActivatorAttribute(KKey key) {
             this.key = key;
         }
 

@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Input;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The keys which need to be pressed
         /// </summary>
-        public VKey[] Keys { get; set; }
+        public KKey[] Keys { get; set; }
         #endregion
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace MacroFramework.Commands {
         /// <param name="activationType">see<see cref="ActivationType"/></param>
         /// <param name="matchType"><see cref="MatchType"/></param>
         /// <param name="order"><see cref="Order"/></param>
-        public BindActivator(Command.CommandCallback command, VKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(command) {
+        public BindActivator(Command.CommandCallback command, KKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(command) {
             this.ActivationType = activationType;
             this.MatchType = matchType;
             this.Order = order;
@@ -49,7 +50,7 @@ namespace MacroFramework.Commands {
         protected override bool IsActivatorActive() {
             KeyEvent k = KeyEvents.CurrentKeyEvent;
             if (IsMatchingActivationEventType(k.ActivationType)) {
-                return KeyState.IsMatchingKeyState(MatchType, Order, Keys);
+                return KeyStates.IsMatchingKeyState(MatchType, Order, Keys);
             }
             return false;
         }

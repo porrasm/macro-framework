@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Commands;
+using MacroFramework.Input;
 using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
@@ -24,19 +25,21 @@ namespace MacroFramework.Input {
 
         private static Queue<KeyEvent> keyEventQueue;
 
-        private static HashSet<VKey> blockKeys;
+        private static HashSet<KKey> blockKeys;
 
-        public delegate bool KeyCallbackFunc(VKey key, bool state);
+        public delegate bool KeyCallbackFunc(KeyEvent k);
+
+
 
         /// <summary>
-        /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyState"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
+        /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
         public static KeyCallbackFunc KeyCallback { get; set; }
         #endregion
 
         static KeyEvents() {
             keyEventQueue = new Queue<KeyEvent>();
-            blockKeys = new HashSet<VKey>();
+            blockKeys = new HashSet<KKey>();
         }
 
         /// <summary>
@@ -44,7 +47,7 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <param name="status"></param>
-        internal static void SetKeyBlockStatus(VKey key, bool status) {
+        internal static void SetKeyBlockStatus(KKey key, bool status) {
             if (status) {
                 blockKeys.Add(key);
             } else {
@@ -56,24 +59,16 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Handles the key press event. When true is returned the key event is intercepted.
         /// </summary>
-        internal static bool OnHookKeyPress(VKey key, bool state) {
+        internal static bool OnHookKeyEvent(KeyEvent k) {
+            KeyStates.AddAbsoluteEvent(k);
 
-            if (KeyCallback?.Invoke(key, state) ?? false) {
+            if (KeyCallback?.Invoke(k) ?? false) {
                 return true;
-            }
-
-            if (KeyState.IsInvalidKey(key)) {
-                return false;
-            }
-            if (key == Setup.Instance.Settings.GeneralBindKey) {
-                key = VKey.GENERAL_BIND_KEY;
             }
 
             HandleQueuedKeyEventsNonBlocking();
 
-            long timeSincePreviousEvent = KeyState.TimeSinceLastKeyPress();
-            KeyState.AddAbsoluteEvent(key, state);
-            KeyEvent k = new KeyEvent(key, state, KeyState.GetCurrentActivationEventType());
+            long timeSincePreviousEvent = KeyStates.TimeSinceLastKeyPress();
 
             #region check enabled
             //if (k.Key == Setup.Instance.Settings.ListenerEnableKey) {
@@ -93,12 +88,12 @@ namespace MacroFramework.Input {
             keyEventQueue.Enqueue(k);
 
             #region blocking keys
-            if (k.Key == VKey.GENERAL_BIND_KEY && Setup.Instance.Settings.InterceptGeneralBindKey) {
-                GeneralKeyBind = k.KeyState;
+            if (k.Key == KKey.GeneralBindKey && Setup.Instance.Settings.InterceptGeneralBindKey) {
+                GeneralKeyBind = k.State;
                 return true;
             }
             if (k.Key == Setup.Instance.Settings.CommandKey && !CommandMode) {
-                if (k.KeyState) {
+                if (k.State) {
                     CommandKeyPress(true, true);
                 }
                 return true;
@@ -139,37 +134,35 @@ namespace MacroFramework.Input {
 
         private static void OnKeyEvent(KeyEvent k) {
 
-            bool unique = KeyState.IsUniqueEvent(k);
-
             if (CommandMode) {
-                KeyState.AddKeyEvent(k);
-                OnCommandMode(k, unique);
+                KeyStates.AddKeyEvent(k);
+                OnCommandMode(k);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
                 return;
             }
 
-            if (k.KeyState) {
-                KeyState.AddKeyEvent(k);
+            if (k.State) {
+                KeyStates.AddKeyEvent(k);
             }
 
             CurrentKeyEvent = k;
 
-            if (unique) {
+            if (k.Unique) {
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
             }
 
-            if (!k.KeyState) {
-                KeyState.AddKeyEvent(k);
+            if (!k.State) {
+                KeyStates.AddKeyEvent(k);
             }
         }
 
-        private static void OnCommandMode(KeyEvent k, bool isUniqueKeyPress) {
+        private static void OnCommandMode(KeyEvent k) {
 
             if (k.Key == Setup.Instance.Settings.CommandKey) {
                 return;
             }
 
-            if (!k.KeyState) {
+            if (!k.State) {
                 return;
             }
 
@@ -178,13 +171,13 @@ namespace MacroFramework.Input {
                 return;
             }
 
-            if (VKeysToCommand.KeyToChar(k.Key) == '\0' && isUniqueKeyPress) {
+            if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
                 Console.WriteLine("End wrong key");
                 CommandKeyPress(false, false);
                 return;
             }
 
-            TextCommandCreator.CommandKeyEvent(k.Key, k.KeyState, isUniqueKeyPress);
+            TextCommandCreator.CommandKeyEvent(k);
         }
         private static void CommandKeyPress(bool state, bool acceptCommand) {
             if (state && !CommandMode) {

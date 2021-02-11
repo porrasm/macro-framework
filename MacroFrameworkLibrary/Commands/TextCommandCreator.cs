@@ -17,9 +17,9 @@ namespace MacroFramework.Commands {
         internal static string CurrentTextCommand { get; set; }
 
 
-        internal static void CommandKeyEvent(VKey key, bool value, bool isUniquePress) {
-            if (value && isUniquePress) {
-                keyCommand.AddKey(key);
+        internal static void CommandKeyEvent(KeyEvent k) {
+            if (k.State && k.Unique) {
+                keyCommand.AddKey(k.Key);
             }
         }
 

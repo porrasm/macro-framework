@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MacroFramework.Input;
+using MacroFramework.Input;
 
 namespace MacroFramework {
     public class MacroSettings {
@@ -14,27 +15,27 @@ namespace MacroFramework {
         /// <summary>
         /// The dedicated key on the keyboard which activates the text command mode.
         /// </summary>
-        public VKey CommandKey = VKey.NONE;
+        public KKey CommandKey = KKey.None;
 
         /// <summary>
         /// A dedicated bind key which is always intercepted and tranformed into <see cref="VKey.GENERAL_BIND_KEY"/>
         /// </summary>
-        public VKey GeneralBindKey = VKey.NONE;
+        public KKey GeneralBindKey = KKey.None;
 
         /// <summary>
         /// The dedicated key on the keyboard which executes the current command mode
         /// </summary>
-        public VKey CommandActivateKey = VKey.RETURN;
+        public KKey CommandActivateKey = KKey.Enter;
 
         /// <summary>
         /// Not yet implemented. The dedicated key which enabled the <see cref="InputHook"/>
         /// </summary>
-        public VKey ListenerEnableKey = VKey.NONE;
+        public KKey ListenerEnableKey = KKey.None;
 
         /// <summary>
         /// Not yet implemented. The dedicated key which disables the <see cref="InputHook"/>
         /// </summary>
-        public VKey ListenerDisableKey = VKey.NONE;
+        public KKey ListenerDisableKey = KKey.None;
 
         /// <summary>
         /// If true the <see cref="MacroSettings.GeneralBindKey"/> is intercepted such that other applications do not register it (not abosolutely certain)

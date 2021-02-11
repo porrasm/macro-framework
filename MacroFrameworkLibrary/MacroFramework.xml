@@ -29,7 +29,7 @@
             The keys which need to be pressed
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.VKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.NewInput.KKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
@@ -139,7 +139,7 @@
             </summary>
             <param name="k"></param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.VKey)">
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.NewInput.KKey)">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
@@ -211,13 +211,13 @@
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.BindActivator"/>
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.VKey[])">
+        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.NewInput.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
             <param name="keys"></param>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
+        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.NewInput.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
@@ -231,7 +231,7 @@
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.KeyActivator"/>. Attribute methods are parameterless, use <see cref="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent"/> to get the current key event.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.KeyActivatorAttribute.#ctor(MacroFramework.VKey)">
+        <member name="M:MacroFramework.Commands.Attributes.KeyActivatorAttribute.#ctor(MacroFramework.NewInput.KKey)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.KeyActivator"/> instance at the start of the application from this method
             </summary>
@@ -333,9 +333,9 @@
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.VKey[])">
+        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.NewInput.KKey[])">
             <summary>
-            Nicer syntax for creating array of <see cref="T:MacroFramework.VKey"/> elements
+            Nicer syntax for creating array of <see cref="T:MacroFramework.NewInput.VKey"/> elements
             </summary>
             <param name="keys"></param>
             <returns></returns>
@@ -475,19 +475,34 @@
             Contains information about the current keyevent
             </summary>
         </member>
-        <member name="F:MacroFramework.Input.KeyEvent.Key">
+        <member name="P:MacroFramework.Input.KeyEvent.Key">
             <summary>
             The corresponding key
             </summary>
         </member>
-        <member name="F:MacroFramework.Input.KeyEvent.KeyState">
+        <member name="P:MacroFramework.Input.KeyEvent.State">
             <summary>
             The key up/down state of the key
             </summary>
         </member>
-        <member name="F:MacroFramework.Input.KeyEvent.ActivationType">
+        <member name="P:MacroFramework.Input.KeyEvent.Unique">
+            <summary>
+            True in regular press and release situations. False when holding down a key.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.KeyEvent.ActivationType">
             <summary>
             The activation type of this keyevent
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.KeyEvent.Extended">
+            <summary>
+            Specifies if the key has the extended property
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.KeyEvent.#ctor(System.IntPtr,MacroFramework.NewInput.KBDLLHOOKSTRUCT)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Input.KeyEvent"/> instance from a low level input event
             </summary>
         </member>
         <member name="T:MacroFramework.Input.KeyEvents">
@@ -502,67 +517,57 @@
         </member>
         <member name="P:MacroFramework.Input.KeyEvents.KeyCallback">
             <summary>
-            This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyState"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
+            This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyStates"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
             </summary>
         </member>
-        <member name="M:MacroFramework.Input.KeyEvents.SetKeyBlockStatus(MacroFramework.VKey,System.Boolean)">
+        <member name="M:MacroFramework.Input.KeyEvents.SetKeyBlockStatus(MacroFramework.NewInput.KKey,System.Boolean)">
             <summary>
             Set the block status for a given key. If true is set, the key is blocked and other applications won't get the keyevent. The blocking of the key is not absolutely certain.
             </summary>
             <param name="key"></param>
             <param name="status"></param>
         </member>
-        <member name="M:MacroFramework.Input.KeyEvents.OnHookKeyPress(MacroFramework.VKey,System.Boolean)">
+        <member name="M:MacroFramework.Input.KeyEvents.OnHookKeyEvent(MacroFramework.Input.KeyEvent)">
             <summary>
             Handles the key press event. When true is returned the key event is intercepted.
             </summary>
         </member>
-        <member name="T:MacroFramework.Input.KeyState">
+        <member name="T:MacroFramework.Input.KeyStates">
             <summary>
             The static class handling the key states
             </summary>
         </member>
-        <member name="P:MacroFramework.Input.KeyState.AbsoluteKeystates">
+        <member name="P:MacroFramework.Input.KeyStates.AbsoluteKeystates">
             <summary>
             Returns the dictionary containig VKeytates. This dictionary should not be used for keybinds.
             </summary>
         </member>
-        <member name="F:MacroFramework.Input.KeyState.prevKeyEventState">
-            <summary>
-            The key up/down states of the last two key events
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.KeyState.prevPrevKeyEventState">
-            <summary>
-            The key up/down states of the last two key events
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.KeyState.keyDownCount">
+        <member name="T:MacroFramework.Input.KeyStates.State">
             <summary>
             How many keys are held down at any given moment
             </summary>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.TimeSinceLastKeyPress">
+        <member name="M:MacroFramework.Input.KeyStates.TimeSinceLastKeyPress">
             <summary>
             Time since last keypress in milliseconds
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.IsInvalidKey(MacroFramework.VKey)">
+        <member name="M:MacroFramework.Input.KeyStates.IsInvalidKey(MacroFramework.NewInput.VKey)">
             <summary>
             Checks for an invalid VKey code e.g. a nonkey event sent by a Gamepad.
             </summary>
             <param name="key"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.AddAbsoluteEvent(MacroFramework.VKey,System.Boolean)">
+        <member name="M:MacroFramework.Input.KeyStates.AddAbsoluteEvent(MacroFramework.Input.KeyEvent)">
             <summary>
-            This method is used to keep track on which VKey are pressed down.
+            This method is used to keep track on which VKey are pressed down. Returns true if the keyevent is unique.
             </summary>
             <param name="key"></param>
             <param name="value"></param>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.VKey[])">
+        <member name="M:MacroFramework.Input.KeyStates.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.NewInput.KKey[])">
             <summary>
             Returns true if the current keystate matches the given parameters
             </summary>
@@ -571,858 +576,858 @@
             <param name="keys">The keys to match</param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyState.GetCurrentActivationEventType">
+        <member name="M:MacroFramework.Input.KeyStates.GetCurrentActivationEventType(System.Boolean)">
             <summary>
             Returns the current activation type parameter
             </summary>
             <returns></returns>
         </member>
-        <member name="T:MacroFramework.VKey">
+        <member name="T:MacroFramework.OldVKey">
             <summary>Enum of virtual key codes.</summary>
         </member>
-        <member name="F:MacroFramework.VKey.NONE">
+        <member name="F:MacroFramework.OldVKey.NONE">
             <summary>
             Does not represent any key, has value 0.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LBUTTON">
+        <member name="F:MacroFramework.OldVKey.LBUTTON">
             <summary>
             Left mouse button
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RBUTTON">
+        <member name="F:MacroFramework.OldVKey.RBUTTON">
             <summary>
             Right mouse button
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.CANCEL">
+        <member name="F:MacroFramework.OldVKey.CANCEL">
             <summary>
             Control-break processing
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MBUTTON">
+        <member name="F:MacroFramework.OldVKey.MBUTTON">
             <summary>
             Middle mouse button (three-button mouse)
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.XBUTTON1">
+        <member name="F:MacroFramework.OldVKey.XBUTTON1">
             <summary>
             Windows 2000/XP: X1 mouse button
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.XBUTTON2">
+        <member name="F:MacroFramework.OldVKey.XBUTTON2">
             <summary>
             Windows 2000/XP: X2 mouse button
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.UNDEFINED">
+        <member name="F:MacroFramework.OldVKey.UNDEFINED">
             <summary>This key is undefined</summary>
         </member>
-        <member name="F:MacroFramework.VKey.BACK">
+        <member name="F:MacroFramework.OldVKey.BACK">
             <summary>
             BACKSPACE key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.TAB">
+        <member name="F:MacroFramework.OldVKey.TAB">
             <summary>
             TAB key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.CLEAR">
+        <member name="F:MacroFramework.OldVKey.CLEAR">
             <summary>
             CLEAR key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RETURN">
+        <member name="F:MacroFramework.OldVKey.RETURN">
             <summary>
             ENTER key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SHIFT">
+        <member name="F:MacroFramework.OldVKey.SHIFT">
             <summary>
             SHIFT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.CONTROL">
+        <member name="F:MacroFramework.OldVKey.CONTROL">
             <summary>
             CTRL key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.ALT">
+        <member name="F:MacroFramework.OldVKey.ALT">
             <summary>
             ALT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PAUSE">
+        <member name="F:MacroFramework.OldVKey.PAUSE">
             <summary>
             PAUSE key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.CAPITAL">
+        <member name="F:MacroFramework.OldVKey.CAPITAL">
             <summary>
             CAPS LOCK key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.KANA">
+        <member name="F:MacroFramework.OldVKey.KANA">
             <summary>
             Input Method Editor (IME) Kana mode
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.JUNJA">
+        <member name="F:MacroFramework.OldVKey.JUNJA">
             <summary>
             IME Junja mode
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.FINAL">
+        <member name="F:MacroFramework.OldVKey.FINAL">
             <summary>
             IME final mode
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.KANJI">
+        <member name="F:MacroFramework.OldVKey.KANJI">
             <summary>
             IME Kanji mode
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.ESCAPE">
+        <member name="F:MacroFramework.OldVKey.ESCAPE">
             <summary>
             ESC key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.CONVERT">
+        <member name="F:MacroFramework.OldVKey.CONVERT">
             <summary>
             IME convert
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NONCONVERT">
+        <member name="F:MacroFramework.OldVKey.NONCONVERT">
             <summary>
             IME nonconvert
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.ACCEPT">
+        <member name="F:MacroFramework.OldVKey.ACCEPT">
             <summary>
             IME accept
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MODECHANGE">
+        <member name="F:MacroFramework.OldVKey.MODECHANGE">
             <summary>
             IME mode change request
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SPACE">
+        <member name="F:MacroFramework.OldVKey.SPACE">
             <summary>
             SPACEBAR
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PAGEUP">
+        <member name="F:MacroFramework.OldVKey.PAGEUP">
             <summary>
             PAGE UP key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PAGEDOWN">
+        <member name="F:MacroFramework.OldVKey.PAGEDOWN">
             <summary>
             PAGE DOWN key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.END">
+        <member name="F:MacroFramework.OldVKey.END">
             <summary>
             END key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.HOME">
+        <member name="F:MacroFramework.OldVKey.HOME">
             <summary>
             HOME key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LEFT">
+        <member name="F:MacroFramework.OldVKey.LEFT">
             <summary>
             LEFT ARROW key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.UP">
+        <member name="F:MacroFramework.OldVKey.UP">
             <summary>
             UP ARROW key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RIGHT">
+        <member name="F:MacroFramework.OldVKey.RIGHT">
             <summary>
             RIGHT ARROW key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.DOWN">
+        <member name="F:MacroFramework.OldVKey.DOWN">
             <summary>
             DOWN ARROW key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SELECT">
+        <member name="F:MacroFramework.OldVKey.SELECT">
             <summary>
             SELECT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PRINT">
+        <member name="F:MacroFramework.OldVKey.PRINT">
             <summary>
             PRINT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.EXECUTE">
+        <member name="F:MacroFramework.OldVKey.EXECUTE">
             <summary>
             EXECUTE key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PRINTSCREEN">
+        <member name="F:MacroFramework.OldVKey.PRINTSCREEN">
             <summary>
             PRINT SCREEN key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.INSERT">
+        <member name="F:MacroFramework.OldVKey.INSERT">
             <summary>
             INS key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.DELETE">
+        <member name="F:MacroFramework.OldVKey.DELETE">
             <summary>
             DEL key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.HELP">
+        <member name="F:MacroFramework.OldVKey.HELP">
             <summary>
             HELP key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D0">
+        <member name="F:MacroFramework.OldVKey.D0">
             <summary>
             0 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D1">
+        <member name="F:MacroFramework.OldVKey.D1">
             <summary>
             1 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D2">
+        <member name="F:MacroFramework.OldVKey.D2">
             <summary>
             2 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D3">
+        <member name="F:MacroFramework.OldVKey.D3">
             <summary>
             3 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D4">
+        <member name="F:MacroFramework.OldVKey.D4">
             <summary>
             4 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D5">
+        <member name="F:MacroFramework.OldVKey.D5">
             <summary>
             5 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D6">
+        <member name="F:MacroFramework.OldVKey.D6">
             <summary>
             6 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D7">
+        <member name="F:MacroFramework.OldVKey.D7">
             <summary>
             7 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D8">
+        <member name="F:MacroFramework.OldVKey.D8">
             <summary>
             8 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D9">
+        <member name="F:MacroFramework.OldVKey.D9">
             <summary>
             9 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.A">
+        <member name="F:MacroFramework.OldVKey.A">
             <summary>
             A key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.B">
+        <member name="F:MacroFramework.OldVKey.B">
             <summary>
             B key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.C">
+        <member name="F:MacroFramework.OldVKey.C">
             <summary>
             C key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.D">
+        <member name="F:MacroFramework.OldVKey.D">
             <summary>
             D key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.E">
+        <member name="F:MacroFramework.OldVKey.E">
             <summary>
             E key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F">
+        <member name="F:MacroFramework.OldVKey.F">
             <summary>
             F key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.G">
+        <member name="F:MacroFramework.OldVKey.G">
             <summary>
             G key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.H">
+        <member name="F:MacroFramework.OldVKey.H">
             <summary>
             H key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.I">
+        <member name="F:MacroFramework.OldVKey.I">
             <summary>
             I key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.J">
+        <member name="F:MacroFramework.OldVKey.J">
             <summary>
             J key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.K">
+        <member name="F:MacroFramework.OldVKey.K">
             <summary>
             K key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.L">
+        <member name="F:MacroFramework.OldVKey.L">
             <summary>
             L key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.M">
+        <member name="F:MacroFramework.OldVKey.M">
             <summary>
             M key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.N">
+        <member name="F:MacroFramework.OldVKey.N">
             <summary>
             N key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.O">
+        <member name="F:MacroFramework.OldVKey.O">
             <summary>
             O key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.P">
+        <member name="F:MacroFramework.OldVKey.P">
             <summary>
             P key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.Q">
+        <member name="F:MacroFramework.OldVKey.Q">
             <summary>
             Q key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.R">
+        <member name="F:MacroFramework.OldVKey.R">
             <summary>
             R key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.S">
+        <member name="F:MacroFramework.OldVKey.S">
             <summary>
             S key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.T">
+        <member name="F:MacroFramework.OldVKey.T">
             <summary>
             T key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.U">
+        <member name="F:MacroFramework.OldVKey.U">
             <summary>
             U key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.V">
+        <member name="F:MacroFramework.OldVKey.V">
             <summary>
             V key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.W">
+        <member name="F:MacroFramework.OldVKey.W">
             <summary>
             W key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.X">
+        <member name="F:MacroFramework.OldVKey.X">
             <summary>
             X key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.Y">
+        <member name="F:MacroFramework.OldVKey.Y">
             <summary>
             Y key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.Z">
+        <member name="F:MacroFramework.OldVKey.Z">
             <summary>
             Z key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LWIN">
+        <member name="F:MacroFramework.OldVKey.LWIN">
             <summary>
             Left Windows key (Microsoft Natural keyboard)
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RWIN">
+        <member name="F:MacroFramework.OldVKey.RWIN">
             <summary>
             Right Windows key (Natural keyboard)
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.APPS">
+        <member name="F:MacroFramework.OldVKey.APPS">
             <summary>
             Applications key (Natural keyboard)
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SLEEP">
+        <member name="F:MacroFramework.OldVKey.SLEEP">
             <summary>
             Computer Sleep key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD0">
+        <member name="F:MacroFramework.OldVKey.NUMPAD0">
             <summary>
             Numeric keypad 0 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD1">
+        <member name="F:MacroFramework.OldVKey.NUMPAD1">
             <summary>
             Numeric keypad 1 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD2">
+        <member name="F:MacroFramework.OldVKey.NUMPAD2">
             <summary>
             Numeric keypad 2 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD3">
+        <member name="F:MacroFramework.OldVKey.NUMPAD3">
             <summary>
             Numeric keypad 3 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD4">
+        <member name="F:MacroFramework.OldVKey.NUMPAD4">
             <summary>
             Numeric keypad 4 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD5">
+        <member name="F:MacroFramework.OldVKey.NUMPAD5">
             <summary>
             Numeric keypad 5 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD6">
+        <member name="F:MacroFramework.OldVKey.NUMPAD6">
             <summary>
             Numeric keypad 6 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD7">
+        <member name="F:MacroFramework.OldVKey.NUMPAD7">
             <summary>
             Numeric keypad 7 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD8">
+        <member name="F:MacroFramework.OldVKey.NUMPAD8">
             <summary>
             Numeric keypad 8 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMPAD9">
+        <member name="F:MacroFramework.OldVKey.NUMPAD9">
             <summary>
             Numeric keypad 9 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MULTIPLY">
+        <member name="F:MacroFramework.OldVKey.MULTIPLY">
             <summary>
             Multiply key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.ADD">
+        <member name="F:MacroFramework.OldVKey.ADD">
             <summary>
             Add key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SEPARATOR">
+        <member name="F:MacroFramework.OldVKey.SEPARATOR">
             <summary>
             Separator key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SUBTRACT">
+        <member name="F:MacroFramework.OldVKey.SUBTRACT">
             <summary>
             Subtract key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.DECIMAL">
+        <member name="F:MacroFramework.OldVKey.DECIMAL">
             <summary>
             Decimal key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.DIVIDE">
+        <member name="F:MacroFramework.OldVKey.DIVIDE">
             <summary>
             Divide key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F1">
+        <member name="F:MacroFramework.OldVKey.F1">
             <summary>
             F1 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F2">
+        <member name="F:MacroFramework.OldVKey.F2">
             <summary>
             F2 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F3">
+        <member name="F:MacroFramework.OldVKey.F3">
             <summary>
             F3 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F4">
+        <member name="F:MacroFramework.OldVKey.F4">
             <summary>
             F4 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F5">
+        <member name="F:MacroFramework.OldVKey.F5">
             <summary>
             F5 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F6">
+        <member name="F:MacroFramework.OldVKey.F6">
             <summary>
             F6 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F7">
+        <member name="F:MacroFramework.OldVKey.F7">
             <summary>
             F7 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F8">
+        <member name="F:MacroFramework.OldVKey.F8">
             <summary>
             F8 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F9">
+        <member name="F:MacroFramework.OldVKey.F9">
             <summary>
             F9 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F10">
+        <member name="F:MacroFramework.OldVKey.F10">
             <summary>
             F10 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F11">
+        <member name="F:MacroFramework.OldVKey.F11">
             <summary>
             F11 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F12">
+        <member name="F:MacroFramework.OldVKey.F12">
             <summary>
             F12 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F13">
+        <member name="F:MacroFramework.OldVKey.F13">
             <summary>
             F13 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F14">
+        <member name="F:MacroFramework.OldVKey.F14">
             <summary>
             F14 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F15">
+        <member name="F:MacroFramework.OldVKey.F15">
             <summary>
             F15 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F16">
+        <member name="F:MacroFramework.OldVKey.F16">
             <summary>
             F16 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F17">
+        <member name="F:MacroFramework.OldVKey.F17">
             <summary>
             F17 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F18">
+        <member name="F:MacroFramework.OldVKey.F18">
             <summary>
             F18 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F19">
+        <member name="F:MacroFramework.OldVKey.F19">
             <summary>
             F19 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F20">
+        <member name="F:MacroFramework.OldVKey.F20">
             <summary>
             F20 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F21">
+        <member name="F:MacroFramework.OldVKey.F21">
             <summary>
             F21 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F22">
+        <member name="F:MacroFramework.OldVKey.F22">
             <summary>
             F22 key, (PPC only) Key used to lock device.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F23">
+        <member name="F:MacroFramework.OldVKey.F23">
             <summary>
             F23 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.F24">
+        <member name="F:MacroFramework.OldVKey.F24">
             <summary>
             F24 key  
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.NUMLOCK">
+        <member name="F:MacroFramework.OldVKey.NUMLOCK">
             <summary>
             NUM LOCK key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.SCROLL">
+        <member name="F:MacroFramework.OldVKey.SCROLL">
             <summary>
             SCROLL LOCK key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LSHIFT">
+        <member name="F:MacroFramework.OldVKey.LSHIFT">
             <summary>
             Left SHIFT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RSHIFT">
+        <member name="F:MacroFramework.OldVKey.RSHIFT">
             <summary>
             Right SHIFT key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LCONTROL">
+        <member name="F:MacroFramework.OldVKey.LCONTROL">
             <summary>
             Left CONTROL key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RCONTROL">
+        <member name="F:MacroFramework.OldVKey.RCONTROL">
             <summary>
             Right CONTROL key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LMENU">
+        <member name="F:MacroFramework.OldVKey.LMENU">
             <summary>
             Left MENU key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.RMENU">
+        <member name="F:MacroFramework.OldVKey.RMENU">
             <summary>
             Right MENU key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_BACK">
+        <member name="F:MacroFramework.OldVKey.BROWSER_BACK">
             <summary>
             Windows 2000/XP: Browser Back key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_FORWARD">
+        <member name="F:MacroFramework.OldVKey.BROWSER_FORWARD">
             <summary>
             Windows 2000/XP: Browser Forward key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_REFRESH">
+        <member name="F:MacroFramework.OldVKey.BROWSER_REFRESH">
             <summary>
             Windows 2000/XP: Browser Refresh key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_STOP">
+        <member name="F:MacroFramework.OldVKey.BROWSER_STOP">
             <summary>
             Windows 2000/XP: Browser Stop key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_SEARCH">
+        <member name="F:MacroFramework.OldVKey.BROWSER_SEARCH">
             <summary>
             Windows 2000/XP: Browser Search key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_FAVORITES">
+        <member name="F:MacroFramework.OldVKey.BROWSER_FAVORITES">
             <summary>
             Windows 2000/XP: Browser Favorites key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.BROWSER_HOME">
+        <member name="F:MacroFramework.OldVKey.BROWSER_HOME">
             <summary>
             Windows 2000/XP: Browser Start and Home key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.VOLUME_MUTE">
+        <member name="F:MacroFramework.OldVKey.VOLUME_MUTE">
             <summary>
             Windows 2000/XP: Volume Mute key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.VOLUME_DOWN">
+        <member name="F:MacroFramework.OldVKey.VOLUME_DOWN">
             <summary>
             Windows 2000/XP: Volume Down key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.VOLUME_UP">
+        <member name="F:MacroFramework.OldVKey.VOLUME_UP">
             <summary>
             Windows 2000/XP: Volume Up key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MEDIA_NEXT_TRACK">
+        <member name="F:MacroFramework.OldVKey.MEDIA_NEXT_TRACK">
             <summary>
             Windows 2000/XP: Next Track key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MEDIA_PREV_TRACK">
+        <member name="F:MacroFramework.OldVKey.MEDIA_PREV_TRACK">
             <summary>
             Windows 2000/XP: Previous Track key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MEDIA_STOP">
+        <member name="F:MacroFramework.OldVKey.MEDIA_STOP">
             <summary>
             Windows 2000/XP: Stop Media key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.MEDIA_PLAY_PAUSE">
+        <member name="F:MacroFramework.OldVKey.MEDIA_PLAY_PAUSE">
             <summary>
             Windows 2000/XP: Play/Pause Media key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LAUNCH_MAIL">
+        <member name="F:MacroFramework.OldVKey.LAUNCH_MAIL">
             <summary>
             Windows 2000/XP: Start Mail key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LAUNCH_MEDIA_SELECT">
+        <member name="F:MacroFramework.OldVKey.LAUNCH_MEDIA_SELECT">
             <summary>
             Windows 2000/XP: Select Media key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LAUNCH_APP1">
+        <member name="F:MacroFramework.OldVKey.LAUNCH_APP1">
             <summary>
             Windows 2000/XP: Start Application 1 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.LAUNCH_APP2">
+        <member name="F:MacroFramework.OldVKey.LAUNCH_APP2">
             <summary>
             Windows 2000/XP: Start Application 2 key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_1">
+        <member name="F:MacroFramework.OldVKey.OEM_1">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_PLUS">
+        <member name="F:MacroFramework.OldVKey.OEM_PLUS">
             <summary>
             Windows 2000/XP: For any country/region, the '+' key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_COMMA">
+        <member name="F:MacroFramework.OldVKey.OEM_COMMA">
             <summary>
             Windows 2000/XP: For any country/region, the ',' key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_MINUS">
+        <member name="F:MacroFramework.OldVKey.OEM_MINUS">
             <summary>
             Windows 2000/XP: For any country/region, the '-' key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_PERIOD">
+        <member name="F:MacroFramework.OldVKey.OEM_PERIOD">
             <summary>
             Windows 2000/XP: For any country/region, the '.' key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_2">
+        <member name="F:MacroFramework.OldVKey.OEM_2">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_3">
+        <member name="F:MacroFramework.OldVKey.OEM_3">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_4">
+        <member name="F:MacroFramework.OldVKey.OEM_4">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_5">
+        <member name="F:MacroFramework.OldVKey.OEM_5">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_6">
+        <member name="F:MacroFramework.OldVKey.OEM_6">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_7">
+        <member name="F:MacroFramework.OldVKey.OEM_7">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_8">
+        <member name="F:MacroFramework.OldVKey.OEM_8">
             <summary>
             Used for miscellaneous characters; it can vary by keyboard.
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_102">
+        <member name="F:MacroFramework.OldVKey.OEM_102">
             <summary>
             Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PROCESSKEY">
+        <member name="F:MacroFramework.OldVKey.PROCESSKEY">
             <summary>
             Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.PACKET">
+        <member name="F:MacroFramework.OldVKey.PACKET">
             <summary>
             Windows 2000/XP: Used to pass Unicode characters as if they were VKeytrokes.
             The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information,
             see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP
             </summary>
         </member>
-        <member name="F:MacroFramework.VKey.ATTN">
+        <member name="F:MacroFramework.OldVKey.ATTN">
             <summary>Attn key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.CRSEL">
+        <member name="F:MacroFramework.OldVKey.CRSEL">
             <summary>CrSel key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.EXSEL">
+        <member name="F:MacroFramework.OldVKey.EXSEL">
             <summary>ExSel key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.EREOF">
+        <member name="F:MacroFramework.OldVKey.EREOF">
             <summary>Erase EOF key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.PLAY">
+        <member name="F:MacroFramework.OldVKey.PLAY">
             <summary>Play key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.ZOOM">
+        <member name="F:MacroFramework.OldVKey.ZOOM">
             <summary>Zoom key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.NONAME">
+        <member name="F:MacroFramework.OldVKey.NONAME">
             <summary>Reserved</summary>
         </member>
-        <member name="F:MacroFramework.VKey.PA1">
+        <member name="F:MacroFramework.OldVKey.PA1">
             <summary>PA1 key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.OEM_CLEAR">
+        <member name="F:MacroFramework.OldVKey.OEM_CLEAR">
             <summary>Clear key</summary>
         </member>
-        <member name="F:MacroFramework.VKey.GENERAL_BIND_KEY">
+        <member name="F:MacroFramework.OldVKey.GENERAL_BIND_KEY">
             <summary>
             The <see cref="F:MacroFramework.MacroSettings.GeneralBindKey"/> is transformed into this value when caught by <see cref="T:MacroFramework.Input.KeyEvents"/>
             </summary>
@@ -1465,7 +1470,7 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.GeneralBindKey">
             <summary>
-            A dedicated bind key which is always intercepted and tranformed into <see cref="F:MacroFramework.VKey.GENERAL_BIND_KEY"/>
+            A dedicated bind key which is always intercepted and tranformed into <see cref="!:VKey.GENERAL_BIND_KEY"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.CommandActivateKey">
@@ -1475,12 +1480,12 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.ListenerEnableKey">
             <summary>
-            Not yet implemented. The dedicated key which enabled the <see cref="T:MacroFramework.Input.InputHook"/>
+            Not yet implemented. The dedicated key which enabled the <see cref="!:InputHook"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.ListenerDisableKey">
             <summary>
-            Not yet implemented. The dedicated key which disables the <see cref="T:MacroFramework.Input.InputHook"/>
+            Not yet implemented. The dedicated key which disables the <see cref="!:InputHook"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.InterceptGeneralBindKey">
@@ -1496,6 +1501,1266 @@
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">
             <summary>
             The delay in milliseconds between every iteration of the main loop
+            </summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.DeviceHook">
+            <summary>
+            Static class for receiving low level input from keyboard or mouse
+            </summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.DeviceHook.MessageProc">
+            <summary>
+            Delegate for receiving low level input
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.DeviceHook.KEYBOARD_HOOK_ID">
+            <summary>
+            Windows hook IDs
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.DeviceHook.MOUSE_HOOK_ID">
+            <summary>
+            Windows hook IDs
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.DeviceHook.KeyboardHookRunning">
+            <summary>
+            Returns true if the keyboard hook is running
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.DeviceHook.MouseHookRunning">
+            <summary>
+            Returns true if the mouse hook is running
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.DeviceHook.keyboardProc">
+            <summary>
+            Keyboard callback delegate
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.DeviceHook.mouseProc">
+            <summary>
+            Mouse callback delegate
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.DeviceHook.BlockCode">
+            <summary>
+            The <see cref="T:System.IntPtr"/> to return to intercept a keyevent
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.SetWindowsHookEx(System.Int32,MacroFramework.NewInput.DeviceHook.MessageProc,System.IntPtr,System.Int32)">
+            <summary>
+            Initialize a low level hook
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.UnhookWindowsHookEx(System.IntPtr)">
+            <summary>
+            Dispose of a low level hook
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.CallNextHookEx(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Call the next hook in a chain
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.StartKeyboardHook">
+            <summary>
+            Start hooking keyboard
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.StopKeyboardHook">
+            <summary>
+            Stop hooking keyboard
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.StartMouseHook">
+            <summary>
+            Start hooking mouse
+            </summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.DeviceHook.StopMouseHook">
+            <summary>
+            Stop hooking mouse
+            </summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.EnhancedKey">
+            <summary>Extension methods for the enhanced Key enum</summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.EnhancedKey.KeyMap">
+            <summary>Map virtual key codes to the Key enum</summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.EnhancedKey.KeyExtendedMap">
+            <summary>Map extended versions of virtual key codes to the Key enum</summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.EnhancedKey.StringToKey">
+            <summary>Map strings to the Key enum</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.HasAny(MacroFramework.NewInput.KKey,MacroFramework.NewInput.KKey)">
+            <summary>Check if key has any of the flags given</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.HasAll(MacroFramework.NewInput.KKey,MacroFramework.NewInput.KKey)">
+            <summary>Check if key has all of the flags given</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsKey(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value is a key instead of a flag etc.</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsFlag(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value is a flag</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsMask(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value is a mask</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsCustom(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value is a custom entry</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsModifier(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a modifier</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsMouse(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a mouse key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsNumpad(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a numpad key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsScroll(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key represents a scroll event</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsMouseMove(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value represents mouse movement</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsNumber(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a number</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsExtended(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is has the extended property</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsMedia(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a media key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsChar(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key produces a character when typed</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsStateless(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is stateless. Stateless keys have no up event.</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsToggle(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a toggleable key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsKeyboard(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a keyboard key instead of a mouse or a custom key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsModifierFlag(MacroFramework.NewInput.KKey)">
+            <summary>Check if the Key value is a modifier flag</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsShift(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a left or right shift key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsCtrl(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a left or right control key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsWin(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a left or right win key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsAlt(MacroFramework.NewInput.KKey)">
+            <summary>Check if the key is a left or right alt key</summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.AsVirtualKey(MacroFramework.NewInput.KKey)">
+            <summary>Get the <see cref="T:MacroFramework.NewInput.VKey"/> equivalent of this <see cref="T:MacroFramework.NewInput.KKey"/></summary>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.AsCustom(MacroFramework.NewInput.VKey,System.Boolean)">
+            <summary>Get the <see cref="T:MacroFramework.NewInput.KKey"/> equivalent of this <see cref="T:MacroFramework.NewInput.VKey"/>. If an extended key is not found, a non-extended version is returned if possible.</summary>
+            <param name="key">The <see cref="T:MacroFramework.NewInput.VKey"/> to cast into a <see cref="T:MacroFramework.NewInput.ScanCode"/></param>
+            <param name="extended">Set true to prioritize the extended version of the key (Example: Enter vs NumpadEnter). Returns non-extended version as fallback if not found and vice versa.</param>
+        </member>
+        <member name="M:MacroFramework.NewInput.EnhancedKey.IsExtended(MacroFramework.NewInput.ScanCode)">
+            <summary>Check if the <see cref="T:MacroFramework.NewInput.ScanCode"/> is an extended key</summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.IDeviceInput">
+            <summary>
+            Interface for representing device input
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.Key">
+            <summary>
+            The corresponding key
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.State">
+            <summary>
+            The state of the key
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.Injected">
+            <summary>
+            Specifies whether the event was emitted by a process
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.InjectedLower">
+            <summary>
+            Specifies if the key was emitted by a lower integrity level process
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.ExtraInfo">
+            <summary>
+            Extra information given by the event source
+            </summary>
+        </member>
+        <member name="P:MacroFramework.NewInput.IDeviceInput.IsMouse">
+            <summary>
+            Specifies if the event is a mouse key
+            </summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.KKey">
+            <summary>An enhanced list of Virtual Keys.</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Custom">
+            <summary>Flag for custom defined keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Modifier">
+            <summary>Flag for modifier keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Mouse">
+            <summary>Flag for mouse keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Numpad">
+            <summary>Flag for numpad keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Scroll">
+            <summary>Flag for scroll keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Number">
+            <summary>Flag for number keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Extended">
+            <summary>Flag for extended keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Media">
+            <summary>Flag for media keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Char">
+            <summary>Flag for keys that produce visible characters</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Stateless">
+            <summary>Flag for stateless keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.F_Toggle">
+            <summary>Flag for toggle keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Shift">
+            <summary>Flag for shift keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Ctrl">
+            <summary>Flag for ctrl keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Win">
+            <summary>Flag for win keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Alt">
+            <summary>Flag for alt keys</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.M_FlagMask">
+            <summary>Mask for the flag bits</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.M_KeyMask">
+            <summary>Mask for the Virtual Key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Undefined">
+            <summary>Key is undefined</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.LButton">
+            <summary>Left mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.RButton">
+            <summary>Right mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.MButton">
+            <summary>Middle mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.XButton1">
+            <summary>Extra mouse button 1</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.XButton2">
+            <summary>Extra mouse button 2</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D0">
+            <summary>Digit 0</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D1">
+            <summary>Digit 1</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D2">
+            <summary>Digit 2</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D3">
+            <summary>Digit 3</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D4">
+            <summary>Digit 4</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D5">
+            <summary>Digit 5</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D6">
+            <summary>Digit 6</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D7">
+            <summary>Digit 7</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D8">
+            <summary>Digit 8</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.D9">
+            <summary>Digit 9</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Left">
+            <summary>Left arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Right">
+            <summary>Right arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Up">
+            <summary>Up arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Down">
+            <summary>Down arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.LShift">
+            <summary>Left shift key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.RShift">
+            <summary>Right shift key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.LCtrl">
+            <summary>Left control key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.RCtrl">
+            <summary>Right control key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.LAlt">
+            <summary>Left alt key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.RAlt">
+            <summary>Right alt key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.LWin">
+            <summary>Left win key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.RWin">
+            <summary>Right win key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.App">
+            <summary>Context menu key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Context">
+            <summary>Context menu key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.PrintScrn">
+            <summary>Print screen key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.BrowserBack">
+            <summary>The general back key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.BrowserForward">
+            <summary>The general forward key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.MediaPlay">
+            <summary>Media play pause key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Umlaut">
+            <summary>The ¨ key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Apostrophe">
+            <summary>The ' key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Ö">
+            <summary>The Ö key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.tilde">
+            <summary>The ´ key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Section">
+            <summary>The § key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Å">
+            <summary>The Å key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Ä">
+            <summary>The Ä key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.Less">
+            <summary>The &lt; key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.WheelLeft">
+            <summary>Mouse wheel left</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.WheelRight">
+            <summary>Mouse wheel right</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.WheelUp">
+            <summary>Mouse wheel up</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.WheelDown">
+            <summary>Mouse wheel down</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.MouseMove">
+            <summary>Mouse movement</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.GeneralBindKey">
+            <summary>
+            The <see cref="F:MacroFramework.MacroSettings.GeneralBindKey"/> key will always be transformed to this key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.KKey.None">
+            <summary>
+            Does not represent any key
+            </summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.ScanCode">
+            <summary>Enum of key scan codes.</summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.VKey">
+            <summary>Enum of virtual key codes.</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LBUTTON">
+            <summary>
+            Left mouse button
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RBUTTON">
+            <summary>
+            Right mouse button
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CANCEL">
+            <summary>
+            Control-break processing
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MBUTTON">
+            <summary>
+            Middle mouse button (three-button mouse)
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.XBUTTON1">
+            <summary>
+            Windows 2000/XP: X1 mouse button
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.XBUTTON2">
+            <summary>
+            Windows 2000/XP: X2 mouse button
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.UNDEFINED">
+            <summary>This key is undefined</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BACK">
+            <summary>
+            BACKSPACE key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.TAB">
+            <summary>
+            TAB key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CLEAR">
+            <summary>
+            CLEAR key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RETURN">
+            <summary>
+            ENTER key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SHIFT">
+            <summary>
+            SHIFT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CONTROL">
+            <summary>
+            CTRL key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MENU">
+            <summary>
+            ALT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PAUSE">
+            <summary>
+            PAUSE key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CAPITAL">
+            <summary>
+            CAPS LOCK key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.KANA">
+            <summary>
+            Input Method Editor (IME) Kana mode
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.JUNJA">
+            <summary>
+            IME Junja mode
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.FINAL">
+            <summary>
+            IME final mode
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.KANJI">
+            <summary>
+            IME Kanji mode
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.ESCAPE">
+            <summary>
+            ESC key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CONVERT">
+            <summary>
+            IME convert
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NONCONVERT">
+            <summary>
+            IME nonconvert
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.ACCEPT">
+            <summary>
+            IME accept
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MODECHANGE">
+            <summary>
+            IME mode change request
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SPACE">
+            <summary>
+            SPACEBAR
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PRIOR">
+            <summary>
+            PAGE UP key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NEXT">
+            <summary>
+            PAGE DOWN key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.END">
+            <summary>
+            END key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.HOME">
+            <summary>
+            HOME key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LEFT">
+            <summary>
+            LEFT ARROW key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.UP">
+            <summary>
+            UP ARROW key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RIGHT">
+            <summary>
+            RIGHT ARROW key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.DOWN">
+            <summary>
+            DOWN ARROW key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SELECT">
+            <summary>
+            SELECT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PRINT">
+            <summary>
+            PRINT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.EXECUTE">
+            <summary>
+            EXECUTE key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SNAPSHOT">
+            <summary>
+            PRINT SCREEN key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.INSERT">
+            <summary>
+            INS key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.DELETE">
+            <summary>
+            DEL key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.HELP">
+            <summary>
+            HELP key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D0">
+            <summary>
+            0 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D1">
+            <summary>
+            1 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D2">
+            <summary>
+            2 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D3">
+            <summary>
+            3 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D4">
+            <summary>
+            4 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D5">
+            <summary>
+            5 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D6">
+            <summary>
+            6 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D7">
+            <summary>
+            7 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D8">
+            <summary>
+            8 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D9">
+            <summary>
+            9 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.A">
+            <summary>
+            A key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.B">
+            <summary>
+            B key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.C">
+            <summary>
+            C key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.D">
+            <summary>
+            D key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.E">
+            <summary>
+            E key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F">
+            <summary>
+            F key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.G">
+            <summary>
+            G key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.H">
+            <summary>
+            H key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.I">
+            <summary>
+            I key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.J">
+            <summary>
+            J key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.K">
+            <summary>
+            K key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.L">
+            <summary>
+            L key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.M">
+            <summary>
+            M key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.N">
+            <summary>
+            N key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.O">
+            <summary>
+            O key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.P">
+            <summary>
+            P key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.Q">
+            <summary>
+            Q key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.R">
+            <summary>
+            R key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.S">
+            <summary>
+            S key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.T">
+            <summary>
+            T key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.U">
+            <summary>
+            U key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.V">
+            <summary>
+            V key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.W">
+            <summary>
+            W key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.X">
+            <summary>
+            X key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.Y">
+            <summary>
+            Y key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.Z">
+            <summary>
+            Z key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LWIN">
+            <summary>
+            Left Windows key (Microsoft Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RWIN">
+            <summary>
+            Right Windows key (Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.APPS">
+            <summary>
+            Applications key (Natural keyboard)
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SLEEP">
+            <summary>
+            Computer Sleep key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD0">
+            <summary>
+            Numeric keypad 0 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD1">
+            <summary>
+            Numeric keypad 1 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD2">
+            <summary>
+            Numeric keypad 2 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD3">
+            <summary>
+            Numeric keypad 3 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD4">
+            <summary>
+            Numeric keypad 4 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD5">
+            <summary>
+            Numeric keypad 5 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD6">
+            <summary>
+            Numeric keypad 6 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD7">
+            <summary>
+            Numeric keypad 7 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD8">
+            <summary>
+            Numeric keypad 8 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMPAD9">
+            <summary>
+            Numeric keypad 9 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MULTIPLY">
+            <summary>
+            Multiply key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.ADD">
+            <summary>
+            Add key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SEPARATOR">
+            <summary>
+            Separator key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SUBTRACT">
+            <summary>
+            Subtract key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.DECIMAL">
+            <summary>
+            Decimal key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.DIVIDE">
+            <summary>
+            Divide key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F1">
+            <summary>
+            F1 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F2">
+            <summary>
+            F2 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F3">
+            <summary>
+            F3 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F4">
+            <summary>
+            F4 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F5">
+            <summary>
+            F5 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F6">
+            <summary>
+            F6 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F7">
+            <summary>
+            F7 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F8">
+            <summary>
+            F8 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F9">
+            <summary>
+            F9 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F10">
+            <summary>
+            F10 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F11">
+            <summary>
+            F11 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F12">
+            <summary>
+            F12 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F13">
+            <summary>
+            F13 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F14">
+            <summary>
+            F14 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F15">
+            <summary>
+            F15 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F16">
+            <summary>
+            F16 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F17">
+            <summary>
+            F17 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F18">
+            <summary>
+            F18 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F19">
+            <summary>
+            F19 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F20">
+            <summary>
+            F20 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F21">
+            <summary>
+            F21 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F22">
+            <summary>
+            F22 key, (PPC only) Key used to lock device.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F23">
+            <summary>
+            F23 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.F24">
+            <summary>
+            F24 key  
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NUMLOCK">
+            <summary>
+            NUM LOCK key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.SCROLL">
+            <summary>
+            SCROLL LOCK key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LSHIFT">
+            <summary>
+            Left SHIFT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RSHIFT">
+            <summary>
+            Right SHIFT key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LCONTROL">
+            <summary>
+            Left CONTROL key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RCONTROL">
+            <summary>
+            Right CONTROL key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LMENU">
+            <summary>
+            Left MENU key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.RMENU">
+            <summary>
+            Right MENU key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_BACK">
+            <summary>
+            Windows 2000/XP: Browser Back key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_FORWARD">
+            <summary>
+            Windows 2000/XP: Browser Forward key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_REFRESH">
+            <summary>
+            Windows 2000/XP: Browser Refresh key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_STOP">
+            <summary>
+            Windows 2000/XP: Browser Stop key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_SEARCH">
+            <summary>
+            Windows 2000/XP: Browser Search key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_FAVORITES">
+            <summary>
+            Windows 2000/XP: Browser Favorites key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.BROWSER_HOME">
+            <summary>
+            Windows 2000/XP: Browser Start and Home key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.VOLUME_MUTE">
+            <summary>
+            Windows 2000/XP: Volume Mute key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.VOLUME_DOWN">
+            <summary>
+            Windows 2000/XP: Volume Down key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.VOLUME_UP">
+            <summary>
+            Windows 2000/XP: Volume Up key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MEDIA_NEXT_TRACK">
+            <summary>
+            Windows 2000/XP: Next Track key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MEDIA_PREV_TRACK">
+            <summary>
+            Windows 2000/XP: Previous Track key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MEDIA_STOP">
+            <summary>
+            Windows 2000/XP: Stop Media key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.MEDIA_PLAY_PAUSE">
+            <summary>
+            Windows 2000/XP: Play/Pause Media key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LAUNCH_MAIL">
+            <summary>
+            Windows 2000/XP: Start Mail key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LAUNCH_MEDIA_SELECT">
+            <summary>
+            Windows 2000/XP: Select Media key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LAUNCH_APP1">
+            <summary>
+            Windows 2000/XP: Start Application 1 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.LAUNCH_APP2">
+            <summary>
+            Windows 2000/XP: Start Application 2 key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_1">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_PLUS">
+            <summary>
+            Windows 2000/XP: For any country/region, the '+' key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_COMMA">
+            <summary>
+            Windows 2000/XP: For any country/region, the ',' key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_MINUS">
+            <summary>
+            Windows 2000/XP: For any country/region, the '-' key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_PERIOD">
+            <summary>
+            Windows 2000/XP: For any country/region, the '.' key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_2">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_3">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_4">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_5">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_6">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_7">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_8">
+            <summary>
+            Used for miscellaneous characters; it can vary by keyboard.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_102">
+            <summary>
+            Windows 2000/XP: Either the angle bracket key or the backslash key on the RT 102-key keyboard
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PROCESSKEY">
+            <summary>
+            Windows 95/98/Me, Windows NT 4.0, Windows 2000/XP: IME PROCESS key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PACKET">
+            <summary>
+            Windows 2000/XP: Used to pass Unicode characters as if they were keystrokes.
+            The VK_PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information,
+            see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP
+            </summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.ATTN">
+            <summary>Attn key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.CRSEL">
+            <summary>CrSel key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.EXSEL">
+            <summary>ExSel key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.EREOF">
+            <summary>Erase EOF key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PLAY">
+            <summary>Play key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.ZOOM">
+            <summary>Zoom key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.NONAME">
+            <summary>Reserved</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.PA1">
+            <summary>PA1 key</summary>
+        </member>
+        <member name="F:MacroFramework.NewInput.VKey.OEM_CLEAR">
+            <summary>Clear key</summary>
+        </member>
+        <member name="T:MacroFramework.NewInput.WindowsMessage">
+            <summary>
+            Enums of all Windows messages
             </summary>
         </member>
         <member name="T:MacroFramework.Setup">

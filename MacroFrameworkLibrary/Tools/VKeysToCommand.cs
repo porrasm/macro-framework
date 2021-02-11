@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Input;
+using MacroFramework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ namespace MacroFramework.Tools {
             b = new StringBuilder();
         }
 
-        public void AddKey(VKey key) {
+        public void AddKey(KKey key) {
             char c = KeyToChar(key);
-            if (key == VKey.BACK) {
+            if (key == KKey.Backspace) {
                 if (b.Length > 0) {
                     b.Remove(b.Length - 1, 1);
                 }
@@ -36,23 +37,23 @@ namespace MacroFramework.Tools {
             return other.Equals(ToString());
         }
 
-        public static char KeyToChar(VKey key) {
+        public static char KeyToChar(KKey key) {
 
-            if (key >= VKey.A & key <= VKey.Z) {
+            if (key >= KKey.A & key <= KKey.Z) {
                 return (char)((int)key);
             }
 
-            if (key >= VKey.D0 && key <= VKey.D9) {
-                int number = (int)(key - VKey.D0);
+            if (key >= KKey.D0 && key <= KKey.D9) {
+                int number = (int)(key - KKey.D0);
                 return (char)('0' + number);
             }
 
             switch (key) {
-                case VKey.TAB: return '\t';
-                case VKey.SPACE: return ' ';
-                case VKey.RETURN: return '\r';
-                case VKey.OEM_MINUS: return '-';
-                case VKey.OEM_PLUS: return '+';
+                case KKey.Tab: return '\t';
+                case KKey.Space: return ' ';
+                case KKey.Enter: return '\r';
+                case KKey.Minus: return '-';
+                case KKey.Plus: return '+';
             }
 
             return '\0';
