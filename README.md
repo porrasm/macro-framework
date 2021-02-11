@@ -47,7 +47,7 @@ using MacroFramework.Commands;
 using MacroFramework.Commands.Attributes;
 
 public class NotepadCommand : Command {
-    [BindActivator(VKey.LCONTROL, VKey.N)]
+    [BindActivator(KKey.LCtrl, KKey.N)]
     private void OpenNotepad() {
         System.Diagnostics.Process.Start("Notepad.exe");
     }

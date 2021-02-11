@@ -14,7 +14,7 @@ The framework is designed in such a way that it is very simple and fast to use. 
 
 The framework is started with a single method ```MacroFramework.Macros.Start(Setup)``` and it can be stopped with ```MacroFramework.Macros.Stop()```. When the application starts it will start a global keyboard hook which listens to all your keypresses. These keypresses will be caught in desktop mode and in most application (e.g. some fullscreen games might prevent the keyboard hook from receiving events). These keyvents will be used for activating macros relates to keyvents. 
 
-The framework also has a main loop which runs every X milliseconds. You can set this option in the [Setup](../html/class_macro_framework_1_1_setup.html) class. This main loop is currently only used for timer based events.
+The framework also has a main loop which runs every X milliseconds. You can set this option in the [Setup](../html/class_macro_framework_1_1_setup.html) class. This main loop is used for timer based events (so the smaller the main loop delay the more accurate the timers are). The keyevents are also queued up and handled in the main loop.
 
 The framework also offers support for text commands.
 
@@ -42,28 +42,28 @@ class BindAndKeyActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new KeyActivator(OnPressSpacebar, VKey.SPACE));
+        activator.AddActivator(new KeyActivator(OnPressSpacebar, KKey.Space));
 
         // Defaults to ordered press of [A, B, C] and then releasing any key.
-        activator.AddActivator(new BindActivator(OnReleaseABC, Keys(VKey.A, VKey.B, VKey.C)));
+        activator.AddActivator(new BindActivator(OnReleaseABC, Keys(KKey.A, KKey.B, KKey.C)));
 
         // Activated when A is followed by B is followed by C and when no other keys are pressed
-        activator.AddActivator(new BindActivator(OnPressABC, Keys(VKey.A, VKey.B, VKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered);
+        activator.AddActivator(new BindActivator(OnPressABC, Keys(KKey.A, KKey.B, KKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered));
     }
 
-    [KeyActivator(MacroFramework.VKey.SPACE)]
+    [KeyActivator(KKey.Space)]
     private void OnPressSpacebar(KeyEvent k) {
-        System.Console.WriteLine("Pressed space " + k.KeyState);
+        System.Console.WriteLine("Pressed space " + k.State);
     }
 
     // Defaults to ordered press of [A, B, C] and then releasing any key.
-    [BindActivator(VKey.A, VKey.B, VKey.C)]
+    [BindActivator(KKey.A, KKey.B, KKey.C)]
     private void OnReleaseABC() {
         System.Console.WriteLine("Pressed ABC in order and released!");
     }
 
     // Activated when A is followed by B is followed by C and when no other keys are pressed
-    [BindActivator(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered, VKey.A, VKey.B, VKey.C)]
+    [BindActivator(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered, KKey.A, KKey.B, KKey.C)]
     private void OnPressABC() {
         System.Console.WriteLine("Pressed ABC in order!");
     }
@@ -75,7 +75,7 @@ class BindAndKeyActivatorExample : Command {
 
 The framework offers support for a general bind key. You can define this in the settings using the [Setup](../html/class_macro_framework_1_1_setup.html) class. The general bind key is a key which will always be intercepted i.e. other programs will not receive this input. It will also intercept all keys when this key is being held down. 
 
-This allows you to create binds without having to fear you will accidentally do something in another application. I have set my general key bind to caps lock (because it is a useless key) and therefore can assign the bind [Caps lock, alt, F4] without exiting the current application. The general key bind is accessible from the `VKey` enum with the name `VKey.GENERAL_BIND_KEY`.
+This allows you to create binds without having to fear you will accidentally do something in another application. I have set my general key bind to caps lock (because it is a useless key) and therefore can assign the bind [Caps lock, alt, F4] without exiting the current application. The general key bind is accessible from the `KKey` enum with the name `KKEy.GeneralBindKey`.
 
 ## TimerActivator
 
