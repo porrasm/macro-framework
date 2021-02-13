@@ -40,8 +40,15 @@ namespace MacroFramework {
             }
             Setup.SetInstance(setup);
             Running = true;
-            KeyEvents.Initialize();
-            DeviceHook.StartKeyboardHook();
+            InputEvents.Initialize();
+
+            if (setup.Settings.AutoEnableKeyboardHook) {
+                DeviceHook.StartKeyboardHook();
+            }
+            if (setup.Settings.AutoEnableMouseHook) {
+                DeviceHook.StartMouseHook();
+            }
+
             CommandContainer.Start();
             MainLoop();
             Application.Run();
@@ -51,7 +58,7 @@ namespace MacroFramework {
             int timeStep = Setup.Instance.Settings.MainLoopTimestep;
             while (Running) {
                 OnMainLoop?.Invoke();
-                KeyEvents.HandleQueuedKeyevents();
+                InputEvents.HandleQueuedKeyevents();
                 CommandContainer.UpdateActivators<TimerActivator>();
                 TextCommands.ExecuteTextCommandQueue();
                 await Task.Delay(Max(1, timeStep));
@@ -67,6 +74,7 @@ namespace MacroFramework {
         /// </summary>
         public static void Stop() {
             DeviceHook.StopKeyboardHook();
+            DeviceHook.StopMouseHook();
             CommandContainer.Exit();
             Application.Exit();
             Setup.SetInstance(null);

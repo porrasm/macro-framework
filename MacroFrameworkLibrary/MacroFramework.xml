@@ -29,7 +29,7 @@
             The keys which need to be pressed
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.KKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.KKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
@@ -139,7 +139,7 @@
             </summary>
             <param name="k"></param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.KKey)">
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.Commands.KKey)">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
@@ -211,13 +211,13 @@
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.BindActivator"/>
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.KKey[])">
+        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
             <param name="keys"></param>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.KKey[])">
+        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.Commands.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
@@ -228,10 +228,10 @@
         </member>
         <member name="T:MacroFramework.Commands.Attributes.KeyActivatorAttribute">
             <summary>
-            <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.KeyActivator"/>. Attribute methods are parameterless, use <see cref="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent"/> to get the current key event.
+            <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.KeyActivator"/>. Attribute methods are parameterless, use <see cref="P:MacroFramework.Input.InputEvents.CurrentInputEvent"/> to get the current key event.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.KeyActivatorAttribute.#ctor(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Commands.Attributes.KeyActivatorAttribute.#ctor(MacroFramework.Commands.KKey)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.KeyActivator"/> instance at the start of the application from this method
             </summary>
@@ -333,7 +333,7 @@
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.KKey[])">
+        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.Commands.KKey[])">
             <summary>
             Nicer syntax for creating array of <see cref="T:MacroFramework.VKey"/> elements
             </summary>
@@ -392,7 +392,7 @@
         </member>
         <member name="F:MacroFramework.Commands.ActivationEventType.Any">
             <summary>
-            ACtivates a keybind on any key event. Use with caution as binds with this option are activated twice, once on key down and once again on key up events. Use <see cref="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent"/> to determine whether the current event is a key down or up event.
+            ACtivates a keybind on any key event. Use with caution as binds with this option are activated twice, once on key down and once again on key up events. Use <see cref="P:MacroFramework.Input.InputEvents.CurrentInputEvent"/> to determine whether the current event is a key down or up event.
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.KeyMatchType">
@@ -428,6 +428,261 @@
         <member name="T:MacroFramework.Commands.TimeUnit">
             <summary>
             Unit of time
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.IInputEvent">
+            <summary>
+            Interface for representing device input
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.Key">
+            <summary>
+            The corresponding key
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.State">
+            <summary>
+            The state of the key
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.Injected">
+            <summary>
+            Specifies whether the event was emitted by a process
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.InjectedLower">
+            <summary>
+            Specifies if the key was emitted by a lower integrity level process
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.ExtraInfo">
+            <summary>
+            Extra information given by the event source
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.ReceiveTimestamp">
+            <summary>
+            The time in milliseconds when it was received. See <see cref="T:MacroFramework.Tools.Timer"/>.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.Type">
+            <summary>
+            The type of the input event
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.ActivationType">
+            <summary>
+            The type of the activation event
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.Unique">
+            <summary>
+            Determines if the event is unique. False in the case of a key being held down.
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.KKey">
+            <summary>An enhanced list of Virtual Keys.</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Custom">
+            <summary>Flag for custom defined keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Modifier">
+            <summary>Flag for modifier keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Mouse">
+            <summary>Flag for mouse keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Numpad">
+            <summary>Flag for numpad keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Scroll">
+            <summary>Flag for scroll keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Number">
+            <summary>Flag for number keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Extended">
+            <summary>Flag for extended keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Media">
+            <summary>Flag for media keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Char">
+            <summary>Flag for keys that produce visible characters</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Stateless">
+            <summary>Flag for stateless keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.F_Toggle">
+            <summary>Flag for toggle keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Shift">
+            <summary>Flag for shift keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Ctrl">
+            <summary>Flag for ctrl keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Win">
+            <summary>Flag for win keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Alt">
+            <summary>Flag for alt keys</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.M_FlagMask">
+            <summary>Mask for the flag bits</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.M_KeyMask">
+            <summary>Mask for the Virtual Key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Undefined">
+            <summary>Key is undefined</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.LButton">
+            <summary>Left mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.RButton">
+            <summary>Right mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.MButton">
+            <summary>Middle mouse button</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.XButton1">
+            <summary>Extra mouse button 1</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.XButton2">
+            <summary>Extra mouse button 2</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D0">
+            <summary>Digit 0</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D1">
+            <summary>Digit 1</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D2">
+            <summary>Digit 2</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D3">
+            <summary>Digit 3</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D4">
+            <summary>Digit 4</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D5">
+            <summary>Digit 5</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D6">
+            <summary>Digit 6</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D7">
+            <summary>Digit 7</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D8">
+            <summary>Digit 8</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.D9">
+            <summary>Digit 9</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Left">
+            <summary>Left arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Right">
+            <summary>Right arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Up">
+            <summary>Up arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Down">
+            <summary>Down arrow key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.LShift">
+            <summary>Left shift key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.RShift">
+            <summary>Right shift key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.LCtrl">
+            <summary>Left control key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.RCtrl">
+            <summary>Right control key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.LAlt">
+            <summary>Left alt key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.RAlt">
+            <summary>Right alt key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.LWin">
+            <summary>Left win key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.RWin">
+            <summary>Right win key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.App">
+            <summary>Context menu key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Context">
+            <summary>Context menu key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.PrintScrn">
+            <summary>Print screen key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.BrowserBack">
+            <summary>The general back key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.BrowserForward">
+            <summary>The general forward key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.MediaPlay">
+            <summary>Media play pause key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Umlaut">
+            <summary>The ¨ key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Apostrophe">
+            <summary>The ' key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Ö">
+            <summary>The Ö key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.tilde">
+            <summary>The ´ key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Section">
+            <summary>The § key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Å">
+            <summary>The Å key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Ä">
+            <summary>The Ä key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.Less">
+            <summary>The &lt; key</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.WheelLeft">
+            <summary>Mouse wheel left</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.WheelRight">
+            <summary>Mouse wheel right</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.WheelUp">
+            <summary>Mouse wheel up</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.WheelDown">
+            <summary>Mouse wheel down</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.MouseMove">
+            <summary>Mouse movement</summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.GeneralBindKey">
+            <summary>
+            The <see cref="F:MacroFramework.MacroSettings.GeneralBindKey"/> key will always be transformed to this key
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.KKey.None">
+            <summary>
+            Does not represent any key
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.TextCommandCreator">
@@ -562,107 +817,112 @@
         <member name="P:MacroFramework.Input.EnhancedKey.StringToKey">
             <summary>Map strings to the Key enum</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.HasAny(MacroFramework.KKey,MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.HasAny(MacroFramework.Commands.KKey,MacroFramework.Commands.KKey)">
             <summary>Check if key has any of the flags given</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.HasAll(MacroFramework.KKey,MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.HasAll(MacroFramework.Commands.KKey,MacroFramework.Commands.KKey)">
             <summary>Check if key has all of the flags given</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsKey(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsKey(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value is a key instead of a flag etc.</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsFlag(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsFlag(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value is a flag</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsMask(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsMask(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value is a mask</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsCustom(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsCustom(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value is a custom entry</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsModifier(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsModifier(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a modifier</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsMouse(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsMouse(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a mouse key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsNumpad(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsNumpad(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a numpad key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsScroll(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsScroll(MacroFramework.Commands.KKey)">
             <summary>Check if the key represents a scroll event</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsMouseMove(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsMouseMove(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value represents mouse movement</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsNumber(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsNumber(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a number</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsExtended(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsExtended(MacroFramework.Commands.KKey)">
             <summary>Check if the key is has the extended property</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsMedia(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsMedia(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a media key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsChar(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsChar(MacroFramework.Commands.KKey)">
             <summary>Check if the key produces a character when typed</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsStateless(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsStateless(MacroFramework.Commands.KKey)">
             <summary>Check if the key is stateless. Stateless keys have no up event.</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsToggle(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsToggle(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a toggleable key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsKeyboard(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsKeyboard(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a keyboard key instead of a mouse or a custom key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsModifierFlag(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsModifierFlag(MacroFramework.Commands.KKey)">
             <summary>Check if the Key value is a modifier flag</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsShift(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsShift(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a left or right shift key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsCtrl(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsCtrl(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a left or right control key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsWin(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsWin(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a left or right win key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.IsAlt(MacroFramework.KKey)">
+        <member name="M:MacroFramework.Input.EnhancedKey.IsAlt(MacroFramework.Commands.KKey)">
             <summary>Check if the key is a left or right alt key</summary>
         </member>
-        <member name="M:MacroFramework.Input.EnhancedKey.AsVirtualKey(MacroFramework.KKey)">
-            <summary>Get the <see cref="T:MacroFramework.VKey"/> equivalent of this <see cref="T:MacroFramework.KKey"/></summary>
+        <member name="M:MacroFramework.Input.EnhancedKey.AsVirtualKey(MacroFramework.Commands.KKey)">
+            <summary>Get the <see cref="T:MacroFramework.VKey"/> equivalent of this <see cref="T:MacroFramework.Commands.KKey"/></summary>
         </member>
         <member name="M:MacroFramework.Input.EnhancedKey.AsCustom(MacroFramework.VKey,System.Boolean)">
-            <summary>Get the <see cref="T:MacroFramework.KKey"/> equivalent of this <see cref="T:MacroFramework.VKey"/>. If an extended key is not found, a non-extended version is returned if possible.</summary>
+            <summary>Get the <see cref="T:MacroFramework.Commands.KKey"/> equivalent of this <see cref="T:MacroFramework.VKey"/>. If an extended key is not found, a non-extended version is returned if possible.</summary>
             <param name="key">The <see cref="T:MacroFramework.VKey"/> to cast into a <see cref="T:MacroFramework.Input.ScanCode"/></param>
             <param name="extended">Set true to prioritize the extended version of the key (Example: Enter vs NumpadEnter). Returns non-extended version as fallback if not found and vice versa.</param>
         </member>
         <member name="M:MacroFramework.Input.EnhancedKey.IsExtended(MacroFramework.Input.ScanCode)">
             <summary>Check if the <see cref="T:MacroFramework.Input.ScanCode"/> is an extended key</summary>
         </member>
-        <member name="T:MacroFramework.Input.KeyEvents.KeyCallbackFunc">
+        <member name="T:MacroFramework.Input.InputEvents">
+            <summary>
+            Static clas used to handle the keyevents captured by the <see cref="T:MacroFramework.Input.DeviceHook"/>
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Input.InputEvents.InputCallbackFunc">
             <summary>
             A delegate for receiving keyevents from the framework
             </summary>
         </member>
-        <member name="P:MacroFramework.Input.KeyEvents.KeyCallback">
+        <member name="P:MacroFramework.Input.InputEvents.InputCallback">
             <summary>
             This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyStates"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
             </summary>
         </member>
-        <member name="P:MacroFramework.Input.KeyEvents.BlockedKeys">
+        <member name="P:MacroFramework.Input.InputEvents.BlockedKeys">
             <summary>
             Use this block keys from other applications
             </summary>
         </member>
-        <member name="P:MacroFramework.Input.KeyEvents.CurrentKeyEvent">
+        <member name="P:MacroFramework.Input.InputEvents.CurrentInputEvent">
             <summary>
-            Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
+            Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.
             </summary>
         </member>
-        <member name="M:MacroFramework.Input.KeyEvents.RegisterHookKeyEvent(MacroFramework.Input.KeyEvent)">
+        <member name="M:MacroFramework.Input.InputEvents.RegisterHookKeyEvent(MacroFramework.Commands.IInputEvent)">
             <summary>
             You can use this method to send virtual input within the application.
             </summary>
@@ -695,7 +955,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.AddAbsoluteEvent(MacroFramework.Input.KeyEvent)">
+        <member name="M:MacroFramework.Input.KeyStates.AddAbsoluteEvent(MacroFramework.Commands.IInputEvent)">
             <summary>
             This method is used to keep track on which VKey are pressed down. Returns true if the keyevent is unique.
             </summary>
@@ -707,7 +967,7 @@
             Temporary solution for possible state mismatch due to lag/exceptions
             </summary>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.KKey[])">
+        <member name="M:MacroFramework.Input.KeyStates.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.Commands.KKey[])">
             <summary>
             Returns true if the current keystate matches the given parameters
             </summary>
@@ -722,44 +982,9 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:MacroFramework.Input.IDeviceInput">
+        <member name="T:MacroFramework.Input.InputEventType">
             <summary>
-            Interface for representing device input
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.Key">
-            <summary>
-            The corresponding key
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.State">
-            <summary>
-            The state of the key
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.Injected">
-            <summary>
-            Specifies whether the event was emitted by a process
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.InjectedLower">
-            <summary>
-            Specifies if the key was emitted by a lower integrity level process
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.ExtraInfo">
-            <summary>
-            Extra information given by the event source
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.IsMouse">
-            <summary>
-            Specifies if the event is a mouse key
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.IDeviceInput.ReceiveTimestamp">
-            <summary>
-            The time in milliseconds when it was received. See <see cref="T:MacroFramework.Tools.Timer"/>.
+            The type of the input event
             </summary>
         </member>
         <member name="T:MacroFramework.Input.KeyEvent">
@@ -797,217 +1022,20 @@
             Creates a new <see cref="T:MacroFramework.Input.KeyEvent"/> instance from a low level input event
             </summary>
         </member>
+        <member name="P:MacroFramework.Input.MouseEvent.Point">
+            <summary>
+            The screen coordinates in which the event occurred
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.MouseEvent.ParaseMouseEvent(MacroFramework.Input.WindowsMessage,System.Int32,MacroFramework.Commands.KKey@,System.Boolean@)">
+            <summary>Retrieve the Key equivalent from a <see cref="!:WM"/> message</summary>
+        </member>
         <member name="T:MacroFramework.Input.ScanCode">
             <summary>Enum of key scan codes.</summary>
         </member>
         <member name="T:MacroFramework.Input.WindowsMessage">
             <summary>
             Enums of all Windows messages
-            </summary>
-        </member>
-        <member name="T:MacroFramework.KKey">
-            <summary>An enhanced list of Virtual Keys.</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Custom">
-            <summary>Flag for custom defined keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Modifier">
-            <summary>Flag for modifier keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Mouse">
-            <summary>Flag for mouse keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Numpad">
-            <summary>Flag for numpad keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Scroll">
-            <summary>Flag for scroll keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Number">
-            <summary>Flag for number keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Extended">
-            <summary>Flag for extended keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Media">
-            <summary>Flag for media keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Char">
-            <summary>Flag for keys that produce visible characters</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Stateless">
-            <summary>Flag for stateless keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.F_Toggle">
-            <summary>Flag for toggle keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Shift">
-            <summary>Flag for shift keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Ctrl">
-            <summary>Flag for ctrl keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Win">
-            <summary>Flag for win keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Alt">
-            <summary>Flag for alt keys</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.M_FlagMask">
-            <summary>Mask for the flag bits</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.M_KeyMask">
-            <summary>Mask for the Virtual Key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Undefined">
-            <summary>Key is undefined</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.LButton">
-            <summary>Left mouse button</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.RButton">
-            <summary>Right mouse button</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.MButton">
-            <summary>Middle mouse button</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.XButton1">
-            <summary>Extra mouse button 1</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.XButton2">
-            <summary>Extra mouse button 2</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D0">
-            <summary>Digit 0</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D1">
-            <summary>Digit 1</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D2">
-            <summary>Digit 2</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D3">
-            <summary>Digit 3</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D4">
-            <summary>Digit 4</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D5">
-            <summary>Digit 5</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D6">
-            <summary>Digit 6</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D7">
-            <summary>Digit 7</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D8">
-            <summary>Digit 8</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.D9">
-            <summary>Digit 9</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Left">
-            <summary>Left arrow key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Right">
-            <summary>Right arrow key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Up">
-            <summary>Up arrow key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Down">
-            <summary>Down arrow key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.LShift">
-            <summary>Left shift key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.RShift">
-            <summary>Right shift key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.LCtrl">
-            <summary>Left control key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.RCtrl">
-            <summary>Right control key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.LAlt">
-            <summary>Left alt key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.RAlt">
-            <summary>Right alt key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.LWin">
-            <summary>Left win key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.RWin">
-            <summary>Right win key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.App">
-            <summary>Context menu key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Context">
-            <summary>Context menu key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.PrintScrn">
-            <summary>Print screen key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.BrowserBack">
-            <summary>The general back key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.BrowserForward">
-            <summary>The general forward key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.MediaPlay">
-            <summary>Media play pause key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Umlaut">
-            <summary>The ¨ key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Apostrophe">
-            <summary>The ' key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Ö">
-            <summary>The Ö key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.tilde">
-            <summary>The ´ key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Section">
-            <summary>The § key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Å">
-            <summary>The Å key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Ä">
-            <summary>The Ä key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.Less">
-            <summary>The &lt; key</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.WheelLeft">
-            <summary>Mouse wheel left</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.WheelRight">
-            <summary>Mouse wheel right</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.WheelUp">
-            <summary>Mouse wheel up</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.WheelDown">
-            <summary>Mouse wheel down</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.MouseMove">
-            <summary>Mouse movement</summary>
-        </member>
-        <member name="F:MacroFramework.KKey.GeneralBindKey">
-            <summary>
-            The <see cref="F:MacroFramework.MacroSettings.GeneralBindKey"/> key will always be transformed to this key
-            </summary>
-        </member>
-        <member name="F:MacroFramework.KKey.None">
-            <summary>
-            Does not represent any key
             </summary>
         </member>
         <member name="T:MacroFramework.VKey">
@@ -1914,6 +1942,16 @@
         <member name="F:MacroFramework.MacroSettings.TextCommandTimeout">
             <summary>
             The timeout after the last keypress after which command mode is canceled
+            </summary>
+        </member>
+        <member name="F:MacroFramework.MacroSettings.AutoEnableKeyboardHook">
+            <summary>
+            Whether to automatically enable hook
+            </summary>
+        </member>
+        <member name="F:MacroFramework.MacroSettings.AutoEnableMouseHook">
+            <summary>
+            Whether to automatically enable hook
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">

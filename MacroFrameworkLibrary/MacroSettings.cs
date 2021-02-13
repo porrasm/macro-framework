@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MacroFramework.Commands;
 using MacroFramework.Input;
 using MacroFramework.Input;
 
@@ -41,6 +42,11 @@ namespace MacroFramework {
         /// The timeout after the last keypress after which command mode is canceled
         /// </summary>
         public int TextCommandTimeout = 2500;
+
+        /// <summary>
+        /// Whether to automatically enable hook
+        /// </summary>
+        public bool AutoEnableKeyboardHook = true, AutoEnableMouseHook = false;
 
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop

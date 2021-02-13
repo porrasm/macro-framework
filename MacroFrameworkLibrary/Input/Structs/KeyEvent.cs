@@ -9,7 +9,7 @@ namespace MacroFramework.Input {
     /// <summary>
     /// Contains information about the current keyevent
     /// </summary>
-    public struct KeyEvent : IDeviceInput {
+    public struct KeyEvent : IInputEvent {
         /// <summary>
         /// The corresponding key
         /// </summary>
@@ -45,7 +45,7 @@ namespace MacroFramework.Input {
 
         public UIntPtr ExtraInfo { get; }
 
-        public bool IsMouse => false;
+        public InputEventType Type { get; }
 
         public long ReceiveTimestamp { get; }
 
@@ -69,6 +69,7 @@ namespace MacroFramework.Input {
             Unique = KeyStates.IsUniqueEvent(Key, State);
 
             ExtraInfo = rawData.dwExtraInfo;
+            Type = InputEventType.Keyboard;
         }
 
         public override string ToString() {

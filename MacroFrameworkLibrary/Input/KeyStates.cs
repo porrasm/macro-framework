@@ -24,7 +24,7 @@ namespace MacroFramework.Input {
 
         private static uint globalIndex;
 
-        private static KeyEvent currentKeyEvent;
+        private static IInputEvent currentKeyEvent;
 
         private static int keyDownCount = 0;
 
@@ -71,20 +71,26 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="key"></param>
         /// <param name="value"></param>
-        internal static void AddAbsoluteEvent(KeyEvent k) {
+        internal static void AddAbsoluteEvent(IInputEvent k) {
+            if (k.Key.IsStateless()) {
+                return;
+            }
             LastKeyEventTime = Timer.Milliseconds;
             currentKeyEvent = k;
             AbsoluteKeystates[k.Key] = k.State;
         }
 
         internal static bool IsUniqueEvent(KKey k, bool state) {
-            return state ? !AbsoluteKeystates[k] : true;
+            return state || !k.IsStateless() ? !AbsoluteKeystates[k] : true;
         }
 
-        internal static bool AddKeyEvent(KeyEvent k) {
+        internal static void AddKeyEvent(IInputEvent k) {
+            if (k.Key.IsStateless()) {
+                return;
+            }
             SafeReset();
             if (!k.Unique) {
-                return false;
+                return;
             }
 
             // Bug with keydowncount
@@ -100,8 +106,6 @@ namespace MacroFramework.Input {
                 keyUp[k.Key] = state;
                 keyDownCount--;
             }
-
-            return true;
         }
 
         /// <summary>

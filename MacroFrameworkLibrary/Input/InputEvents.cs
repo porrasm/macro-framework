@@ -5,34 +5,37 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MacroFramework.Input {
-    public static class KeyEvents {
+    /// <summary>
+    /// Static clas used to handle the keyevents captured by the <see cref="Input.DeviceHook"/>
+    /// </summary>
+    public static class InputEvents {
 
         #region fields
         /// <summary>
         /// A delegate for receiving keyevents from the framework
         /// </summary>
-        public delegate bool KeyCallbackFunc(KeyEvent k);
+        public delegate bool InputCallbackFunc(IInputEvent k);
 
         /// <summary>
         /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
-        public static KeyCallbackFunc KeyCallback { get; set; }
+        public static InputCallbackFunc InputCallback { get; set; }
 
         /// <summary>
         /// Use this block keys from other applications
         /// </summary>
         public static HashSet<KKey> BlockedKeys { get; set; }
 
-        private static Queue<KeyEvent> keyEventQueue;
+        private static Queue<IInputEvent> keyEventQueue;
 
         /// <summary>
-        /// Returns the current KeyEvent. This can be used by Command classes to access every KeyEvent.
+        /// Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.
         /// </summary>
-        public static KeyEvent CurrentKeyEvent { get; private set; }
+        public static IInputEvent CurrentInputEvent { get; private set; }
         #endregion
 
-        public static void Initialize() {
-            keyEventQueue = new Queue<KeyEvent>();
+        internal static void Initialize() {
+            keyEventQueue = new Queue<IInputEvent>();
             BlockedKeys = new HashSet<KKey>();
         }
 
@@ -42,7 +45,7 @@ namespace MacroFramework.Input {
         /// </summary>
         /// <param name="k"></param>
         /// <returns>True if key should be intercepted</returns>
-        public static bool RegisterHookKeyEvent(KeyEvent k) {
+        public static bool RegisterHookKeyEvent(IInputEvent k) {
             KeyStates.AddAbsoluteEvent(k);
 
             if (Macros.Paused) {
@@ -50,21 +53,21 @@ namespace MacroFramework.Input {
                 return false;
             }
 
-            if (KeyCallback?.Invoke(k) ?? false) {
+            if (InputCallback?.Invoke(k) ?? false) {
                 Console.WriteLine("Skip queue");
                 return true;
             }
 
             keyEventQueue.Enqueue(k);
 
-            if (IsBlockedKey(k)) {
+            if (IsBlockedKey(k) || TextCommandCreator.IsCommandMode) {
                 return true;
             }
 
             return BlockedKeys.Contains(k.Key);
         }
 
-        private static bool IsBlockedKey(KeyEvent k) {
+        private static bool IsBlockedKey(IInputEvent k) {
             if (KeyStates.AbsoluteKeystates[KKey.GeneralBindKey]) {
                 return true;
             }
@@ -81,16 +84,16 @@ namespace MacroFramework.Input {
         #endregion
 
         #region handle keyevents
-        public static void HandleQueuedKeyevents() {
+        internal static void HandleQueuedKeyevents() {
             while (keyEventQueue.Count > 0) {
-                KeyEvent k = keyEventQueue.Dequeue();
+                IInputEvent k = keyEventQueue.Dequeue();
                 HandleKeyEvent(k);
             }
         }
 
-        private static void HandleKeyEvent(KeyEvent k) {
+        private static void HandleKeyEvent(IInputEvent k) {
             Console.WriteLine("KeyEvent: " + k);
-            CurrentKeyEvent = k;
+            CurrentInputEvent = k;
 
             if (CheckCommandMode()) {
                 return;
@@ -111,8 +114,8 @@ namespace MacroFramework.Input {
 
             // Check command mode
             if (TextCommandCreator.IsCommandMode) {
-                KeyStates.AddKeyEvent(CurrentKeyEvent);
-                TextCommandCreator.OnCommandMode(CurrentKeyEvent);
+                KeyStates.AddKeyEvent(CurrentInputEvent);
+                TextCommandCreator.OnCommandMode(CurrentInputEvent);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
                 return true;
             }

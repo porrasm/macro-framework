@@ -48,7 +48,7 @@ namespace MacroFramework.Commands {
         }
 
         protected override bool IsActivatorActive() {
-            KeyEvent k = KeyEvents.CurrentKeyEvent;
+            IInputEvent k = InputEvents.CurrentInputEvent;
             if (IsMatchingActivationEventType(k.ActivationType)) {
                 return KeyStates.IsMatchingKeyState(MatchType, Order, Keys);
             }

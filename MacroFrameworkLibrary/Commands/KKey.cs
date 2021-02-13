@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MacroFramework {
+namespace MacroFramework.Commands {
     /// <summary>An enhanced list of Virtual Keys.</summary>
     public enum KKey : uint {
         /// <summary>Flag for custom defined keys</summary>

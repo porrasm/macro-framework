@@ -18,7 +18,7 @@ namespace MacroFramework.Commands {
 
         internal static bool IsCommandMode { get; private set; }
 
-        internal static void CommandKeyEvent(KeyEvent k) {
+        internal static void CommandKeyEvent(IInputEvent k) {
             if (k.State && k.Unique) {
                 keyCommand.AddKey(k.Key);
             }
@@ -70,7 +70,10 @@ namespace MacroFramework.Commands {
             IsCommandMode = state;
         }
 
-        internal static void OnCommandMode(KeyEvent k) {
+        internal static void OnCommandMode(IInputEvent k) {
+            if (k.Type == InputEventType.Mouse) {
+                return;
+            }
 
             if (k.Key == Setup.Instance.Settings.CommandKey) {
                 return;

@@ -23,7 +23,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         OnPress,
         /// <summary>
-        /// ACtivates a keybind on any key event. Use with caution as binds with this option are activated twice, once on key down and once again on key up events. Use <see cref="Input.KeyEvents.CurrentKeyEvent"/> to determine whether the current event is a key down or up event.
+        /// ACtivates a keybind on any key event. Use with caution as binds with this option are activated twice, once on key down and once again on key up events. Use <see cref="Input.InputEvents.CurrentInputEvent"/> to determine whether the current event is a key down or up event.
         /// </summary>
         Any
     }

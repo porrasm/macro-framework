@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MacroFramework.Commands.Attributes {
     /// <summary>
-    /// <see cref="Attribute"/> for easily creating a <see cref="KeyActivator"/>. Attribute methods are parameterless, use <see cref="Input.KeyEvents.CurrentKeyEvent"/> to get the current key event.
+    /// <see cref="Attribute"/> for easily creating a <see cref="KeyActivator"/>. Attribute methods are parameterless, use <see cref="Input.InputEvents.CurrentInputEvent"/> to get the current key event.
     /// </summary>
     public class KeyActivatorAttribute : ActivatorAttribute {
 

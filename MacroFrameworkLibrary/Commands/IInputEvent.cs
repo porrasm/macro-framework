@@ -1,12 +1,14 @@
-﻿using System;
+﻿using MacroFramework.Commands;
+using MacroFramework.Input;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MacroFramework.Input {
+namespace MacroFramework.Commands {
     /// <summary>
     /// Interface for representing device input
     /// </summary>
-    public interface IDeviceInput {
+    public interface IInputEvent {
         /// <summary>
         /// The corresponding key
         /// </summary>
@@ -33,13 +35,23 @@ namespace MacroFramework.Input {
         UIntPtr ExtraInfo { get; }
 
         /// <summary>
-        /// Specifies if the event is a mouse key
-        /// </summary>
-        bool IsMouse { get; }
-
-        /// <summary>
         /// The time in milliseconds when it was received. See <see cref="MacroFramework.Tools.Timer"/>.
         /// </summary>
         long ReceiveTimestamp { get; }
+
+        /// <summary>
+        /// The type of the input event
+        /// </summary>
+        InputEventType Type { get; }
+
+        /// <summary>
+        /// The type of the activation event
+        /// </summary>
+        ActivationEventType ActivationType { get; }
+
+        /// <summary>
+        /// Determines if the event is unique. False in the case of a key being held down.
+        /// </summary>
+        bool Unique { get; }
     }
 }

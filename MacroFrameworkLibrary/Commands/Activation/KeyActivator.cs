@@ -18,7 +18,7 @@ namespace MacroFramework.Commands {
         /// The delegate for a key event callback
         /// </summary>
         /// <param name="k"></param>
-        public delegate void KeyEventCallback(KeyEvent k);
+        public delegate void KeyEventCallback(IInputEvent k);
         private KKey key;
         private KeyEventCallback cb;
         #endregion
@@ -34,12 +34,12 @@ namespace MacroFramework.Commands {
         }
 
         protected override bool IsActivatorActive() {
-            return KeyEvents.CurrentKeyEvent.Key == key;
+            return InputEvents.CurrentInputEvent.Key == key;
         }
 
         public override void Execute() {
             try {
-                cb?.Invoke(KeyEvents.CurrentKeyEvent);
+                cb?.Invoke(InputEvents.CurrentInputEvent);
             } catch (Exception e) {
                 Console.WriteLine("Error executing KeyCallback: " + e.Message);
             }

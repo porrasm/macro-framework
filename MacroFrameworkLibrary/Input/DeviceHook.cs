@@ -127,7 +127,7 @@ namespace MacroFramework.Input {
                 if (raw.vkCode != (uint)VKey.UNDEFINED) {
                     KeyEvent k = new KeyEvent(wParam, raw);
 
-                    if (KeyEvents.RegisterHookKeyEvent(k)) {
+                    if (InputEvents.RegisterHookKeyEvent(k)) {
                         return BlockCode;
                     }
                 }
@@ -138,12 +138,12 @@ namespace MacroFramework.Input {
 
         private static IntPtr MouseCallback(int nCode, IntPtr wParam, IntPtr lParam) {
             if (nCode >= 0) {
-                //var raw = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
-                //var input = new MouseInput(wParam, raw);
+                MSLLHOOKSTRUCT raw = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
+                MouseEvent input = new MouseEvent(wParam, lParam);
 
-                //if (InputEvent(input)) {
-                //    return BlockCode;
-                //}
+                if (InputEvents.RegisterHookKeyEvent(input)) {
+                    return BlockCode;
+                }
             }
 
             return CallNextHookEx(MouseHook, nCode, wParam, lParam);
