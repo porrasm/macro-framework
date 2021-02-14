@@ -29,5 +29,12 @@ namespace Examples {
                 return Assembly.GetExecutingAssembly();
             }
         }
+
+        public class NotepadCommand : Command {
+            [BindActivator(KKey.LCtrl, KKey.N)]
+            private void OpenNotepad() {
+                System.Diagnostics.Process.Start("Notepad.exe");
+            }
+        }
     }
 }
