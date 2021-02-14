@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.0</span>
+   &#160;<span id="projectnumber">0.1.3</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -100,9 +100,12 @@ How it works</h1>
 <p>The framework also has a main loop which runs every X milliseconds. You can set this option in the <a href="../html/class_macro_framework_1_1_setup.html">Setup</a> class. This main loop is used for timer based events (so the smaller the main loop delay the more accurate the timers are). The keyevents are also queued up and handled in the main loop.</p>
 <p>The framework also offers support for text commands.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
+Keyboard and mouse input</h2>
+<p>The keyboard and mouse input are available using the <code>KKey</code> enum.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
 The command class</h2>
 <p>The <a href="../html/class_macro_framework_1_1_commands_1_1_command.html">Command</a> class is the base class which you should inherit whenever you create some custom functionality. I recommend grouping similar commends together in a single Command class and creating a new class for each time you want to create some new functionality.</p>
-<h1><a class="anchor" id="autotoc_md5"></a>
+<h1><a class="anchor" id="autotoc_md6"></a>
 Keybinds and keyevents</h1>
 <p>Keybinds and keyvents are some events which are run when some keys or keys are pressed (the <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html">BindActivator</a> and <a href="class_macro_framework_1_1_commands_1_1_key_activator.html">KeyActivator</a>).</p>
 <p>You can configure them in such a way that either a keypress or a release activates the bind. You can define the order that the keys should be pressed in or choose to ignore the order altogether. You can also define whether an exact keys match is required.</p>
@@ -148,11 +151,11 @@ Keybinds and keyevents</h1>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_a53564c60300fd4e7c665c2832ebc36b6"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">MacroFramework.Commands.ActivationEventType</a></div><div class="ttdeci">ActivationEventType</div><div class="ttdoc">Filters activations based on whether the current event was a keydown or a keyup event</div><div class="ttdef"><b>Definition:</b> ActivationEventType.cs:12</div></div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_ac733a395add7056b9b34f0c3e33e3540"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">MacroFramework.Commands.KKey</a></div><div class="ttdeci">KKey</div><div class="ttdoc">An enhanced list of Virtual Keys.</div><div class="ttdef"><b>Definition:</b> KKey.cs:7</div></div>
 <div class="ttc" id="anamespace_macro_framework_html"><div class="ttname"><a href="namespace_macro_framework.html">MacroFramework</a></div><div class="ttdef"><b>Definition:</b> BindActivator.cs:10</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 The general bind key</h2>
 <p>The framework offers support for a general bind key. You can define this in the settings using the <a href="../html/class_macro_framework_1_1_setup.html">Setup</a> class. The general bind key is a key which will always be intercepted i.e. other programs will not receive this input. It will also intercept all keys when this key is being held down.</p>
 <p>This allows you to create binds without having to fear you will accidentally do something in another application. I have set my general key bind to caps lock (because it is a useless key) and therefore can assign the bind [Caps lock, alt, F4] without exiting the current application. The general key bind is accessible from the <code>KKey</code> enum with the name <code>KKEy.GeneralBindKey</code>.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 TimerActivator</h1>
 <p>The <a href="class_macro_framework_1_1_commands_1_1_timer_activator.html">TimerActivator</a> is an activator which calls events based on timers. Each TimerActivator is updated at every main loop iteration so your main loop timestep affects how accurate these timer actions are.</p>
 <p>Below are some examples of timer activators with different syntaxes. Use either an attribute or the AddActivator method to register commands but not both.</p>
@@ -180,16 +183,16 @@ TimerActivator</h1>
 <div class="line">    }</div>
 <div class="line">}</div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_a1fb44f5cc889a7fc0ca24509a2f5612b"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">MacroFramework.Commands.TimeUnit</a></div><div class="ttdeci">TimeUnit</div><div class="ttdoc">Unit of time</div><div class="ttdef"><b>Definition:</b> TimeUnit.cs:9</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
 Text commands</h1>
 <p>The framework offers support for text commands. Any string can be executed using the <a href="../html/class_macro_framework_1_1_commands_1_1_text_commands.html">TextCommands</a> class. You can choose to execute a command immediately (use cautiously as infinite loops may occur with careless exectuion) or queue them up and execute at the next update loop iteration.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Command mode</h2>
 <p>The command mode is an optional feature which you can enable by settings of the <a href="../html/class_macro_framework_1_1_setup.html">Setup</a> class by assigning <code>CommandKey</code> and <code>CommandActivateKey</code>.</p>
 <p>The command mode is activated when the <code>CommandKey</code> is pressed and it will remain active until an incorrect key (such as Escape) is pressed. Allowed keys are [A-Z, 0-9] and some special keys. In the future this class will become public and you will be allowed to define your own functionality. Assigning the <code>CommandKey</code> will disable it altogether so choose a useless key (like caps lock or the windows key).</p>
 <p>When the command mode is enabled, all key events are intercepted such that no application receives them. This allows you to type an alphanumeric command from anywhere in Winddows without causing any unwanted actions in other applications. Then press the <code>CommandActivateKey</code> to execute the command.</p>
 <p>Example: <code>CommandKey = Windows key, CommandActivateKey = Enter</code>. The key event chain [Windows key, T, E, S, T, Space, C, O, M, M, A, N, D, Enter] will execute the command "test command".</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 TextActivator</h2>
 <p>Below are some examples of text activators with different syntaxes. Use either an attribute or the AddActivator method to register commands but not both.</p>
 <div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_commands.html">Commands</a>;</div>

@@ -18,6 +18,10 @@ The framework also has a main loop which runs every X milliseconds. You can set 
 
 The framework also offers support for text commands.
 
+### Keyboard and mouse input
+
+The keyboard and mouse input are available using the `KKey` enum.
+
 ### The command class
 
 The [Command](../html/class_macro_framework_1_1_commands_1_1_command.html) class is the base class which you should inherit whenever you create some custom functionality. I recommend grouping similar commends together in a single Command class and creating a new class for each time you want to create some new functionality.

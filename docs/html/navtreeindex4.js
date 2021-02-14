@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569ae8606d021da140a92c7eba8d9b8af84f":[1,0,0,1,11,175],
+"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569ae95bad4734fa87d7d65ee26f979bc3a3":[1,0,0,1,11,27],
 "namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569aeba062751ade7aca7dd00535ebd8e507":[1,0,0,1,11,20],
 "namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569aec92a2a401958907e0b3e6c08ba5d0ac":[1,0,0,1,11,87],
 "namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569aed0b5879a991c5490e90ba2c8aaed055":[1,0,0,1,11,109],

@@ -38,5 +38,6 @@ var searchData=
   ['isshift_173',['IsShift',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#ae089551ca3f0b71c08f5b380e6622487',1,'MacroFramework::Input::EnhancedKey']]],
   ['isstateless_174',['IsStateless',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#a07a22c0e209a4e16a0bc492946765ec0',1,'MacroFramework::Input::EnhancedKey']]],
   ['istoggle_175',['IsToggle',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#acba335140203f6e277e9154976594009',1,'MacroFramework::Input::EnhancedKey']]],
-  ['iswin_176',['IsWin',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#a370d262b17f3e65f1d9395d723e11b8c',1,'MacroFramework::Input::EnhancedKey']]]
+  ['isuniqueevent_176',['IsUniqueEvent',['../class_macro_framework_1_1_input_1_1_key_states.html#a1c899ddbc2dcde3b574673cf3e415e04',1,'MacroFramework::Input::KeyStates']]],
+  ['iswin_177',['IsWin',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#a370d262b17f3e65f1d9395d723e11b8c',1,'MacroFramework::Input::EnhancedKey']]]
 ];

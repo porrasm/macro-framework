@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['keymatchtype_522',['KeyMatchType',['../namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514',1,'MacroFramework::Commands']]],
-  ['keypressorder_523',['KeyPressOrder',['../namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8',1,'MacroFramework::Commands']]],
-  ['kkey_524',['KKey',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540',1,'MacroFramework::Commands']]]
+  ['keymatchtype_524',['KeyMatchType',['../namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514',1,'MacroFramework::Commands']]],
+  ['keypressorder_525',['KeyPressOrder',['../namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8',1,'MacroFramework::Commands']]],
+  ['kkey_526',['KKey',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540',1,'MacroFramework::Commands']]]
 ];

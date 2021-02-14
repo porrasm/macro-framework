@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83":[1,0,0,7,78],
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba291554596c183e837f0a6bec3767c891":[1,0,0,7,14],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2a33e9d3864bf64c62e0c22f6db369ca":[1,0,0,7,145],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2e57527b9f8ed05287694a1e58627d8a":[1,0,0,7,17],
 "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba32f68a60cef40faedbc6af20298c1a1e":[1,0,0,7,39],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a667d08af6165c1cb6e72970036a9f7d7":[1,0,0,0,19,117],
 "namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a692ed49ff2182a144044181274242db5":[1,0,0,0,19,119],
 "namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a69691c7bdcc3ce6d5d8a1361f22d04ac":[1,0,0,0,19,45],
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a6a26f548831e6a8c26bfbbd9f6ec61e0":[1,0,0,0,19,198],
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a6adf97f83acf6453d4a6a4b1070f3754":[1,0,0,0,19,216],
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a6c94e7d23eef36c2e4d9ce65ebe15d51":[1,0,0,0,19,211]
+"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a6a26f548831e6a8c26bfbbd9f6ec61e0":[1,0,0,0,19,198]
 };

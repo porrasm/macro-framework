@@ -481,6 +481,18 @@ namespace MacroFrameworkTests {
             MainLoopTimeout();
             Assert.AreEqual(val, command.bindActivatorValue);
         }
+
+        [TestMethod]
+        public void Z_CleanupTest() {
+            Macros.Stop();
+            MainLoopTimeout();
+            Assert.AreEqual(true, command.InitializeRan);
+            Assert.AreEqual(true, command.OnStartRan);
+            Assert.AreEqual(true, command.OnCloseRan);
+            Assert.AreEqual(true, command.OnExecuteStartRan);
+            Assert.AreEqual(true, command.OnExecutionCompleteRan);
+            Assert.AreEqual(true, command.OnTextCommandRan);
+        }
         #endregion
 
         private static IInputEvent DummyInput(KKey k, bool state) {
@@ -511,7 +523,7 @@ namespace MacroFrameworkTests {
 
     public class CommandTestCommandClass : Command {
 
-        public bool OnStartRan, OnCloseRan, OnExecuteStartRan, OnExecutionCompleteRan, InitializeRan;
+        public bool OnStartRan, OnCloseRan, OnExecuteStartRan, OnExecutionCompleteRan, OnTextCommandRan, InitializeRan;
 
         public int timerActivatorOnStartCount, timerActivatorNotOnStartCount;
         public int timerActivatorOnStartCountAttr, timerActivatorNotOnStartCountAttr;
@@ -527,6 +539,9 @@ namespace MacroFrameworkTests {
         }
         public override void OnClose() {
             OnCloseRan = true;
+        }
+        public override void OnTextCommand(string command, bool commandWasAccepted) {
+            OnTextCommandRan = true;
         }
 
         protected override void InitializeActivators(out CommandActivatorGroup activator) {
