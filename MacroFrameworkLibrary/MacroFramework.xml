@@ -997,6 +997,14 @@
             <param name="key"></param>
             <param name="value"></param>
         </member>
+        <member name="M:MacroFramework.Input.KeyStates.IsUniqueEvent(MacroFramework.Commands.KKey,System.Boolean)">
+            <summary>
+            Whether or not this is a unique keyevent
+            </summary>
+            <param name="k"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
         <member name="M:MacroFramework.Input.KeyStates.SafeReset">
             <summary>
             Temporary solution for possible state mismatch due to lag/exceptions

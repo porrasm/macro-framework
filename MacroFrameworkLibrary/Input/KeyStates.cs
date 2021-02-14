@@ -80,7 +80,13 @@ namespace MacroFramework.Input {
             AbsoluteKeystates[k.Key] = k.State;
         }
 
-        internal static bool IsUniqueEvent(KKey k, bool state) {
+        /// <summary>
+        /// Whether or not this is a unique keyevent
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public static bool IsUniqueEvent(KKey k, bool state) {
             return k.IsStateless() || !state ? true : !AbsoluteKeystates[k];
         }
 

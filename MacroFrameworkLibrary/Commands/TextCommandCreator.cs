@@ -18,6 +18,8 @@ namespace MacroFramework.Commands {
 
         internal static bool IsCommandMode { get; private set; }
 
+        private static long lastCommandModeTimestamp;
+
         internal static void CommandKeyEvent(IInputEvent k) {
             if (k.State && k.Unique) {
                 keyCommand.AddKey(k.Key);
@@ -25,6 +27,7 @@ namespace MacroFramework.Commands {
         }
 
         internal static void StartCommand() {
+            lastCommandModeTimestamp = Timer.Milliseconds;
             keyCommand.Clear();
         }
         internal static void EndCommand(bool activate) {
@@ -37,28 +40,6 @@ namespace MacroFramework.Commands {
         }
 
         #region keyevents
-        internal static void CommandModeKeyEvent(KeyEvent k) {
-            if (k.Key == Setup.Instance.Settings.CommandKey) {
-                return;
-            }
-
-            if (!k.State) {
-                return;
-            }
-
-            if (k.Key == Setup.Instance.Settings.CommandActivateKey) {
-                CommandKeyPress(false, true);
-                return;
-            }
-
-            if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
-                Logger.Log("End wrong key");
-                CommandKeyPress(false, false);
-                return;
-            }
-
-            CommandKeyEvent(k);
-        }
         internal static void CommandKeyPress(bool state, bool acceptCommand) {
             if (state && !IsCommandMode) {
                 Logger.Log("\n Command mode start");
@@ -71,6 +52,9 @@ namespace MacroFramework.Commands {
         }
 
         internal static void OnCommandMode(IInputEvent k) {
+            long timeSince = Timer.PassedFrom(lastCommandModeTimestamp);
+            lastCommandModeTimestamp = k.ReceiveTimestamp;
+
             if (k.Type == InputEventType.Mouse) {
                 return;
             }
@@ -90,6 +74,13 @@ namespace MacroFramework.Commands {
 
             if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
                 Logger.Log("End wrong key");
+                CommandKeyPress(false, false);
+                return;
+            }
+
+            Logger.Log("Time since last command press: " + timeSince);
+            if (timeSince >= Setup.Instance.Settings.TextCommandTimeout) {
+                Logger.Log("End command mode on timeout");
                 CommandKeyPress(false, false);
                 return;
             }

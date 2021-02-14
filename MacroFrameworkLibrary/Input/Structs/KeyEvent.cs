@@ -13,22 +13,22 @@ namespace MacroFramework.Input {
         /// <summary>
         /// The corresponding key
         /// </summary>
-        public KKey Key { get; internal set; }
+        public KKey Key { get; set; }
 
         /// <summary>
         /// The key up/down state of the key
         /// </summary>
-        public bool State { get; }
+        public bool State { get; set; }
 
         /// <summary>
         /// True in regular press and release situations. False when holding down a key.
         /// </summary>
-        public bool Unique { get; }
+        public bool Unique { get; set; }
 
         /// <summary>
         /// The activation type of this keyevent
         /// </summary>
-        public ActivationEventType ActivationType { get; }
+        public ActivationEventType ActivationType { get; set; }
 
         #region fields
         private KbdllFlags flags;
@@ -43,11 +43,11 @@ namespace MacroFramework.Input {
         public bool Release => flags.HasFlag(KbdllFlags.Release);
         #endregion
 
-        public UIntPtr ExtraInfo { get; }
+        public UIntPtr ExtraInfo { get; set; }
 
-        public InputEventType Type { get; }
+        public InputEventType Type { get; set; }
 
-        public long ReceiveTimestamp { get; }
+        public long ReceiveTimestamp { get; set; }
 
         /// <summary>
         /// Creates a new <see cref="KeyEvent"/> instance from a low level input event
