@@ -49,12 +49,12 @@ namespace MacroFramework.Input {
             KeyStates.AddAbsoluteEvent(k);
 
             if (Macros.Paused) {
-                Console.WriteLine("Paused");
+                Logger.Log("Paused");
                 return false;
             }
 
             if (InputCallback?.Invoke(k) ?? false) {
-                Console.WriteLine("Skip queue");
+                Logger.Log("Skip queue");
                 return true;
             }
 
@@ -92,7 +92,7 @@ namespace MacroFramework.Input {
         }
 
         private static void HandleKeyEvent(IInputEvent k) {
-            Console.WriteLine("KeyEvent: " + k);
+            Logger.Log("KeyEvent: " + k);
             CurrentInputEvent = k;
 
             if (CheckCommandMode()) {

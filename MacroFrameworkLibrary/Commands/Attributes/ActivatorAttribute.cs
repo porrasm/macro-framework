@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summary>
     /// The base class for all <see cref="IActivator"/> attributes
     /// </summary>

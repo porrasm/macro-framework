@@ -30,7 +30,7 @@ namespace MacroFramework.Commands {
         internal static void EndCommand(bool activate) {
             if (activate) {
                 string command = keyCommand.ToString();
-                Console.WriteLine("Command: " + command);
+                Logger.Log("Command: " + command);
                 TextCommands.Execute(command);
             }
             keyCommand.Clear();
@@ -52,7 +52,7 @@ namespace MacroFramework.Commands {
             }
 
             if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
-                Console.WriteLine("End wrong key");
+                Logger.Log("End wrong key");
                 CommandKeyPress(false, false);
                 return;
             }
@@ -61,10 +61,10 @@ namespace MacroFramework.Commands {
         }
         internal static void CommandKeyPress(bool state, bool acceptCommand) {
             if (state && !IsCommandMode) {
-                Console.WriteLine("\n Command mode start");
+                Logger.Log("\n Command mode start");
                 TextCommandCreator.StartCommand();
             } else if (!state && IsCommandMode) {
-                Console.WriteLine("\n Command mode end");
+                Logger.Log("\n Command mode end");
                 TextCommandCreator.EndCommand(acceptCommand);
             }
             IsCommandMode = state;
@@ -89,7 +89,7 @@ namespace MacroFramework.Commands {
             }
 
             if (VKeysToCommand.KeyToChar(k.Key) == '\0' && k.Unique) {
-                Console.WriteLine("End wrong key");
+                Logger.Log("End wrong key");
                 CommandKeyPress(false, false);
                 return;
             }

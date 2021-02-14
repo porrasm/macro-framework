@@ -81,7 +81,7 @@ namespace MacroFramework.Input {
         }
 
         internal static bool IsUniqueEvent(KKey k, bool state) {
-            return state || !k.IsStateless() ? !AbsoluteKeystates[k] : true;
+            return k.IsStateless() || !state ? true : !AbsoluteKeystates[k];
         }
 
         internal static void AddKeyEvent(IInputEvent k) {
@@ -92,6 +92,8 @@ namespace MacroFramework.Input {
             if (!k.Unique) {
                 return;
             }
+
+            Logger.Log("Unique event: " + k);
 
             // Bug with keydowncount
 

@@ -16,7 +16,7 @@ namespace MacroFramework.Tools {
             string amount = paramCount == 0 ? "+" : "{" + paramCount + "}";
 
             string regex = "^" + command + intRegex + amount + " *$";
-            Console.WriteLine("reg len. " + regex.Length);
+            Logger.Log("reg len. " + regex.Length);
             return new Regex(regex);
         }
 

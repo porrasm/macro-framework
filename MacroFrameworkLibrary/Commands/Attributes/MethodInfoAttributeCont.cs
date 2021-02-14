@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summary>
     /// A container object for method and their <see cref="ActivatorAttribute"/>
     /// </summary>

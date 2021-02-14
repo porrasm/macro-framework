@@ -109,6 +109,22 @@ namespace MacroFramework.Input {
                 MouseHookRunning = false;
             }
         }
+        
+        /// <summary>
+        /// Starts both hooks
+        /// </summary>
+        public static void StartHooks() {
+            StartKeyboardHook();
+            StartMouseHook();
+        }
+
+        /// <summary>
+        /// Stops both hooks
+        /// </summary>
+        public static void StopHooks() {
+            StopKeyboardHook();
+            StopMouseHook();
+        }
 
         private static IntPtr SetHook(MessageProc proc, int hookID) {
             using (Process curProcess = Process.GetCurrentProcess())

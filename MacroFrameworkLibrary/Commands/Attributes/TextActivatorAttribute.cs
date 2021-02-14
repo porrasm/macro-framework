@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summary>
     /// <see cref="Attribute"/> for easily creating a <see cref="TextActivator"/>. Attribute methods are parameterless, use <see cref="Commands.TextCommands.CurrentTextCommand"/> to get the current text command.
     /// </summary>

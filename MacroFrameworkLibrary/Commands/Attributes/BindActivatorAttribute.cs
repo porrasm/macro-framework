@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summary>
     /// <see cref="Attribute"/> for easily creating a <see cref="BindActivator"/>
     /// </summary>

@@ -63,5 +63,13 @@ namespace MacroFramework {
         internal protected virtual List<Command> GetActiveCommands() {
             return null;
         }
+
+        /// <summary>
+        /// Use a custom <see cref="ILogger"/>
+        /// </summary>
+        /// <returns></returns>
+        internal protected virtual ILogger GetLogger() {
+            return new Logger();
+        }
     }
 }

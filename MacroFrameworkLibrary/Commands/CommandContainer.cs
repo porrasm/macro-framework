@@ -17,10 +17,6 @@ namespace MacroFramework.Commands {
         /// </summary>
         public static List<Command> Commands { get; private set; }
         private static Dictionary<Type, List<IActivator>> TypeActivators { get; set; }
-
-        private static Queue<QueueCallback> queueCallbacks;
-
-        public delegate void QueueCallback();
         #endregion
 
         static CommandContainer() {
@@ -38,14 +34,11 @@ namespace MacroFramework.Commands {
                     AddCommand(c);
                 }
             }
-
-            queueCallbacks = new Queue<QueueCallback>();
         }
 
         private static void Deinitialize() {
             Commands = new List<Command>();
             TypeActivators = new Dictionary<Type, List<IActivator>>();
-            queueCallbacks = null;
         }
 
         /// <summary>
@@ -86,7 +79,7 @@ namespace MacroFramework.Commands {
                     try {
                         act.Execute();
                     } catch (Exception e) {
-                        Console.WriteLine("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
+                        Logger.Log("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
                     }
                 }
             }
@@ -97,21 +90,6 @@ namespace MacroFramework.Commands {
                 c.OnClose();
             }
             Deinitialize();
-        }
-
-        /// <summary>
-        /// Queues a job which will be executed on the primary thread. You queue a job from a secondary thread.
-        /// </summary>
-        /// <param name="cb"></param>
-        public static void EnqueuePrimaryThreadJob(QueueCallback cb) {
-            queueCallbacks.Enqueue(cb);
-        }
-
-
-        public static void ExecuteSecondaryThreadJobs() {
-            while (queueCallbacks.Count > 0) {
-                queueCallbacks.Dequeue()?.Invoke();
-            }
         }
 
         internal static void Start() {

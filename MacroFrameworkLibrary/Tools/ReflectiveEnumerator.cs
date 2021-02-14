@@ -46,7 +46,7 @@ namespace MacroFramework.Tools {
                 return null;
 
             } catch (Exception e) {
-                Console.WriteLine("err " + e.Message);
+                Logger.Log("err " + e.Message);
                 throw;
             }
         }

@@ -133,13 +133,39 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for key event callbacks
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.KeyEventCallback">
+        <member name="T:MacroFramework.Commands.KeyActivator.InputEventCallback">
             <summary>
             The delegate for a key event callback
             </summary>
             <param name="k"></param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.Commands.KKey)">
+        <member name="T:MacroFramework.Commands.KeyActivator.KeyEventCallback">
+            <summary>
+            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.KeyEvent"/>
+            </summary>
+            <param name="k"></param>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator.MouseEventCallback">
+            <summary>
+            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.MouseEvent"/>
+            </summary>
+            <param name="k"></param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputEventCallback,MacroFramework.Commands.KKey)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="callback">The key event callback</param>
+            <param name="key">The key for which you wish to receive callbacks on</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.AutoCastToKeyEvent(MacroFramework.Commands.KeyActivator.KeyEventCallback,MacroFramework.Commands.KKey)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="callback">The key event callback</param>
+            <param name="key">The key for which you wish to receive callbacks on</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.AutoCastToMouseEvent(MacroFramework.Commands.KeyActivator.MouseEventCallback,MacroFramework.Commands.KKey)">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
@@ -193,12 +219,12 @@
             <param name="unit"></param>
             <returns></returns>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.ActivatorAttribute">
+        <member name="T:MacroFramework.Commands.ActivatorAttribute">
             <summary>
             The base class for all <see cref="T:MacroFramework.Commands.IActivator"/> attributes
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.ActivatorAttribute.GetCommandActivator(MacroFramework.Commands.Command,System.Reflection.MethodInfo)">
+        <member name="M:MacroFramework.Commands.ActivatorAttribute.GetCommandActivator(MacroFramework.Commands.Command,System.Reflection.MethodInfo)">
             <summary>
             Returns a corresponding <see cref="T:MacroFramework.Commands.IActivator"/> object
             </summary>
@@ -206,18 +232,18 @@
             <param name="assignedMethod">The method to call</param>
             <returns></returns>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.BindActivatorAttribute">
+        <member name="T:MacroFramework.Commands.BindActivatorAttribute">
             <summary>
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.BindActivator"/>
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.KKey[])">
+        <member name="M:MacroFramework.Commands.BindActivatorAttribute.#ctor(MacroFramework.Commands.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
             <param name="keys"></param>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.Commands.KKey[])">
+        <member name="M:MacroFramework.Commands.BindActivatorAttribute.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.Commands.KKey[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
@@ -226,55 +252,55 @@
             <param name="order"><see cref="P:MacroFramework.Commands.BindActivator.Order"/></param>
             <param name="keys"><see cref="P:MacroFramework.Commands.BindActivator.Keys"/></param>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.KeyActivatorAttribute">
+        <member name="T:MacroFramework.Commands.KeyActivatorAttribute">
             <summary>
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.KeyActivator"/>. Attribute methods are parameterless, use <see cref="P:MacroFramework.Input.InputEvents.CurrentInputEvent"/> to get the current key event.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.KeyActivatorAttribute.#ctor(MacroFramework.Commands.KKey)">
+        <member name="M:MacroFramework.Commands.KeyActivatorAttribute.#ctor(MacroFramework.Commands.KKey)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.KeyActivator"/> instance at the start of the application from this method
             </summary>
             <param name="key">Key</param>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.MethodInfoAttributeCont">
+        <member name="T:MacroFramework.Commands.MethodInfoAttributeCont">
             <summary>
-            A container object for method and their <see cref="T:MacroFramework.Commands.Attributes.ActivatorAttribute"/>
+            A container object for method and their <see cref="T:MacroFramework.Commands.ActivatorAttribute"/>
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.TextActivatorAttribute">
+        <member name="T:MacroFramework.Commands.TextActivatorAttribute">
             <summary>
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.TextActivator"/>. Attribute methods are parameterless, use <see cref="P:MacroFramework.Commands.TextCommands.CurrentTextCommand"/> to get the current text command.
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.TextActivatorAttribute.MatchType">
+        <member name="T:MacroFramework.Commands.TextActivatorAttribute.MatchType">
             <summary>
             Determines whether to use the matcher string as a regex or a string match
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Attributes.TextActivatorAttribute.MatchType.StringMatch">
+        <member name="F:MacroFramework.Commands.TextActivatorAttribute.MatchType.StringMatch">
             <summary>
             Use string match
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Attributes.TextActivatorAttribute.MatchType.RegexPattern">
+        <member name="F:MacroFramework.Commands.TextActivatorAttribute.MatchType.RegexPattern">
             <summary>
             Use regex match
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Attributes.TextActivatorAttribute.#ctor(System.String,MacroFramework.Commands.Attributes.TextActivatorAttribute.MatchType)">
+        <member name="M:MacroFramework.Commands.TextActivatorAttribute.#ctor(System.String,MacroFramework.Commands.TextActivatorAttribute.MatchType)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance at the start of the application from this method
             </summary>
             <param name="match">The exact string match or regex pattern</param>
-            <param name="type"><see cref="T:MacroFramework.Commands.Attributes.TextActivatorAttribute.MatchType"/></param>
+            <param name="type"><see cref="T:MacroFramework.Commands.TextActivatorAttribute.MatchType"/></param>
         </member>
-        <member name="T:MacroFramework.Commands.Attributes.TimerActivatorAttribute">
+        <member name="T:MacroFramework.Commands.TimerActivatorAttribute">
             <summary>
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.TimerActivator"/>
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.Attributes.TimerActivatorAttribute.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.TimerActivatorAttribute.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)" -->
         <member name="T:MacroFramework.Commands.Command">
             <summary>
             Base class for all macro functionality
@@ -357,12 +383,6 @@
             <param name="types">The list of types to update which implement <see cref="T:MacroFramework.Commands.IActivator"/>"/></param>
         </member>
         <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.CommandContainer.UpdateActivators``1" -->
-        <member name="M:MacroFramework.Commands.CommandContainer.EnqueuePrimaryThreadJob(MacroFramework.Commands.CommandContainer.QueueCallback)">
-            <summary>
-            Queues a job which will be executed on the primary thread. You queue a job from a secondary thread.
-            </summary>
-            <param name="cb"></param>
-        </member>
         <member name="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)">
             <summary>
             Adds a command to the active command pool
@@ -725,6 +745,11 @@
             <param name="commandString">The command which is being executed</param>
             <returns></returns>
         </member>
+        <member name="T:MacroFramework.ILogger">
+            <summary>
+            Interface for log messages
+            </summary>
+        </member>
         <member name="T:MacroFramework.Input.DeviceHook">
             <summary>
             Static class for receiving low level input from keyboard or mouse
@@ -803,6 +828,16 @@
         <member name="M:MacroFramework.Input.DeviceHook.StopMouseHook">
             <summary>
             Stop hooking mouse
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.DeviceHook.StartHooks">
+            <summary>
+            Starts both hooks
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.DeviceHook.StopHooks">
+            <summary>
+            Stops both hooks
             </summary>
         </member>
         <member name="T:MacroFramework.Input.EnhancedKey">
@@ -1878,6 +1913,11 @@
         <member name="F:MacroFramework.VKey.OEM_CLEAR">
             <summary>Clear key</summary>
         </member>
+        <member name="T:MacroFramework.Macros">
+            <summary>
+            Static class used for starting the application with settings
+            </summary>
+        </member>
         <member name="P:MacroFramework.Macros.Running">
             <summary>
             True if the framework is running
@@ -1999,6 +2039,12 @@
         <member name="M:MacroFramework.Setup.GetActiveCommands">
             <summary>
             Initialize active commands here. Return null if you defined the main assembly in <see cref="M:MacroFramework.Setup.GetMainAssembly"/> or if you wish to use <see cref="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Setup.GetLogger">
+            <summary>
+            Use a custom <see cref="T:MacroFramework.ILogger"/>
             </summary>
             <returns></returns>
         </member>

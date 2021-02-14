@@ -41,10 +41,19 @@ namespace MacroFramework.Commands {
         /// <param name="matchType"><see cref="MatchType"/></param>
         /// <param name="order"><see cref="Order"/></param>
         public BindActivator(Command.CommandCallback command, KKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(command) {
+            VerifyKeys(keys);
             this.ActivationType = activationType;
             this.MatchType = matchType;
             this.Order = order;
             this.Keys = keys;
+        }
+
+        private static void VerifyKeys(KKey[] keys) {
+            foreach (KKey k in keys) {
+                if (k.IsStateless()) {
+                    throw new Exception("BindActivators cannot use stateless keys: " + k);
+                }
+            }
         }
 
         protected override bool IsActivatorActive() {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace MacroFramework.Commands.Attributes {
+namespace MacroFramework.Commands {
     /// <summary>
     /// <see cref="Attribute"/> for easily creating a <see cref="KeyActivator"/>. Attribute methods are parameterless, use <see cref="Input.InputEvents.CurrentInputEvent"/> to get the current key event.
     /// </summary>
@@ -21,7 +21,7 @@ namespace MacroFramework.Commands.Attributes {
         }
 
         public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
-            return new KeyActivator((k) => assignedMethod.Invoke(command, null), key);
+            return new KeyActivator((IInputEvent k) => assignedMethod.Invoke(command, null), key);
         }
     }
 }
