@@ -92,7 +92,6 @@ namespace MacroFramework.Input {
         }
 
         private static void HandleKeyEvent(IInputEvent k) {
-            Logger.Log("KeyEvent: " + k);
             CurrentInputEvent = k;
 
             if (CheckCommandMode()) {

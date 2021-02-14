@@ -31,12 +31,10 @@ You can configure them in such a way that either a keypress or a release activat
 Below are some examples of bind and key activators with different syntaxes. Use either an attribute or the AddActivator method to register commands but not both.
 
 ~~~{.cs}
-using MacroFramework;
 using MacroFramework.Commands;
-using MacroFramework.Commands.Attributes;
-using MacroFramework.Input;
+using System;
 
-class BindAndKeyActivatorExample : Command {
+public class BindAndKeyActivatorExample : Command {
 
     // Alternate to using attributes
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
@@ -52,20 +50,20 @@ class BindAndKeyActivatorExample : Command {
     }
 
     [KeyActivator(KKey.Space)]
-    private void OnPressSpacebar(KeyEvent k) {
-        System.Console.WriteLine("Pressed space " + k.State);
+    private void OnPressSpacebar(IInputEvent i) {
+        Console.WriteLine("Pressed space " + i.State);
     }
 
     // Defaults to ordered press of [A, B, C] and then releasing any key.
     [BindActivator(KKey.A, KKey.B, KKey.C)]
     private void OnReleaseABC() {
-        System.Console.WriteLine("Pressed ABC in order and released!");
+        Console.WriteLine("Pressed ABC in order and released!");
     }
 
     // Activated when A is followed by B is followed by C and when no other keys are pressed
     [BindActivator(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered, KKey.A, KKey.B, KKey.C)]
     private void OnPressABC() {
-        System.Console.WriteLine("Pressed ABC in order!");
+        Console.WriteLine("Pressed ABC in order!");
     }
 }
 
@@ -85,7 +83,7 @@ Below are some examples of timer activators with different syntaxes. Use either 
 
 ~~~{.cs}
 using MacroFramework.Commands;
-using MacroFramework.Commands.Attributes;
+using System;
 
 class TimerActivatorExample : Command {
 
@@ -99,15 +97,15 @@ class TimerActivatorExample : Command {
 
     [TimerActivator(1, TimeUnit.Seconds)]
     private void CalledEverySecond() {
-        System.Console.WriteLine("A second has passed!");
+        Console.WriteLine("A second has passed!");
     }
-
 
     [TimerActivator(1, TimeUnit.Seconds, true)]
     private void CalledEveryHourAndAtApplicationStart() {
-        System.Console.WriteLine("An hour has passed!");
+        Console.WriteLine("An hour has passed!");
     }
 }
+
 ~~~
 
 ## Text commands
@@ -129,6 +127,10 @@ Example: `CommandKey = Windows key, CommandActivateKey = Enter`. The key event c
 Below are some examples of text activators with different syntaxes. Use either an attribute or the AddActivator method to register commands but not both.
 
 ~~~{.cs}
+using MacroFramework.Commands;
+using System;
+using System.Text.RegularExpressions;
+
 class TextActivatorExample : Command {
 
     // Alternate to using attributes
@@ -146,30 +148,33 @@ class TextActivatorExample : Command {
 
     [TextActivator("test command", TextActivatorAttribute.MatchType.StringMatch)]
     private void OnTestCommand() {
-        System.Console.WriteLine("Test command executed!");
+        Console.WriteLine("Test command executed!");
     }
 
 
     private void ExitApplication(string receivedCommand) {
-        System.Console.WriteLine("Exiting application with received command: " + receivedCommand);
+        Console.WriteLine("Exiting application with received command: " + receivedCommand);
         MacroFramework.Macros.Stop();
     }
 
     [TextActivator("print [A-Z]+", TextActivatorAttribute.MatchType.RegexPattern)]
     private void PrintParameter(string command) {
         string param = command.Split(' ')[1];
-        System.Console.WriteLine(param);
+        Console.WriteLine(param);
     }
 
     public override void OnTextCommand(string command, bool commandWasAccepted) {
         if (commandWasAccepted) {
-            System.Console.WriteLine("The command '" + command + "' was executed by at least 1 text activator");
+            Console.WriteLine("The command '" + command + "' was executed by at least 1 text activator");
         } else {
-            System.Console.WriteLine("The command '" + command + "' was not executed by any text activator");
+            Console.WriteLine("The command '" + command + "' was not executed by any text activator");
         }
     }
-}
 
+    private static void SomeOtherCode() {
+        TextCommands.Execute("test command");
+    }
+}
 ...
 
 // Execute from anywhere in code

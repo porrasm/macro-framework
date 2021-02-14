@@ -22,18 +22,21 @@ You only need to setup 1 thing for this library. Inherit the `Setup` class and i
 
 ```C#
 using MacroFramework;
+
 public class MySetup : Setup {
-
-    // Return the Assembly containing your Command classes 
-    // or or null if you don't want automatic Command activation.
-    protected override Assembly GetMainAssembly() {
-        return Assembly.GetExecutingAssembly();
-    }
-
     protected override MacroSettings GetSettings() {
         MacroSettings settings = new MacroSettings();
-        // Set settings here
+
+        settings.GeneralBindKey = KKey.CapsLock;
+        settings.CommandKey = KKey.LWin;
+
+        settings.MainLoopTimestep = 15;
+
         return settings;
+    }
+
+    protected override Assembly GetMainAssembly() {
+        return Assembly.GetExecutingAssembly();
     }
 }
 ```
@@ -44,7 +47,6 @@ This command will open Notepad when you press 'left control' and 'n' in order an
 
 ```C#
 using MacroFramework.Commands;
-using MacroFramework.Commands.Attributes;
 
 public class NotepadCommand : Command {
     [BindActivator(KKey.LCtrl, KKey.N)]

@@ -99,18 +99,18 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_enhanced_key.html">EnhancedKey</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extension methods for the enhanced Key enum  <a href="class_macro_framework_1_1_input_1_1_enhanced_key.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_events.html">KeyEvents</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html">InputEvents</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Static clas used to handle the keyevents captured by the <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html" title="Static class for receiving low level input from keyboard or mouse">Input.DeviceHook</a>  <a href="class_macro_framework_1_1_input_1_1_input_events.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html">KeyStates</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The static class handling the key states  <a href="class_macro_framework_1_1_input_1_1_key_states.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_input_1_1_i_device_input.html">IDeviceInput</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for representing device input  <a href="interface_macro_framework_1_1_input_1_1_i_device_input.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><b>KBDLLHOOKSTRUCT</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_key_event.html">KeyEvent</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains information about the current keyevent  <a href="struct_macro_framework_1_1_input_1_1_key_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html">MouseEvent</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html">POINT</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +119,11 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:ab53541f1d98995cea848ab05bb39da1b"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b">InputEventType</a> { <b>Keyboard</b>
+, <b>Mouse</b>
+ }</td></tr>
+<tr class="memdesc:ab53541f1d98995cea848ab05bb39da1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the input event  <a href="namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b">More...</a><br /></td></tr>
+<tr class="separator:ab53541f1d98995cea848ab05bb39da1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a688aa56f9d7887ad111e30678b53f798"><td class="memItemLeft" align="right" valign="top"><a id="a688aa56f9d7887ad111e30678b53f798"></a>enum class &#160;</td><td class="memItemRight" valign="bottom"><b>MsllFlags</b> : uint { <b>None</b>
 , <b>Injected</b>
 , <b>InjectedLower</b>
@@ -617,6 +622,30 @@ Enumerations</h2></td></tr>
 <tr class="separator:a26783c7ac783ebc9a835215a106f6569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ab53541f1d98995cea848ab05bb39da1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab53541f1d98995cea848ab05bb39da1b">&#9670;&nbsp;</a></span>InputEventType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b">MacroFramework.Input.InputEventType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The type of the input event </p>
+
+</div>
+</div>
 <a id="a20613a22c3f7c3ec060c30d7bfe418fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a20613a22c3f7c3ec060c30d7bfe418fb">&#9670;&nbsp;</a></span>ScanCode</h2>
 

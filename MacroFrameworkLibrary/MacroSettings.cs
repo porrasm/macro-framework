@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using MacroFramework.Commands;
-using MacroFramework.Input;
-using MacroFramework.Input;
 
 namespace MacroFramework {
     public class MacroSettings {

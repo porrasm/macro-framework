@@ -1,11 +1,11 @@
 var hierarchy =
 [
     [ "Attribute", null, [
-      [ "MacroFramework.Commands.Attributes.ActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_activator_attribute.html", [
-        [ "MacroFramework.Commands.Attributes.BindActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_bind_activator_attribute.html", null ],
-        [ "MacroFramework.Commands.Attributes.KeyActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_key_activator_attribute.html", null ],
-        [ "MacroFramework.Commands.Attributes.TextActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_text_activator_attribute.html", null ],
-        [ "MacroFramework.Commands.Attributes.TimerActivatorAttribute", "class_macro_framework_1_1_commands_1_1_attributes_1_1_timer_activator_attribute.html", null ]
+      [ "MacroFramework.Commands.ActivatorAttribute", "class_macro_framework_1_1_commands_1_1_activator_attribute.html", [
+        [ "MacroFramework.Commands.BindActivatorAttribute", "class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html", null ],
+        [ "MacroFramework.Commands.KeyActivatorAttribute", "class_macro_framework_1_1_commands_1_1_key_activator_attribute.html", null ],
+        [ "MacroFramework.Commands.TextActivatorAttribute", "class_macro_framework_1_1_commands_1_1_text_activator_attribute.html", null ],
+        [ "MacroFramework.Commands.TimerActivatorAttribute", "class_macro_framework_1_1_commands_1_1_timer_activator_attribute.html", null ]
       ] ]
     ] ],
     [ "MacroFramework.Tools.AutoDict< K, V >", "class_macro_framework_1_1_tools_1_1_auto_dict.html", null ],
@@ -23,10 +23,12 @@ var hierarchy =
         [ "MacroFramework.Commands.TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", null ]
       ] ]
     ] ],
-    [ "MacroFramework.Input.IDeviceInput", "interface_macro_framework_1_1_input_1_1_i_device_input.html", [
-      [ "MacroFramework.Input.KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", null ]
+    [ "MacroFramework.Commands.IInputEvent", "interface_macro_framework_1_1_commands_1_1_i_input_event.html", [
+      [ "MacroFramework.Input.KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", null ],
+      [ "MacroFramework.Input.MouseEvent", "struct_macro_framework_1_1_input_1_1_mouse_event.html", null ]
     ] ],
-    [ "MacroFramework.Input.KeyEvents", "class_macro_framework_1_1_input_1_1_key_events.html", null ],
+    [ "MacroFramework.ILogger", "interface_macro_framework_1_1_i_logger.html", null ],
+    [ "MacroFramework.Input.InputEvents", "class_macro_framework_1_1_input_1_1_input_events.html", null ],
     [ "MacroFramework.Input.KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", null ],
     [ "MacroFramework.Macros", "class_macro_framework_1_1_macros.html", null ],
     [ "MacroFramework.MacroSettings", "class_macro_framework_1_1_macro_settings.html", null ],

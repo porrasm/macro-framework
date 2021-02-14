@@ -2,11 +2,15 @@ var namespace_macro_framework_1_1_input =
 [
     [ "DeviceHook", "class_macro_framework_1_1_input_1_1_device_hook.html", "class_macro_framework_1_1_input_1_1_device_hook" ],
     [ "EnhancedKey", "class_macro_framework_1_1_input_1_1_enhanced_key.html", "class_macro_framework_1_1_input_1_1_enhanced_key" ],
-    [ "KeyEvents", "class_macro_framework_1_1_input_1_1_key_events.html", "class_macro_framework_1_1_input_1_1_key_events" ],
+    [ "InputEvents", "class_macro_framework_1_1_input_1_1_input_events.html", "class_macro_framework_1_1_input_1_1_input_events" ],
     [ "KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", "class_macro_framework_1_1_input_1_1_key_states" ],
-    [ "IDeviceInput", "interface_macro_framework_1_1_input_1_1_i_device_input.html", "interface_macro_framework_1_1_input_1_1_i_device_input" ],
     [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
+    [ "MouseEvent", "struct_macro_framework_1_1_input_1_1_mouse_event.html", "struct_macro_framework_1_1_input_1_1_mouse_event" ],
     [ "POINT", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t" ],
+    [ "InputEventType", "namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b", [
+      [ "Keyboard", "namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1ba6ce4d85a628a88bbdb3ac24a8e5a9c2e", null ],
+      [ "Mouse", "namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1baf2a47c6809d88e175dade0ef7b16aa13", null ]
+    ] ],
     [ "KbdllFlags", "namespace_macro_framework_1_1_input.html#ab55fa289f2c1d2a961083ddbc5828bce", [
       [ "Extended", "namespace_macro_framework_1_1_input.html#ab55fa289f2c1d2a961083ddbc5828bceaf23578fcd2a868168854ab714e7de537", null ],
       [ "Injected", "namespace_macro_framework_1_1_input.html#ab55fa289f2c1d2a961083ddbc5828bceaa49a259c6132a5ffa8866fb078a9c3da", null ],

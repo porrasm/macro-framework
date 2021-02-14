@@ -1,5 +1,6 @@
 var class_macro_framework_1_1_macro_settings =
 [
+    [ "AutoEnableKeyboardHook", "class_macro_framework_1_1_macro_settings.html#aee484b8f447ed9a3d0f739c9019cc359", null ],
     [ "CommandActivateKey", "class_macro_framework_1_1_macro_settings.html#acc071ef4525988176fbcf4b03c767b08", null ],
     [ "CommandKey", "class_macro_framework_1_1_macro_settings.html#a61ad37d64f5a9be17597471b03314558", null ],
     [ "GeneralBindKey", "class_macro_framework_1_1_macro_settings.html#aa567e76c354751eedd23b37dd8b8af00", null ],

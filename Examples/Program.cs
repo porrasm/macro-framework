@@ -7,34 +7,32 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Examples {
-    public class Program {
-        static void Main(string[] args) {
-            Macros.Start(new MySetup());
-        }
+public class Program {
+    static void Main(string[] args) {
+        Macros.Start(new MySetup());
+    }
+}
 
-        public class MySetup : Setup {
-            protected override MacroSettings GetSettings() {
-                MacroSettings settings = new MacroSettings();
+public class MySetup : Setup {
+    protected override MacroSettings GetSettings() {
+        MacroSettings settings = new MacroSettings();
 
-                settings.GeneralBindKey = KKey.CapsLock;
-                settings.CommandKey = KKey.LWin;
+        settings.GeneralBindKey = KKey.CapsLock;
+        settings.CommandKey = KKey.LWin;
 
-                settings.MainLoopTimestep = 15;
+        settings.MainLoopTimestep = 15;
 
-                return settings;
-            }
+        return settings;
+    }
 
-            protected override Assembly GetMainAssembly() {
-                return Assembly.GetExecutingAssembly();
-            }
-        }
+    protected override Assembly GetMainAssembly() {
+        return Assembly.GetExecutingAssembly();
+    }
+}
 
-        public class NotepadCommand : Command {
-            [BindActivator(KKey.LCtrl, KKey.N)]
-            private void OpenNotepad() {
-                System.Diagnostics.Process.Start("Notepad.exe");
-            }
-        }
+public class NotepadCommand : Command {
+    [BindActivator(KKey.LCtrl, KKey.N)]
+    private void OpenNotepad() {
+        System.Diagnostics.Process.Start("Notepad.exe");
     }
 }
