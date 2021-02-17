@@ -26,10 +26,15 @@ namespace MacroFramework.Commands {
         internal CommandActivatorGroup CommandActivators => commandActivators;
 
         /// <summary>
-        /// Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="CommandActivators"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
+        /// The deleget bool used to determine whether a <see cref="Command"/> instance is active
         /// </summary>
         /// <returns></returns>
-        public virtual bool IsActive() => true;
+        public delegate bool CommandContext();
+
+        /// <summary>
+        /// The default context used in all <see cref="Command"/> instances. Returns true on default but can be changed.
+        /// </summary>
+        public static CommandContext DefaultContext = () => true;
         #endregion
 
         #region initialization
@@ -67,6 +72,11 @@ namespace MacroFramework.Commands {
             activator = new CommandActivatorGroup(this);
         }
         #endregion
+        /// <summary>
+        /// Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="CommandActivators"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
+        /// </summary>
+        /// <returns></returns>
+        public CommandContext IsActive = () => true;
 
         /// <summary>
         /// Called before the execution of any <see cref="IActivator"/> starts

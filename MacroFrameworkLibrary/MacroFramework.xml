@@ -46,7 +46,7 @@
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerContext">
             <summary>
-            If true, the context <see cref="M:MacroFramework.Commands.Command.IsActive"/> of the owner is ignored
+            If true, the context <see cref="!:Command.IsActive()"/> of the owner is ignored
             </summary>
         </member>
         <member name="F:MacroFramework.Commands.CommandActivator.commandCallback">
@@ -63,7 +63,7 @@
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.IsActive">
             <summary>
-            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="M:MacroFramework.Commands.Command.IsActive"/>
+            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="F:MacroFramework.Commands.Command.IsActive"/>
             </summary>
             <returns></returns>
         </member>
@@ -316,11 +316,16 @@
             Container for the set of <see cref="T:MacroFramework.Commands.CommandActivator"/> instances of this command
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.IsActive">
+        <member name="T:MacroFramework.Commands.Command.CommandContext">
             <summary>
-            Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.CommandActivators"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
+            The deleget bool used to determine whether a <see cref="T:MacroFramework.Commands.Command"/> instance is active
             </summary>
             <returns></returns>
+        </member>
+        <member name="F:MacroFramework.Commands.Command.DefaultContext">
+            <summary>
+            The default context used in all <see cref="T:MacroFramework.Commands.Command"/> instances. Returns true on default but can be changed.
+            </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.#ctor">
             <summary>
@@ -331,6 +336,12 @@
             <summary>
             Abstract method for initializing <see cref="T:MacroFramework.Commands.IActivator"/> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
             </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.Command.IsActive">
+            <summary>
+            Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.CommandActivators"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnExecuteStart">
             <summary>
