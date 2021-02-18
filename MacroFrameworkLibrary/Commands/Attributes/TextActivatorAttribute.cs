@@ -12,7 +12,7 @@ namespace MacroFramework.Commands {
     public class TextActivatorAttribute : ActivatorAttribute {
 
         #region fields
-        private string match;
+        private string[] matches;
         private MatchType type;
 
         /// <summary>
@@ -36,16 +36,36 @@ namespace MacroFramework.Commands {
         /// <param name="match">The exact string match or regex pattern</param>
         /// <param name="type"><see cref="MatchType"/></param>
         public TextActivatorAttribute(string match, MatchType type = MatchType.StringMatch) {
-            this.match = match;
+            this.matches = new string[] { match };
             this.type = type;
         }
 
+        /// <summary>
+        /// Creates a new <see cref="TextActivator"/> instance at the start of the application from this method
+        /// </summary>
+        /// <param name="match">The exact string match or regex pattern</param>
+        /// <param name="type"><see cref="MatchType"/></param>
+        public TextActivatorAttribute(params string[] wrappers) {
+            this.matches = wrappers;
+            this.type = MatchType.StringMatch;
+        }
+
         public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
-            if (type == MatchType.StringMatch) {
-                return new TextActivator((s) => assignedMethod?.Invoke(command, null), match);
-            } else {
-                return new TextActivator((s) => assignedMethod?.Invoke(command, null), new RegexWrapper(new Regex(match)));
+            return new TextActivator((s) => assignedMethod?.Invoke(command, null), GetRegexWrappers());
+        }
+
+        private RegexWrapper[] GetRegexWrappers() {
+            RegexWrapper[] newWrappers = new RegexWrapper[matches.Length];
+            if (type == MatchType.RegexPattern) {
+                for (int i = 0; i < matches.Length; i++) {
+                    newWrappers[i] = new Regex(matches[i]);
+                }
+            } else if (type == MatchType.StringMatch) {
+                for (int i = 0; i < matches.Length; i++) {
+                    newWrappers[i] = matches[i];
+                }
             }
+            return newWrappers;
         }
     }
 }

@@ -295,6 +295,13 @@
             <param name="match">The exact string match or regex pattern</param>
             <param name="type"><see cref="T:MacroFramework.Commands.TextActivatorAttribute.MatchType"/></param>
         </member>
+        <member name="M:MacroFramework.Commands.TextActivatorAttribute.#ctor(System.String[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance at the start of the application from this method
+            </summary>
+            <param name="match">The exact string match or regex pattern</param>
+            <param name="type"><see cref="T:MacroFramework.Commands.TextActivatorAttribute.MatchType"/></param>
+        </member>
         <member name="T:MacroFramework.Commands.TimerActivatorAttribute">
             <summary>
             <see cref="T:System.Attribute"/> for easily creating a <see cref="T:MacroFramework.Commands.TimerActivator"/>
@@ -761,96 +768,6 @@
             Interface for log messages
             </summary>
         </member>
-        <member name="T:MacroFramework.Input.DeviceHook">
-            <summary>
-            Static class for receiving low level input from keyboard or mouse
-            </summary>
-        </member>
-        <member name="T:MacroFramework.Input.DeviceHook.MessageProc">
-            <summary>
-            Delegate for receiving low level input
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.DeviceHook.KEYBOARD_HOOK_ID">
-            <summary>
-            Windows hook IDs
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.DeviceHook.MOUSE_HOOK_ID">
-            <summary>
-            Windows hook IDs
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.DeviceHook.KeyboardHookRunning">
-            <summary>
-            Returns true if the keyboard hook is running
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.DeviceHook.MouseHookRunning">
-            <summary>
-            Returns true if the mouse hook is running
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.DeviceHook.keyboardProc">
-            <summary>
-            Keyboard callback delegate
-            </summary>
-        </member>
-        <member name="F:MacroFramework.Input.DeviceHook.mouseProc">
-            <summary>
-            Mouse callback delegate
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Input.DeviceHook.BlockCode">
-            <summary>
-            The <see cref="T:System.IntPtr"/> to return to intercept a keyevent
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.SetWindowsHookEx(System.Int32,MacroFramework.Input.DeviceHook.MessageProc,System.IntPtr,System.Int32)">
-            <summary>
-            Initialize a low level hook
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.UnhookWindowsHookEx(System.IntPtr)">
-            <summary>
-            Dispose of a low level hook
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.CallNextHookEx(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
-            <summary>
-            Call the next hook in a chain
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StartKeyboardHook">
-            <summary>
-            Start hooking keyboard
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StopKeyboardHook">
-            <summary>
-            Stop hooking keyboard
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StartMouseHook">
-            <summary>
-            Start hooking mouse
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StopMouseHook">
-            <summary>
-            Stop hooking mouse
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StartHooks">
-            <summary>
-            Starts both hooks
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Input.DeviceHook.StopHooks">
-            <summary>
-            Stops both hooks
-            </summary>
-        </member>
         <member name="T:MacroFramework.Input.EnhancedKey">
             <summary>Extension methods for the enhanced Key enum</summary>
         </member>
@@ -945,7 +862,7 @@
         </member>
         <member name="T:MacroFramework.Input.InputEvents">
             <summary>
-            Static clas used to handle the keyevents captured by the <see cref="T:MacroFramework.Input.DeviceHook"/>
+            Static clas used to handle the keyevents captured by the <see cref="T:MacroFramework.Input.InputHook"/>
             </summary>
         </member>
         <member name="T:MacroFramework.Input.InputEvents.InputCallbackFunc">
@@ -974,6 +891,96 @@
             </summary>
             <param name="k"></param>
             <returns>True if key should be intercepted</returns>
+        </member>
+        <member name="T:MacroFramework.Input.InputHook">
+            <summary>
+            Static class for receiving low level input from keyboard or mouse
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Input.InputHook.MessageProc">
+            <summary>
+            Delegate for receiving low level input
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.InputHook.KEYBOARD_HOOK_ID">
+            <summary>
+            Windows hook IDs
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.InputHook.MOUSE_HOOK_ID">
+            <summary>
+            Windows hook IDs
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputHook.KeyboardHookRunning">
+            <summary>
+            Returns true if the keyboard hook is running
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputHook.MouseHookRunning">
+            <summary>
+            Returns true if the mouse hook is running
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.InputHook.keyboardProc">
+            <summary>
+            Keyboard callback delegate
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Input.InputHook.mouseProc">
+            <summary>
+            Mouse callback delegate
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputHook.BlockCode">
+            <summary>
+            The <see cref="T:System.IntPtr"/> to return to intercept a keyevent
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.SetWindowsHookEx(System.Int32,MacroFramework.Input.InputHook.MessageProc,System.IntPtr,System.Int32)">
+            <summary>
+            Initialize a low level hook
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.UnhookWindowsHookEx(System.IntPtr)">
+            <summary>
+            Dispose of a low level hook
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.CallNextHookEx(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr)">
+            <summary>
+            Call the next hook in a chain
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StartKeyboardHook">
+            <summary>
+            Start hooking keyboard
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StopKeyboardHook">
+            <summary>
+            Stop hooking keyboard
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StartMouseHook">
+            <summary>
+            Start hooking mouse
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StopMouseHook">
+            <summary>
+            Stop hooking mouse
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StartHooks">
+            <summary>
+            Starts both hooks
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Input.InputHook.StopHooks">
+            <summary>
+            Stops both hooks
+            </summary>
         </member>
         <member name="T:MacroFramework.Input.KeyStates">
             <summary>
@@ -1968,6 +1975,27 @@
             Stops the MacroFramework application
             </summary>
         </member>
+        <member name="M:MacroFramework.Macros.PauseAndStopHooks">
+            <summary>
+            This effectively pauses the entire application by disabling input hooks and all <see cref="T:MacroFramework.Commands.Command"/> and <see cref="T:MacroFramework.Commands.CommandActivator" /> instances. Use this method if you wish to pause all functionality. Only the <see cref="T:MacroFramework.Macros.MainLoopCallback"/> and async methods which started before tha pause will run.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Macros.UnpauseAndRestartHooks">
+            <summary>
+            Resumes normal functionality by unpausing the application and restarting all enabled hooks.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Macros.SetPause(System.Boolean)">
+            <summary>
+            Setting <see cref="P:MacroFramework.Macros.Paused"/> to true will disable all macro functionality. The hooks will stay on and the <see cref="T:MacroFramework.Macros.MainLoopCallback"/> and <see cref="P:MacroFramework.Input.InputEvents.InputCallback"/> callbacks are still called as well as any async methods which which were started before tha pause.
+            </summary>
+            <param name="paused"></param>
+        </member>
+        <member name="T:MacroFramework.MacroSettings">
+            <summary>
+            A settings class used to configure the framework
+            </summary>
+        </member>
         <member name="F:MacroFramework.MacroSettings.KeyListenerEnabled">
             <summary>
             Not yet implemented. Dooes not have any effect and the key listener is always active.
@@ -2003,14 +2031,14 @@
             The timeout after the last keypress after which command mode is canceled
             </summary>
         </member>
-        <member name="F:MacroFramework.MacroSettings.AutoEnableKeyboardHook">
+        <member name="F:MacroFramework.MacroSettings.AllowKeyboardHook">
             <summary>
-            Whether to automatically enable hook
+            Whether to allow a certain device hook
             </summary>
         </member>
-        <member name="F:MacroFramework.MacroSettings.AutoEnableMouseHook">
+        <member name="F:MacroFramework.MacroSettings.AllowMouseHook">
             <summary>
-            Whether to automatically enable hook
+            Whether to allow a certain device hook
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">

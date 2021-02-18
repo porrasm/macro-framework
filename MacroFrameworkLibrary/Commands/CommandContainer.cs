@@ -62,7 +62,6 @@ namespace MacroFramework.Commands {
         }
 
         private static void UpdateActivators(Type t) {
-
             if (Macros.Paused) {
                 return;
             }

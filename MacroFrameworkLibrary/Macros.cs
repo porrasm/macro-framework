@@ -21,7 +21,7 @@ namespace MacroFramework {
         /// <summary>
         /// Pauses the application such that no activators are updated. Only the <see cref="OnMainLoop"/> delegate is called during pause mode.
         /// </summary>
-        public static bool Paused { get; set; }
+        public static bool Paused { get; internal set; }
 
         /// <summary>
         /// Void callback
@@ -46,14 +46,7 @@ namespace MacroFramework {
             Setup.SetInstance(setup);
             Running = true;
             InputEvents.Initialize();
-
-            if (setup.Settings.AutoEnableKeyboardHook) {
-                DeviceHook.StartKeyboardHook();
-            }
-            if (setup.Settings.AutoEnableMouseHook) {
-                DeviceHook.StartMouseHook();
-            }
-
+            UnpauseAndRestartHooks();
             CommandContainer.Start();
             MainLoop();
 
@@ -69,7 +62,7 @@ namespace MacroFramework {
         /// Stops the MacroFramework application
         /// </summary>
         public static void Stop() {
-            DeviceHook.StopHooks();
+            InputHook.StopHooks();
             CommandContainer.Exit();
 
             // Unsubscribe
@@ -109,7 +102,7 @@ namespace MacroFramework {
         private static void UnhandledException(object sender, UnhandledExceptionEventArgs e) => HandleExceptions((Exception)e.ExceptionObject, "Unhandled Exception", e.IsTerminating);
         private static void HandleExceptions(Exception e, string type = null, bool terminating = true) {
             try {
-                DeviceHook.StopHooks();
+                InputHook.StopHooks();
                 var name = Process.GetCurrentProcess().ProcessName;
                 Logger.Log(e.ToString() + "\n\n\nCopy exception to clipboard?" + name + (type == null ? "" : $" - {type}") + (terminating ? " - Fatal" : " - Non-fatal"));
             } catch (Exception ee) {
@@ -135,8 +128,30 @@ namespace MacroFramework {
         }
         #endregion
 
-        public static void Log() {
-
+        #region helpers
+        /// <summary>
+        /// This effectively pauses the entire application by disabling input hooks and all <see cref="Command"/> and <see cref="MacroFramework.Commands.CommandActivator" /> instances. Use this method if you wish to pause all functionality. Only the <see cref="MainLoopCallback"/> and async methods which started before tha pause will run.
+        /// </summary>
+        public static void PauseAndStopHooks() {
+            Paused = true;
+            InputHook.StopHooks();
         }
+
+        /// <summary>
+        /// Resumes normal functionality by unpausing the application and restarting all enabled hooks.
+        /// </summary>
+        public static void UnpauseAndRestartHooks() {
+            Paused = false;
+            InputHook.StartHooks();
+        }
+
+        /// <summary>
+        /// Setting <see cref="Paused"/> to true will disable all macro functionality. The hooks will stay on and the <see cref="MainLoopCallback"/> and <see cref="MacroFramework.Input.InputEvents.InputCallback"/> callbacks are still called as well as any async methods which which were started before tha pause.
+        /// </summary>
+        /// <param name="paused"></param>
+        public static void SetPause(bool paused) {
+            Paused = paused;
+        }
+        #endregion
     }
 }

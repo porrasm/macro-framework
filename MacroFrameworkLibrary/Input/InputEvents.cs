@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MacroFramework.Input {
     /// <summary>
-    /// Static clas used to handle the keyevents captured by the <see cref="Input.DeviceHook"/>
+    /// Static clas used to handle the keyevents captured by the <see cref="Input.InputHook"/>
     /// </summary>
     public static class InputEvents {
 

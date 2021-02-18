@@ -4,6 +4,9 @@ using System.Text;
 using MacroFramework.Commands;
 
 namespace MacroFramework {
+    /// <summary>
+    /// A settings class used to configure the framework
+    /// </summary>
     public class MacroSettings {
 
         /// <summary>
@@ -42,9 +45,9 @@ namespace MacroFramework {
         public int TextCommandTimeout = 2500;
 
         /// <summary>
-        /// Whether to automatically enable hook
+        /// Whether to allow a certain device hook
         /// </summary>
-        public bool AutoEnableKeyboardHook = true, AutoEnableMouseHook = false;
+        public bool AllowKeyboardHook = true, AllowMouseHook = false;
 
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop

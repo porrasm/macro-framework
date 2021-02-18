@@ -9,7 +9,7 @@ namespace MacroFramework.Input {
     /// <summary>
     /// Static class for receiving low level input from keyboard or mouse
     /// </summary>
-    public static class DeviceHook {
+    public static class InputHook {
 
         #region fields
         /// <summary>
@@ -75,7 +75,8 @@ namespace MacroFramework.Input {
         /// Start hooking keyboard
         /// </summary>
         public static void StartKeyboardHook() {
-            if (!KeyboardHookRunning) {
+            if (!KeyboardHookRunning  && Setup.Instance.Settings.AllowMouseHook) {
+                Logger.Log("Hook keyboard");
                 KeyboardHook = SetHook(keyboardProc, KEYBOARD_HOOK_ID);
                 KeyboardHookRunning = true;
             }
@@ -86,6 +87,7 @@ namespace MacroFramework.Input {
         /// </summary>
         public static void StopKeyboardHook() {
             if (KeyboardHookRunning) {
+                Logger.Log("Unhook keyboard");
                 UnhookWindowsHookEx(KeyboardHook);
                 KeyboardHookRunning = false;
             }
@@ -95,7 +97,8 @@ namespace MacroFramework.Input {
         /// Start hooking mouse
         /// </summary>
         public static void StartMouseHook() {
-            if (!MouseHookRunning) {
+            if (!MouseHookRunning && Setup.Instance.Settings.AllowMouseHook) {
+                Logger.Log("Hook mouse");
                 MouseHook = SetHook(mouseProc, MOUSE_HOOK_ID);
                 MouseHookRunning = true;
             }
@@ -105,6 +108,7 @@ namespace MacroFramework.Input {
         /// </summary>
         public static void StopMouseHook() {
             if (MouseHookRunning) {
+                Logger.Log("Unhook mouse");
                 UnhookWindowsHookEx(MouseHook);
                 MouseHookRunning = false;
             }

@@ -38,8 +38,8 @@ namespace MacroFrameworkTests {
             protected override MacroSettings GetSettings() {
                 MacroSettings settings = new MacroSettings();
 
-                settings.AutoEnableKeyboardHook = false;
-                settings.AutoEnableMouseHook = false;
+                settings.AllowKeyboardHook = false;
+                settings.AllowMouseHook = false;
                 settings.GeneralBindKey = bindKey;
                 settings.CommandKey = commandKey;
                 settings.CommandActivateKey = commandActivateKey;
