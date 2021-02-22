@@ -31,7 +31,7 @@ namespace MacroFramework.Commands {
         #endregion
 
         /// <summary>
-        /// Creates a new <see cref="TextActivator"/> instance at the start of the application from this method
+        /// Creates a new <see cref="TextActivator"/> instance using either string or regex matching at the start of the application from this method
         /// </summary>
         /// <param name="match">The exact string match or regex pattern</param>
         /// <param name="type"><see cref="MatchType"/></param>
@@ -41,7 +41,7 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Creates a new <see cref="TextActivator"/> instance at the start of the application from this method
+        /// Creates a new <see cref="TextActivator"/> instance using string matching at the start of the application from this method
         /// </summary>
         /// <param name="match">The exact string match or regex pattern</param>
         /// <param name="type"><see cref="MatchType"/></param>

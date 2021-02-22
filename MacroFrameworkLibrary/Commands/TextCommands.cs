@@ -53,7 +53,11 @@ namespace MacroFramework.Commands {
             CommandContainer.UpdateActivators<TextActivator>();
 
             foreach (Command c in CommandContainer.Commands) {
-                c.OnTextCommand(s, CommandWasAccepted);
+                try {
+                    c.OnTextCommand(s, CommandWasAccepted);
+                } catch (Exception e) {
+                    Console.WriteLine($"Error on {c.GetType()} OnTextCommand: {e.Message}");
+                }
             }
 
             CurrentTextCommand = null;

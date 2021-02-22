@@ -15,6 +15,11 @@ namespace MacroFramework {
         internal static bool KeyListenerEnabled = true;
 
         /// <summary>
+        /// If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour.
+        /// </summary>
+        public bool HandleInjectedInputEvents = false;
+
+        /// <summary>
         /// The dedicated key on the keyboard which activates the text command mode.
         /// </summary>
         public KKey CommandKey = KKey.None;

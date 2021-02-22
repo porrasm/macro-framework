@@ -80,7 +80,7 @@ namespace MacroFramework.Commands {
                         act.Execute();
                         Logger.Log("Try clause end");
                     } catch (Exception e) {
-                        Logger.Log("Error executing command of type " + act.Owner.GetType() + ": " + e.Message);
+                        Console.WriteLine($"Error on {act.Owner?.GetType()} Execute: {e.Message}");
                     }
                 }
             }
@@ -88,7 +88,11 @@ namespace MacroFramework.Commands {
 
         internal static void Exit() {
             foreach (Command c in Commands) {
-                c.OnClose();
+                try {
+                    c.OnClose();
+                } catch (Exception e) {
+                    Console.WriteLine($"Error on {c.GetType()} OnClose: {e.Message}");
+                }
             }
             Deinitialize();
         }
@@ -96,7 +100,11 @@ namespace MacroFramework.Commands {
         internal static void Start() {
             Initialize();
             foreach (Command c in Commands) {
-                c.OnStart();
+                try {
+                    c.OnStart();
+                } catch (Exception e) {
+                    Console.WriteLine($"Error on {c.GetType()} OnStart: {e.Message}");
+                }
             }
         }
 

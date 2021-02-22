@@ -49,14 +49,13 @@ namespace MacroFramework.Input {
             Logger.Log("Input Event: " + k);
             KeyStates.AddAbsoluteEvent(k);
 
-            if (Macros.Paused) {
-                Logger.Log("Paused");
-                return false;
-            }
-
             if (InputCallback?.Invoke(k) ?? false) {
                 Logger.Log("Skip queue");
                 return true;
+            }
+
+            if (Macros.Paused || k.Injected || k.Key == KKey.MouseMove) {
+                return false;
             }
 
             keyEventQueue.Enqueue(k);
