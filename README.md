@@ -6,10 +6,6 @@
 - [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html) up to date with the most recent Nuget relase (0.1.3)
 - [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html)
 
-## Warning
-
-Project is in very early stage. Many things will change. Prepare to refactor things after each update.
-
 ## Quick setup
 
 ### 1 Install package via nuget: 
