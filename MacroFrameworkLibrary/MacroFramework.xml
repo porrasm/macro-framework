@@ -400,7 +400,12 @@
             </summary>
             <param name="types">The list of types to update which implement <see cref="T:MacroFramework.Commands.IActivator"/>"/></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.CommandContainer.UpdateActivators``1" -->
+        <member name="M:MacroFramework.Commands.CommandContainer.UpdateActivators``1">
+            <summary>
+            Executes all activatos of certain type. This may call multiple activators from a single command instance.
+            </summary>
+            <typeparam name="T">The type to update which implement <see cref="T:MacroFramework.Commands.IActivator"/></typeparam>
+        </member>
         <member name="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)">
             <summary>
             Adds a command to the active command pool
