@@ -23,6 +23,12 @@ public class MySetup : Setup {
     protected override MacroSettings GetSettings() {
         MacroSettings settings = new MacroSettings();
 
+        // Important, allow application to access keyboard hook
+        settings.AllowKeyboardHook = true;
+        
+        // Disallow mouse hook for now
+        settings.AllowMouseHoo = false;
+        
         settings.GeneralBindKey = KKey.CapsLock;
         settings.CommandKey = KKey.LWin;
 
