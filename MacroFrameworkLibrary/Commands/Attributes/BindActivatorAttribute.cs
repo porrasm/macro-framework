@@ -1,8 +1,5 @@
-﻿using MacroFramework.Input;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Reflection;
-using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>

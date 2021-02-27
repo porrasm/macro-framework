@@ -1,8 +1,8 @@
 var namespace_macro_framework_1_1_input =
 [
-    [ "DeviceHook", "class_macro_framework_1_1_input_1_1_device_hook.html", "class_macro_framework_1_1_input_1_1_device_hook" ],
     [ "EnhancedKey", "class_macro_framework_1_1_input_1_1_enhanced_key.html", "class_macro_framework_1_1_input_1_1_enhanced_key" ],
     [ "InputEvents", "class_macro_framework_1_1_input_1_1_input_events.html", "class_macro_framework_1_1_input_1_1_input_events" ],
+    [ "InputHook", "class_macro_framework_1_1_input_1_1_input_hook.html", "class_macro_framework_1_1_input_1_1_input_hook" ],
     [ "KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", "class_macro_framework_1_1_input_1_1_key_states" ],
     [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
     [ "MouseEvent", "struct_macro_framework_1_1_input_1_1_mouse_event.html", "struct_macro_framework_1_1_input_1_1_mouse_event" ],

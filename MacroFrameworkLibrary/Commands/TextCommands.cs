@@ -1,7 +1,6 @@
 ﻿using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>

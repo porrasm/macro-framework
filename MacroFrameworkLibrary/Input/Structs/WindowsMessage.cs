@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework.Input {
+﻿namespace MacroFramework.Input {
     /// <summary>
     /// Enums of all Windows messages
     /// </summary>

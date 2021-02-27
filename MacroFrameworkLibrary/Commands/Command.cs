@@ -1,11 +1,6 @@
-﻿using MacroFramework.Input;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -111,7 +106,7 @@ namespace MacroFramework.Commands {
         /// <param name="keys"></param>
         /// <returns></returns>
         protected KKey[] Keys(params KKey[] keys) {
-            if (keys == null ||keys.Length == 0) {
+            if (keys == null || keys.Length == 0) {
                 throw new Exception("You need to add 1 or more keys.");
             }
             return keys;

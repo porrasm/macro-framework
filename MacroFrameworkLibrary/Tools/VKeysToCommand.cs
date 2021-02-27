@@ -1,11 +1,5 @@
 ﻿using MacroFramework.Commands;
-using MacroFramework.Input;
-using MacroFramework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Tools {
     internal class VKeysToCommand {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MacroFramework.Commands;
+﻿using MacroFramework.Commands;
 
 namespace MacroFramework {
     /// <summary>

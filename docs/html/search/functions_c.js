@@ -1,13 +1,14 @@
 var searchData=
 [
-  ['setup_492',['Setup',['../class_macro_framework_1_1_setup.html#a0c2553836e422d9867ae85fc589bc879',1,'MacroFramework::Setup']]],
-  ['setwindowshookex_493',['SetWindowsHookEx',['../class_macro_framework_1_1_input_1_1_device_hook.html#a90d03fbfffc474357331a077b1f95d8c',1,'MacroFramework::Input::DeviceHook']]],
-  ['start_494',['Start',['../class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a',1,'MacroFramework::Macros']]],
-  ['starthooks_495',['StartHooks',['../class_macro_framework_1_1_input_1_1_device_hook.html#a3240e654468a715d90690ac6fe7f80c1',1,'MacroFramework::Input::DeviceHook']]],
-  ['startkeyboardhook_496',['StartKeyboardHook',['../class_macro_framework_1_1_input_1_1_device_hook.html#a30dc93d650a3eec86b201195185c6544',1,'MacroFramework::Input::DeviceHook']]],
-  ['startmousehook_497',['StartMouseHook',['../class_macro_framework_1_1_input_1_1_device_hook.html#a0ccfacc615354b1419de8a2a3cfffb05',1,'MacroFramework::Input::DeviceHook']]],
-  ['stop_498',['Stop',['../class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174',1,'MacroFramework::Macros']]],
-  ['stophooks_499',['StopHooks',['../class_macro_framework_1_1_input_1_1_device_hook.html#a4e3906611f160eb7d33d515cba7bcc1c',1,'MacroFramework::Input::DeviceHook']]],
-  ['stopkeyboardhook_500',['StopKeyboardHook',['../class_macro_framework_1_1_input_1_1_device_hook.html#ad0ca20f7419c8e318aff304845ebeadf',1,'MacroFramework::Input::DeviceHook']]],
-  ['stopmousehook_501',['StopMouseHook',['../class_macro_framework_1_1_input_1_1_device_hook.html#a80764c035251b055cc13d0de0167b055',1,'MacroFramework::Input::DeviceHook']]]
+  ['setpause_508',['SetPause',['../class_macro_framework_1_1_macros.html#ae585382df6e88448c45f612a7769bcb8',1,'MacroFramework::Macros']]],
+  ['setup_509',['Setup',['../class_macro_framework_1_1_setup.html#a0c2553836e422d9867ae85fc589bc879',1,'MacroFramework::Setup']]],
+  ['setwindowshookex_510',['SetWindowsHookEx',['../class_macro_framework_1_1_input_1_1_input_hook.html#a595747d95a06757f503f0996a63fdfd4',1,'MacroFramework::Input::InputHook']]],
+  ['start_511',['Start',['../class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a',1,'MacroFramework::Macros']]],
+  ['starthooks_512',['StartHooks',['../class_macro_framework_1_1_input_1_1_input_hook.html#a8bef5a2921d7cc70d788827574712bbc',1,'MacroFramework::Input::InputHook']]],
+  ['startkeyboardhook_513',['StartKeyboardHook',['../class_macro_framework_1_1_input_1_1_input_hook.html#a34cd7a03b6f3b61ad35d1eba437dcd5b',1,'MacroFramework::Input::InputHook']]],
+  ['startmousehook_514',['StartMouseHook',['../class_macro_framework_1_1_input_1_1_input_hook.html#abdb2a7d5b9dfe76238801b445f4af7b5',1,'MacroFramework::Input::InputHook']]],
+  ['stop_515',['Stop',['../class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174',1,'MacroFramework::Macros']]],
+  ['stophooks_516',['StopHooks',['../class_macro_framework_1_1_input_1_1_input_hook.html#a8a6b802c2519a46e5a2180ab0fc47132',1,'MacroFramework::Input::InputHook']]],
+  ['stopkeyboardhook_517',['StopKeyboardHook',['../class_macro_framework_1_1_input_1_1_input_hook.html#ac17b34a6f5cd8a96da30c740b2fcd89a',1,'MacroFramework::Input::InputHook']]],
+  ['stopmousehook_518',['StopMouseHook',['../class_macro_framework_1_1_input_1_1_input_hook.html#acb85f4b3049dd43955b3ab9385cbde07',1,'MacroFramework::Input::InputHook']]]
 ];

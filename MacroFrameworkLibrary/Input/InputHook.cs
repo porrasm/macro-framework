@@ -1,9 +1,6 @@
-﻿using MacroFramework.Input;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace MacroFramework.Input {
     /// <summary>
@@ -75,7 +72,7 @@ namespace MacroFramework.Input {
         /// Start hooking keyboard
         /// </summary>
         public static void StartKeyboardHook() {
-            if (!KeyboardHookRunning  && Setup.Instance.Settings.AllowMouseHook) {
+            if (!KeyboardHookRunning && Setup.Instance.Settings.AllowMouseHook) {
                 Logger.Log("Hook keyboard");
                 KeyboardHook = SetHook(keyboardProc, KEYBOARD_HOOK_ID);
                 KeyboardHookRunning = true;
@@ -113,7 +110,7 @@ namespace MacroFramework.Input {
                 MouseHookRunning = false;
             }
         }
-        
+
         /// <summary>
         /// Starts both hooks
         /// </summary>

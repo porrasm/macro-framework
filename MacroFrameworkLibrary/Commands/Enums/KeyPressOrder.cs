@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework.Commands {
+﻿namespace MacroFramework.Commands {
     /// <summary>
     /// Determines whether keys should be pressed in the give parameter order
     /// </summary>

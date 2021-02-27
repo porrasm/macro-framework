@@ -1,9 +1,6 @@
 ﻿using MacroFramework.Tools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -56,7 +53,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Executes all activatos of certain type. This may call multiple activators from a single command instance.
         /// </summary>
-        /// <typeparam name="T">The type to update which implement <see cref="IActivator"/>"/></param></typeparam>
+        /// <typeparam name="T">The type to update which implement <see cref="IActivator"/></typeparam>
         public static void UpdateActivators<T>() where T : IActivator {
             UpdateActivators(typeof(T));
         }

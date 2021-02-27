@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework {
+﻿namespace MacroFramework {
     /// <summary>
     /// Interface for log messages
     /// </summary>

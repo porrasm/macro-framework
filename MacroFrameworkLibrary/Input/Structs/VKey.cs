@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework {
+﻿namespace MacroFramework {
     /// <summary>Enum of virtual key codes.</summary>
     public enum VKey : ushort {
         ///<summary>

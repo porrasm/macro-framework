@@ -18,6 +18,10 @@ The framework also has a main loop which runs every X milliseconds. You can set 
 
 The framework also offers support for text commands.
 
+## Exception handling
+
+The framework is able to handle most uncaught errors that happen in your code using a global exception handler. It is recommended that you create your own exception handler if you want more error proof runtimes. The global exception handler can be disabled from the settings class. As a reminder though, the framework can't handle uncaught errors in `async void` methods. Use `async Task` instead whenever possible (e.g. use method wrappers).
+
 ### Keyboard and mouse input
 
 The keyboard and mouse input are available using the `KKey` enum.

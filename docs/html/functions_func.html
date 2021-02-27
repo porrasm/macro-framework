@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.3</span>
+   &#160;<span id="projectnumber">0.1.5</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>CallNextHookEx()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#aaa995cb41c77cf2c6af243ce0f3475c2">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#ae340f08868afd5681aa109b354c67dd4">MacroFramework.Input.InputHook</a>
 </li>
 <li>Command()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">MacroFramework.Commands.Command</a>
@@ -133,10 +133,16 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>CommandCallback()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">MacroFramework.Commands.Command</a>
 </li>
+<li>CommandContext()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">MacroFramework.Commands.Command</a>
+</li>
 </ul>
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>ExceptionCallback()
+: <a class="el" href="class_macro_framework_1_1_macros.html#ab29ddb19f43958a4406ecb6f3567a0ad">MacroFramework.Macros</a>
+</li>
 <li>Execute()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">MacroFramework.Commands.CommandActivator</a>
 , <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#a6847abc8912439c069a7b917ea12b59e">MacroFramework.Commands.IActivator</a>
@@ -201,8 +207,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#af00f6b6ed7cb6b6fcf690e22209a2294">MacroFramework.Commands.TimerActivator</a>
 </li>
 <li>IsActive()
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a71eb8bbd8a7026d3cec726b427233364">MacroFramework.Commands.Command</a>
-, <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">MacroFramework.Commands.CommandActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">MacroFramework.Commands.CommandActivator</a>
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#aa14e4bbdf590bfbd8f0d0b26662efe72">MacroFramework.Commands.CommandActivatorGroup</a>
 , <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#a67151886ffd46d6e37bf4a2104b6e12f">MacroFramework.Commands.IActivator</a>
 </li>
@@ -299,7 +304,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805">MacroFramework.Macros</a>
 </li>
 <li>MessageProc()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a09393b4ed1f5e1d5df5fb22cee8fdd8c">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a6a82b01c662322d5c47df6077e0abcf7">MacroFramework.Input.InputHook</a>
 </li>
 <li>MouseEventCallback()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a824bd70882dcc19b70aade7fa7f43c1c">MacroFramework.Commands.KeyActivator</a>
@@ -324,6 +329,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>PassedFrom()
 : <a class="el" href="class_macro_framework_1_1_tools_1_1_timer.html#afdb465b3462df1de6d1b89a6389c2c6e">MacroFramework.Tools.Timer</a>
 </li>
+<li>PauseAndStopHooks()
+: <a class="el" href="class_macro_framework_1_1_macros.html#a881c294f102aeb833cac46d2e91e916c">MacroFramework.Macros</a>
+</li>
 </ul>
 
 
@@ -335,35 +343,38 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_s"></a>- s -</h3><ul>
+<li>SetPause()
+: <a class="el" href="class_macro_framework_1_1_macros.html#ae585382df6e88448c45f612a7769bcb8">MacroFramework.Macros</a>
+</li>
 <li>Setup()
 : <a class="el" href="class_macro_framework_1_1_setup.html#a0c2553836e422d9867ae85fc589bc879">MacroFramework.Setup</a>
 </li>
 <li>SetWindowsHookEx()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a90d03fbfffc474357331a077b1f95d8c">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a595747d95a06757f503f0996a63fdfd4">MacroFramework.Input.InputHook</a>
 </li>
 <li>Start()
 : <a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a">MacroFramework.Macros</a>
 </li>
 <li>StartHooks()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a3240e654468a715d90690ac6fe7f80c1">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a8bef5a2921d7cc70d788827574712bbc">MacroFramework.Input.InputHook</a>
 </li>
 <li>StartKeyboardHook()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a30dc93d650a3eec86b201195185c6544">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a34cd7a03b6f3b61ad35d1eba437dcd5b">MacroFramework.Input.InputHook</a>
 </li>
 <li>StartMouseHook()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a0ccfacc615354b1419de8a2a3cfffb05">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#abdb2a7d5b9dfe76238801b445f4af7b5">MacroFramework.Input.InputHook</a>
 </li>
 <li>Stop()
 : <a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">MacroFramework.Macros</a>
 </li>
 <li>StopHooks()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a4e3906611f160eb7d33d515cba7bcc1c">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a8a6b802c2519a46e5a2180ab0fc47132">MacroFramework.Input.InputHook</a>
 </li>
 <li>StopKeyboardHook()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#ad0ca20f7419c8e318aff304845ebeadf">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#ac17b34a6f5cd8a96da30c740b2fcd89a">MacroFramework.Input.InputHook</a>
 </li>
 <li>StopMouseHook()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a80764c035251b055cc13d0de0167b055">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#acb85f4b3049dd43955b3ab9385cbde07">MacroFramework.Input.InputHook</a>
 </li>
 </ul>
 
@@ -395,7 +406,10 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 <h3><a id="index_u"></a>- u -</h3><ul>
 <li>UnhookWindowsHookEx()
-: <a class="el" href="class_macro_framework_1_1_input_1_1_device_hook.html#a6e5c3d237b78102a83bf171c7e9d359c">MacroFramework.Input.DeviceHook</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a578ea893337d05a3b6812d172863a9f1">MacroFramework.Input.InputHook</a>
+</li>
+<li>UnpauseAndRestartHooks()
+: <a class="el" href="class_macro_framework_1_1_macros.html#a0325312ad31f5d2e8c81f4a2de3ac0e6">MacroFramework.Macros</a>
 </li>
 <li>UpdateActivators()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aceea5c124ed78c228719489baa235c5b">MacroFramework.Commands.CommandContainer</a>

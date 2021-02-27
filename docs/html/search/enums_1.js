@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputeventtype_523',['InputEventType',['../namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b',1,'MacroFramework::Input']]]
+  ['exceptiontype_545',['ExceptionType',['../class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99',1,'MacroFramework::Macros']]]
 ];

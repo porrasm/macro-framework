@@ -28,17 +28,18 @@ var NAVTREE =
     [ "Getting started", "md_markdown_getting_started.html", [
       [ "Setup", "md_markdown_getting_started.html#autotoc_md1", null ],
       [ "Using the framework", "md_markdown_getting_started.html#autotoc_md2", null ],
-      [ "How it works", "md_markdown_getting_started.html#autotoc_md3", [
-        [ "Keyboard and mouse input", "md_markdown_getting_started.html#autotoc_md4", null ],
-        [ "The command class", "md_markdown_getting_started.html#autotoc_md5", null ]
+      [ "How it works", "md_markdown_getting_started.html#autotoc_md3", null ],
+      [ "Exception handling", "md_markdown_getting_started.html#autotoc_md4", [
+        [ "Keyboard and mouse input", "md_markdown_getting_started.html#autotoc_md5", null ],
+        [ "The command class", "md_markdown_getting_started.html#autotoc_md6", null ]
       ] ],
-      [ "Keybinds and keyevents", "md_markdown_getting_started.html#autotoc_md6", [
-        [ "The general bind key", "md_markdown_getting_started.html#autotoc_md7", null ]
+      [ "Keybinds and keyevents", "md_markdown_getting_started.html#autotoc_md7", [
+        [ "The general bind key", "md_markdown_getting_started.html#autotoc_md8", null ]
       ] ],
-      [ "TimerActivator", "md_markdown_getting_started.html#autotoc_md8", null ],
-      [ "Text commands", "md_markdown_getting_started.html#autotoc_md9", [
-        [ "Command mode", "md_markdown_getting_started.html#autotoc_md10", null ],
-        [ "TextActivator", "md_markdown_getting_started.html#autotoc_md11", null ]
+      [ "TimerActivator", "md_markdown_getting_started.html#autotoc_md9", null ],
+      [ "Text commands", "md_markdown_getting_started.html#autotoc_md10", [
+        [ "Command mode", "md_markdown_getting_started.html#autotoc_md11", null ],
+        [ "TextActivator", "md_markdown_getting_started.html#autotoc_md12", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
@@ -66,10 +67,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba27cd5c43a8cb2f988335fa57cb0d1a83",
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a6adf97f83acf6453d4a6a4b1070f3754",
-"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fbab1522194d726a396729c3148c2b3a0bd",
-"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569ae8606d021da140a92c7eba8d9b8af84f"
+"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf",
+"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a5cc504483e6af5fc9ee3947ce20fffce",
+"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fba9d5ed678fe57bcca610140957afab571",
+"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569ad5bd5dbc2cdfd9b802f9abdb4d81fa76"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

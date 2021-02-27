@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generalbindkey_517',['GeneralBindKey',['../class_macro_framework_1_1_macro_settings.html#aa567e76c354751eedd23b37dd8b8af00',1,'MacroFramework::MacroSettings']]]
+  ['defaultcontext_535',['DefaultContext',['../class_macro_framework_1_1_commands_1_1_command.html#a0211aabe96f4efb86247f5a70474663b',1,'MacroFramework::Commands::Command']]]
 ];

@@ -13,7 +13,6 @@ var hierarchy =
     [ "MacroFramework.Commands.Command", "class_macro_framework_1_1_commands_1_1_command.html", null ],
     [ "MacroFramework.Commands.CommandActivatorGroup", "class_macro_framework_1_1_commands_1_1_command_activator_group.html", null ],
     [ "MacroFramework.Commands.CommandContainer", "class_macro_framework_1_1_commands_1_1_command_container.html", null ],
-    [ "MacroFramework.Input.DeviceHook", "class_macro_framework_1_1_input_1_1_device_hook.html", null ],
     [ "MacroFramework.Input.EnhancedKey", "class_macro_framework_1_1_input_1_1_enhanced_key.html", null ],
     [ "MacroFramework.Commands.IActivator", "interface_macro_framework_1_1_commands_1_1_i_activator.html", [
       [ "MacroFramework.Commands.CommandActivator", "class_macro_framework_1_1_commands_1_1_command_activator.html", [
@@ -29,6 +28,7 @@ var hierarchy =
     ] ],
     [ "MacroFramework.ILogger", "interface_macro_framework_1_1_i_logger.html", null ],
     [ "MacroFramework.Input.InputEvents", "class_macro_framework_1_1_input_1_1_input_events.html", null ],
+    [ "MacroFramework.Input.InputHook", "class_macro_framework_1_1_input_1_1_input_hook.html", null ],
     [ "MacroFramework.Input.KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", null ],
     [ "MacroFramework.Macros", "class_macro_framework_1_1_macros.html", null ],
     [ "MacroFramework.MacroSettings", "class_macro_framework_1_1_macro_settings.html", null ],

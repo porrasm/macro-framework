@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['matchtype_527',['MatchType',['../class_macro_framework_1_1_commands_1_1_text_activator_attribute.html#afbe9fd85827952e56f15d25f111b94b6',1,'MacroFramework::Commands::TextActivatorAttribute']]]
+  ['keymatchtype_547',['KeyMatchType',['../namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514',1,'MacroFramework::Commands']]],
+  ['keypressorder_548',['KeyPressOrder',['../namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8',1,'MacroFramework::Commands']]],
+  ['kkey_549',['KKey',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540',1,'MacroFramework::Commands']]]
 ];

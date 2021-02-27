@@ -1,9 +1,7 @@
 ﻿using MacroFramework.Commands;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 using MacroFramework.Tools;
+using System;
+using System.Runtime.InteropServices;
 
 namespace MacroFramework.Input {
     public struct MouseEvent : IInputEvent {

@@ -1,7 +1,6 @@
 ﻿using MacroFramework.Commands;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MacroFramework.Input {
     /// <summary>Extension methods for the enhanced Key enum</summary>

@@ -1,9 +1,6 @@
-﻿using MacroFramework;
-using MacroFramework.Commands;
-using System;
+﻿using MacroFramework.Commands;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace MacroFramework {
     /// <summary>
@@ -16,7 +13,7 @@ namespace MacroFramework {
         /// The current singleton setup instance
         /// </summary>
         public static Setup Instance { get; private set; }
-        
+
         internal static void SetInstance(Setup setup) {
             Setup.Instance = setup;
         }

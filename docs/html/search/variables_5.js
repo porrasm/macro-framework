@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['textcommandtimeout_521',['TextCommandTimeout',['../class_macro_framework_1_1_macro_settings.html#af86e6c2455f78b163146fc8c7e5ae12c',1,'MacroFramework::MacroSettings']]]
+  ['isactive_538',['IsActive',['../class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f',1,'MacroFramework::Commands::Command']]]
 ];

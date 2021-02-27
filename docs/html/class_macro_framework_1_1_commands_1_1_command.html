@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.3</span>
+   &#160;<span id="projectnumber">0.1.5</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_macro_framework_1_1_commands_1_1_command-members.html">List of all members</a>  </div>
@@ -101,9 +103,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a61868051650e861b58c06529c1dc2d97"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">CommandCallback</a> ()</td></tr>
 <tr class="memdesc:a61868051650e861b58c06529c1dc2d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for command actions  <a href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">More...</a><br /></td></tr>
 <tr class="separator:a61868051650e861b58c06529c1dc2d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71eb8bbd8a7026d3cec726b427233364"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a71eb8bbd8a7026d3cec726b427233364">IsActive</a> ()</td></tr>
-<tr class="memdesc:a71eb8bbd8a7026d3cec726b427233364"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment.  <a href="class_macro_framework_1_1_commands_1_1_command.html#a71eb8bbd8a7026d3cec726b427233364">More...</a><br /></td></tr>
-<tr class="separator:a71eb8bbd8a7026d3cec726b427233364"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9373c8dfb09ae31dc963bc8c02756371"><td class="memItemLeft" align="right" valign="top">delegate bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a> ()</td></tr>
+<tr class="memdesc:a9373c8dfb09ae31dc963bc8c02756371"><td class="mdescLeft">&#160;</td><td class="mdescRight">The deleget bool used to determine whether a <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is active  <a href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">More...</a><br /></td></tr>
+<tr class="separator:a9373c8dfb09ae31dc963bc8c02756371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">Command</a> ()</td></tr>
 <tr class="memdesc:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance  <a href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">More...</a><br /></td></tr>
 <tr class="separator:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -116,6 +118,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">OnTextCommand</a> (string command, bool commandWasAccepted)</td></tr>
 <tr class="memdesc:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called whenever a text command is executed  <a href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">More...</a><br /></td></tr>
 <tr class="separator:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ae03557d99746165feba34dc54cf4059f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f">IsActive</a> = () =&gt; true</td></tr>
+<tr class="memdesc:ae03557d99746165feba34dc54cf4059f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment.  <a href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f">More...</a><br /></td></tr>
+<tr class="separator:ae03557d99746165feba34dc54cf4059f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a0211aabe96f4efb86247f5a70474663b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a0211aabe96f4efb86247f5a70474663b">DefaultContext</a> = () =&gt; true</td></tr>
+<tr class="memdesc:a0211aabe96f4efb86247f5a70474663b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default context used in all <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instances. Returns true on default but can be changed.  <a href="class_macro_framework_1_1_commands_1_1_command.html#a0211aabe96f4efb86247f5a70474663b">More...</a><br /></td></tr>
+<tr class="separator:a0211aabe96f4efb86247f5a70474663b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -182,6 +196,26 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a9373c8dfb09ae31dc963bc8c02756371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9373c8dfb09ae31dc963bc8c02756371">&#9670;&nbsp;</a></span>CommandContext()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate bool MacroFramework.Commands.Command.CommandContext </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The deleget bool used to determine whether a <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is active </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
 <a id="a0381a01cd8a41d71ec9a30ce114e4ead"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0381a01cd8a41d71ec9a30ce114e4ead">&#9670;&nbsp;</a></span>InitializeActivators()</h2>
 
@@ -207,34 +241,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Abstract method for initializing <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">Commands.IActivator</a> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator. </p>
-
-</div>
-</div>
-<a id="a71eb8bbd8a7026d3cec726b427233364"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71eb8bbd8a7026d3cec726b427233364">&#9670;&nbsp;</a></span>IsActive()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool MacroFramework.Commands.Command.IsActive </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment. </p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -394,6 +400,47 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Container for the set of <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instances of this command </p>
+
+</div>
+</div>
+<a id="a0211aabe96f4efb86247f5a70474663b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0211aabe96f4efb86247f5a70474663b">&#9670;&nbsp;</a></span>DefaultContext</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a> MacroFramework.Commands.Command.DefaultContext = () =&gt; true</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The default context used in all <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instances. Returns true on default but can be changed. </p>
+
+</div>
+</div>
+<a id="ae03557d99746165feba34dc54cf4059f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae03557d99746165feba34dc54cf4059f">&#9670;&nbsp;</a></span>IsActive</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a> MacroFramework.Commands.Command.IsActive = () =&gt; true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

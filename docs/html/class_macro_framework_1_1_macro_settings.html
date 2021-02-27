@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.3</span>
+   &#160;<span id="projectnumber">0.1.5</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -90,9 +90,18 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_macro_settin
 <div class="title">MacroFramework.MacroSettings Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A settings class used to configure the framework  
+ <a href="class_macro_framework_1_1_macro_settings.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:aa2b91c6235d5fb451154a0b1073f490f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#aa2b91c6235d5fb451154a0b1073f490f">UseGlobalExceptionHandler</a> = true</td></tr>
+<tr class="memdesc:aa2b91c6235d5fb451154a0b1073f490f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks.  <a href="class_macro_framework_1_1_macro_settings.html#aa2b91c6235d5fb451154a0b1073f490f">More...</a><br /></td></tr>
+<tr class="separator:aa2b91c6235d5fb451154a0b1073f490f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0905affc9457ea76d67c59b0c0c919f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#af0905affc9457ea76d67c59b0c0c919f">HandleInjectedInputEvents</a> = false</td></tr>
+<tr class="memdesc:af0905affc9457ea76d67c59b0c0c919f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour.  <a href="class_macro_framework_1_1_macro_settings.html#af0905affc9457ea76d67c59b0c0c919f">More...</a><br /></td></tr>
+<tr class="separator:af0905affc9457ea76d67c59b0c0c919f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61ad37d64f5a9be17597471b03314558"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#a61ad37d64f5a9be17597471b03314558">CommandKey</a> = KKey.None</td></tr>
 <tr class="memdesc:a61ad37d64f5a9be17597471b03314558"><td class="mdescLeft">&#160;</td><td class="mdescRight">The dedicated key on the keyboard which activates the text command mode.  <a href="class_macro_framework_1_1_macro_settings.html#a61ad37d64f5a9be17597471b03314558">More...</a><br /></td></tr>
 <tr class="separator:a61ad37d64f5a9be17597471b03314558"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,27 +120,29 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af86e6c2455f78b163146fc8c7e5ae12c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#af86e6c2455f78b163146fc8c7e5ae12c">TextCommandTimeout</a> = 2500</td></tr>
 <tr class="memdesc:af86e6c2455f78b163146fc8c7e5ae12c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The timeout after the last keypress after which command mode is canceled  <a href="class_macro_framework_1_1_macro_settings.html#af86e6c2455f78b163146fc8c7e5ae12c">More...</a><br /></td></tr>
 <tr class="separator:af86e6c2455f78b163146fc8c7e5ae12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee484b8f447ed9a3d0f739c9019cc359"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#aee484b8f447ed9a3d0f739c9019cc359">AutoEnableKeyboardHook</a> = true</td></tr>
-<tr class="memdesc:aee484b8f447ed9a3d0f739c9019cc359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to automatically enable hook  <a href="class_macro_framework_1_1_macro_settings.html#aee484b8f447ed9a3d0f739c9019cc359">More...</a><br /></td></tr>
-<tr class="separator:aee484b8f447ed9a3d0f739c9019cc359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa35ae7203a3fece4858cdfa233531bbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#aa35ae7203a3fece4858cdfa233531bbb">AllowKeyboardHook</a> = true</td></tr>
+<tr class="memdesc:aa35ae7203a3fece4858cdfa233531bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to allow a certain device hook  <a href="class_macro_framework_1_1_macro_settings.html#aa35ae7203a3fece4858cdfa233531bbb">More...</a><br /></td></tr>
+<tr class="separator:aa35ae7203a3fece4858cdfa233531bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfdc167c4ad93d540a9a7b06d82b6e7b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b">MainLoopTimestep</a> = 250</td></tr>
 <tr class="memdesc:abfdc167c4ad93d540a9a7b06d82b6e7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delay in milliseconds between every iteration of the main loop  <a href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b">More...</a><br /></td></tr>
 <tr class="separator:abfdc167c4ad93d540a9a7b06d82b6e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aee484b8f447ed9a3d0f739c9019cc359"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee484b8f447ed9a3d0f739c9019cc359">&#9670;&nbsp;</a></span>AutoEnableKeyboardHook</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A settings class used to configure the framework </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa35ae7203a3fece4858cdfa233531bbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa35ae7203a3fece4858cdfa233531bbb">&#9670;&nbsp;</a></span>AllowKeyboardHook</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool MacroFramework.MacroSettings.AutoEnableKeyboardHook = true</td>
+          <td class="memname">bool MacroFramework.MacroSettings.AllowKeyboardHook = true</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Whether to automatically enable hook </p>
+<p>Whether to allow a certain device hook </p>
 
 </div>
 </div>
@@ -180,6 +191,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>A dedicated bind key which is always intercepted and tranformed into VKey.GENERAL_BIND_KEY </p>
+
+</div>
+</div>
+<a id="af0905affc9457ea76d67c59b0c0c919f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0905affc9457ea76d67c59b0c0c919f">&#9670;&nbsp;</a></span>HandleInjectedInputEvents</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MacroFramework.MacroSettings.HandleInjectedInputEvents = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour. </p>
 
 </div>
 </div>
@@ -244,6 +271,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The timeout after the last keypress after which command mode is canceled </p>
+
+</div>
+</div>
+<a id="aa2b91c6235d5fb451154a0b1073f490f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2b91c6235d5fb451154a0b1073f490f">&#9670;&nbsp;</a></span>UseGlobalExceptionHandler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MacroFramework.MacroSettings.UseGlobalExceptionHandler = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks. </p>
 
 </div>
 </div>

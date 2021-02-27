@@ -1,11 +1,5 @@
 ﻿using MacroFramework.Tools;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -41,7 +35,7 @@ namespace MacroFramework.Commands {
             Init(matchers);
         }
 
-        private void Init( params RegexWrapper[] matchers) {
+        private void Init(params RegexWrapper[] matchers) {
             if (matchers == null || matchers.Length == 0) {
                 throw new Exception("Matchers cannot be null or empty");
             }

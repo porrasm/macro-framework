@@ -1,7 +1,7 @@
 var searchData=
 [
   ['c_36',['C',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0d61f8370cad1d412f80b84d143e1257',1,'MacroFramework']]],
-  ['callnexthookex_37',['CallNextHookEx',['../class_macro_framework_1_1_input_1_1_device_hook.html#aaa995cb41c77cf2c6af243ce0f3475c2',1,'MacroFramework::Input::DeviceHook']]],
+  ['callnexthookex_37',['CallNextHookEx',['../class_macro_framework_1_1_input_1_1_input_hook.html#ae340f08868afd5681aa109b354c67dd4',1,'MacroFramework::Input::InputHook']]],
   ['cancel_38',['CANCEL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba2027c027133e22c8929e2874dc44dd36',1,'MacroFramework']]],
   ['capital_39',['CAPITAL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba3311a07377a06fb6da7a7fe4dec24d05',1,'MacroFramework']]],
   ['clear_40',['CLEAR',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba813461e0c58e7ad59a2fd83ca2237fec',1,'MacroFramework']]],
@@ -14,13 +14,14 @@ var searchData=
   ['commandcallback_47',['CommandCallback',['../class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97',1,'MacroFramework::Commands::Command']]],
   ['commandcallback_48',['commandCallback',['../class_macro_framework_1_1_commands_1_1_command_activator.html#a110f3065618abd5d599ac1a169038e5d',1,'MacroFramework::Commands::CommandActivator']]],
   ['commandcontainer_49',['CommandContainer',['../class_macro_framework_1_1_commands_1_1_command_container.html',1,'MacroFramework::Commands']]],
-  ['commandkey_50',['CommandKey',['../class_macro_framework_1_1_macro_settings.html#a61ad37d64f5a9be17597471b03314558',1,'MacroFramework::MacroSettings']]],
-  ['commands_51',['Commands',['../class_macro_framework_1_1_commands_1_1_command_container.html#aedce029e49eb386ccdf9d6ad82545f39',1,'MacroFramework::Commands::CommandContainer']]],
-  ['context_52',['Context',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540aad4e206408c1c59bfb8a057ba7857446',1,'MacroFramework::Commands']]],
-  ['control_53',['CONTROL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130',1,'MacroFramework']]],
-  ['convert_54',['CONVERT',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2',1,'MacroFramework']]],
-  ['crsel_55',['CRSEL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0636e7043179b1f82dc5c3895601f25b',1,'MacroFramework']]],
-  ['ctrl_56',['Ctrl',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a2b61e0d5977f2e38f06e16281c802b47',1,'MacroFramework::Commands']]],
-  ['currentinputevent_57',['CurrentInputEvent',['../class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c',1,'MacroFramework::Input::InputEvents']]],
-  ['currenttextcommand_58',['CurrentTextCommand',['../class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9',1,'MacroFramework::Commands::TextCommands']]]
+  ['commandcontext_50',['CommandContext',['../class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371',1,'MacroFramework::Commands::Command']]],
+  ['commandkey_51',['CommandKey',['../class_macro_framework_1_1_macro_settings.html#a61ad37d64f5a9be17597471b03314558',1,'MacroFramework::MacroSettings']]],
+  ['commands_52',['Commands',['../class_macro_framework_1_1_commands_1_1_command_container.html#aedce029e49eb386ccdf9d6ad82545f39',1,'MacroFramework::Commands::CommandContainer']]],
+  ['context_53',['Context',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540aad4e206408c1c59bfb8a057ba7857446',1,'MacroFramework::Commands']]],
+  ['control_54',['CONTROL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6bac861cd34025f9002df5912d623326130',1,'MacroFramework']]],
+  ['convert_55',['CONVERT',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba947a338c0e482e4afcffca292d5944f2',1,'MacroFramework']]],
+  ['crsel_56',['CRSEL',['../namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba0636e7043179b1f82dc5c3895601f25b',1,'MacroFramework']]],
+  ['ctrl_57',['Ctrl',['../namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a2b61e0d5977f2e38f06e16281c802b47',1,'MacroFramework::Commands']]],
+  ['currentinputevent_58',['CurrentInputEvent',['../class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c',1,'MacroFramework::Input::InputEvents']]],
+  ['currenttextcommand_59',['CurrentTextCommand',['../class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9',1,'MacroFramework::Commands::TextCommands']]]
 ];

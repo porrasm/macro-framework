@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['autoenablekeyboardhook_512',['AutoEnableKeyboardHook',['../class_macro_framework_1_1_macro_settings.html#aee484b8f447ed9a3d0f739c9019cc359',1,'MacroFramework::MacroSettings']]]
+  ['allowkeyboardhook_530',['AllowKeyboardHook',['../class_macro_framework_1_1_macro_settings.html#aa35ae7203a3fece4858cdfa233531bbb',1,'MacroFramework::MacroSettings']]]
 ];

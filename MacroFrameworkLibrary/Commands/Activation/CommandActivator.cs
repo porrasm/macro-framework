@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MacroFramework.Commands {
+﻿namespace MacroFramework.Commands {
     /// <summary>
     /// The base class for all included activators. Inherit this class or implement <see cref="IActivator"/> for custom functionality.
     /// </summary>
@@ -27,7 +21,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The callback to be called when this activator becomes active</param>
         /// <param name="ignoreOwnerContext"><see cref="CommandActivator.IgnoreOwnerContext"/></param>
-        public CommandActivator( Command.CommandCallback command, bool ignoreOwnerContext = false) {
+        public CommandActivator(Command.CommandCallback command, bool ignoreOwnerContext = false) {
             this.commandCallback = command;
             this.IgnoreOwnerContext = ignoreOwnerContext;
         }
