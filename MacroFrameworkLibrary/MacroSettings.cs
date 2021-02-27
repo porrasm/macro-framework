@@ -10,9 +10,9 @@ namespace MacroFramework {
     public class MacroSettings {
 
         /// <summary>
-        /// Not yet implemented. Dooes not have any effect and the key listener is always active.
+        /// Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks.
         /// </summary>
-        internal static bool KeyListenerEnabled = true;
+        public bool UseGlobalExceptionHandler = true;
 
         /// <summary>
         /// If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour.

@@ -46,11 +46,9 @@ namespace MacroFramework.Input {
         /// <param name="k"></param>
         /// <returns>True if key should be intercepted</returns>
         public static bool RegisterHookKeyEvent(IInputEvent k) {
-            Logger.Log("Input Event: " + k);
             KeyStates.AddAbsoluteEvent(k);
 
             if (InputCallback?.Invoke(k) ?? false) {
-                Logger.Log("Skip queue");
                 return true;
             }
 

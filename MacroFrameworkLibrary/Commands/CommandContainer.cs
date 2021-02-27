@@ -76,9 +76,7 @@ namespace MacroFramework.Commands {
             foreach (IActivator act in TypeActivators[t]) {
                 if (act.IsActive()) {
                     try {
-                        Logger.Log("Try clause open");
                         act.Execute();
-                        Logger.Log("Try clause end");
                     } catch (Exception e) {
                         Console.WriteLine($"Error on {act.Owner?.GetType()} Execute: {e.Message}");
                     }

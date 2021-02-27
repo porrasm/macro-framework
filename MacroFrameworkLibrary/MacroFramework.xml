@@ -1964,6 +1964,20 @@
             The delegate which is called at the start of every main loop iteration
             </summary>
         </member>
+        <member name="T:MacroFramework.Macros.ExceptionCallback">
+            <summary>
+            Callback used to catch exceptions globally
+            </summary>
+            <param name="sender">The object that raised the event</param>
+            <param name="e">The exception which was handled</param>
+            <param name="type">The type of exception</param>
+            <param name="isTerminating">Indicates whether the common language runtime is terminating</param>
+        </member>
+        <member name="P:MacroFramework.Macros.OnException">
+            <summary>
+            Called on any exception which was not caught by a trycatch clause
+            </summary>
+        </member>
         <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
@@ -1973,6 +1987,26 @@
         <member name="M:MacroFramework.Macros.Stop">
             <summary>
             Stops the MacroFramework application
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Macros.ExceptionType">
+            <summary>
+            Enum containing the different types of exceptions which can be caught
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Macros.ExceptionType.ThreadException">
+            <summary>
+            This exception was caught by the <see cref="E:System.Windows.Forms.Application.ThreadException"/> handler
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Macros.ExceptionType.UnhandledException">
+            <summary>
+            This exception was caught by the <see cref="!:AppDomain.CurrentDomain.UnhandledException"/> handler
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Macros.ExceptionType.UnobservedTaskException">
+            <summary>
+            This exception was caught by the <see cref="E:System.Threading.Tasks.TaskScheduler.UnobservedTaskException"/> handler
             </summary>
         </member>
         <member name="M:MacroFramework.Macros.PauseAndStopHooks">
@@ -1996,9 +2030,9 @@
             A settings class used to configure the framework
             </summary>
         </member>
-        <member name="F:MacroFramework.MacroSettings.KeyListenerEnabled">
+        <member name="F:MacroFramework.MacroSettings.UseGlobalExceptionHandler">
             <summary>
-            Not yet implemented. Dooes not have any effect and the key listener is always active.
+            Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks.
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.HandleInjectedInputEvents">

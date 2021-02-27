@@ -27,10 +27,25 @@ namespace MacroFramework {
         /// Void callback
         /// </summary>
         public delegate void MainLoopCallback();
+
         /// <summary>
         /// The delegate which is called at the start of every main loop iteration
         /// </summary>
         public static MainLoopCallback OnMainLoop { get; set; }
+
+        /// <summary>
+        /// Callback used to catch exceptions globally
+        /// </summary>
+        /// <param name="sender">The object that raised the event</param>
+        /// <param name="e">The exception which was handled</param>
+        /// <param name="type">The type of exception</param>
+        /// <param name="isTerminating">Indicates whether the common language runtime is terminating</param>
+        public delegate void ExceptionCallback(object sender, Exception e, ExceptionType type, bool isTerminating);
+
+        /// <summary>
+        /// Called on any exception which was not caught by a trycatch clause
+        /// </summary>
+        public static ExceptionCallback OnException { get; set; }
         #endregion
 
         #region management
@@ -51,9 +66,13 @@ namespace MacroFramework {
             MainLoop();
 
             // Subscriptions
-            Application.ThreadException += new ThreadExceptionEventHandler(ThreadException);
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledException);
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(StopEvent);
+            if (setup.Settings.UseGlobalExceptionHandler) {
+                Application.ThreadException += ThreadException;
+                AppDomain.CurrentDomain.UnhandledException += UnhandledException;
+                TaskScheduler.UnobservedTaskException += UnobservedTaskException;
+            }
+
+            AppDomain.CurrentDomain.ProcessExit += StopEvent;
 
             Application.Run();
         }
@@ -66,9 +85,10 @@ namespace MacroFramework {
             CommandContainer.Exit();
 
             // Unsubscribe
-            Application.ThreadException -= new ThreadExceptionEventHandler(ThreadException);
-            AppDomain.CurrentDomain.UnhandledException -= new UnhandledExceptionEventHandler(UnhandledException);
-            AppDomain.CurrentDomain.ProcessExit -= new EventHandler(StopEvent);
+            Application.ThreadException -= ThreadException;
+            AppDomain.CurrentDomain.UnhandledException -= UnhandledException;
+            TaskScheduler.UnobservedTaskException -= UnobservedTaskException;
+            AppDomain.CurrentDomain.ProcessExit -= StopEvent;
 
             Application.Exit();
             Setup.SetInstance(null);
@@ -98,33 +118,39 @@ namespace MacroFramework {
         #endregion
 
         #region exception handling
-        private static void ThreadException(object sender, ThreadExceptionEventArgs e) => HandleExceptions(e.Exception, "Thread Exception");
-        private static void UnhandledException(object sender, UnhandledExceptionEventArgs e) => HandleExceptions((Exception)e.ExceptionObject, "Unhandled Exception", e.IsTerminating);
-        private static void HandleExceptions(Exception e, string type = null, bool terminating = true) {
-            try {
-                InputHook.StopHooks();
-                var name = Process.GetCurrentProcess().ProcessName;
-                Logger.Log(e.ToString() + "\n\n\nCopy exception to clipboard?" + name + (type == null ? "" : $" - {type}") + (terminating ? " - Fatal" : " - Non-fatal"));
-            } catch (Exception ee) {
-                try {
-                    Logger.Log(ee.ToString() + "Exception handler critical error");
+        /// <summary>
+        /// Enum containing the different types of exceptions which can be caught
+        /// </summary>
+        public enum ExceptionType {
+            /// <summary>
+            /// This exception was caught by the <see cref="Application.ThreadException"/> handler
+            /// </summary>
+            ThreadException,
+            /// <summary>
+            /// This exception was caught by the <see cref="AppDomain.CurrentDomain.UnhandledException "/> handler
+            /// </summary>
+            UnhandledException,
+            /// <summary>
+            /// This exception was caught by the <see cref="TaskScheduler.UnobservedTaskException"/> handler
+            /// </summary>
+            UnobservedTaskException
+        }
 
-                    Macros.Stop();
-                } catch {
-                    Environment.Exit(1);
-                }
-            }
+        private static void ThreadException(object sender, ThreadExceptionEventArgs e) {
+            Logger.Log("ThreadException");
+            HandleExceptions(sender, e.Exception, ExceptionType.ThreadException);
+        }
+        private static void UnhandledException(object sender, UnhandledExceptionEventArgs e) {
+            Logger.Log("UnhandledException");
+            HandleExceptions(sender, (Exception)e.ExceptionObject, ExceptionType.UnhandledException, e.IsTerminating);
+        }
+        private static void UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e) {
+            Logger.Log("UnobservedTaskException");
+            HandleExceptions(sender, (Exception)e.Exception, ExceptionType.UnobservedTaskException, false);
+        }
 
-            if (Debugger.IsAttached) {
-                throw e;
-            } else {
-                try {
-                    Logger.Log("Exception occurred");
-                    Stop();
-                } catch {
-                    Environment.Exit(1);
-                }
-            }
+        private static void HandleExceptions(object sender, Exception e, ExceptionType type, bool isTerminating = true) {
+            OnException?.Invoke(sender, e, type, isTerminating);
         }
         #endregion
 
