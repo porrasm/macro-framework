@@ -17,6 +17,7 @@ namespace MacroFramework.Commands {
         private RegexWrapper[] matchers;
         #endregion
 
+        #region constructors
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
@@ -34,6 +35,16 @@ namespace MacroFramework.Commands {
         public TextActivator(TextCommandCallback command, params RegexWrapper[] matchers) : base(WrapTextCommand(command)) {
             Init(matchers);
         }
+
+        /// <summary>
+        /// Creates a new <see cref="TextActivator"/> instance
+        /// </summary>
+        /// <param name="command">The command callback</param>
+        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
+        public TextActivator(params RegexWrapper[] matchers) : base(null) {
+            Init(matchers);
+        }
+        #endregion
 
         private void Init(params RegexWrapper[] matchers) {
             if (matchers == null || matchers.Length == 0) {

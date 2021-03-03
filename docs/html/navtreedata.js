@@ -40,7 +40,8 @@ var NAVTREE =
       [ "Text commands", "md_markdown_getting_started.html#autotoc_md10", [
         [ "Command mode", "md_markdown_getting_started.html#autotoc_md11", null ],
         [ "TextActivator", "md_markdown_getting_started.html#autotoc_md12", null ]
-      ] ]
+      ] ],
+      [ "Dynamic activators", "md_markdown_getting_started.html#autotoc_md13", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -67,10 +68,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba162a5ad4411bb4afc35aa059cfd9ebbf",
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a5cc504483e6af5fc9ee3947ce20fffce",
-"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fba9d5ed678fe57bcca610140957afab571",
-"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569ad5bd5dbc2cdfd9b802f9abdb4d81fa76"
+"md_markdown_getting_started.html#autotoc_md13",
+"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a4252b72e6ebcd4d4b4c2e46a786f03d2",
+"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fba7fa06ead699fcbd63132370ffe13335a",
+"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569abb21eabbaf867f6215925b28c46cd478"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

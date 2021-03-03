@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['mainloopcallback_499',['MainLoopCallback',['../class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805',1,'MacroFramework::Macros']]],
-  ['messageproc_500',['MessageProc',['../class_macro_framework_1_1_input_1_1_input_hook.html#a6a82b01c662322d5c47df6077e0abcf7',1,'MacroFramework::Input::InputHook']]],
-  ['mouseeventcallback_501',['MouseEventCallback',['../class_macro_framework_1_1_commands_1_1_key_activator.html#a824bd70882dcc19b70aade7fa7f43c1c',1,'MacroFramework::Commands::KeyActivator']]]
+  ['keyactivator_508',['KeyActivator',['../class_macro_framework_1_1_commands_1_1_key_activator.html#aadce960a1a0f59172d7522492844e0e7',1,'MacroFramework.Commands.KeyActivator.KeyActivator(InputEventCallback callback, KKey key)'],['../class_macro_framework_1_1_commands_1_1_key_activator.html#a892e022531cfdc562ee0bbec28c96151',1,'MacroFramework.Commands.KeyActivator.KeyActivator(InputEventCallback callback, InputFilter keyFilter)'],['../class_macro_framework_1_1_commands_1_1_key_activator.html#ad9612d55b22c0bfe1760cf51e17da937',1,'MacroFramework.Commands.KeyActivator.KeyActivator(KKey key)'],['../class_macro_framework_1_1_commands_1_1_key_activator.html#aadb0e95713e6e28fbc73de599031457b',1,'MacroFramework.Commands.KeyActivator.KeyActivator(InputFilter keyFilter)']]],
+  ['keyactivatorattribute_509',['KeyActivatorAttribute',['../class_macro_framework_1_1_commands_1_1_key_activator_attribute.html#a6510083b1477bac0f94b4d6fd871620b',1,'MacroFramework::Commands::KeyActivatorAttribute']]],
+  ['keyeventcallback_510',['KeyEventCallback',['../class_macro_framework_1_1_commands_1_1_key_activator.html#a92f87ce227af3f5424a5d133a99c368c',1,'MacroFramework::Commands::KeyActivator']]],
+  ['keys_511',['Keys',['../class_macro_framework_1_1_commands_1_1_command.html#ac0011ff6beb6e331ee6d81131e8ff003',1,'MacroFramework::Commands::Command']]]
 ];

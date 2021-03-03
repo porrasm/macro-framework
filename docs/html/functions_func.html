@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.5</span>
+   &#160;<span id="projectnumber">0.1.6</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -92,17 +92,14 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>AddCommand()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aa8cff5a4bda9f9e64a87c17d36742272">MacroFramework.Commands.CommandContainer</a>
 </li>
+<li>AddDynamicActivator()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5">MacroFramework.Commands.CommandContainer</a>
+</li>
 <li>AsCustom()
 : <a class="el" href="class_macro_framework_1_1_input_1_1_enhanced_key.html#adc13f836d6240101317ab99e21de3003">MacroFramework.Input.EnhancedKey</a>
 </li>
 <li>AsVirtualKey()
 : <a class="el" href="class_macro_framework_1_1_input_1_1_enhanced_key.html#a63406dad0768fb9533800fb28efd4c95">MacroFramework.Input.EnhancedKey</a>
-</li>
-<li>AutoCastToKeyEvent()
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a1289abfd1bfa702651fb4ae944dd97f8">MacroFramework.Commands.KeyActivator</a>
-</li>
-<li>AutoCastToMouseEvent()
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a1f48575a0770fa98d415d3a63e7d2bb6">MacroFramework.Commands.KeyActivator</a>
 </li>
 </ul>
 
@@ -120,6 +117,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>CallNextHookEx()
 : <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#ae340f08868afd5681aa109b354c67dd4">MacroFramework.Input.InputHook</a>
+</li>
+<li>ClearDynamicActivators()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#a19871937ff795784ceaf0b25db2cbf2e">MacroFramework.Commands.CommandContainer</a>
 </li>
 <li>Command()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">MacroFramework.Commands.Command</a>
@@ -139,13 +139,22 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </ul>
 
 
+<h3><a id="index_d"></a>- d -</h3><ul>
+<li>DynamicActivator()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#a6b75fc32e315a93f04d66e98c0835b1c">MacroFramework.Commands.DynamicActivator</a>
+</li>
+</ul>
+
+
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>ExceptionCallback()
 : <a class="el" href="class_macro_framework_1_1_macros.html#ab29ddb19f43958a4406ecb6f3567a0ad">MacroFramework.Macros</a>
 </li>
 <li>Execute()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">MacroFramework.Commands.CommandActivator</a>
+, <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#adfcbac6068ddaab1488c88b09bd9c675">MacroFramework.Commands.DynamicActivator</a>
 , <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#a6847abc8912439c069a7b917ea12b59e">MacroFramework.Commands.IActivator</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#aed0aa2c05b92acfc822a2085e7e1d130">MacroFramework.Commands.IDynamicActivator</a>
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a28c3b8cc433f3db4daa64732c10b33da">MacroFramework.Commands.KeyActivator</a>
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aafd8d979d8c266ef580b32ca534d0cfd">MacroFramework.Commands.TextCommands</a>
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a23ea305006749dd86006d58b7d0ee477">MacroFramework.Commands.TimerActivator</a>
@@ -198,6 +207,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>InputEventCallback()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#ae57b5040d5513fced61d3c14534254f8">MacroFramework.Commands.KeyActivator</a>
+</li>
+<li>InputFilter()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a4769d86e8cc765d09f72bed8bf08a6f6">MacroFramework.Commands.KeyActivator</a>
 </li>
 <li>IsActivatorActive()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html#a1d14b19be2cb63565f233b25c9354858">MacroFramework.Commands.BindActivator</a>
@@ -316,6 +328,10 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>OnClose()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">MacroFramework.Commands.Command</a>
 </li>
+<li>OnRemove()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#a3baff6042f00988c7bca301a4e1b1201">MacroFramework.Commands.DynamicActivator</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#a102c18c05d5e8fea23dae0d9dad82276">MacroFramework.Commands.IDynamicActivator</a>
+</li>
 <li>OnStart()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">MacroFramework.Commands.Command</a>
 </li>
@@ -336,8 +352,15 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>RegisterDynamicActivator()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a872ce7b20c1981f19fbba13f7e0bbf2d">MacroFramework.Commands.CommandActivator</a>
+</li>
 <li>RegisterHookKeyEvent()
 : <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#ab16d19ea015bb54bc01454112f5187d8">MacroFramework.Input.InputEvents</a>
+</li>
+<li>RemoveAfterExecution()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#a38ddcae9010cb18236d84a4f5dc587cf">MacroFramework.Commands.DynamicActivator</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#a27bcaba2726efec49ecfa9b481147566">MacroFramework.Commands.IDynamicActivator</a>
 </li>
 </ul>
 
@@ -416,6 +439,13 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>UpdateActivators&lt; T &gt;()
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#abeae5b1b4ab3aaddcaa49d9a8e89a1e1">MacroFramework.Commands.CommandContainer</a>
+</li>
+</ul>
+
+
+<h3><a id="index_w"></a>- w -</h3><ul>
+<li>WaitForActivation()
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a38a747b8ea282937111f4a1630cdc287">MacroFramework.Commands.CommandActivator</a>
 </li>
 </ul>
 </div><!-- contents -->

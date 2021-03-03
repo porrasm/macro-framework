@@ -13,7 +13,8 @@ namespace MacroFramework.Commands {
         /// List of active commands. You should not modify this collection.
         /// </summary>
         public static List<Command> Commands { get; private set; }
-        private static Dictionary<Type, List<IActivator>> TypeActivators { get; set; }
+        private static Dictionary<Type, List<IActivator>> staticActivators;
+        private static Dictionary<Type, List<IDynamicActivator>> dynamicActivators;
         #endregion
 
         static CommandContainer() {
@@ -35,7 +36,8 @@ namespace MacroFramework.Commands {
 
         private static void Deinitialize() {
             Commands = new List<Command>();
-            TypeActivators = new Dictionary<Type, List<IActivator>>();
+            staticActivators = new Dictionary<Type, List<IActivator>>();
+            dynamicActivators = new Dictionary<Type, List<IDynamicActivator>>();
         }
 
         /// <summary>
@@ -66,19 +68,60 @@ namespace MacroFramework.Commands {
             if (!typeof(IActivator).IsAssignableFrom(t)) {
                 throw new NotSupportedException("Invalid type argument given: " + t);
             }
-            if (!TypeActivators.ContainsKey(t)) {
+
+            UpdateStaticActivators(t);
+            UpdateDynamicActivators(t);
+        }
+
+        private static void UpdateStaticActivators(Type t) {
+            if (!staticActivators.ContainsKey(t)) {
                 return;
             }
 
-            foreach (IActivator act in TypeActivators[t]) {
+            foreach (IActivator act in staticActivators[t]) {
                 if (act.IsActive()) {
+                    ExecuteActivator(act);
+                }
+            }
+        }
+        private static void ExecuteActivator(IActivator activator) {
+            try {
+                activator.Execute();
+            } catch (Exception e) {
+                Console.WriteLine($"Error on {activator.Owner?.GetType()} Execute: {e.Message}");
+            }
+        }
+
+
+        private static void UpdateDynamicActivators(Type t) {
+            if (!dynamicActivators.ContainsKey(t)) {
+                return;
+            }
+
+            List<IDynamicActivator> acts = dynamicActivators[t];
+            for (int i = 0; i < acts.Count; i++) {
+                IDynamicActivator task = acts[i];
+
+                if (task.IsCanceled) {
+                    RemoveFromList(acts, ref i);
+                    continue;
+                }
+
+                if (task.Activator.IsActive()) {
                     try {
-                        act.Execute();
+                        task.Execute();
                     } catch (Exception e) {
-                        Console.WriteLine($"Error on {act.Owner?.GetType()} Execute: {e.Message}");
+                        Console.WriteLine($"Error on task finish, {task.Activator.Owner?.GetType()} Execute: {e.Message}");
+                    }
+                    if (task.RemoveAfterExecution()) {
+                        RemoveFromList(acts, ref i);
                     }
                 }
             }
+        }
+        private static void RemoveFromList<T>(List<T> list, ref int index) {
+            list.RemoveAt(index);
+            index--;
         }
 
         internal static void Exit() {
@@ -115,13 +158,34 @@ namespace MacroFramework.Commands {
         private static void AddActivators(Command c) {
             foreach (IActivator act in c.CommandActivators.Activators) {
                 Type t = act.GetType();
-                if (TypeActivators.ContainsKey(t)) {
-                    TypeActivators[t].Add(act);
+                if (staticActivators.ContainsKey(t)) {
+                    staticActivators[t].Add(act);
                 } else {
-                    TypeActivators.Add(t, new List<IActivator>());
-                    TypeActivators[t].Add(act);
+                    staticActivators.Add(t, new List<IActivator>());
+                    staticActivators[t].Add(act);
                 }
             }
+        }
+
+        /// <summary>
+        /// Can be used to add <see cref="IActivator"/> (wrapped inside <see cref="IDynamicActivator"/>) instances to the framework during runtime. Useful for e.g. events that should run only once.
+        /// </summary>
+        /// <param name="act">The dynamic activator to add</param>
+        public static void AddDynamicActivator(IDynamicActivator act) {
+            Type t = act.Activator.GetType();
+            if (dynamicActivators.ContainsKey(t)) {
+                dynamicActivators[t].Add(act);
+            } else {
+                dynamicActivators.Add(t, new List<IDynamicActivator>());
+                dynamicActivators[t].Add(act);
+            }
+        }
+
+        /// <summary>
+        /// Clears the dynamic activators
+        /// </summary>
+        public static void ClearDynamicActivators() {
+            dynamicActivators.Clear();
         }
     }
 }

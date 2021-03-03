@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivatorExamples\BindAndKeyActivatorExample.cs" />
+    <Compile Include="ActivatorExamples\DynamicActivatorExample.cs" />
     <Compile Include="CommandExamples\GoogleCommand.cs" />
     <Compile Include="CommandExamples\ScreenshotCommand.cs" />
     <Compile Include="Program.cs" />

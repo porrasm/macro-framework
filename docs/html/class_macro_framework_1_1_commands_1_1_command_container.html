@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.5</span>
+   &#160;<span id="projectnumber">0.1.6</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -106,6 +106,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8cff5a4bda9f9e64a87c17d36742272"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aa8cff5a4bda9f9e64a87c17d36742272">AddCommand</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a> c)</td></tr>
 <tr class="memdesc:aa8cff5a4bda9f9e64a87c17d36742272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a command to the active command pool  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#aa8cff5a4bda9f9e64a87c17d36742272">More...</a><br /></td></tr>
 <tr class="separator:aa8cff5a4bda9f9e64a87c17d36742272"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad9e006296cc1ed33727b3fa913496b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5">AddDynamicActivator</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html">IDynamicActivator</a> act)</td></tr>
+<tr class="memdesc:aad9e006296cc1ed33727b3fa913496b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can be used to add <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> (wrapped inside <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>) instances to the framework during runtime. Useful for e.g. events that should run only once.  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5">More...</a><br /></td></tr>
+<tr class="separator:aad9e006296cc1ed33727b3fa913496b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19871937ff795784ceaf0b25db2cbf2e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#a19871937ff795784ceaf0b25db2cbf2e">ClearDynamicActivators</a> ()</td></tr>
+<tr class="memdesc:a19871937ff795784ceaf0b25db2cbf2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the dynamic activators  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#a19871937ff795784ceaf0b25db2cbf2e">More...</a><br /></td></tr>
+<tr class="separator:a19871937ff795784ceaf0b25db2cbf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -147,6 +153,67 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aad9e006296cc1ed33727b3fa913496b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad9e006296cc1ed33727b3fa913496b5">&#9670;&nbsp;</a></span>AddDynamicActivator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Commands.CommandContainer.AddDynamicActivator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html">IDynamicActivator</a>&#160;</td>
+          <td class="paramname"><em>act</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Can be used to add <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> (wrapped inside <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>) instances to the framework during runtime. Useful for e.g. events that should run only once. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">act</td><td>The dynamic activator to add</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a19871937ff795784ceaf0b25db2cbf2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19871937ff795784ceaf0b25db2cbf2e">&#9670;&nbsp;</a></span>ClearDynamicActivators()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Commands.CommandContainer.ClearDynamicActivators </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clears the dynamic activators </p>
 
 </div>
 </div>

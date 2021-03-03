@@ -14,6 +14,9 @@ public class BindAndKeyActivatorExample : Command {
 
         // Activated when A is followed by B is followed by C and when no other keys are pressed
         activator.AddActivator(new BindActivator(OnPressABC, Keys(KKey.A, KKey.B, KKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered));
+
+        // Activated when A-Z or 0-9 is pressed
+        activator.AddActivator(new KeyActivator(OnPressAlphanumeric, (e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9)));
     }
 
     [KeyActivator(KKey.Space)]
@@ -31,5 +34,9 @@ public class BindAndKeyActivatorExample : Command {
     [BindActivator(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered, KKey.A, KKey.B, KKey.C)]
     private void OnPressABC() {
         Console.WriteLine("Pressed ABC in order!");
+    }
+
+    private void OnPressAlphanumeric(IInputEvent e) {
+        Console.WriteLine($"Press alphanumeric key {e.Key}!");
     }
 }

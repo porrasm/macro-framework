@@ -22,6 +22,9 @@ var hierarchy =
         [ "MacroFramework.Commands.TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", null ]
       ] ]
     ] ],
+    [ "MacroFramework.Commands.IDynamicActivator", "interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html", [
+      [ "MacroFramework.Commands.DynamicActivator", "class_macro_framework_1_1_commands_1_1_dynamic_activator.html", null ]
+    ] ],
     [ "MacroFramework.Commands.IInputEvent", "interface_macro_framework_1_1_commands_1_1_i_input_event.html", [
       [ "MacroFramework.Input.KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", null ],
       [ "MacroFramework.Input.MouseEvent", "struct_macro_framework_1_1_input_1_1_mouse_event.html", null ]

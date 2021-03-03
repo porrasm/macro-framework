@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['registerhookkeyevent_507',['RegisterHookKeyEvent',['../class_macro_framework_1_1_input_1_1_input_events.html#ab16d19ea015bb54bc01454112f5187d8',1,'MacroFramework::Input::InputEvents']]]
+  ['passedfrom_519',['PassedFrom',['../class_macro_framework_1_1_tools_1_1_timer.html#afdb465b3462df1de6d1b89a6389c2c6e',1,'MacroFramework::Tools::Timer']]],
+  ['pauseandstophooks_520',['PauseAndStopHooks',['../class_macro_framework_1_1_macros.html#a881c294f102aeb833cac46d2e91e916c',1,'MacroFramework::Macros']]]
 ];

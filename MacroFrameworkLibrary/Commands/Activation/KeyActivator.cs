@@ -26,7 +26,13 @@ namespace MacroFramework.Commands {
         /// <param name="k"></param>
         public delegate void MouseEventCallback(MouseEvent m);
 
-        private KKey key;
+        /// <summary>
+        /// Filter to use with the activator
+        /// </summary>
+        /// <param name="e">Incoming input event</param>
+        public delegate bool InputFilter(IInputEvent e);
+
+        private InputFilter keyFilter;
         private InputEventCallback cb;
         #endregion
 
@@ -37,41 +43,39 @@ namespace MacroFramework.Commands {
         /// <param name="callback">The key event callback</param>
         /// <param name="key">The key for which you wish to receive callbacks on</param>
         public KeyActivator(InputEventCallback callback, KKey key) : base(null) {
-            this.key = key;
+            this.keyFilter = (e) => e.Key == key;
             this.cb = callback;
         }
 
-        private KeyActivator(KeyEventCallback callback, KKey key) : base(null) {
-            this.key = key;
-            this.cb = (i) => callback((KeyEvent)i);
-        }
-
-        private KeyActivator(MouseEventCallback callback, KKey key) : base(null) {
-            this.key = key;
-            this.cb = (i) => callback((MouseEvent)i);
+        /// <summary>
+        /// Creates a <see cref="KeyActivator"/> instance
+        /// </summary>
+        /// <param name="callback">The key event callback</param>
+        /// <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
+        public KeyActivator(InputEventCallback callback, InputFilter keyFilter) : base(null) {
+            this.keyFilter = keyFilter;
+            this.cb = callback;
         }
 
         /// <summary>
         /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
-        /// <param name="callback">The key event callback</param>
         /// <param name="key">The key for which you wish to receive callbacks on</param>
-        public static KeyActivator AutoCastToKeyEvent(KeyEventCallback c, KKey k) {
-            return new KeyActivator(c, k);
+        public KeyActivator(KKey key) : base(null) {
+            this.keyFilter = (e) => e.Key == key;
         }
 
         /// <summary>
         /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
-        /// <param name="callback">The key event callback</param>
-        /// <param name="key">The key for which you wish to receive callbacks on</param>
-        public static KeyActivator AutoCastToMouseEvent(MouseEventCallback c, KKey k) {
-            return new KeyActivator(c, k);
+        /// <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
+        public KeyActivator(InputFilter keyFilter) : base(null) {
+            this.keyFilter = keyFilter;
         }
         #endregion
 
         protected override bool IsActivatorActive() {
-            return InputEvents.CurrentInputEvent.Key == key;
+            return keyFilter(InputEvents.CurrentInputEvent);
         }
 
         public override void Execute() {

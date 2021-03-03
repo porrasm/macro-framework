@@ -26,6 +26,7 @@ namespace MacroFramework.Commands {
         public KKey[] Keys { get; set; }
         #endregion
 
+        #region constructors
         /// <summary>
         /// Creates a new <see cref="BindActivator"/> instance
         /// </summary>
@@ -41,6 +42,22 @@ namespace MacroFramework.Commands {
             this.Order = order;
             this.Keys = keys;
         }
+
+        /// <summary>
+        /// Creates a new <see cref="BindActivator"/> instance
+        /// </summary>
+        /// <param name="keys"><see cref="Keys"/></param>
+        /// <param name="activationType">see<see cref="ActivationType"/></param>
+        /// <param name="matchType"><see cref="MatchType"/></param>
+        /// <param name="order"><see cref="Order"/></param>
+        public BindActivator(KKey[] keys, ActivationEventType activationType = ActivationEventType.OnFirstRelease, KeyMatchType matchType = KeyMatchType.ExactKeyMatch, KeyPressOrder order = KeyPressOrder.Ordered) : base(null) {
+            VerifyKeys(keys);
+            this.ActivationType = activationType;
+            this.MatchType = matchType;
+            this.Order = order;
+            this.Keys = keys;
+        }
+        #endregion
 
         private static void VerifyKeys(KKey[] keys) {
             foreach (KKey k in keys) {

@@ -55,6 +55,9 @@ public class BindAndKeyActivatorExample : Command {
 
         // Activated when A is followed by B is followed by C and when no other keys are pressed
         activator.AddActivator(new BindActivator(OnPressABC, Keys(KKey.A, KKey.B, KKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered));
+
+        // Activated when A-Z or 0-9 is pressed
+        activator.AddActivator(new KeyActivator(OnPressAlphanumeric, (e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9)));
     }
 
     [KeyActivator(KKey.Space)]
@@ -73,8 +76,11 @@ public class BindAndKeyActivatorExample : Command {
     private void OnPressABC() {
         Console.WriteLine("Pressed ABC in order!");
     }
-}
 
+    private void OnPressAlphanumeric(IInputEvent e) {
+        Console.WriteLine($"Press alphanumeric key {e.Key}!");
+    }
+}
 ~~~
 
 ### The general bind key
@@ -189,3 +195,41 @@ class TextActivatorExample : Command {
 TextCommands.Execute("test command");
 ~~~
 
+## Dynamic activators
+
+All of the above ways of using activators require you to define them before starting up the framework. The activators can created and added during runtime as well. Each `CommandActivator` instance has methods `WaitForActivation` and `RegisterDynamicActivator` which can be used to for example create some kind of confirmation for a command.
+
+~~~{.cs}
+using MacroFramework.Commands;
+using System;
+using System.Diagnostics;
+
+public class DynamicActivatorExample : Command {
+
+    [BindActivator(KKey.LAlt, KKey.F4, KKey.Delete)]
+    private async void Shutdown() {
+        Console.WriteLine("Confirm shutdown by pressing 'Y'");
+
+        if (await new KeyActivator(KKey.Y).WaitForActivation(5000)) {
+            Process.Start(new ProcessStartInfo("shutdown", "/s /t 0") {
+                CreateNoWindow = true,
+                UseShellExecute = false
+            });
+        } else {
+            Console.WriteLine("Shutdown canceled");
+        }
+    }
+
+    public override void OnStart() {
+        CommandActivator onSpace = new KeyActivator(OneTimeOnPressSpace, KKey.Space);
+
+        // One time bind for space, lambda expression indicates that the activator is discarded after execution
+        onSpace.RegisterDynamicActivator(() => true);
+    }
+
+    private void OneTimeOnPressSpace(IInputEvent e) {
+        Console.WriteLine("Pressed space!");
+    }
+}
+
+~~~

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.5</span>
+   &#160;<span id="projectnumber">0.1.6</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -111,6 +111,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa6b616922963191fad5b2059d5a8a553"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#aa6b616922963191fad5b2059d5a8a553">TimerActivator</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> command, int delay, <a class="el" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a> unit=TimeUnit.Seconds, bool callAtStart=false)</td></tr>
 <tr class="memdesc:aa6b616922963191fad5b2059d5a8a553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions">TimerActivator</a> instance  <a href="class_macro_framework_1_1_commands_1_1_timer_activator.html#aa6b616922963191fad5b2059d5a8a553">More...</a><br /></td></tr>
 <tr class="separator:aa6b616922963191fad5b2059d5a8a553"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e9f55f3f439bd42f2cf61ec58d86985"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a6e9f55f3f439bd42f2cf61ec58d86985">TimerActivator</a> (int delay, <a class="el" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a> unit=TimeUnit.Seconds, bool callAtStart=false)</td></tr>
+<tr class="memdesc:a6e9f55f3f439bd42f2cf61ec58d86985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions">TimerActivator</a> instance  <a href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a6e9f55f3f439bd42f2cf61ec58d86985">More...</a><br /></td></tr>
+<tr class="separator:a6e9f55f3f439bd42f2cf61ec58d86985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ea305006749dd86006d58b7d0ee477"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a23ea305006749dd86006d58b7d0ee477">Execute</a> ()</td></tr>
 <tr class="memdesc:a23ea305006749dd86006d58b7d0ee477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the callback of the activator as well as the Command.OnExecuteStart and Command.OnExecutionComplete methods if Owner is assigned  <a href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a23ea305006749dd86006d58b7d0ee477">More...</a><br /></td></tr>
 <tr class="separator:a23ea305006749dd86006d58b7d0ee477"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +124,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">IsActive</a> ()</td></tr>
 <tr class="memdesc:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the activator is active. Also takes into account the context of the owner: <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive</a>  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a12c7681099242d278f97c9de009ec2bb">More...</a><br /></td></tr>
 <tr class="separator:a12c7681099242d278f97c9de009ec2bb inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872ce7b20c1981f19fbba13f7e0bbf2d inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a872ce7b20c1981f19fbba13f7e0bbf2d">RegisterDynamicActivator</a> (DynamicActivator.RemoveAfterExecutionDelegate removeAfterActivate=null)</td></tr>
+<tr class="memdesc:a872ce7b20c1981f19fbba13f7e0bbf2d inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps this <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> into a <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a> instance and adds it to the list of active activators using <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5" title="Can be used to add IActivator (wrapped inside IDynamicActivator) instances to the framework during ru...">CommandContainer.AddDynamicActivator(IDynamicActivator)</a>  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a872ce7b20c1981f19fbba13f7e0bbf2d">More...</a><br /></td></tr>
+<tr class="separator:a872ce7b20c1981f19fbba13f7e0bbf2d inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a747b8ea282937111f4a1630cdc287 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">async Task&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a38a747b8ea282937111f4a1630cdc287">WaitForActivation</a> (int timeout=10000)</td></tr>
+<tr class="memdesc:a38a747b8ea282937111f4a1630cdc287 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously waits for the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> to become active using <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>. This is called sometime after the activator becomes active, not immeditaly so using e.g. <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c" title="Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.">Input.InputEvents.CurrentInputEvent</a> or <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9" title="Returns the current text command which is being executed or null if none are being executed at this m...">TextCommands.CurrentTextCommand</a> will not work. Returns false if the operation was cancelled.  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a38a747b8ea282937111f4a1630cdc287">More...</a><br /></td></tr>
+<tr class="separator:a38a747b8ea282937111f4a1630cdc287 inherit pub_methods_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -144,9 +153,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ad9276636979b79547dc109bec7ecc21b inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top"><a id="ad9276636979b79547dc109bec7ecc21b"></a>
 <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b><code> [get, set]</code></td></tr>
 <tr class="separator:ad9276636979b79547dc109bec7ecc21b inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">IgnoreOwnerContext</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the context <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive()</a> of the owner is ignored  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">More...</a><br /></td></tr>
-<tr class="separator:ad8924db4d8591ee51bf1fcc2963e6a1f inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78708c3f5bfaf788ee5d58313d1a6a13 inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13">IgnoreOwnerActiveStatus</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a78708c3f5bfaf788ee5d58313d1a6a13 inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the active status of the owner (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive</a>) is ignored  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13">More...</a><br /></td></tr>
+<tr class="separator:a78708c3f5bfaf788ee5d58313d1a6a13 inherit properties_class_macro_framework_1_1_commands_1_1_command_activator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_macro_framework_1_1_commands_1_1_i_activator')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">MacroFramework.Commands.IActivator</a></td></tr>
 <tr class="memitem:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">Owner</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owner of this activator or null if it is used independently  <a href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">More...</a><br /></td></tr>
@@ -156,7 +165,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for timer based actions </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa6b616922963191fad5b2059d5a8a553"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6b616922963191fad5b2059d5a8a553">&#9670;&nbsp;</a></span>TimerActivator()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6b616922963191fad5b2059d5a8a553">&#9670;&nbsp;</a></span>TimerActivator() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,6 +214,58 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">command</td><td>Callback</td></tr>
+    <tr><td class="paramname">delay</td><td>Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <a class="el" href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b" title="The delay in milliseconds between every iteration of the main loop">MacroSettings.MainLoopTimestep</a></td></tr>
+    <tr><td class="paramname">callAtStart</td><td>If true the command is called on the first update loop</td></tr>
+    <tr><td class="paramname">unit</td><td>The unit of time used</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6e9f55f3f439bd42f2cf61ec58d86985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9f55f3f439bd42f2cf61ec58d86985">&#9670;&nbsp;</a></span>TimerActivator() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MacroFramework.Commands.TimerActivator.TimerActivator </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>delay</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>&#160;</td>
+          <td class="paramname"><em>unit</em> = <code>TimeUnit.Seconds</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>callAtStart</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions">TimerActivator</a> instance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">delay</td><td>Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <a class="el" href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b" title="The delay in milliseconds between every iteration of the main loop">MacroSettings.MainLoopTimestep</a></td></tr>
     <tr><td class="paramname">callAtStart</td><td>If true the command is called on the first update loop</td></tr>
     <tr><td class="paramname">unit</td><td>The unit of time used</td></tr>

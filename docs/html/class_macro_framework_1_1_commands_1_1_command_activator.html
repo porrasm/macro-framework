@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.5</span>
+   &#160;<span id="projectnumber">0.1.6</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -121,6 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e76dd86a0da4fd522d6b47936d51ef7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">Execute</a> ()</td></tr>
 <tr class="memdesc:a2e76dd86a0da4fd522d6b47936d51ef7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes the callback of the activator as well as the Command.OnExecuteStart and Command.OnExecutionComplete methods if Owner is assigned  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">More...</a><br /></td></tr>
 <tr class="separator:a2e76dd86a0da4fd522d6b47936d51ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872ce7b20c1981f19fbba13f7e0bbf2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a872ce7b20c1981f19fbba13f7e0bbf2d">RegisterDynamicActivator</a> (DynamicActivator.RemoveAfterExecutionDelegate removeAfterActivate=null)</td></tr>
+<tr class="memdesc:a872ce7b20c1981f19fbba13f7e0bbf2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wraps this <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> into a <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a> instance and adds it to the list of active activators using <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5" title="Can be used to add IActivator (wrapped inside IDynamicActivator) instances to the framework during ru...">CommandContainer.AddDynamicActivator(IDynamicActivator)</a>  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a872ce7b20c1981f19fbba13f7e0bbf2d">More...</a><br /></td></tr>
+<tr class="separator:a872ce7b20c1981f19fbba13f7e0bbf2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a747b8ea282937111f4a1630cdc287"><td class="memItemLeft" align="right" valign="top">async Task&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a38a747b8ea282937111f4a1630cdc287">WaitForActivation</a> (int timeout=10000)</td></tr>
+<tr class="memdesc:a38a747b8ea282937111f4a1630cdc287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously waits for the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> to become active using <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>. This is called sometime after the activator becomes active, not immeditaly so using e.g. <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c" title="Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.">Input.InputEvents.CurrentInputEvent</a> or <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9" title="Returns the current text command which is being executed or null if none are being executed at this m...">TextCommands.CurrentTextCommand</a> will not work. Returns false if the operation was cancelled.  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a38a747b8ea282937111f4a1630cdc287">More...</a><br /></td></tr>
+<tr class="separator:a38a747b8ea282937111f4a1630cdc287"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -139,9 +145,9 @@ Properties</h2></td></tr>
 <tr class="memitem:ad9276636979b79547dc109bec7ecc21b"><td class="memItemLeft" align="right" valign="top"><a id="ad9276636979b79547dc109bec7ecc21b"></a>
 <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Owner</b><code> [get, set]</code></td></tr>
 <tr class="separator:ad9276636979b79547dc109bec7ecc21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8924db4d8591ee51bf1fcc2963e6a1f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">IgnoreOwnerContext</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ad8924db4d8591ee51bf1fcc2963e6a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the context <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive()</a> of the owner is ignored  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f">More...</a><br /></td></tr>
-<tr class="separator:ad8924db4d8591ee51bf1fcc2963e6a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78708c3f5bfaf788ee5d58313d1a6a13"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13">IgnoreOwnerActiveStatus</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a78708c3f5bfaf788ee5d58313d1a6a13"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, the active status of the owner (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive</a>) is ignored  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13">More...</a><br /></td></tr>
+<tr class="separator:a78708c3f5bfaf788ee5d58313d1a6a13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_macro_framework_1_1_commands_1_1_i_activator')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html">MacroFramework.Commands.IActivator</a></td></tr>
 <tr class="memitem:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">Owner</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af4aa448f90bee4925c033cd58ab21569 inherit properties_interface_macro_framework_1_1_commands_1_1_i_activator"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owner of this activator or null if it is used independently  <a href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">More...</a><br /></td></tr>
@@ -188,7 +194,7 @@ Properties</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">command</td><td>The callback to be called when this activator becomes active</td></tr>
-    <tr><td class="paramname">ignoreOwnerContext</td><td><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#ad8924db4d8591ee51bf1fcc2963e6a1f" title="If true, the context Command.IsActive() of the owner is ignored">CommandActivator.IgnoreOwnerContext</a></td></tr>
+    <tr><td class="paramname">ignoreOwnerContext</td><td><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13" title="If true, the active status of the owner (Command.IsActive) is ignored">CommandActivator.IgnoreOwnerActiveStatus</a></td></tr>
   </table>
   </dd>
 </dl>
@@ -287,6 +293,75 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a872ce7b20c1981f19fbba13f7e0bbf2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a872ce7b20c1981f19fbba13f7e0bbf2d">&#9670;&nbsp;</a></span>RegisterDynamicActivator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a> MacroFramework.Commands.CommandActivator.RegisterDynamicActivator </td>
+          <td>(</td>
+          <td class="paramtype">DynamicActivator.RemoveAfterExecutionDelegate&#160;</td>
+          <td class="paramname"><em>removeAfterActivate</em> = <code>null</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wraps this <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> into a <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a> instance and adds it to the list of active activators using <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5" title="Can be used to add IActivator (wrapped inside IDynamicActivator) instances to the framework during ru...">CommandContainer.AddDynamicActivator(IDynamicActivator)</a> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">removeAfterActivate</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a38a747b8ea282937111f4a1630cdc287"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38a747b8ea282937111f4a1630cdc287">&#9670;&nbsp;</a></span>WaitForActivation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">async Task&lt;bool&gt; MacroFramework.Commands.CommandActivator.WaitForActivation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>10000</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Asynchronously waits for the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> to become active using <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>. This is called sometime after the activator becomes active, not immeditaly so using e.g. <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c" title="Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.">Input.InputEvents.CurrentInputEvent</a> or <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9" title="Returns the current text command which is being executed or null if none are being executed at this m...">TextCommands.CurrentTextCommand</a> will not work. Returns false if the operation was cancelled. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>Timeout in milliseconds after which the operation is cancelled. Set to 0 or less to ignore timeout</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a110f3065618abd5d599ac1a169038e5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a110f3065618abd5d599ac1a169038e5d">&#9670;&nbsp;</a></span>commandCallback</h2>
@@ -313,8 +388,8 @@ Properties</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="ad8924db4d8591ee51bf1fcc2963e6a1f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8924db4d8591ee51bf1fcc2963e6a1f">&#9670;&nbsp;</a></span>IgnoreOwnerContext</h2>
+<a id="a78708c3f5bfaf788ee5d58313d1a6a13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78708c3f5bfaf788ee5d58313d1a6a13">&#9670;&nbsp;</a></span>IgnoreOwnerActiveStatus</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -323,7 +398,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool MacroFramework.Commands.CommandActivator.IgnoreOwnerContext</td>
+          <td class="memname">bool MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus</td>
         </tr>
       </table>
   </td>
@@ -333,7 +408,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>If true, the context <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive()</a> of the owner is ignored </p>
+<p>If true, the active status of the owner (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f" title="Override this method to create custom contexts for your command. If false is returned,...">Command.IsActive</a>) is ignored </p>
 
 </div>
 </div>
