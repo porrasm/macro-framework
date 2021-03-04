@@ -27,7 +27,7 @@ public class MySetup : Setup {
         settings.AllowKeyboardHook = true;
         
         // Disallow mouse hook for now
-        settings.AllowMouseHoo = false;
+        settings.AllowMouseHook = false;
         
         settings.GeneralBindKey = KKey.CapsLock;
         settings.CommandKey = KKey.LWin;
