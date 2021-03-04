@@ -3,7 +3,7 @@
 ## Links
 
 - [Nuget](https://www.nuget.org/packages/MacroFramework/)
-- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html) up to date with the most recent Nuget relase (0.1.5)
+- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html) up to date with the most recent Nuget relase (0.1.6)
 - [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html)
 
 ## Quick setup
