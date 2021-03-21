@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.6</span>
+   &#160;<span id="projectnumber">0.1.7</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -106,6 +106,12 @@ Properties</h2></td></tr>
 <tr class="memitem:aefdb32a6e407b5fececa360e293992e9"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9">CurrentTextCommand</a><code> [get]</code></td></tr>
 <tr class="memdesc:aefdb32a6e407b5fececa360e293992e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current text command which is being executed or null if none are being executed at this moment  <a href="class_macro_framework_1_1_commands_1_1_text_commands.html#aefdb32a6e407b5fececa360e293992e9">More...</a><br /></td></tr>
 <tr class="separator:aefdb32a6e407b5fececa360e293992e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc9452f2ae586442b23fc6d0fad3069"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#abdc9452f2ae586442b23fc6d0fad3069">OnTextCommandModeStart</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:abdc9452f2ae586442b23fc6d0fad3069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called whenever the text command mode is activated  <a href="class_macro_framework_1_1_commands_1_1_text_commands.html#abdc9452f2ae586442b23fc6d0fad3069">More...</a><br /></td></tr>
+<tr class="separator:abdc9452f2ae586442b23fc6d0fad3069"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14bbcbaebcbb5aa6bbfbb8b511e624fd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#a14bbcbaebcbb5aa6bbfbb8b511e624fd">OnTextCommandModeEnd</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a14bbcbaebcbb5aa6bbfbb8b511e624fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called whenever the text command mode is deactivated  <a href="class_macro_framework_1_1_commands_1_1_text_commands.html#a14bbcbaebcbb5aa6bbfbb8b511e624fd">More...</a><br /></td></tr>
+<tr class="separator:a14bbcbaebcbb5aa6bbfbb8b511e624fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The static class which handles the execution of text commands </p>
@@ -177,6 +183,54 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns the current text command which is being executed or null if none are being executed at this moment </p>
+
+</div>
+</div>
+<a id="a14bbcbaebcbb5aa6bbfbb8b511e624fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14bbcbaebcbb5aa6bbfbb8b511e624fd">&#9670;&nbsp;</a></span>OnTextCommandModeEnd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> MacroFramework.Commands.TextCommands.OnTextCommandModeEnd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called whenever the text command mode is deactivated </p>
+
+</div>
+</div>
+<a id="abdc9452f2ae586442b23fc6d0fad3069"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdc9452f2ae586442b23fc6d0fad3069">&#9670;&nbsp;</a></span>OnTextCommandModeStart</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a61868051650e861b58c06529c1dc2d97">Command.CommandCallback</a> MacroFramework.Commands.TextCommands.OnTextCommandModeStart</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called whenever the text command mode is activated </p>
 
 </div>
 </div>

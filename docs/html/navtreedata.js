@@ -55,7 +55,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
@@ -68,10 +68,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"md_markdown_getting_started.html#autotoc_md13",
-"namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540a4252b72e6ebcd4d4b4c2e46a786f03d2",
-"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fba7fa06ead699fcbd63132370ffe13335a",
-"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569abb21eabbaf867f6215925b28c46cd478"
+"functions_b.html",
+"namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6af556947e34ed4e02ebeded4c712b2e1d",
+"namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fba2e57527b9f8ed05287694a1e58627d8a",
+"namespace_macro_framework_1_1_input.html#a26783c7ac783ebc9a835215a106f6569a8798644d469228f7e10f89a797294397"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

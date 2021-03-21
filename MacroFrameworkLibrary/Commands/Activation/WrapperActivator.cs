@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// <see cref="CommandActivator"/> instance for wrapping multiple activator instances
+    /// <see cref="CommandActivator"/> instance for wrapping multiple activators
     /// </summary>
     public class WrapperActivator : CommandActivator {
         #region fields

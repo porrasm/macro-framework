@@ -45,6 +45,11 @@ namespace MacroFramework.Commands {
         private long lastActiveTimeStamp;
         #endregion
 
+        /// <summary>
+        /// Creates a new <see cref="RepeatActivator"/> instance
+        /// </summary>
+        /// <param name="callback">The callback to execute</param>
+        /// <param name="activator">The activator to use</param>
         public RepeatActivator(Command.CommandCallback callback, IActivator activator) : base(callback) {
             this.activator = activator;
             dynamicActivator = new DynamicActivator(activator, false);

@@ -3,14 +3,17 @@ var annotated_dup =
     [ "MacroFramework", "namespace_macro_framework.html", [
       [ "Commands", "namespace_macro_framework_1_1_commands.html", [
         [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html", "class_macro_framework_1_1_commands_1_1_bind_activator" ],
+        [ "BindHoldActivator", "class_macro_framework_1_1_commands_1_1_bind_hold_activator.html", "class_macro_framework_1_1_commands_1_1_bind_hold_activator" ],
         [ "CommandActivator", "class_macro_framework_1_1_commands_1_1_command_activator.html", "class_macro_framework_1_1_commands_1_1_command_activator" ],
         [ "CommandActivatorGroup", "class_macro_framework_1_1_commands_1_1_command_activator_group.html", "class_macro_framework_1_1_commands_1_1_command_activator_group" ],
         [ "DynamicActivator", "class_macro_framework_1_1_commands_1_1_dynamic_activator.html", "class_macro_framework_1_1_commands_1_1_dynamic_activator" ],
         [ "IActivator", "interface_macro_framework_1_1_commands_1_1_i_activator.html", "interface_macro_framework_1_1_commands_1_1_i_activator" ],
         [ "IDynamicActivator", "interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html", "interface_macro_framework_1_1_commands_1_1_i_dynamic_activator" ],
         [ "KeyActivator", "class_macro_framework_1_1_commands_1_1_key_activator.html", "class_macro_framework_1_1_commands_1_1_key_activator" ],
+        [ "RepeatActivator", "class_macro_framework_1_1_commands_1_1_repeat_activator.html", "class_macro_framework_1_1_commands_1_1_repeat_activator" ],
         [ "TextActivator", "class_macro_framework_1_1_commands_1_1_text_activator.html", "class_macro_framework_1_1_commands_1_1_text_activator" ],
         [ "TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", "class_macro_framework_1_1_commands_1_1_timer_activator" ],
+        [ "WrapperActivator", "class_macro_framework_1_1_commands_1_1_wrapper_activator.html", "class_macro_framework_1_1_commands_1_1_wrapper_activator" ],
         [ "ActivatorAttribute", "class_macro_framework_1_1_commands_1_1_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_activator_attribute" ],
         [ "BindActivatorAttribute", "class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_bind_activator_attribute" ],
         [ "KeyActivatorAttribute", "class_macro_framework_1_1_commands_1_1_key_activator_attribute.html", "class_macro_framework_1_1_commands_1_1_key_activator_attribute" ],
@@ -19,6 +22,7 @@ var annotated_dup =
         [ "Command", "class_macro_framework_1_1_commands_1_1_command.html", "class_macro_framework_1_1_commands_1_1_command" ],
         [ "CommandContainer", "class_macro_framework_1_1_commands_1_1_command_container.html", "class_macro_framework_1_1_commands_1_1_command_container" ],
         [ "IInputEvent", "interface_macro_framework_1_1_commands_1_1_i_input_event.html", "interface_macro_framework_1_1_commands_1_1_i_input_event" ],
+        [ "TextCommandCreator", "class_macro_framework_1_1_commands_1_1_text_command_creator.html", "class_macro_framework_1_1_commands_1_1_text_command_creator" ],
         [ "TextCommands", "class_macro_framework_1_1_commands_1_1_text_commands.html", "class_macro_framework_1_1_commands_1_1_text_commands" ]
       ] ],
       [ "Input", "namespace_macro_framework_1_1_input.html", [

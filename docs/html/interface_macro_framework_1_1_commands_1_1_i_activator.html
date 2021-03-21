@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.6</span>
+   &#160;<span id="projectnumber">0.1.7</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -100,11 +100,14 @@ Inheritance diagram for MacroFramework.Commands.IActivator:</div>
  <div class="center">
   <img src="interface_macro_framework_1_1_commands_1_1_i_activator.png" usemap="#MacroFramework.Commands.IActivator_map" alt=""/>
   <map id="MacroFramework.Commands.IActivator_map" name="MacroFramework.Commands.IActivator_map">
-<area href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun..." alt="MacroFramework.Commands.CommandActivator" shape="rect" coords="445,56,732,80"/>
+<area href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun..." alt="MacroFramework.Commands.CommandActivator" shape="rect" coords="891,56,1178,80"/>
 <area href="class_macro_framework_1_1_commands_1_1_bind_activator.html" title="CommandActivator instance for keybind callbacks" alt="MacroFramework.Commands.BindActivator" shape="rect" coords="0,112,287,136"/>
-<area href="class_macro_framework_1_1_commands_1_1_key_activator.html" title="CommandActivator instance for key event callbacks" alt="MacroFramework.Commands.KeyActivator" shape="rect" coords="297,112,584,136"/>
-<area href="class_macro_framework_1_1_commands_1_1_text_activator.html" title="CommandActivator instance for text command callbacks" alt="MacroFramework.Commands.TextActivator" shape="rect" coords="594,112,881,136"/>
-<area href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions" alt="MacroFramework.Commands.TimerActivator" shape="rect" coords="891,112,1178,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html" title="CommandActivator instance for keybind hold callbacks. Provides more detailed events than a regular Bi..." alt="MacroFramework.Commands.BindHoldActivator" shape="rect" coords="297,112,584,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_key_activator.html" title="CommandActivator instance for key event callbacks" alt="MacroFramework.Commands.KeyActivator" shape="rect" coords="594,112,881,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_repeat_activator.html" title="CommandActivator instance for repeating activators (e.g. double click). Requires that you set MacroSe..." alt="MacroFramework.Commands.RepeatActivator" shape="rect" coords="891,112,1178,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_text_activator.html" title="CommandActivator instance for text command callbacks" alt="MacroFramework.Commands.TextActivator" shape="rect" coords="1188,112,1475,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions" alt="MacroFramework.Commands.TimerActivator" shape="rect" coords="1485,112,1772,136"/>
+<area href="class_macro_framework_1_1_commands_1_1_wrapper_activator.html" title="CommandActivator instance for wrapping multiple activators" alt="MacroFramework.Commands.WrapperActivator" shape="rect" coords="1782,112,2069,136"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -122,6 +125,9 @@ Properties</h2></td></tr>
 <tr class="memitem:af4aa448f90bee4925c033cd58ab21569"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">Owner</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af4aa448f90bee4925c033cd58ab21569"><td class="mdescLeft">&#160;</td><td class="mdescRight">The owner of this activator or null if it is used independently  <a href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">More...</a><br /></td></tr>
 <tr class="separator:af4aa448f90bee4925c033cd58ab21569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9d383cb9bc0d186e6fd7060219e0d35"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#ad9d383cb9bc0d186e6fd7060219e0d35">UpdateGroup</a><code> [get]</code></td></tr>
+<tr class="memdesc:ad9d383cb9bc0d186e6fd7060219e0d35"><td class="mdescLeft">&#160;</td><td class="mdescRight">This activator will be updated with this update group when CommandContainer.UpdateActivators(Type) is called  <a href="interface_macro_framework_1_1_commands_1_1_i_activator.html#ad9d383cb9bc0d186e6fd7060219e0d35">More...</a><br /></td></tr>
+<tr class="separator:ad9d383cb9bc0d186e6fd7060219e0d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for all command activators </p>
@@ -143,7 +149,7 @@ Properties</h2></td></tr>
 
 <p>Executes the action related to this activator </p>
 
-<p>Implemented in <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a23ea305006749dd86006d58b7d0ee477">MacroFramework.Commands.TimerActivator</a>, <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a28c3b8cc433f3db4daa64732c10b33da">MacroFramework.Commands.KeyActivator</a>, and <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">MacroFramework.Commands.CommandActivator</a>.</p>
+<p>Implemented in <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html#a23ea305006749dd86006d58b7d0ee477">MacroFramework.Commands.TimerActivator</a>, <a class="el" href="class_macro_framework_1_1_commands_1_1_key_activator.html#a28c3b8cc433f3db4daa64732c10b33da">MacroFramework.Commands.KeyActivator</a>, <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a2e76dd86a0da4fd522d6b47936d51ef7">MacroFramework.Commands.CommandActivator</a>, and <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#a8d07e167b3b456668939a5014ece69a6">MacroFramework.Commands.BindHoldActivator</a>.</p>
 
 </div>
 </div>
@@ -191,6 +197,30 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The owner of this activator or null if it is used independently </p>
+
+</div>
+</div>
+<a id="ad9d383cb9bc0d186e6fd7060219e0d35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9d383cb9bc0d186e6fd7060219e0d35">&#9670;&nbsp;</a></span>UpdateGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Type MacroFramework.Commands.IActivator.UpdateGroup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This activator will be updated with this update group when CommandContainer.UpdateActivators(Type) is called </p>
 
 </div>
 </div>

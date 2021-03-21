@@ -17,9 +17,12 @@ var hierarchy =
     [ "MacroFramework.Commands.IActivator", "interface_macro_framework_1_1_commands_1_1_i_activator.html", [
       [ "MacroFramework.Commands.CommandActivator", "class_macro_framework_1_1_commands_1_1_command_activator.html", [
         [ "MacroFramework.Commands.BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html", null ],
+        [ "MacroFramework.Commands.BindHoldActivator", "class_macro_framework_1_1_commands_1_1_bind_hold_activator.html", null ],
         [ "MacroFramework.Commands.KeyActivator", "class_macro_framework_1_1_commands_1_1_key_activator.html", null ],
+        [ "MacroFramework.Commands.RepeatActivator", "class_macro_framework_1_1_commands_1_1_repeat_activator.html", null ],
         [ "MacroFramework.Commands.TextActivator", "class_macro_framework_1_1_commands_1_1_text_activator.html", null ],
-        [ "MacroFramework.Commands.TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", null ]
+        [ "MacroFramework.Commands.TimerActivator", "class_macro_framework_1_1_commands_1_1_timer_activator.html", null ],
+        [ "MacroFramework.Commands.WrapperActivator", "class_macro_framework_1_1_commands_1_1_wrapper_activator.html", null ]
       ] ]
     ] ],
     [ "MacroFramework.Commands.IDynamicActivator", "interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html", [
@@ -39,6 +42,7 @@ var hierarchy =
     [ "MacroFramework.Tools.Regexes", "class_macro_framework_1_1_tools_1_1_regexes.html", null ],
     [ "MacroFramework.Tools.RegexWrapper", "class_macro_framework_1_1_tools_1_1_regex_wrapper.html", null ],
     [ "MacroFramework.Setup", "class_macro_framework_1_1_setup.html", null ],
+    [ "MacroFramework.Commands.TextCommandCreator", "class_macro_framework_1_1_commands_1_1_text_command_creator.html", null ],
     [ "MacroFramework.Commands.TextCommands", "class_macro_framework_1_1_commands_1_1_text_commands.html", null ],
     [ "MacroFramework.Tools.Timer", "class_macro_framework_1_1_tools_1_1_timer.html", null ]
 ];

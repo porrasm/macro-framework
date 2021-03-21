@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['receivetimestamp_841',['ReceiveTimestamp',['../interface_macro_framework_1_1_commands_1_1_i_input_event.html#a44c4ec425ed4818b3e9ecde5b58f0565',1,'MacroFramework::Commands::IInputEvent']]],
-  ['running_842',['Running',['../class_macro_framework_1_1_macros.html#a9bd6c4eb3e62138f8a4d514f791ca3dd',1,'MacroFramework::Macros']]]
+  ['paused_871',['Paused',['../class_macro_framework_1_1_macros.html#ab8e6d5daec2bbfcab4ca3437a2928149',1,'MacroFramework::Macros']]],
+  ['point_872',['Point',['../struct_macro_framework_1_1_input_1_1_mouse_event.html#a807003fb74fb148b106dff282c607f92',1,'MacroFramework::Input::MouseEvent']]]
 ];
