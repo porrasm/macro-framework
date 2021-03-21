@@ -150,6 +150,16 @@
             <param name="activeActivator"></param>
             <returns></returns>
         </member>
+        <member name="T:MacroFramework.Commands.DynamicActivator">
+            <summary>
+            Default implementtion of <see cref="T:MacroFramework.Commands.IDynamicActivator"/>
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.DynamicActivator.OnExecute">
+            <summary>
+            This delegate is called on <see cref="M:MacroFramework.Commands.DynamicActivator.Execute"/> before the <see cref="M:MacroFramework.Commands.IActivator.Execute"/> method
+            </summary>
+        </member>
         <member name="M:MacroFramework.Commands.DynamicActivator.#ctor(MacroFramework.Commands.IActivator,System.Boolean)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance
@@ -183,6 +193,11 @@
         <member name="P:MacroFramework.Commands.IActivator.Owner">
             <summary>
             The owner of this activator or null if it is used independently
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IActivator.UpdateGroup">
+            <summary>
+            This activator will be updated with this update group when <see cref="M:MacroFramework.Commands.CommandContainer.UpdateActivators(System.Type)"/> is called
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.IDynamicActivator">
@@ -275,6 +290,36 @@
             </summary>
             <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
         </member>
+        <member name="T:MacroFramework.Commands.RepeatActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for repeating activators (e.g. double click). Requires that you set <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/> low enough.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatInterval">
+            <summary>
+            The interval in milliseconds deciding how quickly the activator should be active again. Default = 400ms
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatCount">
+            <summary>
+            The amount of times the activator should be activated. Default = 2
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.DisallowExtraRepeats">
+            <summary>
+            If true, the repeat activator is activated if the repeat count is exactly <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatCount"/>. Default = true
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.ActivateImmediately">
+            <summary>
+            Whether to activate the activator immediately or wait until <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatInterval"/> expires. Default = false
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.OnEachActivate">
+            <summary>
+            This delegate is called each time the associated activator activates
+            </summary>
+        </member>
         <member name="T:MacroFramework.Commands.TextActivator">
             <summary>
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for text command callbacks
@@ -336,6 +381,29 @@
             <param name="time"></param>
             <param name="unit"></param>
             <returns></returns>
+        </member>
+        <member name="T:MacroFramework.Commands.WrapperActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for wrapping multiple activator instances
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.WrapperActivator.ActiveActivators">
+            <summary>
+            The list of active <see cref="T:MacroFramework.Commands.IActivator"/> instances
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.IActivator[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
+            </summary>
+            <param name="callback">The callback to use</param>
+            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.IActivator[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
+            </summary>
+            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
         </member>
         <member name="T:MacroFramework.Commands.ActivatorAttribute">
             <summary>
@@ -709,19 +777,19 @@
         <member name="F:MacroFramework.Commands.KKey.Undefined">
             <summary>Key is undefined</summary>
         </member>
-        <member name="F:MacroFramework.Commands.KKey.LButton">
+        <member name="F:MacroFramework.Commands.KKey.MouseLeft">
             <summary>Left mouse button</summary>
         </member>
-        <member name="F:MacroFramework.Commands.KKey.RButton">
+        <member name="F:MacroFramework.Commands.KKey.MouseRight">
             <summary>Right mouse button</summary>
         </member>
-        <member name="F:MacroFramework.Commands.KKey.MButton">
+        <member name="F:MacroFramework.Commands.KKey.MouseMiddle">
             <summary>Middle mouse button</summary>
         </member>
-        <member name="F:MacroFramework.Commands.KKey.XButton1">
+        <member name="F:MacroFramework.Commands.KKey.MouseXButton1">
             <summary>Extra mouse button 1</summary>
         </member>
-        <member name="F:MacroFramework.Commands.KKey.XButton2">
+        <member name="F:MacroFramework.Commands.KKey.MouseXButton2">
             <summary>Extra mouse button 2</summary>
         </member>
         <member name="F:MacroFramework.Commands.KKey.D0">

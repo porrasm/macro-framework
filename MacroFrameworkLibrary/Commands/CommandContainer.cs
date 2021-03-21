@@ -159,7 +159,7 @@ namespace MacroFramework.Commands {
 
         private static void AddActivators(Command c) {
             foreach (IActivator act in c.CommandActivators.Activators) {
-                Type t = act.GetType();
+                Type t = act.UpdateGroup;
                 if (staticActivators.ContainsKey(t)) {
                     staticActivators[t].Add(act);
                 } else {
@@ -174,7 +174,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="act">The dynamic activator to add</param>
         public static void AddDynamicActivator(IDynamicActivator act) {
-            Type t = act.Activator.GetType();
+            Type t = act.Activator.UpdateGroup;
             if (dynamicActivators.ContainsKey(t)) {
                 dynamicActivators[t].Add(act);
             } else {

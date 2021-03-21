@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
@@ -39,6 +40,8 @@ namespace MacroFramework.Commands {
             }
             return false;
         }
+
+        public virtual Type UpdateGroup => GetType();
 
         /// <summary>
         /// Abstract bool for individual activator functionality. Override for custom functionality.

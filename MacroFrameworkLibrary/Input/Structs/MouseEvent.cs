@@ -56,27 +56,27 @@ namespace MacroFramework.Input {
         internal static void ParaseMouseEvent(WindowsMessage message, int data, out KKey key, out bool state) {
             switch (message) {
                 case WindowsMessage.LBUTTONDOWN:
-                    key = KKey.LButton;
+                    key = KKey.MouseLeft;
                     state = true;
                     return;
                 case WindowsMessage.LBUTTONUP:
-                    key = KKey.LButton;
+                    key = KKey.MouseLeft;
                     state = false;
                     return;
                 case WindowsMessage.RBUTTONDOWN:
-                    key = KKey.RButton;
+                    key = KKey.MouseRight;
                     state = true;
                     return;
                 case WindowsMessage.RBUTTONUP:
-                    key = KKey.RButton;
+                    key = KKey.MouseRight;
                     state = false;
                     return;
                 case WindowsMessage.MBUTTONDOWN:
-                    key = KKey.MButton;
+                    key = KKey.MouseMiddle;
                     state = true;
                     return;
                 case WindowsMessage.MBUTTONUP:
-                    key = KKey.MButton;
+                    key = KKey.MouseMiddle;
                     state = false;
                     return;
                 case WindowsMessage.MOUSEWHEEL:
@@ -89,19 +89,19 @@ namespace MacroFramework.Input {
                     return;
                 case WindowsMessage.XBUTTONDOWN:
                     if (data >> 16 == 1) {
-                        key = KKey.XButton1;
+                        key = KKey.MouseXButton1;
                         state = true;
                     } else {
-                        key = KKey.XButton2;
+                        key = KKey.MouseXButton2;
                         state = true;
                     }
                     return;
                 case WindowsMessage.XBUTTONUP:
                     if (data >> 16 == 1) {
-                        key = KKey.XButton1;
+                        key = KKey.MouseXButton1;
                         state = false;
                     } else {
-                        key = KKey.XButton2;
+                        key = KKey.MouseXButton2;
                         state = false;
                     }
                     return;

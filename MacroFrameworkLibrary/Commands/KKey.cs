@@ -44,15 +44,15 @@
         Undefined = VKey.UNDEFINED,
 
         /// <summary>Left mouse button</summary>
-        LButton = VKey.LBUTTON | F_Mouse,
+        MouseLeft = VKey.LBUTTON | F_Mouse,
         /// <summary>Right mouse button</summary>
-        RButton = VKey.RBUTTON | F_Mouse,
+        MouseRight = VKey.RBUTTON | F_Mouse,
         /// <summary>Middle mouse button</summary>
-        MButton = VKey.MBUTTON | F_Mouse,
+        MouseMiddle = VKey.MBUTTON | F_Mouse,
         /// <summary>Extra mouse button 1</summary>
-        XButton1 = VKey.XBUTTON1 | F_Mouse,
+        MouseXButton1 = VKey.XBUTTON1 | F_Mouse,
         /// <summary>Extra mouse button 2</summary>
-        XButton2 = VKey.XBUTTON2 | F_Mouse,
+        MouseXButton2 = VKey.XBUTTON2 | F_Mouse,
 
         /// <summary>Digit 0</summary>
         D0 = VKey.D0 | F_Number | F_Char,

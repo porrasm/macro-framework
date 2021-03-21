@@ -12,6 +12,8 @@ namespace MacroFramework.Commands {
         private BindActivator bindActivator;
         private DynamicActivator timerActivator;
         private Command.CommandCallback onActivate, onUpdate, onDeactivate;
+
+        public override Type UpdateGroup => typeof(BindActivator);
         #endregion
 
         /// <summary>

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MacroFramework.Commands {
+    /// <summary>
+    /// Default implementtion of <see cref="IDynamicActivator"/>
+    /// </summary>
     public class DynamicActivator : IDynamicActivator {
 
         #region fields
@@ -11,6 +14,11 @@ namespace MacroFramework.Commands {
         public bool IsCanceled { get; set; }
         public delegate bool RemoveAfterExecutionDelegate();
         private RemoveAfterExecutionDelegate removeAfterFirstExecute;
+
+        /// <summary>
+        /// This delegate is called on <see cref="Execute"/> before the <see cref="IActivator.Execute"/> method
+        /// </summary>
+        public Command.CommandCallback OnExecute { get; set; }
         #endregion
 
         /// <summary>
@@ -43,6 +51,7 @@ namespace MacroFramework.Commands {
         }
 
         public void Execute() {
+            OnExecute?.Invoke();
             Activator.Execute();
         }
 
