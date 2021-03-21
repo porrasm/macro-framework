@@ -70,7 +70,7 @@ namespace MacroFramework.Input {
         }
 
         public override string ToString() {
-            return Key + ": " + State + ", " + ActivationType;
+            return $"KeyEvent ({Key}, {State}, {ActivationType})";
         }
     }
 }

@@ -8,6 +8,11 @@ namespace MacroFramework.Commands {
     /// </summary>
     public interface IDynamicActivator {
         /// <summary>
+        /// Unique ID of the dynamic activator
+        /// </summary>
+        uint ID { get; }
+
+        /// <summary>
         /// Indicates whether the operation was cancelled. If true, the activator is removed before the next execution.
         /// </summary>
         bool IsCanceled { get; set; }
@@ -18,7 +23,7 @@ namespace MacroFramework.Commands {
         IActivator Activator { get; }
 
         /// <summary>
-        /// The action to execute after finishing
+        /// The action to execute whenever the <see cref="Activator"/> is active
         /// </summary>
         void Execute();
 

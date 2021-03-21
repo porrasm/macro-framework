@@ -114,5 +114,9 @@ namespace MacroFramework.Input {
             key = KKey.None;
             state = false;
         }
+
+        public override string ToString() {
+            return $"KeyEvent ({Key}, {State}, {ActivationType}, {Point})";
+        }
     }
 }

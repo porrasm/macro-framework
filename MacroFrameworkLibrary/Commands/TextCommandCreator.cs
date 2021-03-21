@@ -3,15 +3,23 @@ using MacroFramework.Tools;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// Internal class for creating text commands from key events
+    /// Class for creating text commands from key events
     /// </summary>
-    internal static class TextCommandCreator {
+    public static class TextCommandCreator {
 
         private static VKeysToCommand keyCommand = new VKeysToCommand();
 
+        /// <summary>
+        /// Returns the current active text command which is currently being typed in.
+        /// </summary>
+        public static string BuildTextCommand => keyCommand.ToString();
+
         internal static string CurrentTextCommand { get; set; }
 
-        internal static bool IsCommandMode { get; private set; }
+        /// <summary>
+        /// Returns true if the text command mode is currently active
+        /// </summary>
+        public static bool IsCommandMode { get; private set; }
 
         private static long lastCommandModeTimestamp;
 
@@ -24,14 +32,24 @@ namespace MacroFramework.Commands {
         internal static void StartCommand() {
             lastCommandModeTimestamp = Timer.Milliseconds;
             keyCommand.Clear();
+            try {
+                TextCommands.OnTextCommandModeStart?.Invoke();
+            } catch (System.Exception e) {
+                Logger.Log($"Error executing OnTextCommandModeStart: " + e);
+            }
         }
         internal static void EndCommand(bool activate) {
             if (activate) {
-                string command = keyCommand.ToString();
+                string command = BuildTextCommand;
                 Logger.Log("Command: " + command);
                 TextCommands.Execute(command);
             }
             keyCommand.Clear();
+            try {
+                TextCommands.OnTextCommandModeEnd?.Invoke();
+            } catch (System.Exception e) {
+                Logger.Log($"Error executing OnTextCommandModeEnd: " + e);
+            }
         }
 
         #region keyevents

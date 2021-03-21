@@ -48,6 +48,20 @@
             <param name="matchType"><see cref="P:MacroFramework.Commands.BindActivator.MatchType"/></param>
             <param name="order"><see cref="P:MacroFramework.Commands.BindActivator.Order"/></param>
         </member>
+        <member name="T:MacroFramework.Commands.BindHoldActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for keybind hold callbacks. Provides more detailed events than a regular <see cref="T:MacroFramework.Commands.BindActivator"/>
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.BindActivator,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.BindHoldActivator"/> instance
+            </summary>
+            <param name="bindActivator">The tem</param>
+            <param name="onUpdate"></param>
+            <param name="onActivate"></param>
+            <param name="onDeactivate"></param>
+        </member>
         <member name="T:MacroFramework.Commands.CommandActivator">
             <summary>
             The base class for all included activators. Inherit this class or implement <see cref="T:MacroFramework.Commands.IActivator"/> for custom functionality.
@@ -58,7 +72,7 @@
             If true, the active status of the owner (<see cref="F:MacroFramework.Commands.Command.IsActive"/>) is ignored
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.CommandActivator.commandCallback">
+        <member name="P:MacroFramework.Commands.CommandActivator.CommandCallback">
             <summary>
             The current callback of this activator
             </summary>
@@ -87,11 +101,18 @@
             Executes the callback of the activator as well as the <see cref="M:MacroFramework.Commands.Command.OnExecuteStart"/> and <see cref="M:MacroFramework.Commands.Command.OnExecutionComplete"/> methods if <see cref="P:MacroFramework.Commands.CommandActivator.Owner"/> is assigned
             </summary>
         </member>
+        <member name="M:MacroFramework.Commands.CommandActivator.RegisterDynamicActivator(System.Boolean)">
+            <summary>
+            Wraps this <see cref="T:MacroFramework.Commands.CommandActivator"/> into a <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance and adds it to the list of active activators using <see cref="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IDynamicActivator)"/>
+            </summary>
+            <param name="removeAfterFirstActivation">Indicates whether the dynamic activator should be discarded after the first activation</param>
+            <returns></returns>
+        </member>
         <member name="M:MacroFramework.Commands.CommandActivator.RegisterDynamicActivator(MacroFramework.Commands.DynamicActivator.RemoveAfterExecutionDelegate)">
             <summary>
             Wraps this <see cref="T:MacroFramework.Commands.CommandActivator"/> into a <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance and adds it to the list of active activators using <see cref="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IDynamicActivator)"/>
             </summary>
-            <param name="removeAfterActivate"><inheritdoc cref="M:MacroFramework.Commands.IDynamicActivator.RemoveAfterExecution"/></param>
+            <param name="removeAfterFirstActivation"></param>
             <returns></returns>
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.WaitForActivation(System.Int32)">
@@ -129,6 +150,13 @@
             <param name="activeActivator"></param>
             <returns></returns>
         </member>
+        <member name="M:MacroFramework.Commands.DynamicActivator.#ctor(MacroFramework.Commands.IActivator,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance
+            </summary>
+            <param name="activator">The activator to use</param>
+            <param name="removeAfterFirstExecute">Indicates whether the activator should be discarded after the first activation</param>
+        </member>
         <member name="M:MacroFramework.Commands.DynamicActivator.#ctor(MacroFramework.Commands.IActivator,MacroFramework.Commands.DynamicActivator.RemoveAfterExecutionDelegate)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance
@@ -162,6 +190,11 @@
             An interface for adding <see cref="T:MacroFramework.Commands.IActivator"/> instance based actions during runtime
             </summary>
         </member>
+        <member name="P:MacroFramework.Commands.IDynamicActivator.ID">
+            <summary>
+            Unique ID of the dynamic activator
+            </summary>
+        </member>
         <member name="P:MacroFramework.Commands.IDynamicActivator.IsCanceled">
             <summary>
             Indicates whether the operation was cancelled. If true, the activator is removed before the next execution.
@@ -174,7 +207,7 @@
         </member>
         <member name="M:MacroFramework.Commands.IDynamicActivator.Execute">
             <summary>
-            The action to execute after finishing
+            The action to execute whenever the <see cref="P:MacroFramework.Commands.IDynamicActivator.Activator"/> is active
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.IDynamicActivator.OnRemove">
@@ -503,9 +536,9 @@
             </summary>
             <param name="act">The dynamic activator to add</param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.ClearDynamicActivators">
+        <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(System.UInt32)">
             <summary>
-            Clears the dynamic activators
+            Removes a <see cref="T:MacroFramework.Commands.IDynamicActivator"/> instance from the active list
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.ActivationEventType">
@@ -826,7 +859,17 @@
         </member>
         <member name="T:MacroFramework.Commands.TextCommandCreator">
             <summary>
-            Internal class for creating text commands from key events
+            Class for creating text commands from key events
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.TextCommandCreator.BuildTextCommand">
+            <summary>
+            Returns the current active text command which is currently being typed in.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.TextCommandCreator.IsCommandMode">
+            <summary>
+            Returns true if the text command mode is currently active
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.TextCommands">
@@ -842,6 +885,16 @@
         <member name="P:MacroFramework.Commands.TextCommands.CommandWasAccepted">
             <summary>
             True if the command was accepted by some <see cref="T:MacroFramework.Commands.TextActivator"/> instance. Remains the same value until the next <see cref="!:Execute(string)"/>
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.TextCommands.OnTextCommandModeStart">
+            <summary>
+            Called whenever the text command mode is activated
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.TextCommands.OnTextCommandModeEnd">
+            <summary>
+            Called whenever the text command mode is deactivated
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.TextCommands.Execute(System.String,System.Boolean)">

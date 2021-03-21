@@ -97,7 +97,7 @@ namespace MacroFramework.Input {
                 KeyStates.AddKeyEvent(k);
             }
             if (k.Unique) {
-                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
+                CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator), typeof(BindHoldActivator));
             }
             if (!k.State) {
                 KeyStates.AddKeyEvent(k);

@@ -17,7 +17,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The current callback of this activator
         /// </summary>
-        protected Command.CommandCallback commandCallback;
+        internal Command.CommandCallback CommandCallback { get; private set; }
 
         /// <summary>
         /// Initializes this activator with a callback
@@ -25,7 +25,7 @@ namespace MacroFramework.Commands {
         /// <param name="command">The callback to be called when this activator becomes active</param>
         /// <param name="ignoreOwnerContext"><see cref="CommandActivator.IgnoreOwnerActiveStatus"/></param>
         public CommandActivator(Command.CommandCallback command, bool ignoreOwnerContext = false) {
-            this.commandCallback = command;
+            this.CommandCallback = command;
             this.IgnoreOwnerActiveStatus = ignoreOwnerContext;
         }
 
@@ -51,7 +51,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public virtual void Execute() {
             Owner?.OnExecuteStart();
-            commandCallback?.Invoke();
+            CommandCallback?.Invoke();
             Owner?.OnExecutionComplete();
         }
 
@@ -59,10 +59,21 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Wraps this <see cref="CommandActivator"/> into a <see cref="DynamicActivator"/> instance and adds it to the list of active activators using <see cref="CommandContainer.AddDynamicActivator(IDynamicActivator)"/>
         /// </summary>
-        /// <param name="removeAfterActivate"><inheritdoc cref="IDynamicActivator.RemoveAfterExecution"/></param>
+        /// <param name="removeAfterFirstActivation">Indicates whether the dynamic activator should be discarded after the first activation</param>
         /// <returns></returns>
-        public DynamicActivator RegisterDynamicActivator(DynamicActivator.RemoveAfterExecutionDelegate removeAfterActivate = null) {
-            DynamicActivator dynamic = new DynamicActivator(this, removeAfterActivate);
+        public DynamicActivator RegisterDynamicActivator(bool removeAfterFirstActivation) {
+            DynamicActivator dynamic = new DynamicActivator(this, removeAfterFirstActivation);
+            CommandContainer.AddDynamicActivator(dynamic);
+            return dynamic;
+        }
+
+        /// <summary>
+        /// Wraps this <see cref="CommandActivator"/> into a <see cref="DynamicActivator"/> instance and adds it to the list of active activators using <see cref="CommandContainer.AddDynamicActivator(IDynamicActivator)"/>
+        /// </summary>
+        /// <param name="removeAfterFirstActivation"></param>
+        /// <returns></returns>
+        public DynamicActivator RegisterDynamicActivator(DynamicActivator.RemoveAfterExecutionDelegate removeAfterFirstActivation) {
+            DynamicActivator dynamic = new DynamicActivator(this, removeAfterFirstActivation);
             CommandContainer.AddDynamicActivator(dynamic);
             return dynamic;
         }

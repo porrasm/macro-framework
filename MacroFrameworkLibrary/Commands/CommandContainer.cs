@@ -15,6 +15,8 @@ namespace MacroFramework.Commands {
         public static List<Command> Commands { get; private set; }
         private static Dictionary<Type, List<IActivator>> staticActivators;
         private static Dictionary<Type, List<IDynamicActivator>> dynamicActivators;
+        private static uint dynamicActivatorID;
+        internal static uint UniqueDynamicActivatorID => ++dynamicActivatorID;
         #endregion
 
         static CommandContainer() {
@@ -182,10 +184,18 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Clears the dynamic activators
+        /// Removes a <see cref="IDynamicActivator"/> instance from the active list
         /// </summary>
-        public static void ClearDynamicActivators() {
-            dynamicActivators.Clear();
+        public static void RemoveDynamicActivator(uint id) {
+            foreach (var activators in dynamicActivators.Values) {
+                for (int i = 0; i < activators.Count; i++) {
+                    if (activators[i].ID == id) {
+                        activators.RemoveAt(i);
+                        return;
+                    }
+                }
+            }
+            throw new Exception("Element did not exist");
         }
     }
 }
