@@ -19,7 +19,7 @@ public class DynamicActivatorExample : Command {
     }
 
     public override void OnStart() {
-        CommandActivator onSpace = new KeyActivator(OneTimeOnPressSpace, KKey.Space);
+        CommandActivator onSpace = new KeyActivator(KKey.Space, OneTimeOnPressSpace);
 
         // One time bind for space, lambda expression indicates that the activator is discarded after execution
         onSpace.RegisterDynamicActivator(() => true);

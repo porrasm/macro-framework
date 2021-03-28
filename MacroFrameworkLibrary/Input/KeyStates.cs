@@ -144,15 +144,12 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Returns true if the current keystate matches the given parameters
         /// </summary>
-        /// <param name="matchType">The match type</param>
-        /// <param name="order">Whether keyevents should be in the correct order</param>
-        /// <param name="keys">The keys to match</param>
-        /// <returns></returns>
-        public static bool IsMatchingKeyState(KeyMatchType matchType, KeyPressOrder order, params KKey[] keys) {
-            if (matchType == KeyMatchType.ExactKeyMatch) {
-                return IsExactKeyMatch(order, keys);
+        /// <param name="bind">The bind to check</param>
+        public static bool IsBindActive(Bind bind) {
+            if (bind.Settings.MatchType == KeyMatchType.ExactKeyMatch) {
+                return IsExactKeyMatch(bind.Settings.Order, bind.Keys);
             } else {
-                return IsPressingKeys(order, keys);
+                return IsPressingKeys(bind.Settings.Order, bind.Keys);
             }
         }
 

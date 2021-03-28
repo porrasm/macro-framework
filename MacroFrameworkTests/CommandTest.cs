@@ -556,7 +556,7 @@ namespace MacroFrameworkTests {
 
             activator.AddActivator(new TextActivator(RegexTest1, new Regex("regex [a-z]+$")));
 
-            activator.AddActivator(new KeyActivator(KeyEventForK, KKey.K));
+            activator.AddActivator(new KeyActivator(KKey.K, KeyEventForK));
 
             bindActivator = new BindActivator(BindActivatorTest, Keys(KKey.F1, KKey.F2, KKey.F3));
             activator.AddActivator(bindActivator);

@@ -19,26 +19,22 @@ namespace MacroFramework.Commands {
         /// <param name="delay">Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="MacroSettings.MainLoopTimestep"/></param>
         /// <param name="callAtStart">If true the command is called on the first update loop</param>
         /// <param name="unit">The unit of time used</param>
-        public TimerActivator(Command.CommandCallback command, int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart = false) : base(command) {
-            this.delay = ToMilliseconds(delay, unit);
-            if (!callAtStart) {
-                lastExecute = Timer.Milliseconds;
-            }
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="TimerActivator"/> instance
-        /// </summary>
-        /// <param name="delay">Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="MacroSettings.MainLoopTimestep"/></param>
-        /// <param name="callAtStart">If true the command is called on the first update loop</param>
-        /// <param name="unit">The unit of time used</param>
-        public TimerActivator(int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart = false) : base(null) {
+        public TimerActivator(int delay, TimeUnit unit = TimeUnit.Seconds, bool callAtStart = false, Command.CommandCallback command = null) : base(command) {
             this.delay = ToMilliseconds(delay, unit);
             if (!callAtStart) {
                 lastExecute = Timer.Milliseconds;
             }
         }
         #endregion
+
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public TimerActivator SetCallback(Command.CommandCallback cb) {
+            CommandCallback = cb;
+            return this;
+        }
 
         protected override bool IsActivatorActive() {
             return Timer.PassedFrom(lastExecute) >= delay;

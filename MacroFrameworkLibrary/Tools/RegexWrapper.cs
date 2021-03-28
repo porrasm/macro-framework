@@ -35,5 +35,13 @@ namespace MacroFramework.Tools {
         public static implicit operator RegexWrapper(Regex r) {
             return new RegexWrapper(r);
         }
+
+        /// <summary>
+        /// Syntactit sugar for array creation
+        /// </summary>
+        /// <param name="wrappers"></param>
+        public static RegexWrapper[] Wrap(params RegexWrapper[] wrappers) {
+            return wrappers;
+        }
     }
 }

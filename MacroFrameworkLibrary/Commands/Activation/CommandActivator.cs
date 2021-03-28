@@ -18,7 +18,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The current callback of this activator
         /// </summary>
-        internal Command.CommandCallback CommandCallback { get; private set; }
+        internal Command.CommandCallback CommandCallback { get; set; }
 
         /// <summary>
         /// Initializes this activator with a callback

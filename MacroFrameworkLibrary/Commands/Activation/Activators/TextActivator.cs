@@ -21,30 +21,47 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="command">The command callback</param>
         /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
-        public TextActivator(Command.CommandCallback command, params RegexWrapper[] matchers) : base(command) {
+        /// <param name="command">The command callback</param>
+        public TextActivator(RegexWrapper[] matchers, Command.CommandCallback command) : base(command) {
             Init(matchers);
         }
 
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
+        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         /// <param name="command">The text command callback</param>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
-        public TextActivator(TextCommandCallback command, params RegexWrapper[] matchers) : base(WrapTextCommand(command)) {
+        public TextActivator(RegexWrapper[] matchers, TextCommandCallback command) : base(WrapTextCommand(command)) {
             Init(matchers);
         }
 
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="command">The command callback</param>
         /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         public TextActivator(params RegexWrapper[] matchers) : base(null) {
             Init(matchers);
         }
         #endregion
+
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public TextActivator SetCallback(Command.CommandCallback cb) {
+            CommandCallback = cb;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public TextActivator SetCallback(TextCommandCallback cb) {
+            CommandCallback = WrapTextCommand(cb);
+            return this;
+        }
 
         private void Init(params RegexWrapper[] matchers) {
             if (matchers == null || matchers.Length == 0) {

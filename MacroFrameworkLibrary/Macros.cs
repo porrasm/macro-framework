@@ -55,11 +55,6 @@ namespace MacroFramework {
         public static VoidDelegate OnMainLoop { get; set; }
 
         /// <summary>
-        /// Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="MainThread"/>.
-        /// </summary>
-        public static VoidDelegate AfterState { get; private set; }
-
-        /// <summary>
         /// Callback used to catch exceptions globally
         /// </summary>
         /// <param name="sender">The object that raised the event</param>
@@ -84,7 +79,11 @@ namespace MacroFramework {
         /// </summary>
         /// <param name="setup">The setup options</param>
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
-        public static void Start(Setup setup, bool runInLimitedMode = false) {
+        /// <param name="afterStart">Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="MainThread"/>.</param>
+        public static void Start(Setup setup, bool runInLimitedMode = false, VoidDelegate afterStart = null) {
+            if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA) {
+                throw new Exception("MacroFramwork must be started on an STA thread. See the [STAThread] attribute.");
+            }
             if (State != RunState.NotRunning) {
                 return;
             }

@@ -7,7 +7,7 @@ public class BindAndKeyActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new KeyActivator(OnPressSpacebar, KKey.Space));
+        activator.AddActivator(new KeyActivator(KKey.Space, OnPressSpacebar));
 
         // Defaults to ordered press of [A, B, C] and then releasing any key.
         activator.AddActivator(new BindActivator(OnReleaseABC, Keys(KKey.A, KKey.B, KKey.C)));
@@ -16,7 +16,7 @@ public class BindAndKeyActivatorExample : Command {
         activator.AddActivator(new BindActivator(OnPressABC, Keys(KKey.A, KKey.B, KKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered));
 
         // Activated when A-Z or 0-9 is pressed
-        activator.AddActivator(new KeyActivator(OnPressAlphanumeric, (e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9)));
+        activator.AddActivator(new KeyActivator((e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9), OnPressAlphanumeric));
     }
 
     [KeyActivator(KKey.Space)]

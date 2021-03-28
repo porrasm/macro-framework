@@ -24,7 +24,7 @@ namespace MacroFramework.Commands {
         }
 
         public override IActivator GetCommandActivator(Command c, MethodInfo m) {
-            return new TimerActivator(() => m.Invoke(c, null), delay, unit, callAtStart);
+            return new TimerActivator(delay, unit, callAtStart, () => m.Invoke(c, null));
         }
     }
 }

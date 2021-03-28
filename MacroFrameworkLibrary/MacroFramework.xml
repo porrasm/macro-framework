@@ -9,58 +9,364 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for keybind callbacks
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.BindActivator.ActivationType">
+        <member name="P:MacroFramework.Commands.BindActivator.Bind">
             <summary>
-            The key event activation filter for this activator
+            The bind to use
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.BindActivator.MatchType">
-            <summary>
-            The key match filter for this activator
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.BindActivator.Order">
-            <summary>
-            The key order filter for this activator
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.BindActivator.Keys">
-            <summary>
-            The keys which need to be pressed
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.KKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Bind)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
-            <param name="command">The callback to be called when this activator becomes active</param>
-            <param name="keys"><see cref="P:MacroFramework.Commands.BindActivator.Keys"/></param>
-            <param name="activationType">see<see cref="P:MacroFramework.Commands.BindActivator.ActivationType"/></param>
-            <param name="matchType"><see cref="P:MacroFramework.Commands.BindActivator.MatchType"/></param>
-            <param name="order"><see cref="P:MacroFramework.Commands.BindActivator.Order"/></param>
+            <param name="bind">The bind to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.KKey[],MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Bind,MacroFramework.Commands.Command.CommandCallback)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
-            <param name="keys"><see cref="P:MacroFramework.Commands.BindActivator.Keys"/></param>
-            <param name="activationType">see<see cref="P:MacroFramework.Commands.BindActivator.ActivationType"/></param>
-            <param name="matchType"><see cref="P:MacroFramework.Commands.BindActivator.MatchType"/></param>
-            <param name="order"><see cref="P:MacroFramework.Commands.BindActivator.Order"/></param>
+            <param name="bind">The bind to use</param>
+            <param name="callback">The callback to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.BindActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
         </member>
         <member name="T:MacroFramework.Commands.BindHoldActivator">
             <summary>
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for keybind hold callbacks. Provides more detailed events than a regular <see cref="T:MacroFramework.Commands.BindActivator"/>
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.BindActivator,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="P:MacroFramework.Commands.BindHoldActivator.Bind">
+            <summary>
+            The bind to use
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindHoldActivator.OnActivate">
+            <summary>
+            Called when the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> becomes active. Called before <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/> and <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindHoldActivator.OnUpdate">
+            <summary>
+            Called on each main loop iteration for as long as the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> stays active. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and before <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate">
+            <summary>
+            Called when the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> becomes inactive. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindHoldActivator"/> instance
             </summary>
-            <param name="bindActivator">The tem</param>
-            <param name="onUpdate"></param>
-            <param name="onActivate"></param>
-            <param name="onDeactivate"></param>
+            <param name="bind">The bind to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.BindHoldActivator"/> instance
+            </summary>
+            <param name="bind">The bind to use</param>
+            <param name="onActivate"><see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/></param>
+            <param name="onUpdate"><see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/></param>
+            <param name="onDeactivate"><see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/></param>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnActivate(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/>
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnUpdate(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnDeactivate(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for key event callbacks
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator.InputEventCallback">
+            <summary>
+            The delegate for a key event callback
+            </summary>
+            <param name="k"></param>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator.KeyEventCallback">
+            <summary>
+            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.KeyEvent"/>
+            </summary>
+            <param name="k"></param>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator.MouseEventCallback">
+            <summary>
+            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.MouseEvent"/>
+            </summary>
+            <param name="k"></param>
+        </member>
+        <member name="T:MacroFramework.Commands.KeyActivator.InputFilter">
+            <summary>
+            Filter to use with the activator
+            </summary>
+            <param name="e">Incoming input event</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KKey,MacroFramework.Commands.KeyActivator.InputEventCallback)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="key">The key for which you wish to receive callbacks on</param>
+            <param name="callback">The key event callback</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputFilter,MacroFramework.Commands.KeyActivator.InputEventCallback)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
+            <param name="callback">The key event callback</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KKey)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="key">The key for which you wish to receive callbacks on</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputFilter)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
+            </summary>
+            <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
+        </member>
+        <member name="M:MacroFramework.Commands.KeyActivator.SetCallback(MacroFramework.Commands.KeyActivator.InputEventCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="T:MacroFramework.Commands.RepeatActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for repeating activators (e.g. double click). Requires that you set <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/> low enough.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatInterval">
+            <summary>
+            The interval in milliseconds deciding how quickly the activator should be active again. Default = 400ms
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatCount">
+            <summary>
+            The amount of times the activator should be activated. Default = 2
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.DisallowExtraRepeats">
+            <summary>
+            If true, the repeat activator is activated if the repeat count is exactly <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatCount"/>. Default = true
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.ActivateImmediately">
+            <summary>
+            Whether to activate the activator immediately or wait until <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatInterval"/> expires. Default = false
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.RepeatActivator.OnEachActivate">
+            <summary>
+            This delegate is called each time the associated activator activates
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.RepeatActivator.#ctor(MacroFramework.Commands.IActivator,MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.RepeatActivator"/> instance
+            </summary>
+            <param name="activator">The activator to use</param>
+            <param name="callback">The callback to execute</param>
+        </member>
+        <member name="M:MacroFramework.Commands.RepeatActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="T:MacroFramework.Commands.TextActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for text command callbacks
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.TextActivator.TextCommandCallback">
+            <summary>
+            Callback for text commands
+            </summary>
+            <param name="command">The command which is being executed</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[],MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
+            </summary>
+            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
+            <param name="command">The command callback</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[],MacroFramework.Commands.TextActivator.TextCommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
+            </summary>
+            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
+            <param name="command">The text command callback</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
+            </summary>
+            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(MacroFramework.Commands.TextActivator.TextCommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="T:MacroFramework.Commands.TimerActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for timer based actions
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean,MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.TimerActivator"/> instance
+            </summary>
+            <param name="command">Callback</param>
+            <param name="delay">Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
+            <param name="callAtStart">If true the command is called on the first update loop</param>
+            <param name="unit">The unit of time used</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TimerActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.TimerActivator.ToMilliseconds(System.Int64,MacroFramework.Commands.TimeUnit)">
+            <summary>
+            Converts given time unit to milliseconds
+            </summary>
+            <param name="time"></param>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MacroFramework.Commands.WrapperActivator">
+            <summary>
+            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for wrapping multiple activators
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.WrapperActivator.ActiveActivators">
+            <summary>
+            The list of active <see cref="T:MacroFramework.Commands.IActivator"/> instances
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.IActivator[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
+            </summary>
+            <param name="callback">The callback to use</param>
+            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.IActivator[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
+            </summary>
+            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.WrapperActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+            <summary>
+            Sets the callback for this activator
+            </summary>
+            <param name="cb">The callback to use</param>
+        </member>
+        <member name="T:MacroFramework.Commands.Bind">
+            <summary>
+            Class used to different types define keyevent combinations
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Bind.Keys">
+            <summary>
+            The keys which need to be pressed
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Bind.Settings">
+            <summary>
+            The settings to use for this bind
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Bind.#ctor(MacroFramework.Commands.BindSettings,MacroFramework.Commands.KKey[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Bind"/> instance
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Bind.#ctor(MacroFramework.Commands.KKey[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Bind"/> instance
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.BindSettings">
+            <summary>
+            A settings class used to define the behaviour of a <see cref="T:MacroFramework.Commands.Bind"/>
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindSettings.ActivationType">
+            <summary>
+            The key event activation filter for this activator
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindSettings.MatchType">
+            <summary>
+            The key match filter for this activator
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.BindSettings.Order">
+            <summary>
+            The key order filter for this activator
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.BindSettings.#ctor(MacroFramework.Commands.ActivationEventType,MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Bind"/> instance
+            </summary>
+            <param name="activationType">The key event activation filter for this activator</param>
+            <param name="matchType">The key match filter for this activator</param>
+            <param name="order">The key order filter for this activator</param>
+        </member>
+        <member name="F:MacroFramework.Commands.BindSettings.Default">
+            <summary>
+            The default settings for a bind. Sufficient for the majority of binds. Only the defined keys can be pressed and in order. Activated when the last key of the bind is released. 
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.BindSettings.OnFirstReleaseUnordered">
+            <summary>
+            Only the defined keys can be pressed in any order. Activated when the last key of the bind is released. 
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.BindSettings.OnPress">
+            <summary>
+            Only the defined keys can be pressed and in order. Activated when the last key of the bind is pressed down.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.BindSettings.OnPressUnordered">
+            <summary>
+            Only the defined keys can be pressed and in order. Activated when the last key of the bind is pressed down.
+            </summary>
         </member>
         <member name="T:MacroFramework.Commands.CommandActivator">
             <summary>
@@ -235,183 +541,6 @@
             Indicates whether the activator should be removed from the list of active activators. If this returns true the activator is removed after execution.
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.KeyActivator">
-            <summary>
-            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for key event callbacks
-            </summary>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.InputEventCallback">
-            <summary>
-            The delegate for a key event callback
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.KeyEventCallback">
-            <summary>
-            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.KeyEvent"/>
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.MouseEventCallback">
-            <summary>
-            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.MouseEvent"/>
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.InputFilter">
-            <summary>
-            Filter to use with the activator
-            </summary>
-            <param name="e">Incoming input event</param>
-        </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputEventCallback,MacroFramework.Commands.KKey)">
-            <summary>
-            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
-            </summary>
-            <param name="callback">The key event callback</param>
-            <param name="key">The key for which you wish to receive callbacks on</param>
-        </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputEventCallback,MacroFramework.Commands.KeyActivator.InputFilter)">
-            <summary>
-            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
-            </summary>
-            <param name="callback">The key event callback</param>
-            <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
-        </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KKey)">
-            <summary>
-            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
-            </summary>
-            <param name="key">The key for which you wish to receive callbacks on</param>
-        </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputFilter)">
-            <summary>
-            Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
-            </summary>
-            <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
-        </member>
-        <member name="T:MacroFramework.Commands.RepeatActivator">
-            <summary>
-            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for repeating activators (e.g. double click). Requires that you set <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/> low enough.
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatInterval">
-            <summary>
-            The interval in milliseconds deciding how quickly the activator should be active again. Default = 400ms
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.RepeatActivator.RepeatCount">
-            <summary>
-            The amount of times the activator should be activated. Default = 2
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.RepeatActivator.DisallowExtraRepeats">
-            <summary>
-            If true, the repeat activator is activated if the repeat count is exactly <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatCount"/>. Default = true
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.RepeatActivator.ActivateImmediately">
-            <summary>
-            Whether to activate the activator immediately or wait until <see cref="P:MacroFramework.Commands.RepeatActivator.RepeatInterval"/> expires. Default = false
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.RepeatActivator.OnEachActivate">
-            <summary>
-            This delegate is called each time the associated activator activates
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.RepeatActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.IActivator)">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.RepeatActivator"/> instance
-            </summary>
-            <param name="callback">The callback to execute</param>
-            <param name="activator">The activator to use</param>
-        </member>
-        <member name="T:MacroFramework.Commands.TextActivator">
-            <summary>
-            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for text command callbacks
-            </summary>
-        </member>
-        <member name="T:MacroFramework.Commands.TextActivator.TextCommandCallback">
-            <summary>
-            Callback for text commands
-            </summary>
-            <param name="command">The command which is being executed</param>
-        </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Tools.RegexWrapper[])">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
-            </summary>
-            <param name="command">The command callback</param>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
-        </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.TextActivator.TextCommandCallback,MacroFramework.Tools.RegexWrapper[])">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
-            </summary>
-            <param name="command">The text command callback</param>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
-        </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[])">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
-            </summary>
-            <param name="command">The command callback</param>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
-        </member>
-        <member name="T:MacroFramework.Commands.TimerActivator">
-            <summary>
-            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for timer based actions
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.TimerActivator"/> instance
-            </summary>
-            <param name="command">Callback</param>
-            <param name="delay">Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
-            <param name="callAtStart">If true the command is called on the first update loop</param>
-            <param name="unit">The unit of time used</param>
-        </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.TimerActivator"/> instance
-            </summary>
-            <param name="delay">Minimum delay between the end of last execution and the beginning of a new one. If 0 the callback is called at at every update loop, see <see cref="F:MacroFramework.MacroSettings.MainLoopTimestep"/></param>
-            <param name="callAtStart">If true the command is called on the first update loop</param>
-            <param name="unit">The unit of time used</param>
-        </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.ToMilliseconds(System.Int64,MacroFramework.Commands.TimeUnit)">
-            <summary>
-            Converts given time unit to milliseconds
-            </summary>
-            <param name="time"></param>
-            <param name="unit"></param>
-            <returns></returns>
-        </member>
-        <member name="T:MacroFramework.Commands.WrapperActivator">
-            <summary>
-            <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for wrapping multiple activators
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.WrapperActivator.ActiveActivators">
-            <summary>
-            The list of active <see cref="T:MacroFramework.Commands.IActivator"/> instances
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.IActivator[])">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
-            </summary>
-            <param name="callback">The callback to use</param>
-            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
-        </member>
-        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.IActivator[])">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
-            </summary>
-            <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
-        </member>
         <member name="T:MacroFramework.Commands.ActivatorAttribute">
             <summary>
             The base class for all <see cref="T:MacroFramework.Commands.IActivator"/> attributes
@@ -440,10 +569,10 @@
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance at the start of the application from this method
             </summary>
-            <param name="activationType"><see cref="P:MacroFramework.Commands.BindActivator.ActivationType"/></param>
-            <param name="matchType"><see cref="P:MacroFramework.Commands.BindActivator.MatchType"/></param>
-            <param name="order"><see cref="P:MacroFramework.Commands.BindActivator.Order"/></param>
-            <param name="keys"><see cref="P:MacroFramework.Commands.BindActivator.Keys"/></param>
+            <param name="activationType"><see cref="!:BindActivator.ActivationType"/></param>
+            <param name="matchType"><see cref="!:BindActivator.MatchType"/></param>
+            <param name="order"><see cref="!:BindActivator.Order"/></param>
+            <param name="keys"><see cref="!:BindActivator.Keys"/></param>
         </member>
         <member name="T:MacroFramework.Commands.KeyActivatorAttribute">
             <summary>
@@ -684,12 +813,12 @@
         </member>
         <member name="F:MacroFramework.Commands.KeyPressOrder.Ordered">
             <summary>
-            The <see cref="T:MacroFramework.Commands.BindActivator"/> will only activate if <see cref="P:MacroFramework.Commands.BindActivator.Keys"/> are pressed in order
+            The <see cref="T:MacroFramework.Commands.BindActivator"/> will only activate if <see cref="!:BindActivator.Keys"/> are pressed in order
             </summary>
         </member>
         <member name="F:MacroFramework.Commands.KeyPressOrder.Unordered">
             <summary>
-            The <see cref="T:MacroFramework.Commands.BindActivator"/> will activate if <see cref="P:MacroFramework.Commands.BindActivator.Keys"/> are pressed in any order
+            The <see cref="T:MacroFramework.Commands.BindActivator"/> will activate if <see cref="!:BindActivator.Keys"/> are pressed in any order
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.TimeUnit">
@@ -1281,14 +1410,11 @@
             Temporary solution for possible state mismatch due to lag/exceptions
             </summary>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.IsMatchingKeyState(MacroFramework.Commands.KeyMatchType,MacroFramework.Commands.KeyPressOrder,MacroFramework.Commands.KKey[])">
+        <member name="M:MacroFramework.Input.KeyStates.IsBindActive(MacroFramework.Commands.Bind)">
             <summary>
             Returns true if the current keystate matches the given parameters
             </summary>
-            <param name="matchType">The match type</param>
-            <param name="order">Whether keyevents should be in the correct order</param>
-            <param name="keys">The keys to match</param>
-            <returns></returns>
+            <param name="bind">The bind to check</param>
         </member>
         <member name="M:MacroFramework.Input.KeyStates.GetCurrentActivationEventType(System.Boolean)">
             <summary>
@@ -2242,11 +2368,6 @@
             The delegate which is called at the start of every main loop iteration
             </summary>
         </member>
-        <member name="P:MacroFramework.Macros.AfterState">
-            <summary>
-            Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="P:MacroFramework.Macros.MainThread"/>.
-            </summary>
-        </member>
         <member name="T:MacroFramework.Macros.ExceptionCallback">
             <summary>
             Callback used to catch exceptions globally
@@ -2261,12 +2382,13 @@
             Called on any exception which was not caught by a trycatch clause
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean)">
+        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,MacroFramework.Macros.VoidDelegate)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
             </summary>
             <param name="setup">The setup options</param>
             <param name="runInLimitedMode">If true the application is set to <see cref="F:MacroFramework.Macros.RunState.RunningInLimitedMode"/></param>
+            <param name="afterStart">Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="P:MacroFramework.Macros.MainThread"/>.</param>
         </member>
         <member name="M:MacroFramework.Macros.Stop">
             <summary>
@@ -2440,6 +2562,12 @@
             <summary>
             A simple wrapper class for Regexes. You can implicitly create a RegexWrapper instance from a string or a Regex.
             </summary>
+        </member>
+        <member name="M:MacroFramework.Tools.RegexWrapper.Wrap(MacroFramework.Tools.RegexWrapper[])">
+            <summary>
+            Syntactit sugar for array creation
+            </summary>
+            <param name="wrappers"></param>
         </member>
         <member name="T:MacroFramework.Tools.Timer">
             <summary>

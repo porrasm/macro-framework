@@ -40,9 +40,9 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
-        /// <param name="callback">The key event callback</param>
         /// <param name="key">The key for which you wish to receive callbacks on</param>
-        public KeyActivator(InputEventCallback callback, KKey key) : base(null) {
+        /// <param name="callback">The key event callback</param>
+        public KeyActivator(KKey key, InputEventCallback callback) : base(null) {
             this.keyFilter = (e) => e.Key == key;
             this.cb = callback;
         }
@@ -50,9 +50,9 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
-        /// <param name="callback">The key event callback</param>
         /// <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
-        public KeyActivator(InputEventCallback callback, InputFilter keyFilter) : base(null) {
+        /// <param name="callback">The key event callback</param>
+        public KeyActivator(InputFilter keyFilter, InputEventCallback callback) : base(null) {
             this.keyFilter = keyFilter;
             this.cb = callback;
         }
@@ -73,6 +73,15 @@ namespace MacroFramework.Commands {
             this.keyFilter = keyFilter;
         }
         #endregion
+
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public KeyActivator SetCallback(InputEventCallback cb) {
+            this.cb = cb;
+            return this;
+        }
 
         protected override bool IsActivatorActive() {
             return keyFilter(InputEvents.CurrentInputEvent);

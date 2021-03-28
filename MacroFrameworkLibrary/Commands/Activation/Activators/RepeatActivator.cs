@@ -48,13 +48,22 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a new <see cref="RepeatActivator"/> instance
         /// </summary>
-        /// <param name="callback">The callback to execute</param>
         /// <param name="activator">The activator to use</param>
-        public RepeatActivator(Command.CommandCallback callback, IActivator activator) : base(callback) {
+        /// <param name="callback">The callback to execute</param>
+        public RepeatActivator(IActivator activator, Command.CommandCallback callback = null) : base(callback) {
             this.activator = activator;
             dynamicActivator = new DynamicActivator(activator, false);
             dynamicActivator.OnExecute = OnLocalActivatorActive;
             CommandContainer.AddDynamicActivator(dynamicActivator);
+        }
+
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public RepeatActivator SetCallback(Command.CommandCallback cb) {
+            CommandCallback = cb;
+            return this;
         }
 
         private void OnLocalActivatorActive() {

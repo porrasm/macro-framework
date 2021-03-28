@@ -36,6 +36,15 @@ namespace MacroFramework.Commands {
             }
         }
 
+        /// <summary>
+        /// Sets the callback for this activator
+        /// </summary>
+        /// <param name="cb">The callback to use</param>
+        public WrapperActivator SetCallback(Command.CommandCallback cb) {
+            CommandCallback = cb;
+            return this;
+        }
+
         protected override bool IsActivatorActive() {
             foreach (IActivator act in ActiveActivators) {
                 if (act.IsActive()) {

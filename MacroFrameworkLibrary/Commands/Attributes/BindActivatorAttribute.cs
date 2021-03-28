@@ -41,9 +41,9 @@ namespace MacroFramework.Commands {
 
         public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
             if (useDefaults) {
-                return new BindActivator(() => assignedMethod.Invoke(command, null), keys);
+                return new BindActivator(new Bind(keys), () => assignedMethod.Invoke(command, null));
             }
-            return new BindActivator(() => assignedMethod.Invoke(command, null), keys, activationType: activationType, matchType: matchType, order: order);
+            return new BindActivator(new Bind(new BindSettings(activationType: activationType, matchType: matchType, order: order), keys), () => assignedMethod.Invoke(command, null));
         }
     }
 }
