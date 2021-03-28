@@ -19,19 +19,25 @@ namespace MacroFrameworkTests {
         private static KKey commandActivateKey = KKey.Enter;
         private static int textCommandTimeout = 100;
         private static int mainLoopTimeStep = 15;
+        private static bool ThreadStarted = false;
 
         #region initialize and cleanup
         [ClassInitialize]
         public static void Initialize(TestContext c) {
+            Console.WriteLine("Initialize");
             t = new Thread(ProgramMain);
+            t.SetApartmentState(ApartmentState.STA);
             t.Start();
             // Give time for app to start
             Thread.Sleep(100);
+            Console.WriteLine("Start tests: " + ThreadStarted);
         }
 
-        [STAThread]
         private static void ProgramMain() {
+            ThreadStarted = true;
+            Console.WriteLine("Start program");
             Macros.Start(new TestSetup());
+            Console.WriteLine("Program end");
         }
 
         class TestSetup : Setup {
@@ -50,6 +56,7 @@ namespace MacroFrameworkTests {
             }
 
             protected override List<Command> GetActiveCommands() {
+                Console.WriteLine("Get commands");
                 var commands = new List<Command>();
                 commands.Add(command = new CommandTestCommandClass());
                 return commands;
@@ -473,9 +480,9 @@ namespace MacroFrameworkTests {
         }
         private void SetBindActivator(ActivationEventType e, KeyMatchType m, KeyPressOrder o) {
             command.bindActivatorValue = 0;
-            command.bindActivator.ActivationType = e;
-            command.bindActivator.MatchType = m;
-            command.bindActivator.Order = o;
+            command.bindActivator.Bind.Settings.ActivationType = e;
+            command.bindActivator.Bind.Settings.MatchType = m;
+            command.bindActivator.Bind.Settings.Order = o;
         }
         private void ExpectBind(int val) {
             MainLoopTimeout();
@@ -547,18 +554,18 @@ namespace MacroFrameworkTests {
         protected override void InitializeActivators(out CommandActivatorGroup activator) {
             activator = new CommandActivatorGroup(this);
             InitializeRan = true;
-            activator.Add(new TimerActivator(TimerActivatorTestOnStartCount, 500, TimeUnit.Milliseconds, true));
-            activator.Add(new TimerActivator(TimerActivatorTestNotOnStartCount, 500, TimeUnit.Milliseconds, false));
+            activator.Add(new TimerActivator(500, TimeUnit.Milliseconds, true, TimerActivatorTestOnStartCount));
+            activator.Add(new TimerActivator(500, TimeUnit.Milliseconds, false, TimerActivatorTestNotOnStartCount));
 
 
-            activator.Add(new TextActivator(TextCommandASDRan, "asd"));
-            activator.Add(new TextActivator(TextCommandASDRan2, "asd2"));
+            activator.Add(new TextActivator("asd", TextCommandASDRan));
+            activator.Add(new TextActivator("asd2", TextCommandASDRan2));
 
-            activator.Add(new TextActivator(RegexTest1, new Regex("regex [a-z]+$")));
+            activator.Add(new TextActivator(new Regex("regex [a-z]+$"), RegexTest1));
 
             activator.Add(new KeyActivator(KKey.K, KeyEventForK));
 
-            bindActivator = new BindActivator(BindActivatorTest, Keys(KKey.F1, KKey.F2, KKey.F3));
+            bindActivator = new BindActivator(new Bind(KKey.F1, KKey.F2, KKey.F3), BindActivatorTest);
             activator.Add(bindActivator);
         }
 

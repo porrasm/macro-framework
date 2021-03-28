@@ -25,6 +25,16 @@ namespace MacroFramework.Commands {
             Deinitialize();
         }
 
+        internal static void Start() {
+            Initialize();
+            ForEveryCommand((c) => c.OnStart(), "OnStart");
+        }
+
+        internal static void Exit() {
+            ForEveryCommand((c) => c.OnClose(), "OnClose");
+            Deinitialize();
+        }
+
         private static void Initialize() {
             List<Command> setupCommands = Setup.Instance.GetActiveCommands();
             if (Setup.Instance.CommandAssembly != null && setupCommands == null) {
@@ -92,7 +102,7 @@ namespace MacroFramework.Commands {
             try {
                 activator.Execute();
             } catch (Exception e) {
-                Console.WriteLine($"Error on {activator.Owner?.GetType()} Execute: {e.Message}");
+                Logger.Exception(e, "ExecuteActivator");
             }
         }
 
@@ -115,7 +125,7 @@ namespace MacroFramework.Commands {
                     try {
                         task.Execute();
                     } catch (Exception e) {
-                        Console.WriteLine($"Error on task finish, {task.Activator.Owner?.GetType()} Execute: {e.Message}");
+                        Logger.Exception(e, $"Error on task finish, {task.Activator.Owner?.GetType()}");
                     }
                     if (task.RemoveAfterExecution()) {
                         RemoveFromList(acts, ref i);
@@ -128,15 +138,7 @@ namespace MacroFramework.Commands {
             index--;
         }
 
-        internal static void Exit() {
-            ForEveryCommand((c) => c.OnClose(), "OnClose");
-            Deinitialize();
-        }
-
-        internal static void Start() {
-            Initialize();
-            ForEveryCommand((c) => c.OnStart(), "OnStart");
-        }
+        
 
         /// <summary>
         /// Adds a command to the active command pool

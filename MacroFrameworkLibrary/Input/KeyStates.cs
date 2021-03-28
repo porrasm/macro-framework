@@ -200,19 +200,16 @@ namespace MacroFramework.Input {
             return keyDown[key].globalIndex > keyUp[key].globalIndex;
         }
         #endregion
-        internal static void ResetKeys() {
-            throw new NotImplementedException();
-            //List<VKey> pressedVKey = new List<VKey>();
-            //foreach (var pair in keyDown) {
-            //    if (pair.Value.globalIndex > keyUp[pair.Key].globalIndex) {
-            //        pressedVKey.Add(pair.Key);
-            //    }
-            //}
 
-            //foreach (VKey key in pressedVKey) {
-            //    WindowsInput.InputSimulator asd = new InputSimulator();
-            //    asd.Keyboard.KeyUp((VirtualKeyCode)key);
-            //}
+        /// <summary>
+        /// Resets the key states
+        /// </summary>
+        public static void ResetKeyStates() {
+            foreach (KKey key in Enum.GetValues(typeof(KKey))) {
+                MockInput input = new MockInput(key, false, InputEventType.Keyboard);
+                input.ActivationType = GetCurrentActivationEventType(false);
+                AddKeyEvent(input);
+            }
         }
 
         /// <summary>

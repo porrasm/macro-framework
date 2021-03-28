@@ -20,7 +20,7 @@ public class WindowDraggerCommand : Command {
         activator = new CommandActivatorGroup(this);
 
         // Drags a window on Ctrl+click and hold
-        activator.Add(new BindHoldActivator(new BindActivator(Keys(KKey.Ctrl, KKey.MouseLeft), ActivationEventType.OnPress), OnDragUpdate, OnDragStart, OnDragEnd));
+        activator.Add(new BindHoldActivator(new Bind(BindSettings.OnPress, KKey.Ctrl, KKey.MouseLeft), OnDragUpdate, OnDragStart, OnDragEnd));
     }
 
     /// <summary>

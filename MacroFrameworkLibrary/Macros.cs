@@ -147,7 +147,8 @@ namespace MacroFramework {
 
                 if (State == RunState.NotRunning) {
                     TryContinue();
-                } if (State == RunState.Paused) {
+                }
+                if (State == RunState.Paused) {
                     continue;
                 }
 
@@ -245,6 +246,7 @@ namespace MacroFramework {
             continueDelegate = null;
             State = RunState.Running;
             CommandContainer.ForEveryCommand((c) => c.OnResume());
+            KeyStates.ResetKeyStates();
             InputHook.StartHooks();
         }
 

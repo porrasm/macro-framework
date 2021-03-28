@@ -1446,6 +1446,11 @@
             </summary>
             <param name="bind">The bind to check</param>
         </member>
+        <member name="M:MacroFramework.Input.KeyStates.ResetKeyStates">
+            <summary>
+            Resets the key states
+            </summary>
+        </member>
         <member name="M:MacroFramework.Input.KeyStates.GetCurrentActivationEventType(System.Boolean)">
             <summary>
             Returns the current activation type parameter
