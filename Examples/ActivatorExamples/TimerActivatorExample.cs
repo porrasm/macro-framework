@@ -7,8 +7,8 @@ class TimerActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new TimerActivator(CalledEverySecond, 1, TimeUnit.Seconds));
-        activator.AddActivator(new TimerActivator(CalledEveryHourAndAtApplicationStart, 1, TimeUnit.Hours, true));
+        activator.Add(new TimerActivator(CalledEverySecond, 1, TimeUnit.Seconds));
+        activator.Add(new TimerActivator(CalledEveryHourAndAtApplicationStart, 1, TimeUnit.Hours, true));
     }
 
     [TimerActivator(1, TimeUnit.Seconds)]

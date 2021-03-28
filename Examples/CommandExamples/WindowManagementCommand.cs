@@ -14,13 +14,13 @@ public class WindomManagementCommands : Command {
         base.InitializeActivators(out activator);
 
         // Maximize window on Ctrl + double click
-        activator.AddActivator(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseLeft)), MaximizeWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
+        activator.Add(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseLeft)), MaximizeWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
 
         // Minimize window on Ctrl + click
-        activator.AddActivator(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseRight)), MinimizeWindow) { RepeatCount = 1, OnEachActivate = SetCurrentWindow });
+        activator.Add(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseRight)), MinimizeWindow) { RepeatCount = 1, OnEachActivate = SetCurrentWindow });
 
         // Close window on Ctrl + double right click
-        activator.AddActivator(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseMiddle)), CloseWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
+        activator.Add(new RepeatActivator(new BindActivator(Keys(KKey.LCtrl, KKey.MouseMiddle)), CloseWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
     }
 
     /// <summary>

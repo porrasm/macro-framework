@@ -547,19 +547,19 @@ namespace MacroFrameworkTests {
         protected override void InitializeActivators(out CommandActivatorGroup activator) {
             activator = new CommandActivatorGroup(this);
             InitializeRan = true;
-            activator.AddActivator(new TimerActivator(TimerActivatorTestOnStartCount, 500, TimeUnit.Milliseconds, true));
-            activator.AddActivator(new TimerActivator(TimerActivatorTestNotOnStartCount, 500, TimeUnit.Milliseconds, false));
+            activator.Add(new TimerActivator(TimerActivatorTestOnStartCount, 500, TimeUnit.Milliseconds, true));
+            activator.Add(new TimerActivator(TimerActivatorTestNotOnStartCount, 500, TimeUnit.Milliseconds, false));
 
 
-            activator.AddActivator(new TextActivator(TextCommandASDRan, "asd"));
-            activator.AddActivator(new TextActivator(TextCommandASDRan2, "asd2"));
+            activator.Add(new TextActivator(TextCommandASDRan, "asd"));
+            activator.Add(new TextActivator(TextCommandASDRan2, "asd2"));
 
-            activator.AddActivator(new TextActivator(RegexTest1, new Regex("regex [a-z]+$")));
+            activator.Add(new TextActivator(RegexTest1, new Regex("regex [a-z]+$")));
 
-            activator.AddActivator(new KeyActivator(KKey.K, KeyEventForK));
+            activator.Add(new KeyActivator(KKey.K, KeyEventForK));
 
             bindActivator = new BindActivator(BindActivatorTest, Keys(KKey.F1, KKey.F2, KKey.F3));
-            activator.AddActivator(bindActivator);
+            activator.Add(bindActivator);
         }
 
         #region tests

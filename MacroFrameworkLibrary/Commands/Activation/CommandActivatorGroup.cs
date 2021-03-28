@@ -12,7 +12,10 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The list of all <see cref="IActivator"/> instances owner by this class.
         /// </summary>
-        public List<IActivator> Activators { get; }
+        internal List<IActivator> Activators { get; }
+        public IActivator[] GetActivators() {
+            return Activators.ToArray();
+        }
         #endregion
 
         /// <summary>
@@ -31,7 +34,7 @@ namespace MacroFramework.Commands {
         /// Adds an activator to the group and sets the <see cref="IActivator.Owner"/> of the activator
         /// </summary>
         /// <param name="activator">The activator to add</param>
-        public void AddActivator(IActivator activator) {
+        public void Add(IActivator activator) {
             activator.Owner = owner;
             Activators.Add(activator);
         }

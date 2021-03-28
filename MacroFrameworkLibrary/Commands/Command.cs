@@ -18,8 +18,8 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Container for the set of <see cref="CommandActivator"/> instances of this command
         /// </summary>
-        protected CommandActivatorGroup commandActivators;
-        internal CommandActivatorGroup CommandActivators => commandActivators;
+        protected CommandActivatorGroup activatorGroup;
+        internal CommandActivatorGroup ActivatorGroup => activatorGroup;
 
         /// <summary>
         /// The deleget bool used to determine whether a <see cref="Command"/> instance is active
@@ -38,7 +38,7 @@ namespace MacroFramework.Commands {
         /// Creates a new <see cref="Command"/> instance
         /// </summary>
         public Command() {
-            InitializeActivators(out commandActivators);
+            InitializeActivators(out activatorGroup);
             InitializeAttributeActivators();
         }
 
@@ -46,7 +46,7 @@ namespace MacroFramework.Commands {
             try {
                 MethodInfoAttributeCont[] methods = GetAttributeMethods();
                 foreach (MethodInfoAttributeCont cont in methods) {
-                    commandActivators.AddActivator(cont.Attribute.GetCommandActivator(this, cont.Method));
+                    activatorGroup.Add(cont.Attribute.GetCommandActivator(this, cont.Method));
                 }
             } catch (Exception e) {
                 throw new Exception("Unable to load Attributes from Assembly on type " + GetType() + ", message: " + e.Message, e);
@@ -64,12 +64,12 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Abstract method for initializing <see cref="Commands.IActivator"/> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
         /// </summary>
-        protected virtual void InitializeActivators(out CommandActivatorGroup activator) {
-            activator = new CommandActivatorGroup(this);
+        protected virtual void InitializeActivators(out CommandActivatorGroup group) {
+            group = new CommandActivatorGroup(this);
         }
         #endregion
         /// <summary>
-        /// Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="CommandActivators"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
+        /// Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="ActivatorGroup"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
         /// </summary>
         /// <returns></returns>
         public CommandContext IsActive = () => true;
@@ -115,17 +115,5 @@ namespace MacroFramework.Commands {
         /// <param name="command">The text command which was executed</param>
         /// <param name="commandWasAccepted">True if any <see cref="TextActivator"/> instance executed the text command. False if command was not executed.</param>
         public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
-
-        /// <summary>
-        /// Nicer syntax for creating array of <see cref="VKey"/> elements
-        /// </summary>
-        /// <param name="keys"></param>
-        /// <returns></returns>
-        protected KKey[] Keys(params KKey[] keys) {
-            if (keys == null || keys.Length == 0) {
-                throw new Exception("You need to add 1 or more keys.");
-            }
-            return keys;
-        }
     }
 }

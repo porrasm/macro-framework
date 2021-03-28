@@ -31,6 +31,14 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
+        /// Adds this <see cref="CommandActivator"/> to a <see cref="CommandActivatorGroup"/> using <see cref="CommandActivatorGroup.Add(IActivator)"/>
+        /// </summary>
+        /// <param name="group">The group to add this to</param>
+        public void AssignTo(CommandActivatorGroup group) {
+            group.Add(this);
+        }
+
+        /// <summary>
         /// Returns true if the activator is active. Also takes into account the context of the owner: <see cref="Command.IsActive"/>
         /// </summary>
         /// <returns></returns>

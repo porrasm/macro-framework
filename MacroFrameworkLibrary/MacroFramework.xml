@@ -206,25 +206,30 @@
             </summary>
             <param name="command">The command which is being executed</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[],MacroFramework.Commands.Command.CommandCallback)">
+        <member name="P:MacroFramework.Commands.TextActivator.Settings">
+            <summary>
+            The settings to use
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,MacroFramework.Commands.Command.CommandCallback)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
             </summary>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
             <param name="command">The command callback</param>
+            <param name="settings">The settings to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[],MacroFramework.Commands.TextActivator.TextCommandCallback)">
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,MacroFramework.Commands.TextActivator.TextCommandCallback)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
             </summary>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
             <param name="command">The text command callback</param>
+            <param name="settings">The settings to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Tools.RegexWrapper[])">
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
             </summary>
-            <param name="matchers">Array of <see cref="T:MacroFramework.Tools.RegexWrapper"/> objects which are used to match text commands</param>
+            <param name="settings">The settings to use</param>
         </member>
         <member name="M:MacroFramework.Commands.TextActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
             <summary>
@@ -390,6 +395,12 @@
             <param name="command">The callback to be called when this activator becomes active</param>
             <param name="ignoreOwnerContext"><see cref="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus"/></param>
         </member>
+        <member name="M:MacroFramework.Commands.CommandActivator.AssignTo(MacroFramework.Commands.CommandActivatorGroup)">
+            <summary>
+            Adds this <see cref="T:MacroFramework.Commands.CommandActivator"/> to a <see cref="T:MacroFramework.Commands.CommandActivatorGroup"/> using <see cref="M:MacroFramework.Commands.CommandActivatorGroup.Add(MacroFramework.Commands.IActivator)"/>
+            </summary>
+            <param name="group">The group to add this to</param>
+        </member>
         <member name="M:MacroFramework.Commands.CommandActivator.IsActive">
             <summary>
             Returns true if the activator is active. Also takes into account the context of the owner: <see cref="F:MacroFramework.Commands.Command.IsActive"/>
@@ -443,7 +454,7 @@
             </summary>
             <param name="owner">The owner command class of this activator group</param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.AddActivator(MacroFramework.Commands.IActivator)">
+        <member name="M:MacroFramework.Commands.CommandActivatorGroup.Add(MacroFramework.Commands.IActivator)">
             <summary>
             Adds an activator to the group and sets the <see cref="P:MacroFramework.Commands.IActivator.Owner"/> of the activator
             </summary>
@@ -539,6 +550,32 @@
         <member name="M:MacroFramework.Commands.IDynamicActivator.RemoveAfterExecution">
             <summary>
             Indicates whether the activator should be removed from the list of active activators. If this returns true the activator is removed after execution.
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.Matchers">
+            <summary>
+            Settings class for <see cref="T:MacroFramework.Commands.TextActivator"/>
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Matchers.TextMatchers">
+            <summary>
+            The matchers to use
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Matchers.#ctor(MacroFramework.Tools.RegexWrapper[])">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Matchers"/> instance
+            </summary>
+            <param name="matchers">Matchers to use</param>
+        </member>
+        <member name="M:MacroFramework.Commands.Matchers.op_Implicit(System.String)~MacroFramework.Commands.Matchers">
+            <summary>
+            Implicit operator for <see cref="T:System.String"/>
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Matchers.op_Implicit(System.Text.RegularExpressions.Regex)~MacroFramework.Commands.Matchers">
+            <summary>
+            Implicit operator for <see cref="T:System.Text.RegularExpressions.Regex"/>
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.ActivatorAttribute">
@@ -640,7 +677,7 @@
             Callback for command actions
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Command.commandActivators">
+        <member name="F:MacroFramework.Commands.Command.activatorGroup">
             <summary>
             Container for the set of <see cref="T:MacroFramework.Commands.CommandActivator"/> instances of this command
             </summary>
@@ -668,7 +705,7 @@
         </member>
         <member name="F:MacroFramework.Commands.Command.IsActive">
             <summary>
-            Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.CommandActivators"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
+            Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
             </summary>
             <returns></returns>
         </member>
@@ -713,13 +750,6 @@
             </summary>
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
-        </member>
-        <member name="M:MacroFramework.Commands.Command.Keys(MacroFramework.Commands.KKey[])">
-            <summary>
-            Nicer syntax for creating array of <see cref="T:MacroFramework.VKey"/> elements
-            </summary>
-            <param name="keys"></param>
-            <returns></returns>
         </member>
         <member name="T:MacroFramework.Commands.CommandContainer">
             <summary>

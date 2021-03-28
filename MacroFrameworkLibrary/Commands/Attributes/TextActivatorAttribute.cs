@@ -49,7 +49,7 @@ namespace MacroFramework.Commands {
         }
 
         public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
-            return new TextActivator(GetRegexWrappers(), (s) => assignedMethod?.Invoke(command, null));
+            return new TextActivator(new Matchers(GetRegexWrappers()), (s) => assignedMethod?.Invoke(command, null));
         }
 
         private RegexWrapper[] GetRegexWrappers() {

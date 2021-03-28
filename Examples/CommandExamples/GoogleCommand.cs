@@ -18,7 +18,7 @@ public class GoogleCommand : Command {
 
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
-        activator.AddActivator(new TextActivator(GoogleSearch, googleR, googleS));
+        activator.Add(new TextActivator(GoogleSearch, googleR, googleS));
     }
 
     private void GoogleSearch(string command) {

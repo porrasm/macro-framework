@@ -8,13 +8,13 @@ class TextActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new TextActivator(OnTestCommand, "test command"));
+        activator.Add(new TextActivator(OnTestCommand, "test command"));
 
         // Multiple matchers
-        activator.AddActivator(new TextActivator(ExitApplication, "stop", "exit", "quit"));
+        activator.Add(new TextActivator(ExitApplication, "stop", "exit", "quit"));
 
         // Regex
-        activator.AddActivator(new TextActivator(PrintParameter, new Regex("print [A-Z]+")));
+        activator.Add(new TextActivator(PrintParameter, new Regex("print [A-Z]+")));
     }
 
     [TextActivator("test command", TextActivatorAttribute.MatchType.StringMatch)]

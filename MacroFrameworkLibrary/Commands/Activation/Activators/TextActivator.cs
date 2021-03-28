@@ -14,34 +14,37 @@ namespace MacroFramework.Commands {
         /// <param name="command">The command which is being executed</param>
         public delegate void TextCommandCallback(string command);
 
-        private RegexWrapper[] matchers;
+        /// <summary>
+        /// The settings to use
+        /// </summary>
+        public Matchers Settings { get; set; }
         #endregion
 
         #region constructors
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         /// <param name="command">The command callback</param>
-        public TextActivator(RegexWrapper[] matchers, Command.CommandCallback command) : base(command) {
-            Init(matchers);
+        /// <param name="settings">The settings to use</param>
+        public TextActivator(Matchers settings, Command.CommandCallback command) : base(command) {
+            this.Settings = settings;
         }
 
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
         /// <param name="command">The text command callback</param>
-        public TextActivator(RegexWrapper[] matchers, TextCommandCallback command) : base(WrapTextCommand(command)) {
-            Init(matchers);
+        /// <param name="settings">The settings to use</param>
+        public TextActivator(Matchers settings, TextCommandCallback command) : base(WrapTextCommand(command)) {
+            this.Settings = settings;
         }
 
         /// <summary>
         /// Creates a new <see cref="TextActivator"/> instance
         /// </summary>
-        /// <param name="matchers">Array of <see cref="RegexWrapper"/> objects which are used to match text commands</param>
-        public TextActivator(params RegexWrapper[] matchers) : base(null) {
-            Init(matchers);
+        /// <param name="settings">The settings to use</param>
+        public TextActivator(Matchers settings) : base(null) {
+            this.Settings = settings;
         }
         #endregion
 
@@ -63,18 +66,12 @@ namespace MacroFramework.Commands {
             return this;
         }
 
-        private void Init(params RegexWrapper[] matchers) {
-            if (matchers == null || matchers.Length == 0) {
-                throw new Exception("Matchers cannot be null or empty");
-            }
-            this.matchers = matchers;
-        }
         private static Command.CommandCallback WrapTextCommand(TextCommandCallback cb) {
             return () => cb?.Invoke(TextCommandCreator.CurrentTextCommand);
         }
 
         protected override bool IsActivatorActive() {
-            foreach (RegexWrapper m in matchers) {
+            foreach (RegexWrapper m in Settings.TextMatchers) {
                 if (TextCommands.IsMatchForCommand(m)) {
                     return true;
                 }

@@ -148,7 +148,7 @@ namespace MacroFramework.Commands {
         }
 
         private static void AddActivators(Command c) {
-            foreach (IActivator act in c.CommandActivators.Activators) {
+            foreach (IActivator act in c.ActivatorGroup.Activators) {
                 Type t = act.UpdateGroup;
                 if (staticActivators.ContainsKey(t)) {
                     staticActivators[t].Add(act);
