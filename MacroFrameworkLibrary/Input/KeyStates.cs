@@ -207,7 +207,7 @@ namespace MacroFramework.Input {
         public static void ResetKeyStates() {
             foreach (KKey key in Enum.GetValues(typeof(KKey))) {
                 MockInput input = new MockInput(key, false, InputEventType.Keyboard);
-                input.ActivationType = GetCurrentActivationEventType(false);
+                input.ActivationType = ActivationEventType.OnFirstRelease;
                 AddKeyEvent(input);
             }
         }

@@ -145,7 +145,7 @@ namespace MacroFramework {
             while (true) {
                 OnMainLoop?.Invoke();
 
-                if (State == RunState.NotRunning) {
+                if (State != RunState.Running) {
                     TryContinue();
                 }
                 if (State == RunState.Paused) {
