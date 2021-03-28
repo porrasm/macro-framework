@@ -60,15 +60,7 @@ namespace MacroFramework.Commands {
             CurrentTextCommand = s;
             CommandWasAccepted = false;
             CommandContainer.UpdateActivators<TextActivator>();
-
-            foreach (Command c in CommandContainer.Commands) {
-                try {
-                    c.OnTextCommand(s, CommandWasAccepted);
-                } catch (Exception e) {
-                    Console.WriteLine($"Error on {c.GetType()} OnTextCommand: {e.Message}");
-                }
-            }
-
+            CommandContainer.ForEveryCommand((c) => c.OnTextCommand(s, CommandWasAccepted), "OnTextCommand");
             CurrentTextCommand = null;
         }
 
@@ -76,7 +68,6 @@ namespace MacroFramework.Commands {
         /// Returns true if the command was accepted by the matcher.
         /// </summary>
         /// <param name="matcher">A regex wrapper object</param>
-        /// <param name="commandString">The command which is being executed</param>
         /// <returns></returns>
         internal static bool IsMatchForCommand(RegexWrapper matcher) {
             if (matcher.IsMatch(CurrentTextCommand)) {

@@ -13,24 +13,51 @@ namespace MacroFramework {
 
         #region fields
         /// <summary>
-        /// True if the framework is running
+        /// The different run states the application can be in
         /// </summary>
-        public static bool Running { get; private set; }
+        public enum RunState {
+            /// <summary>
+            /// The application is not running
+            /// </summary>
+            NotRunning,
+            /// <summary>
+            /// The application is running in a normal state
+            /// </summary>
+            Running,
+            /// <summary>
+            /// The application is running in limited mode in which only certain <see cref="IActivator"/> are updated. Input is disabled.
+            /// </summary>
+            RunningInLimitedMode,
+            /// <summary>
+            /// The application is paused and no <see cref="Command"/> or <see cref="IActivator"/> instances are automatically updated
+            /// </summary>
+            Paused
+        }
 
         /// <summary>
-        /// Pauses the application such that no activators are updated. Only the <see cref="OnMainLoop"/> delegate is called during pause mode.
+        /// The current state of the application
         /// </summary>
-        public static bool Paused { get; internal set; }
+        public static RunState State { get; private set; } = RunState.NotRunning;
 
         /// <summary>
         /// Void callback
         /// </summary>
-        public delegate void MainLoopCallback();
+        public delegate void VoidDelegate();
+
+        /// <summary>
+        /// Delegate used for continuing the app
+        /// </summary>
+        public delegate bool ContinueDelegate();
 
         /// <summary>
         /// The delegate which is called at the start of every main loop iteration
         /// </summary>
-        public static MainLoopCallback OnMainLoop { get; set; }
+        public static VoidDelegate OnMainLoop { get; set; }
+
+        /// <summary>
+        /// Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="MainThread"/>.
+        /// </summary>
+        public static VoidDelegate AfterState { get; private set; }
 
         /// <summary>
         /// Callback used to catch exceptions globally
@@ -45,6 +72,10 @@ namespace MacroFramework {
         /// Called on any exception which was not caught by a trycatch clause
         /// </summary>
         public static ExceptionCallback OnException { get; set; }
+
+        private static ContinueDelegate continueDelegate;
+
+        public static Thread MainThread { get; private set; }
         #endregion
 
         #region management
@@ -52,17 +83,26 @@ namespace MacroFramework {
         /// Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="STAThreadAttribute"/>.
         /// </summary>
         /// <param name="setup">The setup options</param>
-        public static void Start(Setup setup) {
-            Logger.Instance = setup.GetLogger();
-            if (Running) {
+        /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
+        public static void Start(Setup setup, bool runInLimitedMode = false) {
+            if (State != RunState.NotRunning) {
                 return;
             }
             Setup.SetInstance(setup);
-            Running = true;
+
+            if (runInLimitedMode) {
+                State = RunState.RunningInLimitedMode;
+            } else {
+                State = RunState.Running;
+                InputHook.StartHooks();
+            }
+
+            Logger.Instance = setup.GetLogger();
             InputEvents.Initialize();
-            UnpauseAndRestartHooks();
             CommandContainer.Start();
-            MainLoop();
+
+            CancellationTokenSource cancel = new CancellationTokenSource();
+            Task mainLoop = Task.Run(MainLoop, cancel.Token);
 
             // Subscriptions
             if (setup.Settings.UseGlobalExceptionHandler) {
@@ -74,6 +114,7 @@ namespace MacroFramework {
             AppDomain.CurrentDomain.ProcessExit += StopEvent;
 
             Application.Run();
+            cancel.Cancel();
         }
 
         /// <summary>
@@ -91,7 +132,7 @@ namespace MacroFramework {
 
             Application.Exit();
             Setup.SetInstance(null);
-            Running = false;
+            State = RunState.NotRunning;
         }
 
         private static void StopEvent(object o, EventArgs e) {
@@ -100,19 +141,37 @@ namespace MacroFramework {
         #endregion
 
         #region main loop
-        private static async void MainLoop() {
+        private static async Task MainLoop() {
             int timeStep = Setup.Instance.Settings.MainLoopTimestep;
-            while (Running) {
+            while (true) {
                 OnMainLoop?.Invoke();
-                InputEvents.HandleQueuedKeyevents();
+
+                if (State == RunState.NotRunning) {
+                    TryContinue();
+                } if (State == RunState.Paused) {
+                    continue;
+                }
+
+                CommandContainer.ForEveryCommand((c) => c.OnUpdate());
+
+                if (State == RunState.Running) {
+                    InputEvents.HandleQueuedKeyevents();
+                }
+
                 CommandContainer.UpdateActivators<TimerActivator>();
                 TextCommands.ExecuteTextCommandQueue();
-                await Task.Delay(Max(1, timeStep));
+                await Task.Delay(timeStep > 1 ? timeStep : 1);
             }
         }
 
-        private static int Max(int a, int b) {
-            return a > b ? a : b;
+        private static void TryContinue() {
+            try {
+                if (continueDelegate?.Invoke() ?? false) {
+                    Resume();
+                }
+            } catch (Exception e) {
+                Logger.Exception(e, "MainLoop continue delegate");
+            }
         }
         #endregion
 
@@ -153,29 +212,82 @@ namespace MacroFramework {
         }
         #endregion
 
-        #region helpers
+        #region application state
         /// <summary>
-        /// This effectively pauses the entire application by disabling input hooks and all <see cref="Command"/> and <see cref="MacroFramework.Commands.CommandActivator" /> instances. Use this method if you wish to pause all functionality. Only the <see cref="MainLoopCallback"/> and async methods which started before tha pause will run.
+        /// Set the run state of the application
         /// </summary>
-        public static void PauseAndStopHooks() {
-            Paused = true;
-            InputHook.StopHooks();
+        /// <param name="state">The state to set the application in</param>
+        /// <param name="continueDelegate">If you set the application to limited run mode or paused mode this delegate can be used to return to <see cref="RunState.Running"/> state after the delegate returns true.></param>
+        public static void SetRunState(RunState state, ContinueDelegate continueDelegate = null) {
+            switch (state) {
+                case RunState.Running:
+                    Resume();
+                    break;
+                case RunState.Paused:
+                    PauseUntil(continueDelegate);
+                    break;
+                case RunState.RunningInLimitedMode:
+                    SetLimitedModeUntil(continueDelegate);
+                    break;
+                case RunState.NotRunning:
+                    Stop();
+                    break;
+            }
         }
 
         /// <summary>
-        /// Resumes normal functionality by unpausing the application and restarting all enabled hooks.
+        /// Resumes the application
         /// </summary>
-        public static void UnpauseAndRestartHooks() {
-            Paused = false;
+        public static void Resume() {
+            if (State == RunState.Running) {
+                return;
+            }
+
+            continueDelegate = null;
+            State = RunState.Running;
+            CommandContainer.ForEveryCommand((c) => c.OnResume());
             InputHook.StartHooks();
         }
 
         /// <summary>
-        /// Setting <see cref="Paused"/> to true will disable all macro functionality. The hooks will stay on and the <see cref="MainLoopCallback"/> and <see cref="MacroFramework.Input.InputEvents.InputCallback"/> callbacks are still called as well as any async methods which which were started before tha pause.
+        /// Pauses the application. Input hooks are disabled and all events except the <see cref="OnMainLoop"/> are disabled.
         /// </summary>
-        /// <param name="paused"></param>
-        public static void SetPause(bool paused) {
-            Paused = paused;
+        public static void Pause() {
+            if (State == RunState.Paused) {
+                return;
+            }
+            State = RunState.Paused;
+            CommandContainer.ForEveryCommand((c) => c.OnPause());
+            InputHook.StopHooks();
+        }
+
+        /// <summary>
+        /// Pauses the application until a certain condition becomes true
+        /// </summary>
+        /// <param name="continueDelegate">Continuation condition delegate</param>
+        public static void PauseUntil(ContinueDelegate continueDelegate) {
+            Macros.continueDelegate = continueDelegate;
+            Pause();
+        }
+
+        /// <summary>
+        /// Pauses the application. Input hooks are disabled and all events except the <see cref="OnMainLoop"/> are disabled.
+        /// </summary>
+        public static void SetLimitedMode() {
+            if (State == RunState.RunningInLimitedMode) {
+                return;
+            }
+            State = RunState.RunningInLimitedMode;
+            InputHook.StopHooks();
+        }
+
+        /// <summary>
+        /// Pauses the application until a certain condition becomes true
+        /// </summary>
+        /// <param name="continueDelegate">Continuation condition delegate</param>
+        public static void SetLimitedModeUntil(ContinueDelegate continueDelegate) {
+            Macros.continueDelegate = continueDelegate;
+            SetLimitedMode();
         }
         #endregion
     }

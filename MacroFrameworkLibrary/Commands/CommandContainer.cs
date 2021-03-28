@@ -9,6 +9,8 @@ namespace MacroFramework.Commands {
     public static class CommandContainer {
 
         #region fields
+        public delegate void CommandIteratorDelegate(Command command);
+
         /// <summary>
         /// List of active commands. You should not modify this collection.
         /// </summary>
@@ -63,7 +65,7 @@ namespace MacroFramework.Commands {
         }
 
         private static void UpdateActivators(Type t) {
-            if (Macros.Paused) {
+            if (Macros.State == Macros.RunState.Paused) {
                 return;
             }
 
@@ -127,25 +129,13 @@ namespace MacroFramework.Commands {
         }
 
         internal static void Exit() {
-            foreach (Command c in Commands) {
-                try {
-                    c.OnClose();
-                } catch (Exception e) {
-                    Console.WriteLine($"Error on {c.GetType()} OnClose: {e.Message}");
-                }
-            }
+            ForEveryCommand((c) => c.OnClose(), "OnClose");
             Deinitialize();
         }
 
         internal static void Start() {
             Initialize();
-            foreach (Command c in Commands) {
-                try {
-                    c.OnStart();
-                } catch (Exception e) {
-                    Console.WriteLine($"Error on {c.GetType()} OnStart: {e.Message}");
-                }
-            }
+            ForEveryCommand((c) => c.OnStart(), "OnStart");
         }
 
         /// <summary>
@@ -184,18 +174,31 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Removes a <see cref="IDynamicActivator"/> instance from the active list
+        /// Executes some action for every command in a try clause
         /// </summary>
-        public static void RemoveDynamicActivator(uint id) {
+        public static void ForEveryCommand(CommandIteratorDelegate it, string errorMessage = "") {
+            foreach (Command c in Commands) {
+                try {
+                    it(c);
+                } catch (Exception e) {
+                    Logger.Exception(e, $"Error iterating command with type {c.GetType()}: {errorMessage}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Removes a <see cref="IDynamicActivator"/> instance from the active list. Returns true if the element existed and was removed.
+        /// </summary>
+        public static bool RemoveDynamicActivator(uint id) {
             foreach (var activators in dynamicActivators.Values) {
                 for (int i = 0; i < activators.Count; i++) {
                     if (activators[i].ID == id) {
                         activators.RemoveAt(i);
-                        return;
+                        return true;
                     }
                 }
             }
-            throw new Exception("Element did not exist");
+            return false;
         }
     }
 }

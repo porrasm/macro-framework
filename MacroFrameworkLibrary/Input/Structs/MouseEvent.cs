@@ -5,30 +5,30 @@ using System.Runtime.InteropServices;
 
 namespace MacroFramework.Input {
     public struct MouseEvent : IInputEvent {
-        public KKey Key { get; }
+        public KKey Key { get; set; }
 
-        public bool State { get; }
+        public bool State { get; set; }
 
         public bool Injected => flags.HasFlag(MsllFlags.Injected);
 
         public bool InjectedLower => flags.HasFlag(MsllFlags.InjectedLower);
 
-        public UIntPtr ExtraInfo { get; }
+        public UIntPtr ExtraInfo { get; set; }
 
-        public long ReceiveTimestamp { get; }
+        public long ReceiveTimestamp { get; set; }
 
-        public InputEventType Type { get; }
+        public InputEventType Type { get; set; }
 
         private MsllFlags flags;
 
-        public bool Unique { get; }
+        public bool Unique { get; set; }
 
         /// <summary>
         /// The screen coordinates in which the event occurred
         /// </summary>
-        public POINT Point { get; }
+        public POINT Point { get; set; }
 
-        public ActivationEventType ActivationType { get; }
+        public ActivationEventType ActivationType { get; set; }
 
         public MouseEvent(IntPtr wParam, IntPtr lParam) {
             ReceiveTimestamp = Timer.Milliseconds;
@@ -43,7 +43,7 @@ namespace MacroFramework.Input {
 
             Unique = KeyStates.IsUniqueEvent(k, s);
             if (k.IsStateless()) {
-                ActivationType = ActivationEventType.Any;
+                ActivationType = ActivationEventType.OnPress;
             } else {
                 ActivationType = KeyStates.GetCurrentActivationEventType(s);
             }
@@ -117,6 +117,11 @@ namespace MacroFramework.Input {
 
         public override string ToString() {
             return $"KeyEvent ({Key}, {State}, {ActivationType}, {Point})";
+        }
+
+        public IInputEvent GetCopy() {
+            MouseEvent copy = this;
+            return copy;
         }
     }
 }

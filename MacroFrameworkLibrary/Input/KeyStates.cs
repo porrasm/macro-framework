@@ -1,6 +1,7 @@
 ﻿using MacroFramework.Commands;
 using MacroFramework.Tools;
 using System;
+using System.Collections.Generic;
 
 namespace MacroFramework.Input {
     /// <summary>
@@ -22,6 +23,8 @@ namespace MacroFramework.Input {
         private static IInputEvent currentKeyEvent;
 
         private static int keyDownCount = 0;
+
+        private static Queue<IInputEvent> statelessKeysPressed;
 
         /// <summary>
         /// How many keys are held down at any given moment
@@ -51,6 +54,7 @@ namespace MacroFramework.Input {
             keyDown = new AutoDict<KKey, State>();
             keyUp = new AutoDict<KKey, State>();
             lastSafeReset = Timer.Milliseconds;
+            statelessKeysPressed = new Queue<IInputEvent>();
         }
 
         /// <summary>
@@ -67,9 +71,6 @@ namespace MacroFramework.Input {
         /// <param name="key"></param>
         /// <param name="value"></param>
         internal static void AddAbsoluteEvent(IInputEvent k) {
-            if (k.Key.IsStateless()) {
-                return;
-            }
             LastKeyEventTime = Timer.Milliseconds;
             currentKeyEvent = k;
             AbsoluteKeystates[k.Key] = k.State;
@@ -86,8 +87,8 @@ namespace MacroFramework.Input {
         }
 
         internal static void AddKeyEvent(IInputEvent k) {
-            if (k.Key.IsStateless()) {
-                return;
+            if (k.Key.IsStateless() && k.State) {
+                statelessKeysPressed.Enqueue(k);
             }
             SafeReset();
             if (!k.Unique) {
@@ -95,8 +96,6 @@ namespace MacroFramework.Input {
             }
 
             Logger.Log("Unique event: " + k);
-
-            // Bug with keydowncount
 
             if (k.State) {
                 State state = keyDown[k.Key];
@@ -108,6 +107,14 @@ namespace MacroFramework.Input {
                 SetState(ref state);
                 keyUp[k.Key] = state;
                 keyDownCount--;
+            }
+        }
+
+        internal static void CleanStatelessKeys() {
+            while (statelessKeysPressed.Count > 0) {
+                IInputEvent copy = statelessKeysPressed.Dequeue().GetCopy();
+                copy.State = false;
+                AddKeyEvent(copy);
             }
         }
 
@@ -196,7 +203,6 @@ namespace MacroFramework.Input {
             return keyDown[key].globalIndex > keyUp[key].globalIndex;
         }
         #endregion
-
         internal static void ResetKeys() {
             throw new NotImplementedException();
             //List<VKey> pressedVKey = new List<VKey>();

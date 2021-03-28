@@ -545,22 +545,37 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnExecuteStart">
             <summary>
-            Called before the execution of any <see cref="T:MacroFramework.Commands.IActivator"/> starts
+            Called before the execution of any <see cref="T:MacroFramework.Commands.IActivator"/> callback starts
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnExecutionComplete">
             <summary>
-            Called after the execution of every <see cref="T:MacroFramework.Commands.IActivator"/>
+            Called after the execution of every <see cref="T:MacroFramework.Commands.IActivator"/> callback
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnStart">
             <summary>
-            Called after <see cref="M:MacroFramework.Macros.Start(MacroFramework.Setup)"/>
+            Called after <see cref="!:Macros.Start(Setup)"/>
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.OnUpdate">
+            <summary>
+            Called on every iteration of <see cref="P:MacroFramework.Macros.OnMainLoop"/> before any <see cref="T:MacroFramework.Commands.IActivator"/> updates. Differs only in exectuion order with a <see cref="T:MacroFramework.Commands.TimerActivator"/> with a 0 as a parameter.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnClose">
             <summary>
             Called after <see cref="M:MacroFramework.Macros.Stop"/>
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.OnPause">
+            <summary>
+            Called when the framrwork is paused
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.OnResume">
+            <summary>
+            Called when the framrwork is unpaused
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnTextCommand(System.String,System.Boolean)">
@@ -611,9 +626,14 @@
             </summary>
             <param name="act">The dynamic activator to add</param>
         </member>
+        <member name="M:MacroFramework.Commands.CommandContainer.ForEveryCommand(MacroFramework.Commands.CommandContainer.CommandIteratorDelegate,System.String)">
+            <summary>
+            Executes some action for every command in a try clause
+            </summary>
+        </member>
         <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(System.UInt32)">
             <summary>
-            Removes a <see cref="T:MacroFramework.Commands.IDynamicActivator"/> instance from the active list
+            Removes a <see cref="T:MacroFramework.Commands.IDynamicActivator"/> instance from the active list. Returns true if the element existed and was removed.
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.ActivationEventType">
@@ -725,6 +745,11 @@
         <member name="P:MacroFramework.Commands.IInputEvent.Unique">
             <summary>
             Determines if the event is unique. False in the case of a key being held down.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.IInputEvent.GetCopy">
+            <summary>
+            Returns a new copy of the event
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.KKey">
@@ -989,7 +1014,6 @@
             Returns true if the command was accepted by the matcher.
             </summary>
             <param name="matcher">A regex wrapper object</param>
-            <param name="commandString">The command which is being executed</param>
             <returns></returns>
         </member>
         <member name="T:MacroFramework.ILogger">
@@ -2173,24 +2197,54 @@
             Static class used for starting the application with settings
             </summary>
         </member>
-        <member name="P:MacroFramework.Macros.Running">
+        <member name="T:MacroFramework.Macros.RunState">
             <summary>
-            True if the framework is running
+            The different run states the application can be in
             </summary>
         </member>
-        <member name="P:MacroFramework.Macros.Paused">
+        <member name="F:MacroFramework.Macros.RunState.NotRunning">
             <summary>
-            Pauses the application such that no activators are updated. Only the <see cref="P:MacroFramework.Macros.OnMainLoop"/> delegate is called during pause mode.
+            The application is not running
             </summary>
         </member>
-        <member name="T:MacroFramework.Macros.MainLoopCallback">
+        <member name="F:MacroFramework.Macros.RunState.Running">
+            <summary>
+            The application is running in a normal state
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Macros.RunState.RunningInLimitedMode">
+            <summary>
+            The application is running in limited mode in which only certain <see cref="T:MacroFramework.Commands.IActivator"/> are updated. Input is disabled.
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Macros.RunState.Paused">
+            <summary>
+            The application is paused and no <see cref="T:MacroFramework.Commands.Command"/> or <see cref="T:MacroFramework.Commands.IActivator"/> instances are automatically updated
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.State">
+            <summary>
+            The current state of the application
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Macros.VoidDelegate">
             <summary>
             Void callback
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Macros.ContinueDelegate">
+            <summary>
+            Delegate used for continuing the app
             </summary>
         </member>
         <member name="P:MacroFramework.Macros.OnMainLoop">
             <summary>
             The delegate which is called at the start of every main loop iteration
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.AfterState">
+            <summary>
+            Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="P:MacroFramework.Macros.MainThread"/>.
             </summary>
         </member>
         <member name="T:MacroFramework.Macros.ExceptionCallback">
@@ -2207,11 +2261,12 @@
             Called on any exception which was not caught by a trycatch clause
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup)">
+        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
             </summary>
             <param name="setup">The setup options</param>
+            <param name="runInLimitedMode">If true the application is set to <see cref="F:MacroFramework.Macros.RunState.RunningInLimitedMode"/></param>
         </member>
         <member name="M:MacroFramework.Macros.Stop">
             <summary>
@@ -2238,21 +2293,39 @@
             This exception was caught by the <see cref="E:System.Threading.Tasks.TaskScheduler.UnobservedTaskException"/> handler
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.PauseAndStopHooks">
+        <member name="M:MacroFramework.Macros.SetRunState(MacroFramework.Macros.RunState,MacroFramework.Macros.ContinueDelegate)">
             <summary>
-            This effectively pauses the entire application by disabling input hooks and all <see cref="T:MacroFramework.Commands.Command"/> and <see cref="T:MacroFramework.Commands.CommandActivator" /> instances. Use this method if you wish to pause all functionality. Only the <see cref="T:MacroFramework.Macros.MainLoopCallback"/> and async methods which started before tha pause will run.
+            Set the run state of the application
+            </summary>
+            <param name="state">The state to set the application in</param>
+            <param name="continueDelegate">If you set the application to limited run mode or paused mode this delegate can be used to return to <see cref="F:MacroFramework.Macros.RunState.Running"/> state after the delegate returns true.></param>
+        </member>
+        <member name="M:MacroFramework.Macros.Resume">
+            <summary>
+            Resumes the application
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.UnpauseAndRestartHooks">
+        <member name="M:MacroFramework.Macros.Pause">
             <summary>
-            Resumes normal functionality by unpausing the application and restarting all enabled hooks.
+            Pauses the application. Input hooks are disabled and all events except the <see cref="P:MacroFramework.Macros.OnMainLoop"/> are disabled.
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.SetPause(System.Boolean)">
+        <member name="M:MacroFramework.Macros.PauseUntil(MacroFramework.Macros.ContinueDelegate)">
             <summary>
-            Setting <see cref="P:MacroFramework.Macros.Paused"/> to true will disable all macro functionality. The hooks will stay on and the <see cref="T:MacroFramework.Macros.MainLoopCallback"/> and <see cref="P:MacroFramework.Input.InputEvents.InputCallback"/> callbacks are still called as well as any async methods which which were started before tha pause.
+            Pauses the application until a certain condition becomes true
             </summary>
-            <param name="paused"></param>
+            <param name="continueDelegate">Continuation condition delegate</param>
+        </member>
+        <member name="M:MacroFramework.Macros.SetLimitedMode">
+            <summary>
+            Pauses the application. Input hooks are disabled and all events except the <see cref="P:MacroFramework.Macros.OnMainLoop"/> are disabled.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Macros.SetLimitedModeUntil(MacroFramework.Macros.ContinueDelegate)">
+            <summary>
+            Pauses the application until a certain condition becomes true
+            </summary>
+            <param name="continueDelegate">Continuation condition delegate</param>
         </member>
         <member name="T:MacroFramework.MacroSettings">
             <summary>

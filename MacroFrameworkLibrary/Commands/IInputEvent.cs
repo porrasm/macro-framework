@@ -14,7 +14,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The state of the key
         /// </summary>
-        bool State { get; }
+        bool State { get; set; }
 
         /// <summary>
         /// Specifies whether the event was emitted by a process
@@ -50,5 +50,10 @@ namespace MacroFramework.Commands {
         /// Determines if the event is unique. False in the case of a key being held down.
         /// </summary>
         bool Unique { get; }
+
+        /// <summary>
+        /// Returns a new copy of the event
+        /// </summary>
+        IInputEvent GetCopy();
     }
 }

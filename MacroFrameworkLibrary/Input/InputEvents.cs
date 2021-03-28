@@ -49,7 +49,7 @@ namespace MacroFramework.Input {
                 return true;
             }
 
-            if (Macros.Paused || k.Injected || k.Key == KKey.MouseMove) {
+            if (k.Injected || k.Key == KKey.MouseMove) {
                 return false;
             }
 
@@ -80,6 +80,7 @@ namespace MacroFramework.Input {
 
         #region handle keyevents
         internal static void HandleQueuedKeyevents() {
+            KeyStates.CleanStatelessKeys();
             while (keyEventQueue.Count > 0) {
                 IInputEvent k = keyEventQueue.Dequeue();
                 HandleKeyEvent(k);
@@ -97,6 +98,7 @@ namespace MacroFramework.Input {
                 KeyStates.AddKeyEvent(k);
             }
             if (k.Unique) {
+                Logger.Log("Update binds with input event: " + k);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
             }
             if (!k.State) {
@@ -115,6 +117,10 @@ namespace MacroFramework.Input {
             }
 
             return false;
+        }
+
+        internal static void ClearEvents() {
+            keyEventQueue.Clear();
         }
         #endregion
     }

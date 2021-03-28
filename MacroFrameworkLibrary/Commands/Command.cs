@@ -49,7 +49,7 @@ namespace MacroFramework.Commands {
                     commandActivators.AddActivator(cont.Attribute.GetCommandActivator(this, cont.Method));
                 }
             } catch (Exception e) {
-                throw new Exception("Unable to load Attributes from Assembly on type " + GetType(), e);
+                throw new Exception("Unable to load Attributes from Assembly on type " + GetType() + ", message: " + e.Message, e);
             }
         }
 
@@ -75,12 +75,12 @@ namespace MacroFramework.Commands {
         public CommandContext IsActive = () => true;
 
         /// <summary>
-        /// Called before the execution of any <see cref="IActivator"/> starts
+        /// Called before the execution of any <see cref="IActivator"/> callback starts
         /// </summary>
         protected internal virtual void OnExecuteStart() { }
 
         /// <summary>
-        /// Called after the execution of every <see cref="IActivator"/>
+        /// Called after the execution of every <see cref="IActivator"/> callback
         /// </summary>
         protected internal virtual void OnExecutionComplete() { }
 
@@ -90,9 +90,24 @@ namespace MacroFramework.Commands {
         public virtual void OnStart() { }
 
         /// <summary>
+        /// Called on every iteration of <see cref="Macros.OnMainLoop"/> before any <see cref="IActivator"/> updates. Differs only in exectuion order with a <see cref="TimerActivator"/> with a 0 as a parameter.
+        /// </summary>
+        public virtual void OnUpdate() { }
+
+        /// <summary>
         /// Called after <see cref="Macros.Stop"/>
         /// </summary>
         public virtual void OnClose() { }
+
+        /// <summary>
+        /// Called when the framrwork is paused
+        /// </summary>
+        public virtual void OnPause() { }
+
+        /// <summary>
+        /// Called when the framrwork is unpaused
+        /// </summary>
+        public virtual void OnResume() { }
 
         /// <summary>
         /// This method is called whenever a text command is executed

@@ -2,6 +2,7 @@
 
 /// https://www.nuget.org/packages/WinUtilities/
 using WinUtilities;
+
 /// <summary>
 /// Allows the user to drag the window without using the top border bar
 /// </summary>
@@ -38,12 +39,13 @@ public class WindowDraggerCommand : Command {
         }
 
         // Disable maximization
-        if (window.IsMaximized) {
-            windowWasMaximized = true;
+        windowWasMaximized = window.IsMaximized;
+        if (windowWasMaximized) {
             window.Restore();
-        } else {
-            windowWasMaximized = false;
         }
+
+        // Keep window on top of everything while dragging
+        window.SetAlwaysOnTop(true);
 
         // Update mouse offset
         mousePos = Mouse.Position;
@@ -74,8 +76,8 @@ public class WindowDraggerCommand : Command {
         if (windowWasMaximized) {
             window.Maximize();
         }
+
+        window.SetAlwaysOnTop(false);
     }
-
-
     #endregion
 }

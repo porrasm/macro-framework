@@ -72,7 +72,7 @@ namespace MacroFramework.Input {
         /// Start hooking keyboard
         /// </summary>
         public static void StartKeyboardHook() {
-            if (!KeyboardHookRunning && Setup.Instance.Settings.AllowMouseHook) {
+            if (!KeyboardHookRunning && Setup.Instance.Settings.AllowKeyboardHook) {
                 Logger.Log("Hook keyboard");
                 KeyboardHook = SetHook(keyboardProc, KEYBOARD_HOOK_ID);
                 KeyboardHookRunning = true;

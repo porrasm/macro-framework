@@ -72,5 +72,10 @@ namespace MacroFramework.Input {
         public override string ToString() {
             return $"KeyEvent ({Key}, {State}, {ActivationType})";
         }
+
+        public IInputEvent GetCopy() {
+            KeyEvent copy = this;
+            return copy;
+        }
     }
 }
