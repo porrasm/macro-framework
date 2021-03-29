@@ -90,7 +90,7 @@ namespace MacroFramework.Input {
             if (k.Key.IsStateless() && k.State) {
                 statelessKeysPressed.Enqueue(k);
             }
-            SafeReset();
+            KeyDownCountReset();
             if (!k.Unique) {
                 return;
             }
@@ -121,7 +121,7 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Temporary solution for possible state mismatch due to lag/exceptions
         /// </summary>
-        private static void SafeReset() {
+        private static void KeyDownCountReset() {
             if (Timer.PassedFrom(lastSafeReset) < 5000) {
                 return;
             }

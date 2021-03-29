@@ -1,6 +1,9 @@
 ﻿using MacroFramework.Commands;
 using MacroFramework.Input;
 using System;
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,7 +73,23 @@ namespace MacroFramework {
 
         private static ContinueDelegate continueDelegate;
 
+        /// <summary>
+        /// The thread on which the event loop and <see cref="InputHook"/> runs on.
+        /// </summary>
         public static Thread MainThread { get; private set; }
+        private static ConcurrentQueue<VoidDelegate> mainThreadJobQueue = new ConcurrentQueue<VoidDelegate>();
+
+        /// <summary>
+        /// The thread on which the main loop runs on. The <see cref="Command"/> classes run on this thread.
+        /// </summary>
+        public static Thread FunctionalityThread { get; private set; }
+
+        /// <summary>
+        /// Enqueue a job here to execute some action on the <see cref="FunctionalityThread"/>. The jobs are executed in a try clause on the next main loop iteration.
+        /// </summary>
+        public static ConcurrentQueue<VoidDelegate> FunctionalityThreadJobQueue { get; private set; } = new ConcurrentQueue<VoidDelegate>();
+
+        internal static bool usingCustomEventLoop;
         #endregion
 
         #region management
@@ -79,15 +98,56 @@ namespace MacroFramework {
         /// </summary>
         /// <param name="setup">The setup options</param>
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
-        /// <param name="afterStart">Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="MainThread"/>.</param>
-        public static void Start(Setup setup, bool runInLimitedMode = false, VoidDelegate afterStart = null) {
+        /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
+        public static void Start(Setup setup, bool runInLimitedMode = false, VoidDelegate customEventLoop = null) {
             if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA) {
                 throw new Exception("MacroFramwork must be started on an STA thread. See the [STAThread] attribute.");
             }
             if (State != RunState.NotRunning) {
                 return;
             }
+            usingCustomEventLoop = customEventLoop != null;
+            InitializeApplication(setup, runInLimitedMode);
+
+            CancellationTokenSource cancel = new CancellationTokenSource();
+            FunctionalityThread = new Thread(new ThreadStart(() => {
+                Task mainLoop = Task.Run(MainLoop, cancel.Token);
+            }));
+            FunctionalityThread.SetApartmentState(ApartmentState.MTA);
+            FunctionalityThread.Start();
+
+            if (usingCustomEventLoop) {
+                customEventLoop();
+            } else {
+                RunDefaultEventLoop();
+            }
+
+            cancel.Cancel();
+            FunctionalityThread.Join();
+        }
+
+        private static void RunDefaultEventLoop() {
+            while (State != RunState.NotRunning) {
+                Application.Run();
+                while (mainThreadJobQueue.Count > 0) {
+                    try {
+                        Console.WriteLine("Executing queued job");
+                        if (mainThreadJobQueue.TryDequeue(out VoidDelegate cb)) {
+                            cb();
+                        } else {
+                            throw new Exception("Could not dequeue job");
+                        }
+                    } catch (Exception e) {
+                        Logger.Exception(e, "MainThread job");
+                    }
+                }
+            }
+        }
+
+        private static void InitializeApplication(Setup setup, bool runInLimitedMode) {
+            MainThread = Thread.CurrentThread;
             Setup.SetInstance(setup);
+            Logger.Instance = setup.GetLogger();
 
             if (runInLimitedMode) {
                 State = RunState.RunningInLimitedMode;
@@ -96,12 +156,8 @@ namespace MacroFramework {
                 InputHook.StartHooks();
             }
 
-            Logger.Instance = setup.GetLogger();
             InputEvents.Initialize();
             CommandContainer.Start();
-
-            CancellationTokenSource cancel = new CancellationTokenSource();
-            Task mainLoop = Task.Run(MainLoop, cancel.Token);
 
             // Subscriptions
             if (setup.Settings.UseGlobalExceptionHandler) {
@@ -109,11 +165,7 @@ namespace MacroFramework {
                 AppDomain.CurrentDomain.UnhandledException += UnhandledException;
                 TaskScheduler.UnobservedTaskException += UnobservedTaskException;
             }
-
             AppDomain.CurrentDomain.ProcessExit += StopEvent;
-
-            Application.Run();
-            cancel.Cancel();
         }
 
         /// <summary>
@@ -137,11 +189,28 @@ namespace MacroFramework {
         private static void StopEvent(object o, EventArgs e) {
             Stop();
         }
+
+        /// <summary>
+        /// Queues a job for the main STA thread which runs the event loop.
+        /// </summary>
+        /// <param name="action">The job to add to the queue</param>
+        public static void QueueJobOnMainThread(VoidDelegate action) {
+            Console.WriteLine("Queue main job: " + action);
+            mainThreadJobQueue.Enqueue(action);
+        }
+
+        /// <summary>
+        /// Stops the event loop using <see cref="Application.Exit"/>, executes the jobs in the queue and restarts the event loop using <see cref="Application.Run"/>.
+        /// </summary>
+        public static void ExecuteMainThreadJobs() {
+            Application.Exit();
+        }
         #endregion
 
         #region main loop
         private static async Task MainLoop() {
-            int timeStep = Setup.Instance.Settings.MainLoopTimestep;
+            // Disallow reference change
+            MacroSettings settings = Setup.Instance.Settings;
             while (true) {
                 OnMainLoop?.Invoke();
 
@@ -151,17 +220,28 @@ namespace MacroFramework {
                 if (State == RunState.Paused) {
                     continue;
                 }
-
-                CommandContainer.ForEveryCommand((c) => c.OnUpdate());
-
-                if (State == RunState.Running) {
-                    InputEvents.HandleQueuedKeyevents();
+                if (settings.KeyStateFixTimestep > 0) {
+                    ResetKeyStates();
                 }
-
-                CommandContainer.UpdateActivators<TimerActivator>();
-                TextCommands.ExecuteTextCommandQueue();
-                await Task.Delay(timeStep > 1 ? timeStep : 1);
+                UpdateCommands();
+                
+                await Task.Delay(settings.MainLoopTimestep > 1 ? settings.MainLoopTimestep : 1);
             }
+        }
+
+        private static void ResetKeyStates() {
+            // not implemented
+        }
+
+        private static void UpdateCommands() {
+            CommandContainer.ForEveryCommand((c) => c.OnUpdate());
+
+            if (State == RunState.Running) {
+                InputEvents.HandleQueuedKeyevents();
+            }
+
+            CommandContainer.UpdateActivators<TimerActivator>();
+            TextCommands.ExecuteTextCommandQueue();
         }
 
         private static void TryContinue() {
@@ -243,11 +323,14 @@ namespace MacroFramework {
                 return;
             }
 
+            Logger.Log("Resume Macros");
+
             continueDelegate = null;
             State = RunState.Running;
             CommandContainer.ForEveryCommand((c) => c.OnResume());
             KeyStates.ResetKeyStates();
-            InputHook.StartHooks();
+            QueueJobOnMainThread(() => InputHook.StartHooks());
+            ExecuteMainThreadJobs();
         }
 
         /// <summary>
@@ -257,6 +340,7 @@ namespace MacroFramework {
             if (State == RunState.Paused) {
                 return;
             }
+            Logger.Log("Pause Macros");
             State = RunState.Paused;
             CommandContainer.ForEveryCommand((c) => c.OnPause());
             InputHook.StopHooks();
@@ -278,6 +362,7 @@ namespace MacroFramework {
             if (State == RunState.RunningInLimitedMode) {
                 return;
             }
+            Logger.Log("Limit Macros");
             State = RunState.RunningInLimitedMode;
             InputHook.StopHooks();
         }

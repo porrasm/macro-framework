@@ -2417,17 +2417,43 @@
             Called on any exception which was not caught by a trycatch clause
             </summary>
         </member>
+        <member name="P:MacroFramework.Macros.MainThread">
+            <summary>
+            The thread on which the event loop and <see cref="T:MacroFramework.Input.InputHook"/> runs on.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.FunctionalityThread">
+            <summary>
+            The thread on which the main loop runs on. The <see cref="T:MacroFramework.Commands.Command"/> classes run on this thread.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.FunctionalityThreadJobQueue">
+            <summary>
+            Enqueue a job here to execute some action on the <see cref="P:MacroFramework.Macros.FunctionalityThread"/>. The jobs are executed in a try clause on the next main loop iteration.
+            </summary>
+        </member>
         <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,MacroFramework.Macros.VoidDelegate)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
             </summary>
             <param name="setup">The setup options</param>
             <param name="runInLimitedMode">If true the application is set to <see cref="F:MacroFramework.Macros.RunState.RunningInLimitedMode"/></param>
-            <param name="afterStart">Called immediately after start. You can use this delegate to start your own application on the same thread as the <see cref="P:MacroFramework.Macros.MainThread"/>.</param>
+            <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="M:System.Windows.Forms.Application.Run"/> without a form. Leave as null to use default.</param>
         </member>
         <member name="M:MacroFramework.Macros.Stop">
             <summary>
             Stops the MacroFramework application
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Macros.QueueJobOnMainThread(MacroFramework.Macros.VoidDelegate)">
+            <summary>
+            Queues a job for the main STA thread which runs the event loop.
+            </summary>
+            <param name="action">The job to add to the queue</param>
+        </member>
+        <member name="M:MacroFramework.Macros.ExecuteMainThreadJobs">
+            <summary>
+            Stops the event loop using <see cref="M:System.Windows.Forms.Application.Exit"/>, executes the jobs in the queue and restarts the event loop using <see cref="M:System.Windows.Forms.Application.Run"/>.
             </summary>
         </member>
         <member name="T:MacroFramework.Macros.ExceptionType">
