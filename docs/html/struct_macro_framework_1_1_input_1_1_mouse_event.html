@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.7</span>
+   &#160;<span id="projectnumber">0.1.8</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -109,14 +109,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2205242d867e78e024cdd4e4aaa3818a"><td class="memItemLeft" align="right" valign="top"><a id="a2205242d867e78e024cdd4e4aaa3818a"></a>
 override string&#160;</td><td class="memItemRight" valign="bottom"><b>ToString</b> ()</td></tr>
 <tr class="separator:a2205242d867e78e024cdd4e4aaa3818a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ed86b86e5203a314db04d817e214bb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html#a6ed86b86e5203a314db04d817e214bb1">GetCopy</a> ()</td></tr>
+<tr class="memdesc:a6ed86b86e5203a314db04d817e214bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a new copy of the event  <a href="struct_macro_framework_1_1_input_1_1_mouse_event.html#a6ed86b86e5203a314db04d817e214bb1">More...</a><br /></td></tr>
+<tr class="separator:a6ed86b86e5203a314db04d817e214bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
 <tr class="memitem:aa0058f4a4bddc3e1c274c33cd9bfb591"><td class="memItemLeft" align="right" valign="top"><a id="aa0058f4a4bddc3e1c274c33cd9bfb591"></a>
-<a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b><code> [get]</code></td></tr>
+<a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Key</b><code> [get, set]</code></td></tr>
 <tr class="separator:aa0058f4a4bddc3e1c274c33cd9bfb591"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49ef99d2959ca259f8a03c6fa492e9f3"><td class="memItemLeft" align="right" valign="top"><a id="a49ef99d2959ca259f8a03c6fa492e9f3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>State</b><code> [get]</code></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>State</b><code> [get, set]</code></td></tr>
 <tr class="separator:a49ef99d2959ca259f8a03c6fa492e9f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8d9f1177546fdb58f03d14db6644bbe"><td class="memItemLeft" align="right" valign="top"><a id="ad8d9f1177546fdb58f03d14db6644bbe"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Injected</b><code> [get]</code></td></tr>
@@ -125,28 +128,28 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Injected</b><code> [g
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>InjectedLower</b><code> [get]</code></td></tr>
 <tr class="separator:a59f2eef7bbf515973d624d933342a526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a830d99cdc443a6236df93ddbc3541a26"><td class="memItemLeft" align="right" valign="top"><a id="a830d99cdc443a6236df93ddbc3541a26"></a>
-UIntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>ExtraInfo</b><code> [get]</code></td></tr>
+UIntPtr&#160;</td><td class="memItemRight" valign="bottom"><b>ExtraInfo</b><code> [get, set]</code></td></tr>
 <tr class="separator:a830d99cdc443a6236df93ddbc3541a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a809ca4c2199e4c9e09341e66e38f8620"><td class="memItemLeft" align="right" valign="top"><a id="a809ca4c2199e4c9e09341e66e38f8620"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveTimestamp</b><code> [get]</code></td></tr>
+long&#160;</td><td class="memItemRight" valign="bottom"><b>ReceiveTimestamp</b><code> [get, set]</code></td></tr>
 <tr class="separator:a809ca4c2199e4c9e09341e66e38f8620"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c2bfbcf22692f87f797a568a3b6133"><td class="memItemLeft" align="right" valign="top"><a id="a10c2bfbcf22692f87f797a568a3b6133"></a>
-<a class="el" href="namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b">InputEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Type</b><code> [get]</code></td></tr>
+<a class="el" href="namespace_macro_framework_1_1_input.html#ab53541f1d98995cea848ab05bb39da1b">InputEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Type</b><code> [get, set]</code></td></tr>
 <tr class="separator:a10c2bfbcf22692f87f797a568a3b6133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05845016e691402f94c5bdbaefb08191"><td class="memItemLeft" align="right" valign="top"><a id="a05845016e691402f94c5bdbaefb08191"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Unique</b><code> [get]</code></td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Unique</b><code> [get, set]</code></td></tr>
 <tr class="separator:a05845016e691402f94c5bdbaefb08191"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a807003fb74fb148b106dff282c607f92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html">POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html#a807003fb74fb148b106dff282c607f92">Point</a><code> [get]</code></td></tr>
+<tr class="memitem:a807003fb74fb148b106dff282c607f92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html">POINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html#a807003fb74fb148b106dff282c607f92">Point</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a807003fb74fb148b106dff282c607f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The screen coordinates in which the event occurred  <a href="struct_macro_framework_1_1_input_1_1_mouse_event.html#a807003fb74fb148b106dff282c607f92">More...</a><br /></td></tr>
 <tr class="separator:a807003fb74fb148b106dff282c607f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add52637fc9afe023471b0658ccf1ca3e"><td class="memItemLeft" align="right" valign="top"><a id="add52637fc9afe023471b0658ccf1ca3e"></a>
-<a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ActivationType</b><code> [get]</code></td></tr>
+<a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ActivationType</b><code> [get, set]</code></td></tr>
 <tr class="separator:add52637fc9afe023471b0658ccf1ca3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_macro_framework_1_1_commands_1_1_i_input_event')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">MacroFramework.Commands.IInputEvent</a></td></tr>
 <tr class="memitem:af6ff1745f6760d2d67675782bbe1c6f8 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af6ff1745f6760d2d67675782bbe1c6f8">Key</a><code> [get]</code></td></tr>
 <tr class="memdesc:af6ff1745f6760d2d67675782bbe1c6f8 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">The corresponding key  <a href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af6ff1745f6760d2d67675782bbe1c6f8">More...</a><br /></td></tr>
 <tr class="separator:af6ff1745f6760d2d67675782bbe1c6f8 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2f3a507ef00ce166d43272ac8c6f457 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af2f3a507ef00ce166d43272ac8c6f457">State</a><code> [get]</code></td></tr>
+<tr class="memitem:af2f3a507ef00ce166d43272ac8c6f457 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af2f3a507ef00ce166d43272ac8c6f457">State</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af2f3a507ef00ce166d43272ac8c6f457 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state of the key  <a href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af2f3a507ef00ce166d43272ac8c6f457">More...</a><br /></td></tr>
 <tr class="separator:af2f3a507ef00ce166d43272ac8c6f457 inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d3573b290a96a65a5a7d75b31d77afe inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#a7d3573b290a96a65a5a7d75b31d77afe">Injected</a><code> [get]</code></td></tr>
@@ -171,6 +174,36 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Unique</b><code> [get
 <tr class="memdesc:a2a41737eac1f335b771dd2573b6b1fae inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines if the event is unique. False in the case of a key being held down.  <a href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#a2a41737eac1f335b771dd2573b6b1fae">More...</a><br /></td></tr>
 <tr class="separator:a2a41737eac1f335b771dd2573b6b1fae inherit properties_interface_macro_framework_1_1_commands_1_1_i_input_event"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6ed86b86e5203a314db04d817e214bb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ed86b86e5203a314db04d817e214bb1">&#9670;&nbsp;</a></span>GetCopy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a> MacroFramework.Input.MouseEvent.GetCopy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a new copy of the event </p>
+
+<p>Implements <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#ab49575094b9d89348a7badf9eb262f72">MacroFramework.Commands.IInputEvent</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="a807003fb74fb148b106dff282c607f92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a807003fb74fb148b106dff282c607f92">&#9670;&nbsp;</a></span>Point</h2>
@@ -187,7 +220,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>Unique</b><code> [get
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

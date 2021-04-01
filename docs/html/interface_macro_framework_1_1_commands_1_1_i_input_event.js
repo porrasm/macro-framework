@@ -1,5 +1,6 @@
 var interface_macro_framework_1_1_commands_1_1_i_input_event =
 [
+    [ "GetCopy", "interface_macro_framework_1_1_commands_1_1_i_input_event.html#ab49575094b9d89348a7badf9eb262f72", null ],
     [ "ActivationType", "interface_macro_framework_1_1_commands_1_1_i_input_event.html#acddf7438d5639d8106397aed5b320a27", null ],
     [ "ExtraInfo", "interface_macro_framework_1_1_commands_1_1_i_input_event.html#a4a0b7ffe75934ac11574943c2c6af466", null ],
     [ "Injected", "interface_macro_framework_1_1_commands_1_1_i_input_event.html#a7d3573b290a96a65a5a7d75b31d77afe", null ],

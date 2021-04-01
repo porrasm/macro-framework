@@ -1,5 +1,6 @@
 var struct_macro_framework_1_1_input_1_1_key_event =
 [
+    [ "GetCopy", "struct_macro_framework_1_1_input_1_1_key_event.html#a986b73898e90020f472da4c587a97600", null ],
     [ "ToString", "struct_macro_framework_1_1_input_1_1_key_event.html#a0d784a78799231bebd65b89d8aab9122", null ],
     [ "ActivationType", "struct_macro_framework_1_1_input_1_1_key_event.html#a9b03ff8c35a821353b712a103e8f22cc", null ],
     [ "AltDown", "struct_macro_framework_1_1_input_1_1_key_event.html#a9038e7b88fafbc5cdd33fe51bef4433a", null ],

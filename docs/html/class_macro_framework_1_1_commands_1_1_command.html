@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.7</span>
+   &#160;<span id="projectnumber">0.1.8</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -110,11 +110,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance  <a href="class_macro_framework_1_1_commands_1_1_command.html#a40a2ed5fcd8f183b8e2af9f2df25142f">More...</a><br /></td></tr>
 <tr class="separator:a40a2ed5fcd8f183b8e2af9f2df25142f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c6e89629a063446aa913a83257fea8c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">OnStart</a> ()</td></tr>
-<tr class="memdesc:a3c6e89629a063446aa913a83257fea8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after <a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a" title="Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadA...">Macros.Start(Setup)</a>  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">More...</a><br /></td></tr>
+<tr class="memdesc:a3c6e89629a063446aa913a83257fea8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after Macros.Start(Setup)  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c6e89629a063446aa913a83257fea8c">More...</a><br /></td></tr>
 <tr class="separator:a3c6e89629a063446aa913a83257fea8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e308afac0728168a712b98e73df4e33"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a7e308afac0728168a712b98e73df4e33">OnUpdate</a> ()</td></tr>
+<tr class="memdesc:a7e308afac0728168a712b98e73df4e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called on every iteration of <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">Macros.OnMainLoop</a> before any <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> updates. Differs only in exectuion order with a <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions">TimerActivator</a> with a 0 as a parameter.  <a href="class_macro_framework_1_1_commands_1_1_command.html#a7e308afac0728168a712b98e73df4e33">More...</a><br /></td></tr>
+<tr class="separator:a7e308afac0728168a712b98e73df4e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c2fcabd6dd4d73e76124dca374d777d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">OnClose</a> ()</td></tr>
 <tr class="memdesc:a3c2fcabd6dd4d73e76124dca374d777d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called after <a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174" title="Stops the MacroFramework application">Macros.Stop</a>  <a href="class_macro_framework_1_1_commands_1_1_command.html#a3c2fcabd6dd4d73e76124dca374d777d">More...</a><br /></td></tr>
 <tr class="separator:a3c2fcabd6dd4d73e76124dca374d777d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac258292eb6b6a29c9943cf2b62c15246"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ac258292eb6b6a29c9943cf2b62c15246">OnPause</a> ()</td></tr>
+<tr class="memdesc:ac258292eb6b6a29c9943cf2b62c15246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the framrwork is paused  <a href="class_macro_framework_1_1_commands_1_1_command.html#ac258292eb6b6a29c9943cf2b62c15246">More...</a><br /></td></tr>
+<tr class="separator:ac258292eb6b6a29c9943cf2b62c15246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad734459f799339a028149c5017074de9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ad734459f799339a028149c5017074de9">OnResume</a> ()</td></tr>
+<tr class="memdesc:ad734459f799339a028149c5017074de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the framrwork is unpaused  <a href="class_macro_framework_1_1_commands_1_1_command.html#ad734459f799339a028149c5017074de9">More...</a><br /></td></tr>
+<tr class="separator:ad734459f799339a028149c5017074de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">OnTextCommand</a> (string command, bool commandWasAccepted)</td></tr>
 <tr class="memdesc:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is called whenever a text command is executed  <a href="class_macro_framework_1_1_commands_1_1_command.html#a08b8b4e1e89df972a2be0f72d769e0b5">More...</a><br /></td></tr>
 <tr class="separator:a08b8b4e1e89df972a2be0f72d769e0b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,7 +131,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae03557d99746165feba34dc54cf4059f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9373c8dfb09ae31dc963bc8c02756371">CommandContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f">IsActive</a> = () =&gt; true</td></tr>
-<tr class="memdesc:ae03557d99746165feba34dc54cf4059f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment.  <a href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f">More...</a><br /></td></tr>
+<tr class="memdesc:ae03557d99746165feba34dc54cf4059f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to create custom contexts for your command. If false is returned, none of the activators in ActivatorGroup are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment.  <a href="class_macro_framework_1_1_commands_1_1_command.html#ae03557d99746165feba34dc54cf4059f">More...</a><br /></td></tr>
 <tr class="separator:ae03557d99746165feba34dc54cf4059f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
@@ -133,18 +142,15 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a0381a01cd8a41d71ec9a30ce114e4ead"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a0381a01cd8a41d71ec9a30ce114e4ead">InitializeActivators</a> (out <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a> activator)</td></tr>
-<tr class="memdesc:a0381a01cd8a41d71ec9a30ce114e4ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract method for initializing <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">Commands.IActivator</a> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.  <a href="class_macro_framework_1_1_commands_1_1_command.html#a0381a01cd8a41d71ec9a30ce114e4ead">More...</a><br /></td></tr>
-<tr class="separator:a0381a01cd8a41d71ec9a30ce114e4ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0011ff6beb6e331ee6d81131e8ff003"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#ac0011ff6beb6e331ee6d81131e8ff003">Keys</a> (params <a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>[] keys)</td></tr>
-<tr class="memdesc:ac0011ff6beb6e331ee6d81131e8ff003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nicer syntax for creating array of <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b" title="Enum of virtual key codes.">VKey</a> elements  <a href="class_macro_framework_1_1_commands_1_1_command.html#ac0011ff6beb6e331ee6d81131e8ff003">More...</a><br /></td></tr>
-<tr class="separator:ac0011ff6beb6e331ee6d81131e8ff003"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa32bbca504889a7a1a5ebeb2c365ac0c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#aa32bbca504889a7a1a5ebeb2c365ac0c">InitializeActivators</a> (out <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a> group)</td></tr>
+<tr class="memdesc:aa32bbca504889a7a1a5ebeb2c365ac0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract method for initializing <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">Commands.IActivator</a> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.  <a href="class_macro_framework_1_1_commands_1_1_command.html#aa32bbca504889a7a1a5ebeb2c365ac0c">More...</a><br /></td></tr>
+<tr class="separator:aa32bbca504889a7a1a5ebeb2c365ac0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a9aa6dbea24ab4d24653112a77884c480"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a9aa6dbea24ab4d24653112a77884c480">commandActivators</a></td></tr>
-<tr class="memdesc:a9aa6dbea24ab4d24653112a77884c480"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for the set of <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instances of this command  <a href="class_macro_framework_1_1_commands_1_1_command.html#a9aa6dbea24ab4d24653112a77884c480">More...</a><br /></td></tr>
-<tr class="separator:a9aa6dbea24ab4d24653112a77884c480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d863e53a64c1404746673a4092dedcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#a5d863e53a64c1404746673a4092dedcf">activatorGroup</a></td></tr>
+<tr class="memdesc:a5d863e53a64c1404746673a4092dedcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for the set of <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instances of this command  <a href="class_macro_framework_1_1_commands_1_1_command.html#a5d863e53a64c1404746673a4092dedcf">More...</a><br /></td></tr>
+<tr class="separator:a5d863e53a64c1404746673a4092dedcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for all macro functionality </p>
@@ -216,8 +222,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0381a01cd8a41d71ec9a30ce114e4ead"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0381a01cd8a41d71ec9a30ce114e4ead">&#9670;&nbsp;</a></span>InitializeActivators()</h2>
+<a id="aa32bbca504889a7a1a5ebeb2c365ac0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa32bbca504889a7a1a5ebeb2c365ac0c">&#9670;&nbsp;</a></span>InitializeActivators()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,7 +235,7 @@ Protected Attributes</h2></td></tr>
           <td class="memname">virtual void MacroFramework.Commands.Command.InitializeActivators </td>
           <td>(</td>
           <td class="paramtype">out <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a>&#160;</td>
-          <td class="paramname"><em>activator</em></td><td>)</td>
+          <td class="paramname"><em>group</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -241,41 +247,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Abstract method for initializing <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">Commands.IActivator</a> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator. </p>
-
-</div>
-</div>
-<a id="ac0011ff6beb6e331ee6d81131e8ff003"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0011ff6beb6e331ee6d81131e8ff003">&#9670;&nbsp;</a></span>Keys()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a> [] MacroFramework.Commands.Command.Keys </td>
-          <td>(</td>
-          <td class="paramtype">params <a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>[]&#160;</td>
-          <td class="paramname"><em>keys</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Nicer syntax for creating array of <a class="el" href="namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b" title="Enum of virtual key codes.">VKey</a> elements </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">keys</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -306,6 +277,60 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac258292eb6b6a29c9943cf2b62c15246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac258292eb6b6a29c9943cf2b62c15246">&#9670;&nbsp;</a></span>OnPause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void MacroFramework.Commands.Command.OnPause </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the framrwork is paused </p>
+
+</div>
+</div>
+<a id="ad734459f799339a028149c5017074de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad734459f799339a028149c5017074de9">&#9670;&nbsp;</a></span>OnResume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void MacroFramework.Commands.Command.OnResume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when the framrwork is unpaused </p>
+
+</div>
+</div>
 <a id="a3c6e89629a063446aa913a83257fea8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c6e89629a063446aa913a83257fea8c">&#9670;&nbsp;</a></span>OnStart()</h2>
 
@@ -329,7 +354,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Called after <a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a" title="Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadA...">Macros.Start(Setup)</a> </p>
+<p>Called after Macros.Start(Setup) </p>
 
 </div>
 </div>
@@ -378,9 +403,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9aa6dbea24ab4d24653112a77884c480"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aa6dbea24ab4d24653112a77884c480">&#9670;&nbsp;</a></span>commandActivators</h2>
+<a id="a7e308afac0728168a712b98e73df4e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e308afac0728168a712b98e73df4e33">&#9670;&nbsp;</a></span>OnUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +413,35 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a> MacroFramework.Commands.Command.commandActivators</td>
+          <td class="memname">virtual void MacroFramework.Commands.Command.OnUpdate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called on every iteration of <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">Macros.OnMainLoop</a> before any <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> updates. Differs only in exectuion order with a <a class="el" href="class_macro_framework_1_1_commands_1_1_timer_activator.html" title="CommandActivator instance for timer based actions">TimerActivator</a> with a 0 as a parameter. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5d863e53a64c1404746673a4092dedcf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d863e53a64c1404746673a4092dedcf">&#9670;&nbsp;</a></span>activatorGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a> MacroFramework.Commands.Command.activatorGroup</td>
         </tr>
       </table>
   </td>
@@ -439,7 +491,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Override this method to create custom contexts for your command. If false is returned, none of the activators in CommandActivators are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment. </p>
+<p>Override this method to create custom contexts for your command. If false is returned, none of the activators in ActivatorGroup are active eiher and this <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instance is effectively disabled for the moment. </p>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>

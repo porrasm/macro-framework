@@ -48,16 +48,16 @@ public class BindAndKeyActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new KeyActivator(OnPressSpacebar, KKey.Space));
+        activator.Add(new KeyActivator(KKey.Space, OnPressSpacebar));
 
         // Defaults to ordered press of [A, B, C] and then releasing any key.
-        activator.AddActivator(new BindActivator(OnReleaseABC, Keys(KKey.A, KKey.B, KKey.C)));
+        activator.Add(new BindActivator(new Bind(KKey.A, KKey.B, KKey.C), OnReleaseABC));
 
         // Activated when A is followed by B is followed by C and when no other keys are pressed
-        activator.AddActivator(new BindActivator(OnPressABC, Keys(KKey.A, KKey.B, KKey.C), ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered));
+        activator.Add(new BindActivator(new Bind(new BindSettings(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered), KKey.A, KKey.B, KKey.C), OnPressABC));
 
         // Activated when A-Z or 0-9 is pressed
-        activator.AddActivator(new KeyActivator(OnPressAlphanumeric, (e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9)));
+        activator.Add(new KeyActivator((e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9), OnPressAlphanumeric));
     }
 
     [KeyActivator(KKey.Space)]
@@ -105,8 +105,8 @@ class TimerActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new TimerActivator(CalledEverySecond, 1, TimeUnit.Seconds));
-        activator.AddActivator(new TimerActivator(CalledEveryHourAndAtApplicationStart, 1, TimeUnit.Hours, true));
+        activator.Add(new TimerActivator(1, TimeUnit.Seconds, false, CalledEverySecond));
+        activator.Add(new TimerActivator(1, TimeUnit.Hours, true, CalledEveryHourAndAtApplicationStart));
     }
 
     [TimerActivator(1, TimeUnit.Seconds)]
@@ -151,13 +151,13 @@ class TextActivatorExample : Command {
     protected override void InitializeActivators(out CommandActivatorGroup activator) {
         activator = new CommandActivatorGroup(this);
 
-        activator.AddActivator(new TextActivator(OnTestCommand, "test command"));
+        activator.Add(new TextActivator("test command", OnTestCommand));
 
         // Multiple matchers
-        activator.AddActivator(new TextActivator(ExitApplication, "stop", "exit", "quit"));
+        activator.Add(new TextActivator(new Matchers("stop", "exit", "quit"), ExitApplication));
 
         // Regex
-        activator.AddActivator(new TextActivator(PrintParameter, new Regex("print [A-Z]+")));
+        activator.Add(new TextActivator(new Regex("print [A-Z]+"), PrintParameter));
     }
 
     [TextActivator("test command", TextActivatorAttribute.MatchType.StringMatch)]
@@ -221,7 +221,7 @@ public class DynamicActivatorExample : Command {
     }
 
     public override void OnStart() {
-        CommandActivator onSpace = new KeyActivator(OneTimeOnPressSpace, KKey.Space);
+        CommandActivator onSpace = new KeyActivator(KKey.Space, OneTimeOnPressSpace);
 
         // One time bind for space, lambda expression indicates that the activator is discarded after execution
         onSpace.RegisterDynamicActivator(() => true);
@@ -231,5 +231,4 @@ public class DynamicActivatorExample : Command {
         Console.WriteLine("Pressed space!");
     }
 }
-
 ~~~

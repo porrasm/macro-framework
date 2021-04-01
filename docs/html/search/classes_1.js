@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['bindactivator_435',['BindActivator',['../class_macro_framework_1_1_commands_1_1_bind_activator.html',1,'MacroFramework::Commands']]],
-  ['bindactivatorattribute_436',['BindActivatorAttribute',['../class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html',1,'MacroFramework::Commands']]],
-  ['bindholdactivator_437',['BindHoldActivator',['../class_macro_framework_1_1_commands_1_1_bind_hold_activator.html',1,'MacroFramework::Commands']]]
+  ['bind_469',['Bind',['../class_macro_framework_1_1_commands_1_1_bind.html',1,'MacroFramework::Commands']]],
+  ['bindactivator_470',['BindActivator',['../class_macro_framework_1_1_commands_1_1_bind_activator.html',1,'MacroFramework::Commands']]],
+  ['bindactivatorattribute_471',['BindActivatorAttribute',['../class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html',1,'MacroFramework::Commands']]],
+  ['bindholdactivator_472',['BindHoldActivator',['../class_macro_framework_1_1_commands_1_1_bind_hold_activator.html',1,'MacroFramework::Commands']]],
+  ['bindsettings_473',['BindSettings',['../class_macro_framework_1_1_commands_1_1_bind_settings.html',1,'MacroFramework::Commands']]]
 ];

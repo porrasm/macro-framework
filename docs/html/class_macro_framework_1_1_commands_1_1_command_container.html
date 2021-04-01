@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.7</span>
+   &#160;<span id="projectnumber">0.1.8</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_macro_framework_1_1_commands_1_1_command_container-members.html">List of all members</a>  </div>
@@ -95,6 +96,12 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_commands_1_1
 <p>A static class for handling all active <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instances  
  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:ac0881db3d1e4c16c5da5ca88a00294a0"><td class="memItemLeft" align="right" valign="top"><a id="ac0881db3d1e4c16c5da5ca88a00294a0"></a>
+delegate void&#160;</td><td class="memItemRight" valign="bottom"><b>CommandIteratorDelegate</b> (<a class="el" href="class_macro_framework_1_1_commands_1_1_command.html">Command</a> command)</td></tr>
+<tr class="separator:ac0881db3d1e4c16c5da5ca88a00294a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aceea5c124ed78c228719489baa235c5b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aceea5c124ed78c228719489baa235c5b">UpdateActivators</a> (params Type[] types)</td></tr>
@@ -109,9 +116,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aad9e006296cc1ed33727b3fa913496b5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5">AddDynamicActivator</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html">IDynamicActivator</a> act)</td></tr>
 <tr class="memdesc:aad9e006296cc1ed33727b3fa913496b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can be used to add <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> (wrapped inside <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>) instances to the framework during runtime. Useful for e.g. events that should run only once.  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#aad9e006296cc1ed33727b3fa913496b5">More...</a><br /></td></tr>
 <tr class="separator:aad9e006296cc1ed33727b3fa913496b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac387f66516a9b2cfd48c76976848b219"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#ac387f66516a9b2cfd48c76976848b219">RemoveDynamicActivator</a> (uint id)</td></tr>
-<tr class="memdesc:ac387f66516a9b2cfd48c76976848b219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a> instance from the active list  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#ac387f66516a9b2cfd48c76976848b219">More...</a><br /></td></tr>
-<tr class="separator:ac387f66516a9b2cfd48c76976848b219"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a183e2bd713c7cab72d537c1a8eb3902e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#a183e2bd713c7cab72d537c1a8eb3902e">ForEveryCommand</a> (CommandIteratorDelegate it, string errorMessage=&quot;&quot;)</td></tr>
+<tr class="memdesc:a183e2bd713c7cab72d537c1a8eb3902e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executes some action for every command in a try clause  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#a183e2bd713c7cab72d537c1a8eb3902e">More...</a><br /></td></tr>
+<tr class="separator:a183e2bd713c7cab72d537c1a8eb3902e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e5a6e718c1ef1f0e351262ea48923d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#a27e5a6e718c1ef1f0e351262ea48923d">RemoveDynamicActivator</a> (uint id)</td></tr>
+<tr class="memdesc:a27e5a6e718c1ef1f0e351262ea48923d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a> instance from the active list. Returns true if the element existed and was removed.  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#a27e5a6e718c1ef1f0e351262ea48923d">More...</a><br /></td></tr>
+<tr class="separator:a27e5a6e718c1ef1f0e351262ea48923d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -190,8 +200,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ac387f66516a9b2cfd48c76976848b219"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac387f66516a9b2cfd48c76976848b219">&#9670;&nbsp;</a></span>RemoveDynamicActivator()</h2>
+<a id="a183e2bd713c7cab72d537c1a8eb3902e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a183e2bd713c7cab72d537c1a8eb3902e">&#9670;&nbsp;</a></span>ForEveryCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +210,45 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void MacroFramework.Commands.CommandContainer.RemoveDynamicActivator </td>
+          <td class="memname">static void MacroFramework.Commands.CommandContainer.ForEveryCommand </td>
+          <td>(</td>
+          <td class="paramtype">CommandIteratorDelegate&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>errorMessage</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Executes some action for every command in a try clause </p>
+
+</div>
+</div>
+<a id="a27e5a6e718c1ef1f0e351262ea48923d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e5a6e718c1ef1f0e351262ea48923d">&#9670;&nbsp;</a></span>RemoveDynamicActivator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool MacroFramework.Commands.CommandContainer.RemoveDynamicActivator </td>
           <td>(</td>
           <td class="paramtype">uint&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
@@ -214,7 +262,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Removes a <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a> instance from the active list </p>
+<p>Removes a <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a> instance from the active list. Returns true if the element existed and was removed. </p>
 
 </div>
 </div>

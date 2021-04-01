@@ -1435,7 +1435,7 @@
             <param name="state"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.SafeReset">
+        <member name="M:MacroFramework.Input.KeyStates.KeyDownCountReset">
             <summary>
             Temporary solution for possible state mismatch due to lag/exceptions
             </summary>
@@ -2568,6 +2568,11 @@
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">
             <summary>
             The delay in milliseconds between every iteration of the main loop
+            </summary>
+        </member>
+        <member name="F:MacroFramework.MacroSettings.KeyStateFixTimestep">
+            <summary>
+            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets.
             </summary>
         </member>
         <member name="T:MacroFramework.Setup">

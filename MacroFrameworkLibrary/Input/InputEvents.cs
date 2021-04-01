@@ -43,6 +43,7 @@ namespace MacroFramework.Input {
         /// <param name="k"></param>
         /// <returns>True if key should be intercepted</returns>
         public static bool RegisterHookKeyEvent(IInputEvent k) {
+            bool releaseForDownKey = !k.State && KeyStates.AbsoluteKeystates[k.Key];
             KeyStates.AddAbsoluteEvent(k);
 
             if (InputCallback?.Invoke(k) ?? false) {
@@ -55,15 +56,15 @@ namespace MacroFramework.Input {
 
             keyEventQueue.Enqueue(k);
 
-            if (IsBlockedKey(k) || TextCommandCreator.IsCommandMode) {
+            if (IsBlockedKey(k, releaseForDownKey) || (TextCommandCreator.IsCommandMode && !releaseForDownKey)) {
                 return true;
             }
 
             return BlockedKeys.Contains(k.Key);
         }
 
-        private static bool IsBlockedKey(IInputEvent k) {
-            if (KeyStates.AbsoluteKeystates[KKey.GeneralBindKey]) {
+        private static bool IsBlockedKey(IInputEvent k, bool releaseForDownKey) {
+            if (KeyStates.AbsoluteKeystates[KKey.GeneralBindKey] && !releaseForDownKey) {
                 return true;
             }
 
@@ -89,8 +90,9 @@ namespace MacroFramework.Input {
 
         private static void HandleKeyEvent(IInputEvent k) {
             CurrentInputEvent = k;
+            bool releaseForDownKey = !k.State && KeyStates.IsPressingKey(k.Key);
 
-            if (CheckCommandMode()) {
+            if (CheckCommandMode() && !releaseForDownKey) {
                 return;
             }
 

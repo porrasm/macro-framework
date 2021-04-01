@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['hasall_497',['HasAll',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#a8ad03e2877efc80ed9d580935c96c42d',1,'MacroFramework::Input::EnhancedKey']]],
-  ['hasany_498',['HasAny',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#a255498edb19aa2e57f0804802622e116',1,'MacroFramework::Input::EnhancedKey']]]
+  ['getactivecommands_534',['GetActiveCommands',['../class_macro_framework_1_1_setup.html#a6615e34709c7f9cc339f37d870fd49fd',1,'MacroFramework::Setup']]],
+  ['getcommandactivator_535',['GetCommandActivator',['../class_macro_framework_1_1_commands_1_1_activator_attribute.html#a76745372b817e1e556a58ea65f124737',1,'MacroFramework.Commands.ActivatorAttribute.GetCommandActivator()'],['../class_macro_framework_1_1_commands_1_1_bind_activator_attribute.html#a5f4444f5992999ad067e1cd63bc613a7',1,'MacroFramework.Commands.BindActivatorAttribute.GetCommandActivator()'],['../class_macro_framework_1_1_commands_1_1_key_activator_attribute.html#a9a51cea88f6d20983f8aae084514c6c6',1,'MacroFramework.Commands.KeyActivatorAttribute.GetCommandActivator()'],['../class_macro_framework_1_1_commands_1_1_text_activator_attribute.html#ad2230ec77b371285917d1f0b51fe88c1',1,'MacroFramework.Commands.TextActivatorAttribute.GetCommandActivator()'],['../class_macro_framework_1_1_commands_1_1_timer_activator_attribute.html#a6b2b8d76c5b811e7ad30709b736f372f',1,'MacroFramework.Commands.TimerActivatorAttribute.GetCommandActivator()']]],
+  ['getcopy_536',['GetCopy',['../interface_macro_framework_1_1_commands_1_1_i_input_event.html#ab49575094b9d89348a7badf9eb262f72',1,'MacroFramework.Commands.IInputEvent.GetCopy()'],['../struct_macro_framework_1_1_input_1_1_key_event.html#a986b73898e90020f472da4c587a97600',1,'MacroFramework.Input.KeyEvent.GetCopy()'],['../struct_macro_framework_1_1_input_1_1_mouse_event.html#a6ed86b86e5203a314db04d817e214bb1',1,'MacroFramework.Input.MouseEvent.GetCopy()']]],
+  ['getcurrentactivationeventtype_537',['GetCurrentActivationEventType',['../class_macro_framework_1_1_input_1_1_key_states.html#a03397d0f74e873b3a6a385c5fb978316',1,'MacroFramework::Input::KeyStates']]],
+  ['getlogger_538',['GetLogger',['../class_macro_framework_1_1_setup.html#aa1b2cc58eafae4a331cd19e594686495',1,'MacroFramework::Setup']]],
+  ['getmainassembly_539',['GetMainAssembly',['../class_macro_framework_1_1_setup.html#aa9d7cb1936cb22857f759a5464c775b7',1,'MacroFramework::Setup']]],
+  ['getsettings_540',['GetSettings',['../class_macro_framework_1_1_setup.html#a2128bff604c87bc587f4b76c187fab0d',1,'MacroFramework::Setup']]]
 ];

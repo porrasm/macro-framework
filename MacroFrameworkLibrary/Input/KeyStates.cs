@@ -210,6 +210,7 @@ namespace MacroFramework.Input {
                 input.ActivationType = ActivationEventType.OnFirstRelease;
                 AddKeyEvent(input);
             }
+            KeyDownCountReset();
         }
 
         /// <summary>

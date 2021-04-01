@@ -1,10 +1,8 @@
 var class_macro_framework_1_1_commands_1_1_bind_activator =
 [
-    [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a2d658abd063d963425724885cebe361a", null ],
-    [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a54197573d62b82b03913d62f1751c2df", null ],
+    [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html#abb6bc3b596096652b8bd2e9316671f44", null ],
+    [ "BindActivator", "class_macro_framework_1_1_commands_1_1_bind_activator.html#ab750e3b5e72455a685bcb2ecfafc0de9", null ],
     [ "IsActivatorActive", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a1d14b19be2cb63565f233b25c9354858", null ],
-    [ "ActivationType", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a2cf17c06f88050fc19870b3c031996c6", null ],
-    [ "Keys", "class_macro_framework_1_1_commands_1_1_bind_activator.html#ae273be88acdb6ed56770a69013a84a19", null ],
-    [ "MatchType", "class_macro_framework_1_1_commands_1_1_bind_activator.html#acf85598df974614bb856fe55e9cc5da1", null ],
-    [ "Order", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a0e5ae0f03a3d993566dfbf2952e7d9b2", null ]
+    [ "SetCallback", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a06abb4409f1abaec400bf908e17c4950", null ],
+    [ "Bind", "class_macro_framework_1_1_commands_1_1_bind_activator.html#a7d8cbf2608dd18f17328331f0e6b2f42", null ]
 ];

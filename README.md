@@ -3,7 +3,7 @@
 ## Links
 
 - [Nuget](https://www.nuget.org/packages/MacroFramework/)
-- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html) up to date with the most recent Nuget relase (0.1.7)
+- [Documentation](https://porrasm.github.io/windows-macro-framework-library/html/index.html) up to date with the most recent Nuget relase (0.1.8)
 - [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html)
 
 ## Quick setup
@@ -83,4 +83,4 @@ You have now started the application with a single macros. Ctrl+N will open the 
 
 ### 5 Read the 'Geting started' guide
 
-For more in depth guide read the [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html) guide.
+For more in depth guide read the [Getting started](https://porrasm.github.io/windows-macro-framework-library/html/md_markdown_getting_started.html) guide. Check out the [code examples](https://github.com/porrasm/macro-framework/tree/main/Examples/CommandExamples) for more more complex use cases.

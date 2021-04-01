@@ -1,7 +1,8 @@
 var class_macro_framework_1_1_commands_1_1_repeat_activator =
 [
-    [ "RepeatActivator", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#aeb380437515d8ca751693ef0bad67aac", null ],
+    [ "RepeatActivator", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a3a925fb13e8dec901422be6b0f5f0db4", null ],
     [ "IsActivatorActive", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a173cfcd33be1089144856dd50d89777c", null ],
+    [ "SetCallback", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a03500f4167f62bdc6eda1012c8519aac", null ],
     [ "ActivateImmediately", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a6a5459fa0bbf330a280452104380e08c", null ],
     [ "DisallowExtraRepeats", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a7ba9e0f70cd109e04511c8d0dfa9f66a", null ],
     [ "OnEachActivate", "class_macro_framework_1_1_commands_1_1_repeat_activator.html#a46d6c04e1e889ade8101c762945bde90", null ],

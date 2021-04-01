@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.7</span>
+   &#160;<span id="projectnumber">0.1.8</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -99,6 +99,13 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_macros.html'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:ad7c81b9b00977d56b940a3057a536ec9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">RunState</a> { <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9ae457ff7a83d0a8681fa483f898788515">NotRunning</a>
+, <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9a5bda814c4aedb126839228f1a3d92f09">Running</a>
+, <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9a2b12f377b2c8316b03c02ebd5da46e1b">RunningInLimitedMode</a>
+, <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9ae99180abf47a8b3a856e0bcb2656990a">Paused</a>
+ }</td></tr>
+<tr class="memdesc:ad7c81b9b00977d56b940a3057a536ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The different run states the application can be in  <a href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">More...</a><br /></td></tr>
+<tr class="separator:ad7c81b9b00977d56b940a3057a536ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b4ee5292fa6aa6f94227669e4441c99"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99">ExceptionType</a> { <a class="el" href="class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99a1032c40cc4a89eacee1a96dbfff73543">ThreadException</a>
 , <a class="el" href="class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99ac849eb1d3cc086349245023ec7366489">UnhandledException</a>
 , <a class="el" href="class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99af41196867b55b2eb2a54f01651bb5e30">UnobservedTaskException</a>
@@ -108,45 +115,69 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a08f35c84cede9e264c5b13f23871e805"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805">MainLoopCallback</a> ()</td></tr>
-<tr class="memdesc:a08f35c84cede9e264c5b13f23871e805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Void callback  <a href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805">More...</a><br /></td></tr>
-<tr class="separator:a08f35c84cede9e264c5b13f23871e805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91d426d9a013e701d509eec861b5c6eb"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a> ()</td></tr>
+<tr class="memdesc:a91d426d9a013e701d509eec861b5c6eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Void callback  <a href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">More...</a><br /></td></tr>
+<tr class="separator:a91d426d9a013e701d509eec861b5c6eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa56e0118216471d5dc9376dbf46d10c5"><td class="memItemLeft" align="right" valign="top">delegate bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a> ()</td></tr>
+<tr class="memdesc:aa56e0118216471d5dc9376dbf46d10c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate used for continuing the app  <a href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">More...</a><br /></td></tr>
+<tr class="separator:aa56e0118216471d5dc9376dbf46d10c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab29ddb19f43958a4406ecb6f3567a0ad"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ab29ddb19f43958a4406ecb6f3567a0ad">ExceptionCallback</a> (object sender, Exception e, <a class="el" href="class_macro_framework_1_1_macros.html#a1b4ee5292fa6aa6f94227669e4441c99">ExceptionType</a> type, bool isTerminating)</td></tr>
 <tr class="memdesc:ab29ddb19f43958a4406ecb6f3567a0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback used to catch exceptions globally  <a href="class_macro_framework_1_1_macros.html#ab29ddb19f43958a4406ecb6f3567a0ad">More...</a><br /></td></tr>
 <tr class="separator:ab29ddb19f43958a4406ecb6f3567a0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6ccef1496a8c8382ace2b9cf52b2f08a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a">Start</a> (<a class="el" href="class_macro_framework_1_1_setup.html">Setup</a> setup)</td></tr>
-<tr class="memdesc:a6ccef1496a8c8382ace2b9cf52b2f08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadAttribute.  <a href="class_macro_framework_1_1_macros.html#a6ccef1496a8c8382ace2b9cf52b2f08a">More...</a><br /></td></tr>
-<tr class="separator:a6ccef1496a8c8382ace2b9cf52b2f08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96fe1c6067b7a2ed52a10b7ca6843bee"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a96fe1c6067b7a2ed52a10b7ca6843bee">Start</a> (<a class="el" href="class_macro_framework_1_1_setup.html">Setup</a> setup, bool runInLimitedMode=false, <a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a> customEventLoop=null)</td></tr>
+<tr class="memdesc:a96fe1c6067b7a2ed52a10b7ca6843bee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadAttribute.  <a href="class_macro_framework_1_1_macros.html#a96fe1c6067b7a2ed52a10b7ca6843bee">More...</a><br /></td></tr>
+<tr class="separator:a96fe1c6067b7a2ed52a10b7ca6843bee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2d95f12f5dfc8b066fa4f3f7ab28174"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">Stop</a> ()</td></tr>
 <tr class="memdesc:af2d95f12f5dfc8b066fa4f3f7ab28174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the <a class="el" href="namespace_macro_framework.html">MacroFramework</a> application  <a href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">More...</a><br /></td></tr>
 <tr class="separator:af2d95f12f5dfc8b066fa4f3f7ab28174"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a881c294f102aeb833cac46d2e91e916c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a881c294f102aeb833cac46d2e91e916c">PauseAndStopHooks</a> ()</td></tr>
-<tr class="memdesc:a881c294f102aeb833cac46d2e91e916c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This effectively pauses the entire application by disabling input hooks and all Command and <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">MacroFramework.Commands.CommandActivator</a> instances. Use this method if you wish to pause all functionality. Only the <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805" title="Void callback">MainLoopCallback</a> and async methods which started before tha pause will run.  <a href="class_macro_framework_1_1_macros.html#a881c294f102aeb833cac46d2e91e916c">More...</a><br /></td></tr>
-<tr class="separator:a881c294f102aeb833cac46d2e91e916c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0325312ad31f5d2e8c81f4a2de3ac0e6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a0325312ad31f5d2e8c81f4a2de3ac0e6">UnpauseAndRestartHooks</a> ()</td></tr>
-<tr class="memdesc:a0325312ad31f5d2e8c81f4a2de3ac0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resumes normal functionality by unpausing the application and restarting all enabled hooks.  <a href="class_macro_framework_1_1_macros.html#a0325312ad31f5d2e8c81f4a2de3ac0e6">More...</a><br /></td></tr>
-<tr class="separator:a0325312ad31f5d2e8c81f4a2de3ac0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae585382df6e88448c45f612a7769bcb8"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ae585382df6e88448c45f612a7769bcb8">SetPause</a> (bool paused)</td></tr>
-<tr class="memdesc:ae585382df6e88448c45f612a7769bcb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setting <a class="el" href="class_macro_framework_1_1_macros.html#ab8e6d5daec2bbfcab4ca3437a2928149" title="Pauses the application such that no activators are updated. Only the OnMainLoop delegate is called du...">Paused</a> to true will disable all macro functionality. The hooks will stay on and the <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805" title="Void callback">MainLoopCallback</a> and <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#af98e3a1d830e471db6ac34663a9f9c61" title="This delegate is invoked at every keypress, before it is registered by the KeyStates....">MacroFramework.Input.InputEvents.InputCallback</a> callbacks are still called as well as any async methods which which were started before tha pause.  <a href="class_macro_framework_1_1_macros.html#ae585382df6e88448c45f612a7769bcb8">More...</a><br /></td></tr>
-<tr class="separator:ae585382df6e88448c45f612a7769bcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d3b3c897dc92045275200950e3cb953"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a2d3b3c897dc92045275200950e3cb953">QueueJobOnMainThread</a> (<a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a> action)</td></tr>
+<tr class="memdesc:a2d3b3c897dc92045275200950e3cb953"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queues a job for the main STA thread which runs the event loop.  <a href="class_macro_framework_1_1_macros.html#a2d3b3c897dc92045275200950e3cb953">More...</a><br /></td></tr>
+<tr class="separator:a2d3b3c897dc92045275200950e3cb953"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46855f9f7170dde557094abf036e063c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a46855f9f7170dde557094abf036e063c">ExecuteMainThreadJobs</a> ()</td></tr>
+<tr class="memdesc:a46855f9f7170dde557094abf036e063c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the event loop using Application.Exit, executes the jobs in the queue and restarts the event loop using Application.Run.  <a href="class_macro_framework_1_1_macros.html#a46855f9f7170dde557094abf036e063c">More...</a><br /></td></tr>
+<tr class="separator:a46855f9f7170dde557094abf036e063c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5d739fa4b6b965bb32b4f808322c7f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a6b5d739fa4b6b965bb32b4f808322c7f">SetRunState</a> (<a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">RunState</a> state, <a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a> continueDelegate=null)</td></tr>
+<tr class="memdesc:a6b5d739fa4b6b965bb32b4f808322c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the run state of the application  <a href="class_macro_framework_1_1_macros.html#a6b5d739fa4b6b965bb32b4f808322c7f">More...</a><br /></td></tr>
+<tr class="separator:a6b5d739fa4b6b965bb32b4f808322c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6966339910507088ec2bb0b7752d3416"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a6966339910507088ec2bb0b7752d3416">Resume</a> ()</td></tr>
+<tr class="memdesc:a6966339910507088ec2bb0b7752d3416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resumes the application  <a href="class_macro_framework_1_1_macros.html#a6966339910507088ec2bb0b7752d3416">More...</a><br /></td></tr>
+<tr class="separator:a6966339910507088ec2bb0b7752d3416"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9651b14de4ede167c18ecb678efdb1b9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a9651b14de4ede167c18ecb678efdb1b9">Pause</a> ()</td></tr>
+<tr class="memdesc:a9651b14de4ede167c18ecb678efdb1b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the application. <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> hooks are disabled and all events except the <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> are disabled.  <a href="class_macro_framework_1_1_macros.html#a9651b14de4ede167c18ecb678efdb1b9">More...</a><br /></td></tr>
+<tr class="separator:a9651b14de4ede167c18ecb678efdb1b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2192f7992675cf31d4ee4a34937fb0ec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a2192f7992675cf31d4ee4a34937fb0ec">PauseUntil</a> (<a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a> continueDelegate)</td></tr>
+<tr class="memdesc:a2192f7992675cf31d4ee4a34937fb0ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the application until a certain condition becomes true  <a href="class_macro_framework_1_1_macros.html#a2192f7992675cf31d4ee4a34937fb0ec">More...</a><br /></td></tr>
+<tr class="separator:a2192f7992675cf31d4ee4a34937fb0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa271f1fdc9119021b93958ace201f8d5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#aa271f1fdc9119021b93958ace201f8d5">SetLimitedMode</a> ()</td></tr>
+<tr class="memdesc:aa271f1fdc9119021b93958ace201f8d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the application. <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> hooks are disabled and all events except the <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> are disabled.  <a href="class_macro_framework_1_1_macros.html#aa271f1fdc9119021b93958ace201f8d5">More...</a><br /></td></tr>
+<tr class="separator:aa271f1fdc9119021b93958ace201f8d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f819156353674c5842b3ee4336069b1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a8f819156353674c5842b3ee4336069b1">SetLimitedModeUntil</a> (<a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a> continueDelegate)</td></tr>
+<tr class="memdesc:a8f819156353674c5842b3ee4336069b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the application until a certain condition becomes true  <a href="class_macro_framework_1_1_macros.html#a8f819156353674c5842b3ee4336069b1">More...</a><br /></td></tr>
+<tr class="separator:a8f819156353674c5842b3ee4336069b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a9bd6c4eb3e62138f8a4d514f791ca3dd"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a9bd6c4eb3e62138f8a4d514f791ca3dd">Running</a><code> [get]</code></td></tr>
-<tr class="memdesc:a9bd6c4eb3e62138f8a4d514f791ca3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the framework is running  <a href="class_macro_framework_1_1_macros.html#a9bd6c4eb3e62138f8a4d514f791ca3dd">More...</a><br /></td></tr>
-<tr class="separator:a9bd6c4eb3e62138f8a4d514f791ca3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8e6d5daec2bbfcab4ca3437a2928149"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ab8e6d5daec2bbfcab4ca3437a2928149">Paused</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ab8e6d5daec2bbfcab4ca3437a2928149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pauses the application such that no activators are updated. Only the <a class="el" href="class_macro_framework_1_1_macros.html#ad512f1970432c6e93562e386bbc8231b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> delegate is called during pause mode.  <a href="class_macro_framework_1_1_macros.html#ab8e6d5daec2bbfcab4ca3437a2928149">More...</a><br /></td></tr>
-<tr class="separator:ab8e6d5daec2bbfcab4ca3437a2928149"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad512f1970432c6e93562e386bbc8231b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805">MainLoopCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ad512f1970432c6e93562e386bbc8231b">OnMainLoop</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ad512f1970432c6e93562e386bbc8231b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delegate which is called at the start of every main loop iteration  <a href="class_macro_framework_1_1_macros.html#ad512f1970432c6e93562e386bbc8231b">More...</a><br /></td></tr>
-<tr class="separator:ad512f1970432c6e93562e386bbc8231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac925e1e687c458f84232acab9b80e28d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">RunState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ac925e1e687c458f84232acab9b80e28d">State</a> = <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9ae457ff7a83d0a8681fa483f898788515">RunState.NotRunning</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac925e1e687c458f84232acab9b80e28d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state of the application  <a href="class_macro_framework_1_1_macros.html#ac925e1e687c458f84232acab9b80e28d">More...</a><br /></td></tr>
+<tr class="separator:ac925e1e687c458f84232acab9b80e28d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a756da2f84910713f2d2713617329919b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b">OnMainLoop</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a756da2f84910713f2d2713617329919b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The delegate which is called at the start of every main loop iteration  <a href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b">More...</a><br /></td></tr>
+<tr class="separator:a756da2f84910713f2d2713617329919b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7d7f01d5094ad528e755fa443853c7c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_macros.html#ab29ddb19f43958a4406ecb6f3567a0ad">ExceptionCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#ad7d7f01d5094ad528e755fa443853c7c">OnException</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:ad7d7f01d5094ad528e755fa443853c7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called on any exception which was not caught by a trycatch clause  <a href="class_macro_framework_1_1_macros.html#ad7d7f01d5094ad528e755fa443853c7c">More...</a><br /></td></tr>
 <tr class="separator:ad7d7f01d5094ad528e755fa443853c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f10b84055f704c3610874f32bb29104"><td class="memItemLeft" align="right" valign="top">static Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a2f10b84055f704c3610874f32bb29104">MainThread</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2f10b84055f704c3610874f32bb29104"><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread on which the event loop and InputHook runs on.  <a href="class_macro_framework_1_1_macros.html#a2f10b84055f704c3610874f32bb29104">More...</a><br /></td></tr>
+<tr class="separator:a2f10b84055f704c3610874f32bb29104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2774d2356a42db5ab9508d2895264255"><td class="memItemLeft" align="right" valign="top">static Thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#a2774d2356a42db5ab9508d2895264255">FunctionalityThread</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2774d2356a42db5ab9508d2895264255"><td class="mdescLeft">&#160;</td><td class="mdescRight">The thread on which the main loop runs on. The Command classes run on this thread.  <a href="class_macro_framework_1_1_macros.html#a2774d2356a42db5ab9508d2895264255">More...</a><br /></td></tr>
+<tr class="separator:a2774d2356a42db5ab9508d2895264255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae032deaeb31bd5e5d32716a7814f34"><td class="memItemLeft" align="right" valign="top">static ConcurrentQueue&lt; <a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_macros.html#abae032deaeb31bd5e5d32716a7814f34">FunctionalityThreadJobQueue</a> = new ConcurrentQueue&lt;<a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&gt;()<code> [get]</code></td></tr>
+<tr class="memdesc:abae032deaeb31bd5e5d32716a7814f34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueue a job here to execute some action on the <a class="el" href="class_macro_framework_1_1_macros.html#a2774d2356a42db5ab9508d2895264255" title="The thread on which the main loop runs on. The Command classes run on this thread.">FunctionalityThread</a>. The jobs are executed in a try clause on the next main loop iteration.  <a href="class_macro_framework_1_1_macros.html#abae032deaeb31bd5e5d32716a7814f34">More...</a><br /></td></tr>
+<tr class="separator:abae032deaeb31bd5e5d32716a7814f34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Static class used for starting the application with settings </p>
@@ -183,7 +214,60 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="ad7c81b9b00977d56b940a3057a536ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7c81b9b00977d56b940a3057a536ec9">&#9670;&nbsp;</a></span>RunState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">MacroFramework.Macros.RunState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The different run states the application can be in </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad7c81b9b00977d56b940a3057a536ec9ae457ff7a83d0a8681fa483f898788515"></a>NotRunning&#160;</td><td class="fielddoc"><p>The application is not running </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad7c81b9b00977d56b940a3057a536ec9a5bda814c4aedb126839228f1a3d92f09"></a>Running&#160;</td><td class="fielddoc"><p>The application is running in a normal state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad7c81b9b00977d56b940a3057a536ec9a2b12f377b2c8316b03c02ebd5da46e1b"></a>RunningInLimitedMode&#160;</td><td class="fielddoc"><p>The application is running in limited mode in which only certain IActivator are updated. <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> is disabled. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad7c81b9b00977d56b940a3057a536ec9ae99180abf47a8b3a856e0bcb2656990a"></a>Paused&#160;</td><td class="fielddoc"><p>The application is paused and no Command or IActivator instances are automatically updated </p>
+</td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa56e0118216471d5dc9376dbf46d10c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa56e0118216471d5dc9376dbf46d10c5">&#9670;&nbsp;</a></span>ContinueDelegate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate bool MacroFramework.Macros.ContinueDelegate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Delegate used for continuing the app </p>
+
+</div>
+</div>
 <a id="ab29ddb19f43958a4406ecb6f3567a0ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab29ddb19f43958a4406ecb6f3567a0ad">&#9670;&nbsp;</a></span>ExceptionCallback()</h2>
 
@@ -235,27 +319,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a08f35c84cede9e264c5b13f23871e805"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08f35c84cede9e264c5b13f23871e805">&#9670;&nbsp;</a></span>MainLoopCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">delegate void MacroFramework.Macros.MainLoopCallback </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Void callback </p>
-
-</div>
-</div>
-<a id="a881c294f102aeb833cac46d2e91e916c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a881c294f102aeb833cac46d2e91e916c">&#9670;&nbsp;</a></span>PauseAndStopHooks()</h2>
+<a id="a46855f9f7170dde557094abf036e063c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46855f9f7170dde557094abf036e063c">&#9670;&nbsp;</a></span>ExecuteMainThreadJobs()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +329,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void MacroFramework.Macros.PauseAndStopHooks </td>
+          <td class="memname">static void MacroFramework.Macros.ExecuteMainThreadJobs </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -277,12 +342,12 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>This effectively pauses the entire application by disabling input hooks and all Command and <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">MacroFramework.Commands.CommandActivator</a> instances. Use this method if you wish to pause all functionality. Only the <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805" title="Void callback">MainLoopCallback</a> and async methods which started before tha pause will run. </p>
+<p>Stops the event loop using Application.Exit, executes the jobs in the queue and restarts the event loop using Application.Run. </p>
 
 </div>
 </div>
-<a id="ae585382df6e88448c45f612a7769bcb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae585382df6e88448c45f612a7769bcb8">&#9670;&nbsp;</a></span>SetPause()</h2>
+<a id="a9651b14de4ede167c18ecb678efdb1b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9651b14de4ede167c18ecb678efdb1b9">&#9670;&nbsp;</a></span>Pause()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -291,10 +356,9 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void MacroFramework.Macros.SetPause </td>
+          <td class="memname">static void MacroFramework.Macros.Pause </td>
           <td>(</td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>paused</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -305,18 +369,213 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Setting <a class="el" href="class_macro_framework_1_1_macros.html#ab8e6d5daec2bbfcab4ca3437a2928149" title="Pauses the application such that no activators are updated. Only the OnMainLoop delegate is called du...">Paused</a> to true will disable all macro functionality. The hooks will stay on and the <a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805" title="Void callback">MainLoopCallback</a> and <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#af98e3a1d830e471db6ac34663a9f9c61" title="This delegate is invoked at every keypress, before it is registered by the KeyStates....">MacroFramework.Input.InputEvents.InputCallback</a> callbacks are still called as well as any async methods which which were started before tha pause. </p>
+<p>Pauses the application. <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> hooks are disabled and all events except the <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> are disabled. </p>
+
+</div>
+</div>
+<a id="a2192f7992675cf31d4ee4a34937fb0ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2192f7992675cf31d4ee4a34937fb0ec">&#9670;&nbsp;</a></span>PauseUntil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.PauseUntil </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a>&#160;</td>
+          <td class="paramname"><em>continueDelegate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pauses the application until a certain condition becomes true </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">paused</td><td></td></tr>
+    <tr><td class="paramname">continueDelegate</td><td>Continuation condition delegate</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a6ccef1496a8c8382ace2b9cf52b2f08a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ccef1496a8c8382ace2b9cf52b2f08a">&#9670;&nbsp;</a></span>Start()</h2>
+<a id="a2d3b3c897dc92045275200950e3cb953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3b3c897dc92045275200950e3cb953">&#9670;&nbsp;</a></span>QueueJobOnMainThread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.QueueJobOnMainThread </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&#160;</td>
+          <td class="paramname"><em>action</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Queues a job for the main STA thread which runs the event loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">action</td><td>The job to add to the queue</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6966339910507088ec2bb0b7752d3416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6966339910507088ec2bb0b7752d3416">&#9670;&nbsp;</a></span>Resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.Resume </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resumes the application </p>
+
+</div>
+</div>
+<a id="aa271f1fdc9119021b93958ace201f8d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa271f1fdc9119021b93958ace201f8d5">&#9670;&nbsp;</a></span>SetLimitedMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.SetLimitedMode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pauses the application. <a class="el" href="namespace_macro_framework_1_1_input.html">Input</a> hooks are disabled and all events except the <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> are disabled. </p>
+
+</div>
+</div>
+<a id="a8f819156353674c5842b3ee4336069b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f819156353674c5842b3ee4336069b1">&#9670;&nbsp;</a></span>SetLimitedModeUntil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.SetLimitedModeUntil </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a>&#160;</td>
+          <td class="paramname"><em>continueDelegate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pauses the application until a certain condition becomes true </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">continueDelegate</td><td>Continuation condition delegate</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6b5d739fa4b6b965bb32b4f808322c7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b5d739fa4b6b965bb32b4f808322c7f">&#9670;&nbsp;</a></span>SetRunState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Macros.SetRunState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">RunState</a>&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#aa56e0118216471d5dc9376dbf46d10c5">ContinueDelegate</a>&#160;</td>
+          <td class="paramname"><em>continueDelegate</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the run state of the application </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The state to set the application in</td></tr>
+    <tr><td class="paramname">continueDelegate</td><td>If you set the application to limited run mode or paused mode this delegate can be used to return to <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9a5bda814c4aedb126839228f1a3d92f09" title="The application is running in a normal state">RunState.Running</a> state after the delegate returns true.&gt;</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a96fe1c6067b7a2ed52a10b7ca6843bee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96fe1c6067b7a2ed52a10b7ca6843bee">&#9670;&nbsp;</a></span>Start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -328,8 +587,24 @@ Properties</h2></td></tr>
           <td class="memname">static void MacroFramework.Macros.Start </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_macro_framework_1_1_setup.html">Setup</a>&#160;</td>
-          <td class="paramname"><em>setup</em></td><td>)</td>
+          <td class="paramname"><em>setup</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>runInLimitedMode</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&#160;</td>
+          <td class="paramname"><em>customEventLoop</em> = <code>null</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -343,6 +618,8 @@ Properties</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">setup</td><td>The setup options</td></tr>
+    <tr><td class="paramname">runInLimitedMode</td><td>If true the application is set to <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9a2b12f377b2c8316b03c02ebd5da46e1b" title="The application is running in limited mode in which only certain IActivator are updated....">RunState.RunningInLimitedMode</a></td></tr>
+    <tr><td class="paramname">customEventLoop</td><td>You can use this delegate to override the default event loop, which is Application.Run without a form. Leave as null to use default.</td></tr>
   </table>
   </dd>
 </dl>
@@ -376,8 +653,28 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a0325312ad31f5d2e8c81f4a2de3ac0e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0325312ad31f5d2e8c81f4a2de3ac0e6">&#9670;&nbsp;</a></span>UnpauseAndRestartHooks()</h2>
+<a id="a91d426d9a013e701d509eec861b5c6eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91d426d9a013e701d509eec861b5c6eb">&#9670;&nbsp;</a></span>VoidDelegate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">delegate void MacroFramework.Macros.VoidDelegate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Void callback </p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a2774d2356a42db5ab9508d2895264255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2774d2356a42db5ab9508d2895264255">&#9670;&nbsp;</a></span>FunctionalityThread</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -386,24 +683,68 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void MacroFramework.Macros.UnpauseAndRestartHooks </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">Thread MacroFramework.Macros.FunctionalityThread</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Resumes normal functionality by unpausing the application and restarting all enabled hooks. </p>
+<p>The thread on which the main loop runs on. The Command classes run on this thread. </p>
 
 </div>
 </div>
-<h2 class="groupheader">Property Documentation</h2>
+<a id="abae032deaeb31bd5e5d32716a7814f34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae032deaeb31bd5e5d32716a7814f34">&#9670;&nbsp;</a></span>FunctionalityThreadJobQueue</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConcurrentQueue&lt;<a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&gt; MacroFramework.Macros.FunctionalityThreadJobQueue = new ConcurrentQueue&lt;<a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a>&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enqueue a job here to execute some action on the <a class="el" href="class_macro_framework_1_1_macros.html#a2774d2356a42db5ab9508d2895264255" title="The thread on which the main loop runs on. The Command classes run on this thread.">FunctionalityThread</a>. The jobs are executed in a try clause on the next main loop iteration. </p>
+
+</div>
+</div>
+<a id="a2f10b84055f704c3610874f32bb29104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f10b84055f704c3610874f32bb29104">&#9670;&nbsp;</a></span>MainThread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Thread MacroFramework.Macros.MainThread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The thread on which the event loop and InputHook runs on. </p>
+
+</div>
+</div>
 <a id="ad7d7f01d5094ad528e755fa443853c7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7d7f01d5094ad528e755fa443853c7c">&#9670;&nbsp;</a></span>OnException</h2>
 
@@ -428,8 +769,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ad512f1970432c6e93562e386bbc8231b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad512f1970432c6e93562e386bbc8231b">&#9670;&nbsp;</a></span>OnMainLoop</h2>
+<a id="a756da2f84910713f2d2713617329919b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a756da2f84910713f2d2713617329919b">&#9670;&nbsp;</a></span>OnMainLoop</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,7 +779,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_macro_framework_1_1_macros.html#a08f35c84cede9e264c5b13f23871e805">MainLoopCallback</a> MacroFramework.Macros.OnMainLoop</td>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_macros.html#a91d426d9a013e701d509eec861b5c6eb">VoidDelegate</a> MacroFramework.Macros.OnMainLoop</td>
         </tr>
       </table>
   </td>
@@ -452,8 +793,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="ab8e6d5daec2bbfcab4ca3437a2928149"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8e6d5daec2bbfcab4ca3437a2928149">&#9670;&nbsp;</a></span>Paused</h2>
+<a id="ac925e1e687c458f84232acab9b80e28d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac925e1e687c458f84232acab9b80e28d">&#9670;&nbsp;</a></span>State</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -462,31 +803,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool MacroFramework.Macros.Paused</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Pauses the application such that no activators are updated. Only the <a class="el" href="class_macro_framework_1_1_macros.html#ad512f1970432c6e93562e386bbc8231b" title="The delegate which is called at the start of every main loop iteration">OnMainLoop</a> delegate is called during pause mode. </p>
-
-</div>
-</div>
-<a id="a9bd6c4eb3e62138f8a4d514f791ca3dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bd6c4eb3e62138f8a4d514f791ca3dd">&#9670;&nbsp;</a></span>Running</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MacroFramework.Macros.Running</td>
+          <td class="memname"><a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9">RunState</a> MacroFramework.Macros.State = <a class="el" href="class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9ae457ff7a83d0a8681fa483f898788515">RunState.NotRunning</a></td>
         </tr>
       </table>
   </td>
@@ -496,7 +813,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>True if the framework is running </p>
+<p>The current state of the application </p>
 
 </div>
 </div>

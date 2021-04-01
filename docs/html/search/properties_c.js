@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['settings_877',['Settings',['../class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4',1,'MacroFramework::Setup']]],
-  ['state_878',['State',['../interface_macro_framework_1_1_commands_1_1_i_input_event.html#af2f3a507ef00ce166d43272ac8c6f457',1,'MacroFramework.Commands.IInputEvent.State()'],['../struct_macro_framework_1_1_input_1_1_key_event.html#a16aef59f537f091eb299071e2b428927',1,'MacroFramework.Input.KeyEvent.State()']]],
-  ['stringtokey_879',['StringToKey',['../class_macro_framework_1_1_input_1_1_enhanced_key.html#aad56e599514c5e0b606bb969f3439726',1,'MacroFramework::Input::EnhancedKey']]]
+  ['receivetimestamp_946',['ReceiveTimestamp',['../interface_macro_framework_1_1_commands_1_1_i_input_event.html#a44c4ec425ed4818b3e9ecde5b58f0565',1,'MacroFramework::Commands::IInputEvent']]],
+  ['repeatcount_947',['RepeatCount',['../class_macro_framework_1_1_commands_1_1_repeat_activator.html#a7bace304444b7c96d1c9fdebffe683c4',1,'MacroFramework::Commands::RepeatActivator']]],
+  ['repeatinterval_948',['RepeatInterval',['../class_macro_framework_1_1_commands_1_1_repeat_activator.html#a6ef02c1d5e4e3e9dda0d803e3676b08c',1,'MacroFramework::Commands::RepeatActivator']]]
 ];

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.7</span>
+   &#160;<span id="projectnumber">0.1.8</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -104,12 +104,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c899ddbc2dcde3b574673cf3e415e04"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a1c899ddbc2dcde3b574673cf3e415e04">IsUniqueEvent</a> (<a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a> k, bool state)</td></tr>
 <tr class="memdesc:a1c899ddbc2dcde3b574673cf3e415e04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether or not this is a unique keyevent  <a href="class_macro_framework_1_1_input_1_1_key_states.html#a1c899ddbc2dcde3b574673cf3e415e04">More...</a><br /></td></tr>
 <tr class="separator:a1c899ddbc2dcde3b574673cf3e415e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ec837241ce240aef966b7d12caa700a"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a8ec837241ce240aef966b7d12caa700a">IsMatchingKeyState</a> (<a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a> matchType, <a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a> order, params <a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>[] keys)</td></tr>
-<tr class="memdesc:a8ec837241ce240aef966b7d12caa700a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the current keystate matches the given parameters  <a href="class_macro_framework_1_1_input_1_1_key_states.html#a8ec837241ce240aef966b7d12caa700a">More...</a><br /></td></tr>
-<tr class="separator:a8ec837241ce240aef966b7d12caa700a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a245640dc936f04b97bbe02e0819f64a2"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a245640dc936f04b97bbe02e0819f64a2">IsBindActive</a> (<a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html">Bind</a> bind)</td></tr>
+<tr class="memdesc:a245640dc936f04b97bbe02e0819f64a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the current keystate matches the given parameters  <a href="class_macro_framework_1_1_input_1_1_key_states.html#a245640dc936f04b97bbe02e0819f64a2">More...</a><br /></td></tr>
+<tr class="separator:a245640dc936f04b97bbe02e0819f64a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9af9a9029d0a0b728cfa705d91685144"><td class="memItemLeft" align="right" valign="top"><a id="a9af9a9029d0a0b728cfa705d91685144"></a>
 static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsPressingKey</b> (<a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a> key)</td></tr>
 <tr class="separator:a9af9a9029d0a0b728cfa705d91685144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7630432607fbd7324a39987dccd48f7b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a7630432607fbd7324a39987dccd48f7b">ResetKeyStates</a> ()</td></tr>
+<tr class="memdesc:a7630432607fbd7324a39987dccd48f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the key states  <a href="class_macro_framework_1_1_input_1_1_key_states.html#a7630432607fbd7324a39987dccd48f7b">More...</a><br /></td></tr>
+<tr class="separator:a7630432607fbd7324a39987dccd48f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03397d0f74e873b3a6a385c5fb978316"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a03397d0f74e873b3a6a385c5fb978316">GetCurrentActivationEventType</a> (bool currentKeyState)</td></tr>
 <tr class="memdesc:a03397d0f74e873b3a6a385c5fb978316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current activation type parameter  <a href="class_macro_framework_1_1_input_1_1_key_states.html#a03397d0f74e873b3a6a385c5fb978316">More...</a><br /></td></tr>
 <tr class="separator:a03397d0f74e873b3a6a385c5fb978316"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,8 +155,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a8ec837241ce240aef966b7d12caa700a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ec837241ce240aef966b7d12caa700a">&#9670;&nbsp;</a></span>IsMatchingKeyState()</h2>
+<a id="a245640dc936f04b97bbe02e0819f64a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a245640dc936f04b97bbe02e0819f64a2">&#9670;&nbsp;</a></span>IsBindActive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,27 +165,11 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool MacroFramework.Input.KeyStates.IsMatchingKeyState </td>
+          <td class="memname">static bool MacroFramework.Input.KeyStates.IsBindActive </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a>&#160;</td>
-          <td class="paramname"><em>matchType</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html">Bind</a>&#160;</td>
+          <td class="paramname"><em>bind</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>&#160;</td>
-          <td class="paramname"><em>order</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">params <a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>[]&#160;</td>
-          <td class="paramname"><em>keys</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -195,13 +182,10 @@ Properties</h2></td></tr>
 <p>Returns true if the current keystate matches the given parameters </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">matchType</td><td>The match type</td></tr>
-    <tr><td class="paramname">order</td><td>Whether keyevents should be in the correct order</td></tr>
-    <tr><td class="paramname">keys</td><td>The keys to match</td></tr>
+    <tr><td class="paramname">bind</td><td>The bind to check</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -248,6 +232,33 @@ Properties</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a7630432607fbd7324a39987dccd48f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7630432607fbd7324a39987dccd48f7b">&#9670;&nbsp;</a></span>ResetKeyStates()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void MacroFramework.Input.KeyStates.ResetKeyStates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resets the key states </p>
 
 </div>
 </div>
