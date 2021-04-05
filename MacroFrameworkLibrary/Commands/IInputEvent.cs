@@ -19,12 +19,12 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Specifies whether the event was emitted by a process
         /// </summary>
-        bool Injected { get; set; }
+        bool Injected { get; }
 
         /// <summary>
         /// Specifies if the key was emitted by a lower integrity level process
         /// </summary>
-        bool InjectedLower { get; set; }
+        bool InjectedLower { get; }
 
         /// <summary>
         /// Extra information given by the event source

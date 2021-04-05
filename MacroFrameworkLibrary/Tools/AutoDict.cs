@@ -23,14 +23,5 @@ namespace MacroFramework.Tools {
                 }
             }
         }
-
-        public bool GetValue(K k, out V v) {
-            if (Dictionary.ContainsKey(k)) {
-                v = Dictionary[k];
-                return true;
-            }
-            v = default;
-            return false;
-        }
     }
 }

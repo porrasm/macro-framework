@@ -24,17 +24,17 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Called when the <see cref="Bind"/> becomes active. Called before <see cref="OnUpdate"/> and <see cref="OnDeactivate"/>.
         /// </summary>
-        public Command.CommandCallback OnActivate { get; set; }
+        public Action OnActivate { get; set; }
 
         /// <summary>
         /// Called on each main loop iteration for as long as the <see cref="Bind"/> stays active. Called after <see cref="OnActivate"/> and before <see cref="OnDeactivate"/>.
         /// </summary>
-        public Command.CommandCallback OnUpdate { get; set; }
+        public Action OnUpdate { get; set; }
 
         /// <summary>
         /// Called when the <see cref="Bind"/> becomes inactive. Called after <see cref="OnActivate"/> and <see cref="OnUpdate"/>.
         /// </summary>
-        public Command.CommandCallback OnDeactivate { get; set; }
+        public Action OnDeactivate { get; set; }
 
         public override Type UpdateGroup => typeof(BindActivator);
         #endregion
@@ -55,7 +55,7 @@ namespace MacroFramework.Commands {
         /// <param name="onActivate"><see cref="OnActivate"/></param>
         /// <param name="onUpdate"><see cref="OnUpdate"/></param>
         /// <param name="onDeactivate"><see cref="OnDeactivate"/></param>
-        public BindHoldActivator(Bind bind, Command.CommandCallback onActivate, Command.CommandCallback onUpdate, Command.CommandCallback onDeactivate) : base(null) {
+        public BindHoldActivator(Bind bind, Action onActivate, Action onUpdate, Action onDeactivate) : base(null) {
             this.Bind = bind;
             OnActivate = onActivate;
             OnUpdate = onUpdate;
@@ -68,7 +68,7 @@ namespace MacroFramework.Commands {
         /// Sets the <see cref="OnActivate"/>
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindHoldActivator SetOnActivate(Command.CommandCallback cb) {
+        public BindHoldActivator SetOnActivate(Action cb) {
             this.OnActivate = cb;
             return this;
         }
@@ -77,7 +77,7 @@ namespace MacroFramework.Commands {
         /// Sets the <see cref="OnUpdate"/>
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindHoldActivator SetOnUpdate(Command.CommandCallback cb) {
+        public BindHoldActivator SetOnUpdate(Action cb) {
             this.OnUpdate = cb;
             return this;
         }
@@ -86,7 +86,7 @@ namespace MacroFramework.Commands {
         /// Sets the <see cref="OnDeactivate"/>
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindHoldActivator SetOnDeactivate(Command.CommandCallback cb) {
+        public BindHoldActivator SetOnDeactivate(Action cb) {
             this.OnDeactivate = cb;
             return this;
         }

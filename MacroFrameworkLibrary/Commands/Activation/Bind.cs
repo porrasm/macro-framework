@@ -41,14 +41,14 @@ namespace MacroFramework.Commands {
         /// Create a <see cref="BindActivator"/> from this bind
         /// </summary>
         /// <param name="cb">Callback</param>
-        public BindActivator CreateBindActivator(Command.CommandCallback cb) {
+        public BindActivator CreateBindActivator(Action cb) {
             return new BindActivator(this, cb);
         }
 
         /// <summary>
         /// Creates a <see cref="BindHoldActivator"/> from this bind
         /// </summary>
-        public BindHoldActivator CreateBindHoldActivator(Command.CommandCallback onActivate, Command.CommandCallback onUpdate, Command.CommandCallback onDeactivate) {
+        public BindHoldActivator CreateBindHoldActivator(Action onActivate, Action onUpdate, Action onDeactivate) {
             return new BindHoldActivator(this, onActivate, onUpdate, onDeactivate);
         }
         #endregion

@@ -34,7 +34,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// This delegate is called each time the associated activator activates
         /// </summary>
-        public Command.CommandCallback OnEachActivate { get; set; }
+        public Action OnEachActivate { get; set; }
 
         public override Type UpdateGroup => typeof(TimerActivator);
 
@@ -50,7 +50,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="activator">The activator to use</param>
         /// <param name="callback">The callback to execute</param>
-        public RepeatActivator(IActivator activator, Command.CommandCallback callback = null) : base(callback) {
+        public RepeatActivator(IActivator activator, Action callback = null) : base(callback) {
             this.activator = activator;
             dynamicActivator = new DynamicActivator(activator, false);
             dynamicActivator.OnExecute = OnLocalActivatorActive;
@@ -61,7 +61,7 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public RepeatActivator SetCallback(Command.CommandCallback cb) {
+        public RepeatActivator SetCallback(Action cb) {
             CommandCallback = cb;
             return this;
         }

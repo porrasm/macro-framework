@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace MacroFramework.Input {
     [Flags]
-    internal enum KbdllFlags : uint {
+    public enum KbdllFlags : uint {
         Extended = 0x01,
         Injected = 0x10,
         InjectedLower = 0x02,
@@ -12,7 +12,7 @@ namespace MacroFramework.Input {
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct KBDLLHOOKSTRUCT {
+    public struct KBDLLHOOKSTRUCT {
         public uint vkCode;
         public uint scanCode;
         public KbdllFlags flags;

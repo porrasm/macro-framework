@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Commands;
+using MacroFramework.Commands.Coroutines;
 using MacroFramework.Input;
 using System;
 using System.Collections;
@@ -203,6 +204,7 @@ namespace MacroFramework {
             MacroSettings settings = Setup.Instance.Settings;
             while (true) {
                 OnMainLoop?.Invoke();
+                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
 
                 if (State != RunState.Running) {
                     TryContinue();
@@ -214,8 +216,9 @@ namespace MacroFramework {
                     ResetKeyStates();
                 }
                 UpdateCommands();
-                
                 await Task.Delay(settings.MainLoopTimestep > 1 ? settings.MainLoopTimestep : 1);
+
+                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
             }
         }
 
@@ -224,13 +227,16 @@ namespace MacroFramework {
         }
 
         private static void UpdateCommands() {
-            CommandContainer.ForEveryCommand((c) => c.OnUpdate());
+            CommandContainer.ForEveryCommand((c) => c.OnUpdate(), "Main loop update");
 
             if (State == RunState.Running) {
                 InputEvents.HandleQueuedKeyevents();
             }
 
             CommandContainer.UpdateActivators<TimerActivator>();
+            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnTimerUpdate), $"Coroutine {CoroutineUpdateGroup.OnTimerUpdate}");
+
+
             TextCommands.ExecuteTextCommandQueue();
         }
 

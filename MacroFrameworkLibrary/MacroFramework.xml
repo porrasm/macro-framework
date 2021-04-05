@@ -20,14 +20,14 @@
             </summary>
             <param name="bind">The bind to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Bind,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindActivator.#ctor(MacroFramework.Commands.Bind,System.Action)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindActivator"/> instance
             </summary>
             <param name="bind">The bind to use</param>
             <param name="callback">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindActivator.SetCallback(System.Action)">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -64,7 +64,7 @@
             </summary>
             <param name="bind">The bind to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind,System.Action,System.Action,System.Action)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindHoldActivator"/> instance
             </summary>
@@ -73,19 +73,19 @@
             <param name="onUpdate"><see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/></param>
             <param name="onDeactivate"><see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/></param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnActivate(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnActivate(System.Action)">
             <summary>
             Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/>
             </summary>
             <param name="cb">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnUpdate(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnUpdate(System.Action)">
             <summary>
             Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>
             </summary>
             <param name="cb">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnDeactivate(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnDeactivate(System.Action)">
             <summary>
             Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>
             </summary>
@@ -96,38 +96,14 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for key event callbacks
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.InputEventCallback">
-            <summary>
-            The delegate for a key event callback
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.KeyEventCallback">
-            <summary>
-            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.KeyEvent"/>
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.MouseEventCallback">
-            <summary>
-            The delegate for a key event callback. Auto casts an <see cref="T:MacroFramework.Commands.IInputEvent"/> to a <see cref="T:MacroFramework.Input.MouseEvent"/>
-            </summary>
-            <param name="k"></param>
-        </member>
-        <member name="T:MacroFramework.Commands.KeyActivator.InputFilter">
-            <summary>
-            Filter to use with the activator
-            </summary>
-            <param name="e">Incoming input event</param>
-        </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KKey,MacroFramework.Commands.KeyActivator.InputEventCallback)">
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KKey,System.Action{MacroFramework.Commands.IInputEvent})">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
             <param name="key">The key for which you wish to receive callbacks on</param>
             <param name="callback">The key event callback</param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputFilter,MacroFramework.Commands.KeyActivator.InputEventCallback)">
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(System.Func{MacroFramework.Commands.IInputEvent,System.Boolean},System.Action{MacroFramework.Commands.IInputEvent})">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
@@ -140,13 +116,13 @@
             </summary>
             <param name="key">The key for which you wish to receive callbacks on</param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(MacroFramework.Commands.KeyActivator.InputFilter)">
+        <member name="M:MacroFramework.Commands.KeyActivator.#ctor(System.Func{MacroFramework.Commands.IInputEvent,System.Boolean})">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.KeyActivator"/> instance
             </summary>
             <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
         </member>
-        <member name="M:MacroFramework.Commands.KeyActivator.SetCallback(MacroFramework.Commands.KeyActivator.InputEventCallback)">
+        <member name="M:MacroFramework.Commands.KeyActivator.SetCallback(System.Action{MacroFramework.Commands.IInputEvent})">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -182,14 +158,14 @@
             This delegate is called each time the associated activator activates
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.RepeatActivator.#ctor(MacroFramework.Commands.IActivator,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.RepeatActivator.#ctor(MacroFramework.Commands.IActivator,System.Action)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.RepeatActivator"/> instance
             </summary>
             <param name="activator">The activator to use</param>
             <param name="callback">The callback to execute</param>
         </member>
-        <member name="M:MacroFramework.Commands.RepeatActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.RepeatActivator.SetCallback(System.Action)">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -200,25 +176,19 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for text command callbacks
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.TextActivator.TextCommandCallback">
-            <summary>
-            Callback for text commands
-            </summary>
-            <param name="command">The command which is being executed</param>
-        </member>
         <member name="P:MacroFramework.Commands.TextActivator.Settings">
             <summary>
             The settings to use
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,System.Action)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
             </summary>
             <param name="command">The command callback</param>
             <param name="settings">The settings to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,MacroFramework.Commands.TextActivator.TextCommandCallback)">
+        <member name="M:MacroFramework.Commands.TextActivator.#ctor(MacroFramework.Commands.Matchers,System.Action{System.String})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TextActivator"/> instance
             </summary>
@@ -231,13 +201,13 @@
             </summary>
             <param name="settings">The settings to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(System.Action)">
             <summary>
             Sets the callback for this activator
             </summary>
             <param name="cb">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(MacroFramework.Commands.TextActivator.TextCommandCallback)">
+        <member name="M:MacroFramework.Commands.TextActivator.SetCallback(System.Action{System.String})">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -248,7 +218,7 @@
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for timer based actions
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean,MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.TimerActivator.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean,System.Action)">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.TimerActivator"/> instance
             </summary>
@@ -257,7 +227,7 @@
             <param name="callAtStart">If true the command is called on the first update loop</param>
             <param name="unit">The unit of time used</param>
         </member>
-        <member name="M:MacroFramework.Commands.TimerActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.TimerActivator.SetCallback(System.Action)">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -281,7 +251,7 @@
             The list of active <see cref="T:MacroFramework.Commands.IActivator"/> instances
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,MacroFramework.Commands.IActivator[])">
+        <member name="M:MacroFramework.Commands.WrapperActivator.#ctor(System.Action,MacroFramework.Commands.IActivator[])">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.WrapperActivator"/> instance
             </summary>
@@ -294,7 +264,7 @@
             </summary>
             <param name="activators">The <see cref="T:MacroFramework.Commands.IActivator"/> instances to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.WrapperActivator.SetCallback(MacroFramework.Commands.Command.CommandCallback)">
+        <member name="M:MacroFramework.Commands.WrapperActivator.SetCallback(System.Action)">
             <summary>
             Sets the callback for this activator
             </summary>
@@ -302,7 +272,7 @@
         </member>
         <member name="T:MacroFramework.Commands.Bind">
             <summary>
-            Class used to different types define keyevent combinations
+            Class used to define different types of keyevent combinations
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.Bind.Keys">
@@ -322,7 +292,18 @@
         </member>
         <member name="M:MacroFramework.Commands.Bind.#ctor(MacroFramework.Commands.KKey[])">
             <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.Bind"/> instance
+            Creates a new <see cref="T:MacroFramework.Commands.Bind"/> instance and use <see cref="F:MacroFramework.Commands.BindSettings.Default"/>
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Bind.CreateBindActivator(System.Action)">
+            <summary>
+            Create a <see cref="T:MacroFramework.Commands.BindActivator"/> from this bind
+            </summary>
+            <param name="cb">Callback</param>
+        </member>
+        <member name="M:MacroFramework.Commands.Bind.CreateBindHoldActivator(System.Action,System.Action,System.Action)">
+            <summary>
+            Creates a <see cref="T:MacroFramework.Commands.BindHoldActivator"/> from this bind
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.BindSettings">
@@ -353,6 +334,13 @@
             <param name="matchType">The key match filter for this activator</param>
             <param name="order">The key order filter for this activator</param>
         </member>
+        <member name="M:MacroFramework.Commands.BindSettings.CreateBind(MacroFramework.Commands.KKey[])">
+            <summary>
+            Creates a bind with these options
+            </summary>
+            <param name="keys">Bind keys</param>
+            <returns></returns>
+        </member>
         <member name="F:MacroFramework.Commands.BindSettings.Default">
             <summary>
             The default settings for a bind. Sufficient for the majority of binds. Only the defined keys can be pressed and in order. Activated when the last key of the bind is released. 
@@ -380,7 +368,7 @@
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus">
             <summary>
-            If true, the active status of the owner (<see cref="F:MacroFramework.Commands.Command.IsActive"/>) is ignored
+            If true, the active status of the owner (<see cref="P:MacroFramework.Commands.Command.IsActive"/>) is ignored
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.CommandCallback">
@@ -388,7 +376,7 @@
             The current callback of this activator
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.CommandActivator.#ctor(MacroFramework.Commands.Command.CommandCallback,System.Boolean)">
+        <member name="M:MacroFramework.Commands.CommandActivator.#ctor(System.Action,System.Boolean)">
             <summary>
             Initializes this activator with a callback
             </summary>
@@ -403,7 +391,7 @@
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.IsActive">
             <summary>
-            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="F:MacroFramework.Commands.Command.IsActive"/>
+            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="P:MacroFramework.Commands.Command.IsActive"/>
             </summary>
             <returns></returns>
         </member>
@@ -425,7 +413,7 @@
             <param name="removeAfterFirstActivation">Indicates whether the dynamic activator should be discarded after the first activation</param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Commands.CommandActivator.RegisterDynamicActivator(MacroFramework.Commands.DynamicActivator.RemoveAfterExecutionDelegate)">
+        <member name="M:MacroFramework.Commands.CommandActivator.RegisterDynamicActivator(System.Func{System.Boolean})">
             <summary>
             Wraps this <see cref="T:MacroFramework.Commands.CommandActivator"/> into a <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance and adds it to the list of active activators using <see cref="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IDynamicActivator)"/>
             </summary>
@@ -484,7 +472,7 @@
             <param name="activator">The activator to use</param>
             <param name="removeAfterFirstExecute">Indicates whether the activator should be discarded after the first activation</param>
         </member>
-        <member name="M:MacroFramework.Commands.DynamicActivator.#ctor(MacroFramework.Commands.IActivator,MacroFramework.Commands.DynamicActivator.RemoveAfterExecutionDelegate)">
+        <member name="M:MacroFramework.Commands.DynamicActivator.#ctor(MacroFramework.Commands.IActivator,System.Func{System.Boolean})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.DynamicActivator"/> instance
             </summary>
@@ -672,25 +660,19 @@
             Base class for all macro functionality
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.Command.CommandCallback">
-            <summary>
-            Callback for command actions
-            </summary>
-        </member>
         <member name="F:MacroFramework.Commands.Command.activatorGroup">
             <summary>
             Container for the set of <see cref="T:MacroFramework.Commands.CommandActivator"/> instances of this command
             </summary>
         </member>
-        <member name="T:MacroFramework.Commands.Command.CommandContext">
-            <summary>
-            The deleget bool used to determine whether a <see cref="T:MacroFramework.Commands.Command"/> instance is active
-            </summary>
-            <returns></returns>
-        </member>
         <member name="F:MacroFramework.Commands.Command.DefaultContext">
             <summary>
             The default context used in all <see cref="T:MacroFramework.Commands.Command"/> instances. Returns true on default but can be changed.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Command.IsActive">
+            <summary>
+            Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.#ctor">
@@ -703,11 +685,10 @@
             Abstract method for initializing <see cref="T:MacroFramework.Commands.IActivator"/> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Command.IsActive">
+        <member name="M:MacroFramework.Commands.Command.Dispose">
             <summary>
-            Override this method to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
+            
             </summary>
-            <returns></returns>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnExecuteStart">
             <summary>
@@ -751,6 +732,31 @@
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
         </member>
+        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Collections.IEnumerator)">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance from the given <see cref="T:System.Collections.IEnumerator"/> parameters, starts it and then returns the new coroutine.
+            </summary>
+            <param name="enumerator">The enumerator to use</param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.StartCoroutine(MacroFramework.Commands.Coroutine)">
+            <summary>
+            Starts a coroutine
+            </summary>
+            <param name="coroutine">The coroutine to start</param>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.StopCoroutine(MacroFramework.Commands.Coroutine)">
+            <summary>
+            Returns true if the corotuine was running and stopped
+            </summary>
+            <param name="coroutine"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.StopAllCoroutines">
+            <summary>
+            Stops all coroutines running in this <see cref="T:MacroFramework.Commands.Command"/> instance
+            </summary>
+        </member>
         <member name="T:MacroFramework.Commands.CommandContainer">
             <summary>
             A static class for handling all active <see cref="T:MacroFramework.Commands.Command"/> instances
@@ -785,7 +791,7 @@
             </summary>
             <param name="act">The dynamic activator to add</param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.ForEveryCommand(MacroFramework.Commands.CommandContainer.CommandIteratorDelegate,System.String)">
+        <member name="M:MacroFramework.Commands.CommandContainer.ForEveryCommand(System.Action{MacroFramework.Commands.Command},System.String)">
             <summary>
             Executes some action for every command in a try clause
             </summary>
@@ -794,6 +800,141 @@
             <summary>
             Removes a <see cref="T:MacroFramework.Commands.IDynamicActivator"/> instance from the active list. Returns true if the element existed and was removed.
             </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.Coroutine">
+            <summary>
+            A class for executing coroutines
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Coroutine.ID">
+            <summary>
+            Unique ID for the coroutine
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Coroutine.IsRunning">
+            <summary>
+            Indicates whether or not this coroutine is running
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.#ctor(System.Collections.IEnumerator,System.Action{MacroFramework.Commands.Coroutine})">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance
+            </summary>
+            <param name="enumerator">The enumerator to use</param>
+            <param name="onEnd">The action to call after the coroutine ends or is cancelled</param>
+        </member>
+        <member name="T:MacroFramework.Commands.Coroutines.CoroutineManager">
+            <summary>
+            Class for managing coroutines
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.Coroutines.CoroutineUpdateGroup">
+            <summary>
+            The different update groups that a coroutine has
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.Coroutines.CoroutineUpdateGroup.OnBeforeUpdate">
+            <summary>
+            Handled at the start of each main loop iteration right after <see cref="P:MacroFramework.Macros.OnMainLoop"/> delegate
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.Coroutines.CoroutineUpdateGroup.OnAfterUpdate">
+            <summary>
+            Handled at the end of each main loop iteration
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.Coroutines.CoroutineUpdateGroup.OnTimerUpdate">
+            <summary>
+            Handled at each update loop
+            </summary>
+        </member>
+        <member name="F:MacroFramework.Commands.Coroutines.CoroutineUpdateGroup.OnInputEvent">
+            <summary>
+            Handled whenever a received <see cref="T:MacroFramework.Commands.IInputEvent"/> is handled, after corresponding <see cref="T:MacroFramework.Commands.IActivator"/> instances
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.Coroutines.YieldInstruction">
+            <summary>
+            Base class for all coroutine functionality
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Coroutines.YieldInstruction.Owner">
+            <summary>
+            The coroutine which owns this instruction. Null if this instruction is an executing coroutine.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Coroutines.YieldInstruction.UpdateGroup">
+            <summary>
+            The update group of this instruction
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitFor">
+            <summary>
+            Coroutine instruction for waiting for a specific amount of time
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitFor.#ctor(System.Int32,MacroFramework.Commands.TimeUnit)">
+            <summary>
+            Waits for a specified amount of time
+            </summary>
+            <param name="amount">The amount of time</param>
+            <param name="unit">The unit of time</param>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitForBind">
+            <summary>
+            Coroutine instruction for waiting until a <see cref="T:MacroFramework.Commands.Bind"/> becomes active
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitForBind.#ctor(MacroFramework.Commands.Bind)">
+            <summary>
+            Waits until a certain bind is held down
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitForEndOfUpdate">
+            <summary>
+            Coroutine instruction for waiting until the end of the main update loop
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitForEndOfUpdate.#ctor">
+            <summary>
+            Waits for the end of the this update loop
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitForInputEvent">
+            <summary>
+            Coroutine instruction for waiting on a specific key input. The current key event is accessible from the coroutine using <see cref="P:MacroFramework.Input.InputEvents.CurrentInputEvent"/>.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitForInputEvent.#ctor">
+            <summary>
+            Waits until the next <see cref="T:MacroFramework.Commands.IInputEvent"/> is handled
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitForInputEvent.#ctor(System.Func{MacroFramework.Commands.IInputEvent,System.Boolean})">
+            <summary>
+            Waits until the next matching <see cref="T:MacroFramework.Commands.IInputEvent"/> is handled
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitForStartOfUpdate">
+            <summary>
+            Coroutine instruction for waiting until start of the next main update loop
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitForStartOfUpdate.#ctor">
+            <summary>
+            Waits for the start of the next update loop
+            </summary>
+        </member>
+        <member name="T:MacroFramework.Commands.WaitUntil">
+            <summary>
+            Coroutine instruction for waiting until a specified condition becomes true
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.WaitUntil.#ctor(System.Func{System.Boolean})">
+            <summary>
+            Waits until the specified condition becomes true
+            </summary>
+            <param name="condition"></param>
         </member>
         <member name="T:MacroFramework.Commands.ActivationEventType">
             <summary>
@@ -1275,11 +1416,6 @@
         <member name="T:MacroFramework.Input.InputEvents">
             <summary>
             Static clas used to handle the keyevents captured by the <see cref="T:MacroFramework.Input.InputHook"/>
-            </summary>
-        </member>
-        <member name="T:MacroFramework.Input.InputEvents.InputCallbackFunc">
-            <summary>
-            A delegate for receiving keyevents from the framework
             </summary>
         </member>
         <member name="P:MacroFramework.Input.InputEvents.InputCallback">
@@ -2388,16 +2524,6 @@
             The current state of the application
             </summary>
         </member>
-        <member name="T:MacroFramework.Macros.VoidDelegate">
-            <summary>
-            Void callback
-            </summary>
-        </member>
-        <member name="T:MacroFramework.Macros.ContinueDelegate">
-            <summary>
-            Delegate used for continuing the app
-            </summary>
-        </member>
         <member name="P:MacroFramework.Macros.OnMainLoop">
             <summary>
             The delegate which is called at the start of every main loop iteration
@@ -2432,7 +2558,7 @@
             Enqueue a job here to execute some action on the <see cref="P:MacroFramework.Macros.FunctionalityThread"/>. The jobs are executed in a try clause on the next main loop iteration.
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,MacroFramework.Macros.VoidDelegate)">
+        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,System.Action)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
             </summary>
@@ -2445,7 +2571,7 @@
             Stops the MacroFramework application
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.QueueJobOnMainThread(MacroFramework.Macros.VoidDelegate)">
+        <member name="M:MacroFramework.Macros.QueueJobOnMainThread(System.Action)">
             <summary>
             Queues a job for the main STA thread which runs the event loop.
             </summary>
@@ -2476,7 +2602,7 @@
             This exception was caught by the <see cref="E:System.Threading.Tasks.TaskScheduler.UnobservedTaskException"/> handler
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.SetRunState(MacroFramework.Macros.RunState,MacroFramework.Macros.ContinueDelegate)">
+        <member name="M:MacroFramework.Macros.SetRunState(MacroFramework.Macros.RunState,System.Func{System.Boolean})">
             <summary>
             Set the run state of the application
             </summary>
@@ -2493,7 +2619,7 @@
             Pauses the application. Input hooks are disabled and all events except the <see cref="P:MacroFramework.Macros.OnMainLoop"/> are disabled.
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.PauseUntil(MacroFramework.Macros.ContinueDelegate)">
+        <member name="M:MacroFramework.Macros.PauseUntil(System.Func{System.Boolean})">
             <summary>
             Pauses the application until a certain condition becomes true
             </summary>
@@ -2504,7 +2630,7 @@
             Pauses the application. Input hooks are disabled and all events except the <see cref="P:MacroFramework.Macros.OnMainLoop"/> are disabled.
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.SetLimitedModeUntil(MacroFramework.Macros.ContinueDelegate)">
+        <member name="M:MacroFramework.Macros.SetLimitedModeUntil(System.Func{System.Boolean})">
             <summary>
             Pauses the application until a certain condition becomes true
             </summary>
@@ -2623,6 +2749,13 @@
             Use a custom <see cref="T:MacroFramework.ILogger"/>
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:MacroFramework.Tools.AutoDict`2">
+            <summary>
+            Dictionary which does not throw errors on access
+            </summary>
+            <typeparam name="K">Key</typeparam>
+            <typeparam name="V">Value</typeparam>
         </member>
         <member name="T:MacroFramework.Tools.RegexWrapper">
             <summary>

@@ -28,16 +28,16 @@ namespace MacroFramework.Input {
         public ActivationEventType ActivationType { get; set; }
 
         #region fields
-        private KbdllFlags flags;
+        public KbdllFlags Flags { get; set; }
 
         /// <summary>
         /// Specifies if the key has the extended property
         /// </summary>
-        public bool Extended => flags.HasFlag(KbdllFlags.Extended);
-        public bool Injected => flags.HasFlag(KbdllFlags.Injected);
-        public bool InjectedLower => flags.HasFlag(KbdllFlags.InjectedLower);
-        public bool AltDown => flags.HasFlag(KbdllFlags.AltDown);
-        public bool Release => flags.HasFlag(KbdllFlags.Release);
+        public bool Extended => Flags.HasFlag(KbdllFlags.Extended);
+        public bool Injected => Flags.HasFlag(KbdllFlags.Injected);
+        public bool InjectedLower => Flags.HasFlag(KbdllFlags.InjectedLower);
+        public bool AltDown => Flags.HasFlag(KbdllFlags.AltDown);
+        public bool Release => Flags.HasFlag(KbdllFlags.Release);
         #endregion
 
         public UIntPtr ExtraInfo { get; set; }
@@ -55,9 +55,9 @@ namespace MacroFramework.Input {
 
             WindowsMessage msg = (WindowsMessage)wParam;
             State = msg == WindowsMessage.KEYDOWN || msg == WindowsMessage.SYSKEYDOWN;
-            flags = rawData.flags;
+            Flags = rawData.flags;
 
-            Key = ((VKey)rawData.vkCode).AsCustom(flags.HasFlag(KbdllFlags.Extended));
+            Key = ((VKey)rawData.vkCode).AsCustom(Flags.HasFlag(KbdllFlags.Extended));
             if (Key == Setup.Instance.Settings.GeneralBindKey) {
                 Key = KKey.GeneralBindKey;
             }

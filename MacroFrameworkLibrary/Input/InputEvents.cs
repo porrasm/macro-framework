@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MacroFramework.Tools;
 using System;
+using MacroFramework.Commands.Coroutines;
 
 namespace MacroFramework.Input {
     /// <summary>
@@ -33,7 +34,7 @@ namespace MacroFramework.Input {
             BlockedKeys = new HashSet<KKey>();
         }
 
-        #region hook key event
+        #region hook inputevent
         /// <summary>
         /// You can use this method to send virtual input within the application.
         /// </summary>
@@ -76,7 +77,7 @@ namespace MacroFramework.Input {
         }
         #endregion
 
-        #region handle keyevents
+        #region handle input events
         internal static void HandleQueuedKeyevents() {
             KeyStates.CleanStatelessKeys();
             while (keyEventQueue.Count > 0) {
@@ -99,6 +100,7 @@ namespace MacroFramework.Input {
             if (k.Unique) {
                 Logger.Log("Update binds with input event: " + k);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
+                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnInputEvent), $"Coroutine {CoroutineUpdateGroup.OnInputEvent}");
             }
             if (!k.State) {
                 KeyStates.AddKeyEvent(k);

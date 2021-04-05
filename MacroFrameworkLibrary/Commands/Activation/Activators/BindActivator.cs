@@ -20,6 +20,9 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="bind">The bind to use</param>
         public BindActivator(Bind bind) : base(null) {
+            if (bind == null) {
+                throw new Exception("Bind cannot be null");
+            }
             this.Bind = bind;
         }
 
@@ -28,7 +31,10 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="bind">The bind to use</param>
         /// <param name="callback">The callback to use</param>
-        public BindActivator(Bind bind, Command.CommandCallback callback) : base(callback) {
+        public BindActivator(Bind bind, Action callback) : base(callback) {
+            if (bind == null) {
+                throw new Exception("Bind cannot be null");
+            }
             this.Bind = bind;
         }
         #endregion
@@ -37,7 +43,7 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindActivator SetCallback(Command.CommandCallback cb) {
+        public BindActivator SetCallback(Action cb) {
             CommandCallback = cb;
             return this;
         }

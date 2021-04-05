@@ -29,7 +29,7 @@ namespace MacroFramework.Commands {
         }
 
         internal static void Exit() {
-            ForEveryCommand((c) => c.OnClose(), "OnClose");
+            ForEveryCommand((c) => c.Dispose(), "OnClose");
             Deinitialize();
         }
 

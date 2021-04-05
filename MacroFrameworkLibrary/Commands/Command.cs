@@ -64,6 +64,14 @@ namespace MacroFramework.Commands {
         #endregion
 
         /// <summary>
+        /// 
+        /// </summary>
+        internal void Dispose() {
+            StopAllCoroutines();
+            OnClose();
+        }
+
+        /// <summary>
         /// Called before the execution of any <see cref="IActivator"/> callback starts
         /// </summary>
         protected internal virtual void OnExecuteStart() { }

@@ -23,12 +23,12 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Called whenever the text command mode is activated
         /// </summary>
-        public static Command.CommandCallback OnTextCommandModeStart { get; set; }
+        public static Action OnTextCommandModeStart { get; set; }
 
         /// <summary>
         /// Called whenever the text command mode is deactivated
         /// </summary>
-        public static Command.CommandCallback OnTextCommandModeEnd { get; set; }
+        public static Action OnTextCommandModeEnd { get; set; }
 
         static TextCommands() {
             textCommandQueue = new Queue<string>();

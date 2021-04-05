@@ -21,7 +21,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="callback">The callback to use</param>
         /// <param name="activators">The <see cref="IActivator"/> instances to use</param>
-        public WrapperActivator(Command.CommandCallback callback, params IActivator[] activators) : base(callback) {
+        public WrapperActivator(Action callback, params IActivator[] activators) : base(callback) {
             foreach (IActivator act in activators) {
                 this.ActiveActivators.Add(act);
             }
@@ -40,7 +40,7 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public WrapperActivator SetCallback(Command.CommandCallback cb) {
+        public WrapperActivator SetCallback(Action cb) {
             CommandCallback = cb;
             return this;
         }
