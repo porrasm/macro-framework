@@ -8,32 +8,8 @@ namespace MacroFramework.Commands {
     public class KeyActivator : CommandActivator {
 
         #region fields
-        /// <summary>
-        /// The delegate for a key event callback
-        /// </summary>
-        /// <param name="k"></param>
-        public delegate void InputEventCallback(IInputEvent i);
-
-        /// <summary>
-        /// The delegate for a key event callback. Auto casts an <see cref="IInputEvent"/> to a <see cref="KeyEvent"/>
-        /// </summary>
-        /// <param name="k"></param>
-        public delegate void KeyEventCallback(KeyEvent k);
-
-        /// <summary>
-        /// The delegate for a key event callback. Auto casts an <see cref="IInputEvent"/> to a <see cref="MouseEvent"/>
-        /// </summary>
-        /// <param name="k"></param>
-        public delegate void MouseEventCallback(MouseEvent m);
-
-        /// <summary>
-        /// Filter to use with the activator
-        /// </summary>
-        /// <param name="e">Incoming input event</param>
-        public delegate bool InputFilter(IInputEvent e);
-
-        private InputFilter keyFilter;
-        private InputEventCallback cb;
+        private Func<IInputEvent, bool> keyFilter;
+        private Action<IInputEvent> cb;
         #endregion
 
         #region constructors
@@ -42,7 +18,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="key">The key for which you wish to receive callbacks on</param>
         /// <param name="callback">The key event callback</param>
-        public KeyActivator(KKey key, InputEventCallback callback) : base(null) {
+        public KeyActivator(KKey key, Action<IInputEvent> callback) : base(null) {
             this.keyFilter = (e) => e.Key == key;
             this.cb = callback;
         }
@@ -52,7 +28,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
         /// <param name="callback">The key event callback</param>
-        public KeyActivator(InputFilter keyFilter, InputEventCallback callback) : base(null) {
+        public KeyActivator(Func<IInputEvent, bool> keyFilter, Action<IInputEvent> callback) : base(null) {
             this.keyFilter = keyFilter;
             this.cb = callback;
         }
@@ -69,7 +45,7 @@ namespace MacroFramework.Commands {
         /// Creates a <see cref="KeyActivator"/> instance
         /// </summary>
         /// <param name="keyFilter">The keys for which you wish to receive callbacks on</param>
-        public KeyActivator(InputFilter keyFilter) : base(null) {
+        public KeyActivator(Func<IInputEvent, bool> keyFilter) : base(null) {
             this.keyFilter = keyFilter;
         }
         #endregion
@@ -78,7 +54,7 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public KeyActivator SetCallback(InputEventCallback cb) {
+        public KeyActivator SetCallback(Action<IInputEvent> cb) {
             this.cb = cb;
             return this;
         }

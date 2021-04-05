@@ -43,19 +43,9 @@ namespace MacroFramework {
         public static RunState State { get; private set; } = RunState.NotRunning;
 
         /// <summary>
-        /// Void callback
-        /// </summary>
-        public delegate void VoidDelegate();
-
-        /// <summary>
-        /// Delegate used for continuing the app
-        /// </summary>
-        public delegate bool ContinueDelegate();
-
-        /// <summary>
         /// The delegate which is called at the start of every main loop iteration
         /// </summary>
-        public static VoidDelegate OnMainLoop { get; set; }
+        public static Action OnMainLoop { get; set; }
 
         /// <summary>
         /// Callback used to catch exceptions globally
@@ -71,13 +61,13 @@ namespace MacroFramework {
         /// </summary>
         public static ExceptionCallback OnException { get; set; }
 
-        private static ContinueDelegate continueDelegate;
+        private static Func<bool> continueDelegate;
 
         /// <summary>
         /// The thread on which the event loop and <see cref="InputHook"/> runs on.
         /// </summary>
         public static Thread MainThread { get; private set; }
-        private static ConcurrentQueue<VoidDelegate> mainThreadJobQueue = new ConcurrentQueue<VoidDelegate>();
+        private static ConcurrentQueue<Action> mainThreadJobQueue = new ConcurrentQueue<Action>();
 
         /// <summary>
         /// The thread on which the main loop runs on. The <see cref="Command"/> classes run on this thread.
@@ -87,7 +77,7 @@ namespace MacroFramework {
         /// <summary>
         /// Enqueue a job here to execute some action on the <see cref="FunctionalityThread"/>. The jobs are executed in a try clause on the next main loop iteration.
         /// </summary>
-        public static ConcurrentQueue<VoidDelegate> FunctionalityThreadJobQueue { get; private set; } = new ConcurrentQueue<VoidDelegate>();
+        public static ConcurrentQueue<Action> FunctionalityThreadJobQueue { get; private set; } = new ConcurrentQueue<Action>();
 
         internal static bool usingCustomEventLoop;
         #endregion
@@ -99,7 +89,7 @@ namespace MacroFramework {
         /// <param name="setup">The setup options</param>
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
         /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
-        public static void Start(Setup setup, bool runInLimitedMode = false, VoidDelegate customEventLoop = null) {
+        public static void Start(Setup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
             if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA) {
                 throw new Exception("MacroFramwork must be started on an STA thread. See the [STAThread] attribute.");
             }
@@ -132,7 +122,7 @@ namespace MacroFramework {
                 while (mainThreadJobQueue.Count > 0) {
                     try {
                         Console.WriteLine("Executing queued job");
-                        if (mainThreadJobQueue.TryDequeue(out VoidDelegate cb)) {
+                        if (mainThreadJobQueue.TryDequeue(out Action cb)) {
                             cb();
                         } else {
                             throw new Exception("Could not dequeue job");
@@ -194,7 +184,7 @@ namespace MacroFramework {
         /// Queues a job for the main STA thread which runs the event loop.
         /// </summary>
         /// <param name="action">The job to add to the queue</param>
-        public static void QueueJobOnMainThread(VoidDelegate action) {
+        public static void QueueJobOnMainThread(Action action) {
             Console.WriteLine("Queue main job: " + action);
             mainThreadJobQueue.Enqueue(action);
         }
@@ -298,7 +288,7 @@ namespace MacroFramework {
         /// </summary>
         /// <param name="state">The state to set the application in</param>
         /// <param name="continueDelegate">If you set the application to limited run mode or paused mode this delegate can be used to return to <see cref="RunState.Running"/> state after the delegate returns true.></param>
-        public static void SetRunState(RunState state, ContinueDelegate continueDelegate = null) {
+        public static void SetRunState(RunState state, Func<bool> continueDelegate = null) {
             switch (state) {
                 case RunState.Running:
                     Resume();
@@ -350,7 +340,7 @@ namespace MacroFramework {
         /// Pauses the application until a certain condition becomes true
         /// </summary>
         /// <param name="continueDelegate">Continuation condition delegate</param>
-        public static void PauseUntil(ContinueDelegate continueDelegate) {
+        public static void PauseUntil(Func<bool> continueDelegate) {
             Macros.continueDelegate = continueDelegate;
             Pause();
         }
@@ -371,7 +361,7 @@ namespace MacroFramework {
         /// Pauses the application until a certain condition becomes true
         /// </summary>
         /// <param name="continueDelegate">Continuation condition delegate</param>
-        public static void SetLimitedModeUntil(ContinueDelegate continueDelegate) {
+        public static void SetLimitedModeUntil(Func<bool> continueDelegate) {
             Macros.continueDelegate = continueDelegate;
             SetLimitedMode();
         }

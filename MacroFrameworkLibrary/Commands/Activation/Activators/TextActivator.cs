@@ -9,12 +9,6 @@ namespace MacroFramework.Commands {
 
         #region fields
         /// <summary>
-        /// Callback for text commands
-        /// </summary>
-        /// <param name="command">The command which is being executed</param>
-        public delegate void TextCommandCallback(string command);
-
-        /// <summary>
         /// The settings to use
         /// </summary>
         public Matchers Settings { get; set; }
@@ -26,7 +20,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The command callback</param>
         /// <param name="settings">The settings to use</param>
-        public TextActivator(Matchers settings, Command.CommandCallback command) : base(command) {
+        public TextActivator(Matchers settings, Action command) : base(command) {
             this.Settings = settings;
         }
 
@@ -35,7 +29,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="command">The text command callback</param>
         /// <param name="settings">The settings to use</param>
-        public TextActivator(Matchers settings, TextCommandCallback command) : base(WrapTextCommand(command)) {
+        public TextActivator(Matchers settings, Action<string> command) : base(WrapTextCommand(command)) {
             this.Settings = settings;
         }
 
@@ -52,7 +46,7 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public TextActivator SetCallback(Command.CommandCallback cb) {
+        public TextActivator SetCallback(Action cb) {
             CommandCallback = cb;
             return this;
         }
@@ -61,12 +55,12 @@ namespace MacroFramework.Commands {
         /// Sets the callback for this activator
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public TextActivator SetCallback(TextCommandCallback cb) {
+        public TextActivator SetCallback(Action<string> cb) {
             CommandCallback = WrapTextCommand(cb);
             return this;
         }
 
-        private static Command.CommandCallback WrapTextCommand(TextCommandCallback cb) {
+        private static Action WrapTextCommand(Action<string> cb) {
             return () => cb?.Invoke(TextCommandCreator.CurrentTextCommand);
         }
 

@@ -18,14 +18,14 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The current callback of this activator
         /// </summary>
-        internal Command.CommandCallback CommandCallback { get; set; }
+        internal Action CommandCallback { get; set; }
 
         /// <summary>
         /// Initializes this activator with a callback
         /// </summary>
         /// <param name="command">The callback to be called when this activator becomes active</param>
         /// <param name="ignoreOwnerContext"><see cref="CommandActivator.IgnoreOwnerActiveStatus"/></param>
-        public CommandActivator(Command.CommandCallback command, bool ignoreOwnerContext = false) {
+        public CommandActivator(Action command, bool ignoreOwnerContext = false) {
             this.CommandCallback = command;
             this.IgnoreOwnerActiveStatus = ignoreOwnerContext;
         }
@@ -43,7 +43,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <returns></returns>
         public bool IsActive() {
-            if (IgnoreOwnerActiveStatus || (Owner?.IsActive() ?? true)) {
+            if (IgnoreOwnerActiveStatus || (Owner?.IsActive ?? true)) {
                 return IsActivatorActive();
             }
             return false;
@@ -83,7 +83,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="removeAfterFirstActivation"></param>
         /// <returns></returns>
-        public DynamicActivator RegisterDynamicActivator(DynamicActivator.RemoveAfterExecutionDelegate removeAfterFirstActivation) {
+        public DynamicActivator RegisterDynamicActivator(Func<bool> removeAfterFirstActivation) {
             DynamicActivator dynamic = new DynamicActivator(this, removeAfterFirstActivation);
             CommandContainer.AddDynamicActivator(dynamic);
             return dynamic;

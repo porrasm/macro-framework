@@ -9,8 +9,6 @@ namespace MacroFramework.Commands {
     public static class CommandContainer {
 
         #region fields
-        public delegate void CommandIteratorDelegate(Command command);
-
         /// <summary>
         /// List of active commands. You should not modify this collection.
         /// </summary>
@@ -178,7 +176,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Executes some action for every command in a try clause
         /// </summary>
-        public static void ForEveryCommand(CommandIteratorDelegate it, string errorMessage = "") {
+        public static void ForEveryCommand(Action<Command> it, string errorMessage = "") {
             foreach (Command c in Commands) {
                 try {
                     it(c);

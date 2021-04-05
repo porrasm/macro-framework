@@ -1,6 +1,7 @@
 ﻿using MacroFramework.Commands;
 using System.Collections.Generic;
 using MacroFramework.Tools;
+using System;
 
 namespace MacroFramework.Input {
     /// <summary>
@@ -10,14 +11,9 @@ namespace MacroFramework.Input {
 
         #region fields
         /// <summary>
-        /// A delegate for receiving keyevents from the framework
-        /// </summary>
-        public delegate bool InputCallbackFunc(IInputEvent k);
-
-        /// <summary>
         /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
-        public static InputCallbackFunc InputCallback { get; set; }
+        public static Func<IInputEvent, bool> InputCallback { get; set; }
 
         /// <summary>
         /// Use this block keys from other applications

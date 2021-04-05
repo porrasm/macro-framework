@@ -12,13 +12,12 @@ namespace MacroFramework.Commands {
         public uint ID { get; }
         public IActivator Activator { get; private set; }
         public bool IsCanceled { get; set; }
-        public delegate bool RemoveAfterExecutionDelegate();
-        private RemoveAfterExecutionDelegate removeAfterFirstExecute;
+        private Func<bool> removeAfterExecution;
 
         /// <summary>
         /// This delegate is called on <see cref="Execute"/> before the <see cref="IActivator.Execute"/> method
         /// </summary>
-        public Command.CommandCallback OnExecute { get; set; }
+        public Action OnExecute { get; set; }
         #endregion
 
         /// <summary>
@@ -29,9 +28,9 @@ namespace MacroFramework.Commands {
         public DynamicActivator(IActivator activator, bool removeAfterFirstExecute) {
             Activator = activator;
             if (removeAfterFirstExecute) {
-                this.removeAfterFirstExecute = () => true;
+                this.removeAfterExecution = () => true;
             } else {
-                this.removeAfterFirstExecute = () => false;
+                this.removeAfterExecution = () => false;
             }
             this.ID = CommandContainer.UniqueDynamicActivatorID;
         }
@@ -41,12 +40,12 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="activator">The activator to use</param>
         /// <param name="removeAfter">The delegate which indicates whether this <see cref="DynamicActivator"/> should be removed after execution. If null <see cref="RemoveAfterExecution"/> always returns true.</param>
-        public DynamicActivator(IActivator activator, RemoveAfterExecutionDelegate removeAfter = null) {
-            if (removeAfterFirstExecute == null) {
+        public DynamicActivator(IActivator activator, Func<bool> removeAfter = null) {
+            if (removeAfterExecution == null) {
                 throw new Exception("This delegate cannot be null");
             }
             Activator = activator;
-            this.removeAfterFirstExecute = removeAfter;
+            this.removeAfterExecution = removeAfter;
             this.ID = CommandContainer.UniqueDynamicActivatorID;
         }
 
@@ -56,7 +55,7 @@ namespace MacroFramework.Commands {
         }
 
         public bool RemoveAfterExecution() {
-            return removeAfterFirstExecute();
+            return removeAfterExecution();
         }
 
         public void OnRemove() {
