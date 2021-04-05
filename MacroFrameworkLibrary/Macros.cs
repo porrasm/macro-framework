@@ -81,6 +81,11 @@ namespace MacroFramework {
         public static ConcurrentQueue<Action> FunctionalityThreadJobQueue { get; private set; } = new ConcurrentQueue<Action>();
 
         internal static bool usingCustomEventLoop;
+
+        /// <summary>
+        /// The last timestamp of the main update loop
+        /// </summary>
+        public static long LastMainLoopStart { get; private set; }
         #endregion
 
         #region management
@@ -100,10 +105,8 @@ namespace MacroFramework {
             usingCustomEventLoop = customEventLoop != null;
             InitializeApplication(setup, runInLimitedMode);
 
-            CancellationTokenSource cancel = new CancellationTokenSource();
-            FunctionalityThread = new Thread(new ThreadStart(() => {
-                Task mainLoop = Task.Run(MainLoop, cancel.Token);
-            }));
+            FunctionalityThread = new Thread(new ThreadStart(MainLoop));
+
             FunctionalityThread.SetApartmentState(ApartmentState.MTA);
             FunctionalityThread.Start();
 
@@ -113,7 +116,6 @@ namespace MacroFramework {
                 RunDefaultEventLoop();
             }
 
-            cancel.Cancel();
             FunctionalityThread.Join();
         }
 
@@ -199,10 +201,12 @@ namespace MacroFramework {
         #endregion
 
         #region main loop
-        private static async Task MainLoop() {
+        private static void MainLoop() {
             // Disallow reference change
             MacroSettings settings = Setup.Instance.Settings;
-            while (true) {
+            while (State != RunState.NotRunning) {
+                LastMainLoopStart = Tools.Timer.Milliseconds;
+
                 OnMainLoop?.Invoke();
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
 
@@ -216,7 +220,10 @@ namespace MacroFramework {
                     ResetKeyStates();
                 }
                 UpdateCommands();
-                await Task.Delay(settings.MainLoopTimestep > 1 ? settings.MainLoopTimestep : 1);
+
+                long delay = settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
+                delay = delay > 0 ? delay : 0;
+                Thread.Sleep((int)delay);
 
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
             }
