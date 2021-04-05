@@ -9,7 +9,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The corresponding key
         /// </summary>
-        KKey Key { get; }
+        KKey Key { get; set; }
 
         /// <summary>
         /// The state of the key
@@ -19,37 +19,37 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Specifies whether the event was emitted by a process
         /// </summary>
-        bool Injected { get; }
+        bool Injected { get; set; }
 
         /// <summary>
         /// Specifies if the key was emitted by a lower integrity level process
         /// </summary>
-        bool InjectedLower { get; }
+        bool InjectedLower { get; set; }
 
         /// <summary>
         /// Extra information given by the event source
         /// </summary>
-        UIntPtr ExtraInfo { get; }
+        UIntPtr ExtraInfo { get; set; }
 
         /// <summary>
         /// The time in milliseconds when it was received. See <see cref="MacroFramework.Tools.Timer"/>.
         /// </summary>
-        long ReceiveTimestamp { get; }
+        long ReceiveTimestamp { get; set; }
 
         /// <summary>
         /// The type of the input event
         /// </summary>
-        InputEventType Type { get; }
+        InputEventType Type { get; set; }
 
         /// <summary>
         /// The type of the activation event
         /// </summary>
-        ActivationEventType ActivationType { get; }
+        ActivationEventType ActivationType { get; set; }
 
         /// <summary>
         /// Determines if the event is unique. False in the case of a key being held down.
         /// </summary>
-        bool Unique { get; }
+        bool Unique { get; set; }
 
         /// <summary>
         /// Returns a new copy of the event

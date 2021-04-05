@@ -1,6 +1,11 @@
 ﻿using System.Collections.Generic;
 
 namespace MacroFramework.Tools {
+    /// <summary>
+    /// Dictionary which does not throw errors on access
+    /// </summary>
+    /// <typeparam name="K">Key</typeparam>
+    /// <typeparam name="V">Value</typeparam>
     public class AutoDict<K, V> {
         public Dictionary<K, V> Dictionary { get; private set; }
 
@@ -17,6 +22,15 @@ namespace MacroFramework.Tools {
                     Dictionary.Add(k, value);
                 }
             }
+        }
+
+        public bool GetValue(K k, out V v) {
+            if (Dictionary.ContainsKey(k)) {
+                v = Dictionary[k];
+                return true;
+            }
+            v = default;
+            return false;
         }
     }
 }

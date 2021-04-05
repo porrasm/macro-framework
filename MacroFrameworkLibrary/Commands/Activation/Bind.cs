@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>
-    /// Class used to different types define keyevent combinations
+    /// Class used to define different types of keyevent combinations
     /// </summary>
     public class Bind {
         #region fields
@@ -29,12 +29,29 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Creates a new <see cref="Bind"/> instance
+        /// Creates a new <see cref="Bind"/> instance and use <see cref="BindSettings.Default"/>
         /// </summary>
         public Bind(params KKey[] keys) {
-            this.Settings = BindSettings.Default;
             this.Keys = keys;
+            this.Settings = BindSettings.Default;
         }
+
+        #region activators
+        /// <summary>
+        /// Create a <see cref="BindActivator"/> from this bind
+        /// </summary>
+        /// <param name="cb">Callback</param>
+        public BindActivator CreateBindActivator(Command.CommandCallback cb) {
+            return new BindActivator(this, cb);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="BindHoldActivator"/> from this bind
+        /// </summary>
+        public BindHoldActivator CreateBindHoldActivator(Command.CommandCallback onActivate, Command.CommandCallback onUpdate, Command.CommandCallback onDeactivate) {
+            return new BindHoldActivator(this, onActivate, onUpdate, onDeactivate);
+        }
+        #endregion
         #endregion
     }
 }

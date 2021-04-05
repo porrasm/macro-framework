@@ -49,7 +49,7 @@ namespace MacroFramework {
         /// <summary>
         /// Whether to allow a certain device hook
         /// </summary>
-        public bool AllowKeyboardHook = true, AllowMouseHook = false;
+        public bool AllowKeyboardHook = false, AllowMouseHook = false;
 
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop

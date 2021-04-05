@@ -7,7 +7,7 @@ namespace MacroFramework.Commands {
     /// <summary>
     /// Base class for all macro functionality
     /// </summary>
-    public abstract class Command {
+    public abstract partial class Command {
 
         #region fields
         /// <summary>

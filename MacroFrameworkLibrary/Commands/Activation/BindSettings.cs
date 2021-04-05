@@ -30,6 +30,15 @@
             Order = order;
         }
 
+        /// <summary>
+        /// Creates a bind with these options
+        /// </summary>
+        /// <param name="keys">Bind keys</param>
+        /// <returns></returns>
+        public Bind CreateBind(params KKey[] keys) {
+            return new Bind(this, keys);
+        }
+
         #region presets
 
         /// <summary>
