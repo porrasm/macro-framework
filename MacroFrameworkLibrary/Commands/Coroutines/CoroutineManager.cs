@@ -25,35 +25,39 @@ namespace MacroFramework.Commands.Coroutines {
 
         #region management
         internal void StartCoroutine(Coroutine coroutine) {
-            if (coroutine.Consumed) {
-                throw new Exception("Can't add an already consumed coroutine. Create a new instance instad.");
+            if (coroutine.IsRunning) {
+                throw new Exception("Can't add an already running coroutine. Create a new instance instad.");
             }
             if (!coroutines.Add(coroutine)) {
                 throw new Exception("Coroutine already running");
             }
 
-            coroutine.Consumed = true;
             coroutine.IsRunning = true;
             coroutine.MoveNext();
             int groupIndex = (int)coroutine.CurrentInstruction.UpdateGroup;
             groups[groupIndex].Add(coroutine.CurrentInstruction);
         }
 
-        internal bool StopCoroutine(Coroutine coroutine) {
-            if (!coroutines.Contains(coroutine)) {
+        internal bool StopCoroutine(Coroutine coroutine, bool finished) {
+            Console.WriteLine("Stop coroutine");
+            if (!coroutines.Remove(coroutine)) {
+                Console.WriteLine("Coroutine not found");
                 return false;
             }
-
-            coroutines.Remove(coroutine);
+            
             coroutine.Finish();
             coroutine.IsRunning = false;
+
+            if (!finished) {
+                groups[(int)coroutine.CurrentInstruction.UpdateGroup].Remove(coroutine.CurrentInstruction);
+            }
 
             return true;
         }
 
         internal void StopAllCoroutines() {
             Coroutine[] allCoroutines = coroutines.ToArray();
-            Array.ForEach(allCoroutines, c => StopCoroutine(c));
+            Array.ForEach(allCoroutines, c => StopCoroutine(c, false));
         }
 
         internal void UpdateCoroutines(CoroutineUpdateGroup group) {
@@ -65,6 +69,10 @@ namespace MacroFramework.Commands.Coroutines {
 
         private void UpdateCoroutine(int groupIndex, YieldInstruction instruction) {
 
+            if (instruction.Owner.IsPaused) {
+                return;
+            }
+
             // Check if current instruction is finished
             if (!instruction.MoveNext()) {
 
@@ -72,7 +80,7 @@ namespace MacroFramework.Commands.Coroutines {
 
                 // Check if coroutine is finished
                 if (!instruction.Owner.MoveNext()) {
-                    if (!StopCoroutine(instruction.Owner)) {
+                    if (!StopCoroutine(instruction.Owner, true)) {
                         throw new Exception("Error removing coroutine after finishing it");
                     }
                     return;

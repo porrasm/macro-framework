@@ -54,11 +54,11 @@ namespace MacroFramework {
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop
         /// </summary>
-        public int MainLoopTimestep = 250;
+        public int MainLoopTimestep = 10;
 
         /// <summary>
         /// The <see cref="Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="Bind"/>s stop working. Use this timestep to reset the keys using <see cref="Input.KeyStates.ResetKeyStates"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets.
         /// </summary>
-        public int KeyStateFixTimestep = 5000;
+        public int KeyStateFixTimestep = 20000;
     }
 }

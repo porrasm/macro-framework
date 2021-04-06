@@ -202,39 +202,35 @@ namespace MacroFramework {
 
         #region main loop
         private static void MainLoop() {
-            // Disallow reference change
-            MacroSettings settings = Setup.Instance.Settings;
             while (State != RunState.NotRunning) {
-                LastMainLoopStart = Tools.Timer.Milliseconds;
-
-                OnMainLoop?.Invoke();
-                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
-
-                if (State != RunState.Running) {
-                    TryContinue();
-                }
+                MainLoopStart();
                 if (State == RunState.Paused) {
                     continue;
                 }
-                if (settings.KeyStateFixTimestep > 0) {
-                    ResetKeyStates();
-                }
-                UpdateCommands();
-
-                long delay = settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
-                delay = delay > 0 ? delay : 0;
-                Thread.Sleep((int)delay);
-
+                UpdateCommandFunctionality();
+                MainLoopDelay();
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
             }
         }
+        private static void MainLoopStart() {
+            LastMainLoopStart = Tools.Timer.Milliseconds;
 
-        private static void ResetKeyStates() {
-            // not implemented
+            OnMainLoop?.Invoke();
+            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
+
+            if (State != RunState.Running) {
+                TryContinue();
+            }
         }
 
-        private static void UpdateCommands() {
+
+        private static void UpdateCommandFunctionality() {
             CommandContainer.ForEveryCommand((c) => c.OnUpdate(), "Main loop update");
+
+            int keyFixTimestep = Setup.Instance.Settings.KeyStateFixTimestep;
+            if (keyFixTimestep > 0 && KeyStates.KeyDownCount > 0 && Tools.Timer.PassedFrom(KeyStates.LastKeyResetTime) >= keyFixTimestep) {
+                KeyStates.ResetKeyStates(false);
+            }
 
             if (State == RunState.Running) {
                 InputEvents.HandleQueuedKeyevents();
@@ -245,6 +241,14 @@ namespace MacroFramework {
 
 
             TextCommands.ExecuteTextCommandQueue();
+        }
+
+        private static void MainLoopDelay() {
+            long delay = Setup.Instance.Settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
+            delay = delay > 0 ? delay : 0;
+            if (delay > 0) {
+                Thread.Sleep((int)delay);
+            }
         }
 
         private static void TryContinue() {
@@ -331,7 +335,7 @@ namespace MacroFramework {
             continueDelegate = null;
             State = RunState.Running;
             CommandContainer.ForEveryCommand((c) => c.OnResume());
-            KeyStates.ResetKeyStates();
+            KeyStates.ResetKeyStates(true);
             QueueJobOnMainThread(() => InputHook.StartHooks());
             ExecuteMainThreadJobs();
         }

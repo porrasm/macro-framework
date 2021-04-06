@@ -22,7 +22,10 @@ namespace MacroFramework.Input {
 
         private static IInputEvent currentKeyEvent;
 
-        private static int keyDownCount = 0;
+        /// <summary>
+        /// Number of keys held down
+        /// </summary>
+        public static int KeyDownCount { get; private set; }
 
         private static Queue<IInputEvent> statelessKeysPressed;
 
@@ -31,7 +34,7 @@ namespace MacroFramework.Input {
         /// </summary>
 
         private struct State {
-            public uint localIndex;
+            public long time;
             public uint globalIndex;
         }
 
@@ -40,7 +43,7 @@ namespace MacroFramework.Input {
         /// </summary>
         public static long LastKeyEventTime { get; private set; }
 
-        private static long lastSafeReset;
+        internal static long LastKeyResetTime {get; private set; }
         #endregion
 
         static KeyStates() {
@@ -53,7 +56,6 @@ namespace MacroFramework.Input {
             AbsoluteKeystates = new AutoDict<KKey, bool>();
             keyDown = new AutoDict<KKey, State>();
             keyUp = new AutoDict<KKey, State>();
-            lastSafeReset = Timer.Milliseconds;
             statelessKeysPressed = new Queue<IInputEvent>();
         }
 
@@ -83,14 +85,14 @@ namespace MacroFramework.Input {
         /// <param name="state"></param>
         /// <returns></returns>
         public static bool IsUniqueEvent(KKey k, bool state) {
-            return k.IsStateless() || !state ? true : !AbsoluteKeystates[k];
+            return k.IsStateless() || state != AbsoluteKeystates[k];
         }
 
         internal static void AddKeyEvent(IInputEvent k) {
             if (k.Key.IsStateless() && k.State) {
                 statelessKeysPressed.Enqueue(k);
             }
-            KeyDownCountReset();
+
             if (!k.Unique) {
                 return;
             }
@@ -99,14 +101,14 @@ namespace MacroFramework.Input {
 
             if (k.State) {
                 State state = keyDown[k.Key];
-                SetState(ref state);
+                InitState(ref state);
                 keyDown[k.Key] = state;
-                keyDownCount++;
+                KeyDownCount++;
             } else {
                 State state = keyUp[k.Key];
-                SetState(ref state);
+                InitState(ref state);
                 keyUp[k.Key] = state;
-                keyDownCount--;
+                KeyDownCount--;
             }
         }
 
@@ -121,23 +123,12 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Temporary solution for possible state mismatch due to lag/exceptions
         /// </summary>
-        private static void KeyDownCountReset() {
-            if (Timer.PassedFrom(lastSafeReset) < 5000) {
-                return;
-            }
-            lastSafeReset = Timer.Milliseconds;
-            keyDownCount = 0;
-            foreach (KKey k in keyDown.Dictionary.Keys) {
-                if (IsPressingKey(k)) {
-                    keyDownCount++;
-                }
-            }
-        }
+        
 
-        private static void SetState(ref State state) {
+        private static void InitState(ref State state) {
             globalIndex++;
-            state.localIndex++;
             state.globalIndex = globalIndex;
+            state.time = Timer.Milliseconds;
         }
 
         #region keystate matching
@@ -157,7 +148,7 @@ namespace MacroFramework.Input {
             if (!IsPressingKeys(order, keys)) {
                 return false;
             }
-            return keys.Length == keyDownCount;
+            return keys.Length == KeyDownCount;
         }
 
         private static bool IsPressingKeys(KeyPressOrder order, params KKey[] keys) {
@@ -199,18 +190,42 @@ namespace MacroFramework.Input {
         public static bool IsPressingKey(KKey key) {
             return keyDown[key].globalIndex > keyUp[key].globalIndex;
         }
+
+        public static long GetKeyHoldTime(KKey key) {
+            return IsPressingKey(key) ? Timer.PassedFrom(keyDown[key].time) : -1;
+        }
         #endregion
 
         /// <summary>
         /// Resets the key states
         /// </summary>
-        public static void ResetKeyStates() {
+        /// <param name="forced">If false, only resets keys that have been held down long enough. If true resets all keys which are held down.</param>
+        public static void ResetKeyStates(bool forced) {
+            Logger.Log("Reset keystates");
             foreach (KKey key in Enum.GetValues(typeof(KKey))) {
-                MockInput input = new MockInput(key, false, InputEventType.Keyboard);
-                input.ActivationType = ActivationEventType.OnFirstRelease;
-                AddKeyEvent(input);
+
+                long time = GetKeyHoldTime(key);
+
+                if (time >= 0 && (forced || time >= Setup.Instance.Settings.KeyStateFixTimestep)) {
+                    Logger.Log("Reset " + key);
+                    MockInput input = new MockInput(key, false, InputEventType.Keyboard);
+                    input.ActivationType = ActivationEventType.OnFirstRelease;
+                    input.Unique = true;
+                    AddAbsoluteEvent(input);
+                    AddKeyEvent(input);
+                }
             }
             KeyDownCountReset();
+            LastKeyResetTime = Timer.Milliseconds;
+        }
+
+        private static void KeyDownCountReset() {
+            KeyDownCount = 0;
+            foreach (KKey k in keyDown.Dictionary.Keys) {
+                if (IsPressingKey(k)) {
+                    KeyDownCount++;
+                }
+            }
         }
 
         /// <summary>

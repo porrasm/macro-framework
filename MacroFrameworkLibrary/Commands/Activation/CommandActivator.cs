@@ -43,7 +43,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <returns></returns>
         public bool IsActive() {
-            if (IgnoreOwnerActiveStatus || (Owner?.IsActive ?? true)) {
+            if (IgnoreOwnerActiveStatus || (Owner?.IsActive() ?? true)) {
                 return IsActivatorActive();
             }
             return false;

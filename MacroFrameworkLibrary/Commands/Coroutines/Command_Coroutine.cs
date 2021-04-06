@@ -16,19 +16,20 @@ namespace MacroFramework.Commands {
         /// Creates a new <see cref="Coroutine"/> instance from the given <see cref="IEnumerator"/> parameters, starts it and then returns the new coroutine.
         /// </summary>
         /// <param name="enumerator">The enumerator to use</param>
-        /// <returns></returns>
-        public Coroutine StartCoroutine(IEnumerator enumerator) {
-            Coroutine coroutine = new Coroutine(enumerator);
-            Coroutines.StartCoroutine(coroutine);
-            return coroutine;
+        /// <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
+        public Coroutine StartCoroutine(IEnumerator enumerator, Action<Coroutine> onEnd = null) {
+            Coroutine coroutine = new Coroutine(enumerator, onEnd);
+            return coroutine.Start(this);
         }
 
         /// <summary>
-        /// Starts a coroutine
+        /// Creates a new <see cref="Coroutine"/> instance from the given <see cref="IEnumerator"/> parameters, starts it and then returns the new coroutine.
         /// </summary>
-        /// <param name="coroutine">The coroutine to start</param>
-        public void StartCoroutine(Coroutine coroutine) {
-            Coroutines.StartCoroutine(coroutine);
+        /// <param name="enumeratorSource">Function to get the enumerator to use</param>
+        /// /// <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
+        public Coroutine StartCoroutine(Func<IEnumerator> enumeratorSource, Action<Coroutine> onEnd = null) {
+            Coroutine coroutine = new Coroutine(enumeratorSource, onEnd);
+            return coroutine.Start(this);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace MacroFramework.Commands {
         /// <param name="coroutine"></param>
         /// <returns></returns>
         public bool StopCoroutine(Coroutine coroutine) {
-            return Coroutines.StopCoroutine(coroutine);
+            return Coroutines.StopCoroutine(coroutine, false);
         }
 
         /// <summary>

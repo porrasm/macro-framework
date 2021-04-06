@@ -732,18 +732,19 @@
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Collections.IEnumerator)">
+        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Collections.IEnumerator,System.Action{MacroFramework.Commands.Coroutine})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance from the given <see cref="T:System.Collections.IEnumerator"/> parameters, starts it and then returns the new coroutine.
             </summary>
             <param name="enumerator">The enumerator to use</param>
-            <returns></returns>
+            <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StartCoroutine(MacroFramework.Commands.Coroutine)">
+        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Func{System.Collections.IEnumerator},System.Action{MacroFramework.Commands.Coroutine})">
             <summary>
-            Starts a coroutine
+            Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance from the given <see cref="T:System.Collections.IEnumerator"/> parameters, starts it and then returns the new coroutine.
             </summary>
-            <param name="coroutine">The coroutine to start</param>
+            <param name="enumeratorSource">Function to get the enumerator to use</param>
+            /// <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
         </member>
         <member name="M:MacroFramework.Commands.Command.StopCoroutine(MacroFramework.Commands.Coroutine)">
             <summary>
@@ -806,9 +807,19 @@
             A class for executing coroutines
             </summary>
         </member>
+        <member name="P:MacroFramework.Commands.Coroutine.EnumeratorSource">
+            <summary>
+            Function for getting the enumerator. Necessary for restarting of resetting the coroutine.
+            </summary>
+        </member>
         <member name="P:MacroFramework.Commands.Coroutine.ID">
             <summary>
             Unique ID for the coroutine
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.Coroutine.IsPaused">
+            <summary>
+            If true the coroutine will not be updated
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.Coroutine.IsRunning">
@@ -822,6 +833,45 @@
             </summary>
             <param name="enumerator">The enumerator to use</param>
             <param name="onEnd">The action to call after the coroutine ends or is cancelled</param>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.#ctor(System.Func{System.Collections.IEnumerator},System.Action{MacroFramework.Commands.Coroutine})">
+            <summary>
+            Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance
+            </summary>
+            <param name="enumeratorSource">The enumerator source to use</param>
+            <param name="onEnd">The action to call after the coroutine ends or is cancelled</param>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.Start">
+            <summary>
+            Starts this coroutine
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.Start(MacroFramework.Commands.Command)">
+            <summary>
+            Starts this coroutine in the given <see cref="T:MacroFramework.Commands.Command"/> class
+            </summary>
+            <param name="owner"></param>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.Restart">
+            <summary>
+            Stops the coroutine, resets it and restarts it. Must have defined <see cref="P:MacroFramework.Commands.Coroutine.EnumeratorSource"/>.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.Stop">
+            <summary>
+            Stops the coroutine
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.SetOwner(MacroFramework.Commands.Command)">
+            <summary>
+            Set the owner of this coroutine
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutine.Reset">
+            <summary>
+            Resets this coroutine. Must have defined <see cref="P:MacroFramework.Commands.Coroutine.EnumeratorSource"/>.
+            </summary>
         </member>
         <member name="T:MacroFramework.Commands.Coroutines.CoroutineManager">
             <summary>
@@ -1540,6 +1590,11 @@
             Returns the dictionary containig VKeytates. This dictionary should not be used for keybinds.
             </summary>
         </member>
+        <member name="P:MacroFramework.Input.KeyStates.KeyDownCount">
+            <summary>
+            Number of keys held down
+            </summary>
+        </member>
         <member name="T:MacroFramework.Input.KeyStates.State">
             <summary>
             How many keys are held down at any given moment
@@ -1571,7 +1626,7 @@
             <param name="state"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.KeyDownCountReset">
+        <member name="M:MacroFramework.Input.KeyStates.InitState(MacroFramework.Input.KeyStates.State@)">
             <summary>
             Temporary solution for possible state mismatch due to lag/exceptions
             </summary>
@@ -1582,10 +1637,11 @@
             </summary>
             <param name="bind">The bind to check</param>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.ResetKeyStates">
+        <member name="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)">
             <summary>
             Resets the key states
             </summary>
+            <param name="forced">If false, only resets keys that have been held down long enough. If true resets all keys which are held down.</param>
         </member>
         <member name="M:MacroFramework.Input.KeyStates.GetCurrentActivationEventType(System.Boolean)">
             <summary>
@@ -2558,6 +2614,11 @@
             Enqueue a job here to execute some action on the <see cref="P:MacroFramework.Macros.FunctionalityThread"/>. The jobs are executed in a try clause on the next main loop iteration.
             </summary>
         </member>
+        <member name="P:MacroFramework.Macros.LastMainLoopStart">
+            <summary>
+            The last timestamp of the main update loop
+            </summary>
+        </member>
         <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,System.Action)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
@@ -2698,7 +2759,7 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.KeyStateFixTimestep">
             <summary>
-            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets.
+            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets.
             </summary>
         </member>
         <member name="T:MacroFramework.Setup">
