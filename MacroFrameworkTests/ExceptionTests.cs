@@ -27,7 +27,7 @@ namespace MacroFrameworkTests {
             Macros.Start(new TestSetup());
         }
 
-        class TestSetup : Setup {
+        class TestSetup : MacroSetup {
             protected override MacroSettings GetSettings() {
                 MacroSettings settings = new MacroSettings();
 

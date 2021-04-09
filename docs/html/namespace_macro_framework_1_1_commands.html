@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.8</span>
+   &#160;<span id="projectnumber">0.1.9</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -84,6 +84,7 @@ $(document).ready(function(){initNavTree('namespace_macro_framework_1_1_commands
 
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
@@ -93,6 +94,9 @@ $(document).ready(function(){initNavTree('namespace_macro_framework_1_1_commands
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_macro_framework_1_1_commands_1_1_activator_container.html">ActivatorContainer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A container which is used in the initialize state to define all the <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances a command owns.  <a href="struct_macro_framework_1_1_commands_1_1_activator_container.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_activator.html">BindActivator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for keybind callbacks  <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,7 +107,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for key event callbacks  <a href="class_macro_framework_1_1_commands_1_1_key_activator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_repeat_activator.html">RepeatActivator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for repeating activators (e.g. double click). Requires that you set <a class="el" href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b" title="The delay in milliseconds between every iteration of the main loop">MacroSettings.MainLoopTimestep</a> low enough.  <a href="class_macro_framework_1_1_commands_1_1_repeat_activator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for repeating activators (e.g. double click). Requires that you set <a class="el" href="class_macro_framework_1_1_macro_settings.html#abfdc167c4ad93d540a9a7b06d82b6e7b" title="The delay in milliseconds between every iteration of the main loop. Default = 10ms">MacroSettings.MainLoopTimestep</a> low enough.  <a href="class_macro_framework_1_1_commands_1_1_repeat_activator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_text_activator.html">TextActivator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html" title="The base class for all included activators. Inherit this class or implement IActivator for custom fun...">CommandActivator</a> instance for text command callbacks  <a href="class_macro_framework_1_1_commands_1_1_text_activator.html#details">More...</a><br /></td></tr>
@@ -117,16 +121,13 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>AsyncDynamicActivator</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html">Bind</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class used to different types define keyevent combinations  <a href="class_macro_framework_1_1_commands_1_1_bind.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class used to define different types of keyevent combinations  <a href="class_macro_framework_1_1_commands_1_1_bind.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_bind_settings.html">BindSettings</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A settings class used to define the behaviour of a <a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html" title="Class used to different types define keyevent combinations">Bind</a>  <a href="class_macro_framework_1_1_commands_1_1_bind_settings.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A settings class used to define the behaviour of a <a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html" title="Class used to define different types of keyevent combinations">Bind</a>  <a href="class_macro_framework_1_1_commands_1_1_bind_settings.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html">CommandActivator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The base class for all included activators. Inherit this class or implement <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> for custom functionality.  <a href="class_macro_framework_1_1_commands_1_1_command_activator.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator_group.html">CommandActivatorGroup</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper class for storing multiple <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html" title="Interface for all command activators">IActivator</a> instances  <a href="class_macro_framework_1_1_commands_1_1_command_activator_group.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html">DynamicActivator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default implementtion of <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html" title="An interface for adding IActivator instance based actions during runtime">IDynamicActivator</a>  <a href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#details">More...</a><br /></td></tr>
@@ -163,6 +164,27 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html">CommandContainer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A static class for handling all active <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html" title="Base class for all macro functionality">Command</a> instances  <a href="class_macro_framework_1_1_commands_1_1_command_container.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html">Coroutine</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class for executing coroutines  <a href="class_macro_framework_1_1_commands_1_1_coroutine.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_for.html">WaitFor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting for a specific amount of time  <a href="class_macro_framework_1_1_commands_1_1_wait_for.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_for_bind.html">WaitForBind</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting until a <a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html" title="Class used to define different types of keyevent combinations">Bind</a> becomes active  <a href="class_macro_framework_1_1_commands_1_1_wait_for_bind.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_for_end_of_update.html">WaitForEndOfUpdate</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting until the end of the main update loop  <a href="class_macro_framework_1_1_commands_1_1_wait_for_end_of_update.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_for_input_event.html">WaitForInputEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting on a specific key input. The current key event is accessible from the coroutine using <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c" title="Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.">Input.InputEvents.CurrentInputEvent</a>.  <a href="class_macro_framework_1_1_commands_1_1_wait_for_input_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_for_start_of_update.html">WaitForStartOfUpdate</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting until start of the next main update loop  <a href="class_macro_framework_1_1_commands_1_1_wait_for_start_of_update.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_commands_1_1_wait_until.html">WaitUntil</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html" title="A class for executing coroutines">Coroutine</a> instruction for waiting until a specified condition becomes true  <a href="class_macro_framework_1_1_commands_1_1_wait_until.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">interface &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interface for representing device input  <a href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#details">More...</a><br /></td></tr>
@@ -723,7 +745,7 @@ Enumerations</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="ac733a395add7056b9b34f0c3e33e3540afd060c0c157323f1e43e0704d4f3ffc8"></a>MouseMove&#160;</td><td class="fielddoc"><p>Mouse movement </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac733a395add7056b9b34f0c3e33e3540ad9afa9b3c18e142932762a4270b45b1f"></a>GeneralBindKey&#160;</td><td class="fielddoc"><p>The <a class="el" href="class_macro_framework_1_1_macro_settings.html#aa567e76c354751eedd23b37dd8b8af00" title="A dedicated bind key which is always intercepted and tranformed into VKey.GENERAL_BIND_KEY">MacroSettings.GeneralBindKey</a> key will always be transformed to this key </p>
+<tr><td class="fieldname"><a id="ac733a395add7056b9b34f0c3e33e3540ad9afa9b3c18e142932762a4270b45b1f"></a>GeneralBindKey&#160;</td><td class="fielddoc"><p>The <a class="el" href="class_macro_framework_1_1_macro_settings.html#aa567e76c354751eedd23b37dd8b8af00" title="A dedicated bind key which is always intercepted and tranformed into VKey.GENERAL_BIND_KEY....">MacroSettings.GeneralBindKey</a> key will always be transformed to this key </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ac733a395add7056b9b34f0c3e33e3540a6adf97f83acf6453d4a6a4b1070f3754"></a>None&#160;</td><td class="fielddoc"><p>Does not represent any key </p>
 </td></tr>

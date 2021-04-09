@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.8</span>
+   &#160;<span id="projectnumber">0.1.9</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -93,21 +93,25 @@ Setup</h1>
 <p>The project is available on <a href="https://www.nuget.org/packages/MacroFramework/">Nuget</a>. Visit the <a href="https://github.com/porrasm/windows-macro-framework-library">GitHub</a> page for setup instructions.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Using the framework</h1>
-<p>The framework is designed in such a way that it is very simple and fast to use. You only need to call the <code>MacroFramework.Macros.Start(Setup)</code> in your main method (with an STAThread attribute). All of your defined command classes will be automatically added using reflection if you defined the command assembly in the setup class. This is very helpful because when you want to add new functionality to your application you only need to create a new command class and start writing the functionality code without any other setup. The only setup you need to do is inherit the main setup class and then you are done.</p>
+<p>The framework is designed in such a way that it is very simple and fast to use. You only need to call the <code><a class="el" href="class_macro_framework_1_1_macros.html#a63c47949b71f2c3aea5575dfee2addd1" title="Starts the synchronous MacrosFramework application. Should be called from a method with an STAThreadA...">MacroFramework.Macros.Start()</a></code> in your main method (with an STAThread attribute). All of your defined command classes will be automatically added using reflection if you defined the command assembly in the setup class. This is very helpful because when you want to add new functionality to your application you only need to create a new command class and start writing the functionality code without any other setup. The only setup you need to do is inherit the main setup class and then you are done.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 How it works</h1>
-<p>The framework is started with a single method <code>MacroFramework.Macros.Start(Setup)</code> and it can be stopped with <code><a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174" title="Stops the MacroFramework application">MacroFramework.Macros.Stop()</a></code>. When the application starts it will start a global keyboard hook which listens to all your keypresses. These keypresses will be caught in desktop mode and in most application (e.g. some fullscreen games might prevent the keyboard hook from receiving events). These keyvents will be used for activating macros relates to keyvents.</p>
+<p>The framework is started with a single method <code>MacroFramework.Macros.Start(Setup)</code> and it can be stopped with <code><a class="el" href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174" title="Stops the MacroFramework application">MacroFramework.Macros.Stop()</a></code>. When the application starts it will start a global keyboard hook which listens to keyboard input. These keypresses will be caught in desktop mode and in most applications (e.g. some fullscreen games might prevent the keyboard hook from receiving events). These keyvents will be used for activating macros relates to keyvents.</p>
 <p>The framework also has a main loop which runs every X milliseconds. You can set this option in the <a href="../html/class_macro_framework_1_1_setup.html">Setup</a> class. This main loop is used for timer based events (so the smaller the main loop delay the more accurate the timers are). The keyevents are also queued up and handled in the main loop.</p>
 <p>The framework also offers support for text commands.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
-Exception handling</h1>
-<p>The framework is able to handle most uncaught errors that happen in your code using a global exception handler. It is recommended that you create your own exception handler if you want more error proof runtimes. The global exception handler can be disabled from the settings class. As a reminder though, the framework can't handle uncaught errors in <code>async void</code> methods. Use <code>async Task</code> instead whenever possible (e.g. use method wrappers).</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Exception handling</h2>
+<p>The framework calls every bit of custom functionality in a try clause, preventing crashed caused by macro functionality. It cannot, however, catch errors in async methods. You must implement your own error handling if you use async methods.</p>
+<p>Async method should not be needed for simple macro functionality because the framework offers synchronous alternatives (see IDynamicActivator and Coroutines).</p>
+<p>The framework is able to handle most uncaught errors that happen in your code using a global exception handler. It is recommended that you create your own exception handler or disable the exception handler all together.</p>
+<p>The framework does use a global exception handler for uncaught errors but it's not very efficient. The global exception handler can be disabled from the settings class and you can use your own exception handler instead.</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
 Keyboard and mouse input</h2>
 <p>The keyboard and mouse input are available using the <code>KKey</code> enum.</p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 The command class</h2>
 <p>The <a href="../html/class_macro_framework_1_1_commands_1_1_command.html">Command</a> class is the base class which you should inherit whenever you create some custom functionality. I recommend grouping similar commends together in a single Command class and creating a new class for each time you want to create some new functionality.</p>
+<p>It is possible to use this framework without a single Command class. The IDynamicActivator interface offers an alternative which is more similar to that of AutoHotKey for example.</p>
 <h1><a class="anchor" id="autotoc_md7"></a>
 Keybinds and keyevents</h1>
 <p>Keybinds and keyvents are some events which are run when some keys or keys are pressed (the <a href="class_macro_framework_1_1_commands_1_1_bind_activator.html">BindActivator</a> and <a href="class_macro_framework_1_1_commands_1_1_key_activator.html">KeyActivator</a>).</p>
@@ -119,19 +123,18 @@ Keybinds and keyevents</h1>
 <div class="line"><span class="keyword">public</span> <span class="keyword">class </span>BindAndKeyActivatorExample : Command {</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Alternate to using attributes</span></div>
-<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(out CommandActivatorGroup activator) {</div>
-<div class="line">        activator = <span class="keyword">new</span> CommandActivatorGroup(<span class="keyword">this</span>);</div>
+<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(ref ActivatorContainer acts) {</div>
 <div class="line"> </div>
-<div class="line">        activator.Add(<span class="keyword">new</span> KeyActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Space, OnPressSpacebar));</div>
+<div class="line">        <span class="keyword">new</span> KeyActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Space, OnPressSpacebar).AssignTo(acts);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Defaults to ordered press of [A, B, C] and then releasing any key.</span></div>
-<div class="line">        activator.Add(<span class="keyword">new</span> BindActivator(<span class="keyword">new</span> Bind(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.B, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.C), OnReleaseABC));</div>
+<div class="line">        <span class="keyword">new</span> BindActivator(<span class="keyword">new</span> Bind(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.B, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.C), OnReleaseABC).AssignTo(acts);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Activated when A is followed by B is followed by C and when no other keys are pressed</span></div>
-<div class="line">        activator.Add(<span class="keyword">new</span> BindActivator(<span class="keyword">new</span> Bind(<span class="keyword">new</span> BindSettings(<a class="code" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>.OnPress, <a class="code" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a>.ExactKeyMatch, <a class="code" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>.Ordered), <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.B, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.C), OnPressABC));</div>
+<div class="line">        <span class="keyword">new</span> BindActivator(<span class="keyword">new</span> Bind(<span class="keyword">new</span> BindSettings(<a class="code" href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">ActivationEventType</a>.OnPress, <a class="code" href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">KeyMatchType</a>.ExactKeyMatch, <a class="code" href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">KeyPressOrder</a>.Ordered), <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.B, <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.C), OnPressABC).AssignTo(acts);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Activated when A-Z or 0-9 is pressed</span></div>
-<div class="line">        activator.Add(<span class="keyword">new</span> KeyActivator((e) =&gt; (e.Key &gt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A &amp;&amp; e.Key &lt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Z) || (e.Key &gt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.D0 &amp;&amp; e.Key &lt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.D9), OnPressAlphanumeric));</div>
+<div class="line">        <span class="keyword">new</span> KeyActivator((e) =&gt; (e.Key &gt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.A &amp;&amp; e.Key &lt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Z) || (e.Key &gt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.D0 &amp;&amp; e.Key &lt;= <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.D9), OnPressAlphanumeric).AssignTo(acts);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    [KeyActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Space)]</div>
@@ -155,12 +158,12 @@ Keybinds and keyevents</h1>
 <div class="line">        Console.WriteLine($<span class="stringliteral">&quot;Press alphanumeric key {e.Key}!&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="anamespace_macro_framework_1_1_commands_html"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html">MacroFramework.Commands</a></div><div class="ttdef"><b>Definition:</b> BindActivator.cs:4</div></div>
+<div class="ttc" id="anamespace_macro_framework_1_1_commands_html"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html">MacroFramework.Commands</a></div><div class="ttdef"><b>Definition:</b> ActivatorContainer.cs:3</div></div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_a210efc8dae936d5ff460f2e74a8babc8"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#a210efc8dae936d5ff460f2e74a8babc8">MacroFramework.Commands.KeyPressOrder</a></div><div class="ttdeci">KeyPressOrder</div><div class="ttdoc">Determines whether keys should be pressed in the give parameter order</div><div class="ttdef"><b>Definition:</b> KeyPressOrder.cs:5</div></div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_a39666371346a9d6b613586b4c212e514"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#a39666371346a9d6b613586b4c212e514">MacroFramework.Commands.KeyMatchType</a></div><div class="ttdeci">KeyMatchType</div><div class="ttdoc">Determines how keypress combinations are checked for matches</div><div class="ttdef"><b>Definition:</b> KeyMatchType.cs:5</div></div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_a53564c60300fd4e7c665c2832ebc36b6"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#a53564c60300fd4e7c665c2832ebc36b6">MacroFramework.Commands.ActivationEventType</a></div><div class="ttdeci">ActivationEventType</div><div class="ttdoc">Filters activations based on whether the current event was a keydown or a keyup event</div><div class="ttdef"><b>Definition:</b> ActivationEventType.cs:6</div></div>
 <div class="ttc" id="anamespace_macro_framework_1_1_commands_html_ac733a395add7056b9b34f0c3e33e3540"><div class="ttname"><a href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">MacroFramework.Commands.KKey</a></div><div class="ttdeci">KKey</div><div class="ttdoc">An enhanced list of Virtual Keys.</div><div class="ttdef"><b>Definition:</b> KKey.cs:3</div></div>
-<div class="ttc" id="anamespace_macro_framework_html"><div class="ttname"><a href="namespace_macro_framework.html">MacroFramework</a></div><div class="ttdef"><b>Definition:</b> BindActivator.cs:4</div></div>
+<div class="ttc" id="anamespace_macro_framework_html"><div class="ttname"><a href="namespace_macro_framework.html">MacroFramework</a></div><div class="ttdef"><b>Definition:</b> ActivatorContainer.cs:3</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 The general bind key</h2>
 <p>The framework offers support for a general bind key. You can define this in the settings using the <a href="../html/class_macro_framework_1_1_setup.html">Setup</a> class. The general bind key is a key which will always be intercepted i.e. other programs will not receive this input. It will also intercept all keys when this key is being held down.</p>
@@ -175,11 +178,9 @@ TimerActivator</h1>
 <div class="line"><span class="keyword">class </span>TimerActivatorExample : Command {</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Alternate to using attributes</span></div>
-<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(out CommandActivatorGroup activator) {</div>
-<div class="line">        activator = <span class="keyword">new</span> CommandActivatorGroup(<span class="keyword">this</span>);</div>
-<div class="line"> </div>
-<div class="line">        activator.Add(<span class="keyword">new</span> TimerActivator(1, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Seconds, <span class="keyword">false</span>, CalledEverySecond));</div>
-<div class="line">        activator.Add(<span class="keyword">new</span> TimerActivator(1, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Hours, <span class="keyword">true</span>, CalledEveryHourAndAtApplicationStart));</div>
+<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(ref ActivatorContainer acts) {</div>
+<div class="line">        <span class="keyword">new</span> TimerActivator(1, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Seconds, <span class="keyword">false</span>, CalledEverySecond).AssignTo(acts);</div>
+<div class="line">        <span class="keyword">new</span> TimerActivator(1, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Hours, <span class="keyword">true</span>, CalledEveryHourAndAtApplicationStart).AssignTo(acts);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    [TimerActivator(1, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Seconds)]</div>
@@ -212,16 +213,14 @@ TextActivator</h2>
 <div class="line"><span class="keyword">class </span>TextActivatorExample : Command {</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Alternate to using attributes</span></div>
-<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(out CommandActivatorGroup activator) {</div>
-<div class="line">        activator = <span class="keyword">new</span> CommandActivatorGroup(<span class="keyword">this</span>);</div>
-<div class="line"> </div>
-<div class="line">        activator.Add(<span class="keyword">new</span> TextActivator(<span class="stringliteral">&quot;test command&quot;</span>, OnTestCommand));</div>
+<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(ref ActivatorContainer acts) {</div>
+<div class="line">        <span class="keyword">new</span> TextActivator(<span class="stringliteral">&quot;test command&quot;</span>, OnTestCommand).AssignTo(acts);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Multiple matchers</span></div>
-<div class="line">        activator.Add(<span class="keyword">new</span> TextActivator(<span class="keyword">new</span> Matchers(<span class="stringliteral">&quot;stop&quot;</span>, <span class="stringliteral">&quot;exit&quot;</span>, <span class="stringliteral">&quot;quit&quot;</span>), ExitApplication));</div>
+<div class="line">        <span class="keyword">new</span> TextActivator(<span class="keyword">new</span> Matchers(<span class="stringliteral">&quot;stop&quot;</span>, <span class="stringliteral">&quot;exit&quot;</span>, <span class="stringliteral">&quot;quit&quot;</span>), ExitApplication).AssignTo(acts);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Regex</span></div>
-<div class="line">        activator.Add(<span class="keyword">new</span> TextActivator(<span class="keyword">new</span> Regex(<span class="stringliteral">&quot;print [A-Z]+&quot;</span>), PrintParameter));</div>
+<div class="line">        <span class="keyword">new</span> TextActivator(<span class="keyword">new</span> Regex(<span class="stringliteral">&quot;print [A-Z]+&quot;</span>), PrintParameter).AssignTo(acts);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    [TextActivator(<span class="stringliteral">&quot;test command&quot;</span>, TextActivatorAttribute.MatchType.StringMatch)]</div>
@@ -257,9 +256,144 @@ TextActivator</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Execute from anywhere in code</span></div>
 <div class="line">TextCommands.Execute(<span class="stringliteral">&quot;test command&quot;</span>);</div>
-<div class="ttc" id="aclass_macro_framework_1_1_macros_html"><div class="ttname"><a href="class_macro_framework_1_1_macros.html">MacroFramework.Macros</a></div><div class="ttdoc">Static class used for starting the application with settings</div><div class="ttdef"><b>Definition:</b> Macros.cs:15</div></div>
-<div class="ttc" id="aclass_macro_framework_1_1_macros_html_af2d95f12f5dfc8b066fa4f3f7ab28174"><div class="ttname"><a href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">MacroFramework.Macros.Stop</a></div><div class="ttdeci">static void Stop()</div><div class="ttdoc">Stops the MacroFramework application</div><div class="ttdef"><b>Definition:</b> Macros.cs:174</div></div>
+<div class="ttc" id="aclass_macro_framework_1_1_macros_html"><div class="ttname"><a href="class_macro_framework_1_1_macros.html">MacroFramework.Macros</a></div><div class="ttdoc">Static class used for starting the application with settings</div><div class="ttdef"><b>Definition:</b> Macros.cs:14</div></div>
+<div class="ttc" id="aclass_macro_framework_1_1_macros_html_af2d95f12f5dfc8b066fa4f3f7ab28174"><div class="ttname"><a href="class_macro_framework_1_1_macros.html#af2d95f12f5dfc8b066fa4f3f7ab28174">MacroFramework.Macros.Stop</a></div><div class="ttdeci">static void Stop()</div><div class="ttdoc">Stops the MacroFramework application</div><div class="ttdef"><b>Definition:</b> Macros.cs:175</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
+Bind hold activator</h1>
+<p>The bind hold activator can be used to get Start, Update and End events for some bind.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> System;</div>
+<div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_commands.html">Commands</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">class </span>BindHoldActivatorExample : Command {</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(ref ActivatorContainer acts) {</div>
+<div class="line">        Bind space = <span class="keyword">new</span> Bind(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Space);</div>
+<div class="line">        <span class="keyword">new</span> BindHoldActivator(space)</div>
+<div class="line">            .SetOnActivate(PressSpaceDown)</div>
+<div class="line">            .SetOnUpdate(HoldingSpaceDown)</div>
+<div class="line">            .SetOnDeactivate(ReleaseSpace)</div>
+<div class="line">            .AssignTo(acts);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> PressSpaceDown() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Press space down&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> HoldingSpaceDown() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Holding space down&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> ReleaseSpace() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Release space&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md14"></a>
+Repeat activator</h1>
+<p>A repeat activator can be used for example for double or triple clicks. It will activate it its child activator has activated certain amount of times within some timespan.</p>
+<p>It also has a delegate for OnEachActivate. This can be useful when you want to initialize the command before activation (because the activation happens after a timeout).</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_commands.html">Commands</a>;</div>
+<div class="line"><span class="keyword">using</span> System;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">namespace </span>Examples.ActivatorExamples {</div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">class </span>RepeatActivatorExample : Command{</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> InitializeActivators(ref ActivatorContainer acts) {</div>
+<div class="line">            BindActivator clickActivator = <span class="keyword">new</span> BindActivator(<span class="keyword">new</span> Bind(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.MouseLeft));</div>
+<div class="line"> </div>
+<div class="line">            <span class="keyword">new</span> RepeatActivator(clickActivator, SingleClick) { RepeatCount = 1 }.AssignTo(acts);</div>
+<div class="line">            <span class="keyword">new</span> RepeatActivator(clickActivator, DoubleClick) { RepeatCount = 2 }.AssignTo(acts);</div>
+<div class="line">            <span class="keyword">new</span> RepeatActivator(clickActivator, TripleClick) { RepeatCount = 3 }.AssignTo(acts);</div>
+<div class="line"> </div>
+<div class="line">            <span class="keyword">new</span> RepeatActivator(clickActivator, DoubleAndTripleClick) { RepeatCount = 2, DisallowExtraRepeats = <span class="keyword">false</span>, OnEachActivate = OnEachClick }.AssignTo(acts);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">private</span> <span class="keywordtype">void</span> SingleClick() {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;Single click!&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keyword">private</span> <span class="keywordtype">void</span> DoubleClick() {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;Double click!&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keyword">private</span> <span class="keywordtype">void</span> TripleClick() {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;Triple click!&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">private</span> <span class="keywordtype">void</span> DoubleAndTripleClick() {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;Double and triple click (and quadruple click and so on)!&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keyword">private</span> <span class="keywordtype">void</span> OnEachClick() {</div>
+<div class="line">            Console.WriteLine(<span class="stringliteral">&quot;I will be called on each individual click&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md15"></a>
+Coroutines</h1>
+<p>The <code>Command</code> class has support for coroutines (very similar to Unity game engine coroutines). Coroutines can be used to execute some tasks over a period of time and it is a alternate to async/await. It also guarantees correct execution order.</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_commands.html">Commands</a>;</div>
+<div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_input.html">Input</a>;</div>
+<div class="line"><span class="keyword">using</span> System;</div>
+<div class="line"><span class="keyword">using</span> System.Collections;</div>
+<div class="line"><span class="keyword">using</span> System.Diagnostics;</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">public</span> <span class="keyword">class </span>CoroutineExample : Command {</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span> Coroutine coroutine;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnStart() {</div>
+<div class="line">        coroutine = StartCoroutine(ShutDownPC, OnCancel);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">private</span> IEnumerator ShutDownPC() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Confirm shutdown by pressing &#39;Y&#39;&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Wait for next input event</span></div>
+<div class="line">        yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForInputEvent();</div>
+<div class="line">        <span class="keywordflow">if</span> (InputEvents.CurrentInputEvent.Key != <a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Y) {</div>
+<div class="line">            yield <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Are you sure?&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Wait for Y again, cancel coroutine if Y not pressed within 5 seconds</span></div>
+<div class="line">        <span class="comment">// NOTE: The cancel function will only be called the next time a keyevent is captured.</span></div>
+<div class="line">        <span class="comment">//       This is because coroutines are updated by their UpdateGroup which happens to be a keyvent in this case.</span></div>
+<div class="line">        yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForBind(<span class="keyword">new</span> Bind(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Y)).SetTimeout(5);</div>
+<div class="line"> </div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Shutting down pc in 30 seconds&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// wait 15 seconds</span></div>
+<div class="line">        yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitFor(15, <a class="code" href="namespace_macro_framework_1_1_commands.html#a1fb44f5cc889a7fc0ca24509a2f5612b">TimeUnit</a>.Seconds);</div>
+<div class="line">        <span class="comment">// wait another 15 seconds,this syntax defaults to milliseconds</span></div>
+<div class="line">        yield <span class="keywordflow">return</span> 15000;</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Wait for 1 update cycle, useful if you wish to execute heavy calculations, you can pause the computation to allow for other functionality</span></div>
+<div class="line">        yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"> </div>
+<div class="line">        Process.Start(<span class="keyword">new</span> ProcessStartInfo(<span class="stringliteral">&quot;shutdown&quot;</span>, <span class="stringliteral">&quot;/s /t 0&quot;</span>) {</div>
+<div class="line">            CreateNoWindow = <span class="keyword">true</span>,</div>
+<div class="line">            UseShellExecute = <span class="keyword">false</span></div>
+<div class="line">        });</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> OnCancel(Coroutine coroutine) {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Coroutine cancelled&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    [BindActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Backspace)]</div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> RestartCoroutine() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Restaring entire sequene&quot;</span>);</div>
+<div class="line">        coroutine.Restart();</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    [BindActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Delete)]</div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> CancelCoroutine() {</div>
+<div class="line">        Console.WriteLine(<span class="stringliteral">&quot;Stopping entire sequence&quot;</span>);</div>
+<div class="line">        coroutine.Stop();</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespace_macro_framework_1_1_input_html"><div class="ttname"><a href="namespace_macro_framework_1_1_input.html">MacroFramework.Input</a></div><div class="ttdef"><b>Definition:</b> EnhancedKey.cs:5</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
 Dynamic activators</h1>
 <p>All of the above ways of using activators require you to define them before starting up the framework. The activators can created and added during runtime as well. Each <code>CommandActivator</code> instance has methods <code>WaitForActivation</code> and <code>RegisterDynamicActivator</code> which can be used to for example create some kind of confirmation for a command.</p>
 <div class="fragment"><div class="line"><span class="keyword">using</span> <a class="code" href="namespace_macro_framework.html">MacroFramework</a>.<a class="code" href="namespace_macro_framework_1_1_commands.html">Commands</a>;</div>
@@ -286,7 +420,19 @@ Dynamic activators</h1>
 <div class="line">        CommandActivator onSpace = <span class="keyword">new</span> KeyActivator(<a class="code" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a>.Space, OneTimeOnPressSpace);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// One time bind for space, lambda expression indicates that the activator is discarded after execution</span></div>
-<div class="line">        onSpace.RegisterDynamicActivator(() =&gt; <span class="keyword">true</span>);</div>
+<div class="line">        IDynamicActivator dynamicOnSpace = onSpace.RegisterDynamicActivator(<span class="keyword">true</span>);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Identical functionality, different syntax</span></div>
+<div class="line">        dynamicOnSpace = CommandContainer.AddDynamicActivator(<span class="keyword">new</span> DynamicActivator(onSpace, <span class="keyword">true</span>));</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Can be cancelled manualyl</span></div>
+<div class="line">        CommandContainer.RemoveDynamicActivator(dynamicOnSpace);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Can use delegate to decide when to remove</span></div>
+<div class="line">        IDynamicActivator dynamic = <span class="keyword">new</span> DynamicActivator(onSpace, RemoveActivatorAfterExecute);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keyword">private</span> <span class="keywordtype">bool</span> RemoveActivatorAfterExecute() {</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">private</span> <span class="keywordtype">void</span> OneTimeOnPressSpace(IInputEvent e) {</div>

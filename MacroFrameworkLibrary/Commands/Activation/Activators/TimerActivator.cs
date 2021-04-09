@@ -53,6 +53,9 @@ namespace MacroFramework.Commands {
         /// <param name="unit"></param>
         /// <returns></returns>
         public static long ToMilliseconds(long time, TimeUnit unit) {
+            if (time < 0) {
+                return 0;
+            }
             switch (unit) {
                 case TimeUnit.Seconds:
                     return time * 1000;

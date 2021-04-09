@@ -160,7 +160,7 @@ namespace MacroFramework.Commands {
             }
 
             if (o is int) {
-                throw new NotImplementedException();
+                return new WaitFor((int)o, TimeUnit.Milliseconds);
             }
 
             if (o is YieldInstruction) {

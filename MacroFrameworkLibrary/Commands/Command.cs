@@ -91,7 +91,7 @@ namespace MacroFramework.Commands {
         protected internal virtual void OnExecutionComplete() { }
 
         /// <summary>
-        /// Called after <see cref="Macros.Start(Setup, bool, Action)"/>. Called even if the <see cref="Command"/> is inactive.
+        /// Called after <see cref="Macros.Start(MacroSetup, bool, Action)"/>. Called even if the <see cref="Command"/> is inactive.
         /// </summary>
         public virtual void OnStart() { }
 

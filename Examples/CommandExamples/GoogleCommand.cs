@@ -16,9 +16,8 @@ public class GoogleCommand : Command {
     private RegexWrapper googleR = Regexes.StartsWith("google");
     private RegexWrapper googleS = Regexes.StartsWith("search");
 
-    protected override void InitializeActivators(out CommandActivatorGroup activator) {
-        activator = new CommandActivatorGroup(this);
-        activator.Add(new TextActivator(new Matchers(googleR, googleS), GoogleSearch));
+    protected override void InitializeActivators(ref ActivatorContainer acts) {
+        new TextActivator(new Matchers(googleR, googleS), GoogleSearch).AssignTo(acts);
     }
 
     private void GoogleSearch(string command) {

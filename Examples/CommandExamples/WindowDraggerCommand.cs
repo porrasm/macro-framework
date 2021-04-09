@@ -16,11 +16,10 @@ public class WindowDraggerCommand : Command {
     private Coord mouseOffset;
     #endregion
 
-    protected override void InitializeActivators(out CommandActivatorGroup activator) {
-        activator = new CommandActivatorGroup(this);
+    protected override void InitializeActivators(ref ActivatorContainer acts) {
 
         // Drags a window on Ctrl+click and hold
-        activator.Add(new BindHoldActivator(new Bind(BindSettings.OnPress, KKey.Ctrl, KKey.MouseLeft), OnDragUpdate, OnDragStart, OnDragEnd));
+        new BindHoldActivator(new Bind(BindSettings.OnPress, KKey.Ctrl, KKey.MouseLeft), OnDragUpdate, OnDragStart, OnDragEnd).AssignTo(acts);
     }
 
     /// <summary>

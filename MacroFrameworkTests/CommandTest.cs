@@ -40,7 +40,7 @@ namespace MacroFrameworkTests {
             Console.WriteLine("Program end");
         }
 
-        class TestSetup : Setup {
+        class TestSetup : MacroSetup {
             protected override MacroSettings GetSettings() {
                 MacroSettings settings = new MacroSettings();
 

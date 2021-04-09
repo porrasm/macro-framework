@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.8</span>
+   &#160;<span id="projectnumber">0.1.9</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -119,10 +119,10 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 
 <h3><a id="index_c"></a>- c -</h3><ul>
 <li>CommandAssembly
-: <a class="el" href="class_macro_framework_1_1_setup.html#a231179d8ef121db88dbbe5c3d3bbf1aa">MacroFramework.Setup</a>
+: <a class="el" href="class_macro_framework_1_1_macro_setup.html#a6b4d291e778809c272e5b89594a8f83c">MacroFramework.MacroSetup</a>
 </li>
-<li>Commands
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_command_container.html#aedce029e49eb386ccdf9d6ad82545f39">MacroFramework.Commands.CommandContainer</a>
+<li>CommandsToUse
+: <a class="el" href="class_macro_framework_1_1_macro_setup.html#ae83dabf2d14712f9ebea96513aedb6e9">MacroFramework.MacroSetup</a>
 </li>
 <li>CurrentInputEvent
 : <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a91d9cdb36d73082ed9bc4614a82ae53c">MacroFramework.Input.InputEvents</a>
@@ -141,6 +141,9 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 
 
 <h3><a id="index_e"></a>- e -</h3><ul>
+<li>EnumeratorSource
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html#aa108f158a44a0e1ac0509d4dad1c4483">MacroFramework.Commands.Coroutine</a>
+</li>
 <li>Extended
 : <a class="el" href="struct_macro_framework_1_1_input_1_1_key_event.html#a63e6748f1c35b86b4e00a4c0dcdf949d">MacroFramework.Input.KeyEvent</a>
 </li>
@@ -155,14 +158,15 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 : <a class="el" href="class_macro_framework_1_1_macros.html#a2774d2356a42db5ab9508d2895264255">MacroFramework.Macros</a>
 </li>
 <li>FunctionalityThreadJobQueue
-: <a class="el" href="class_macro_framework_1_1_macros.html#abae032deaeb31bd5e5d32716a7814f34">MacroFramework.Macros</a>
+: <a class="el" href="class_macro_framework_1_1_macros.html#a21e71a02a21409f8e6998a6acfd9d575">MacroFramework.Macros</a>
 </li>
 </ul>
 
 
 <h3><a id="index_i"></a>- i -</h3><ul>
 <li>ID
-: <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#ad21f9a66e2509742a445b43aa8093c71">MacroFramework.Commands.IDynamicActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html#aed7f2b287dff877fb61e5e8ada7a15bc">MacroFramework.Commands.Coroutine</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#ad21f9a66e2509742a445b43aa8093c71">MacroFramework.Commands.IDynamicActivator</a>
 </li>
 <li>IgnoreOwnerActiveStatus
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_command_activator.html#a78708c3f5bfaf788ee5d58313d1a6a13">MacroFramework.Commands.CommandActivator</a>
@@ -174,16 +178,22 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 : <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#a32d51e89411222c1ae6aa2fa52014787">MacroFramework.Commands.IInputEvent</a>
 </li>
 <li>InputCallback
-: <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#af98e3a1d830e471db6ac34663a9f9c61">MacroFramework.Input.InputEvents</a>
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#aacd0e82b88da3ba1bf60217f9530366a">MacroFramework.Input.InputEvents</a>
 </li>
-<li>Instance
-: <a class="el" href="class_macro_framework_1_1_setup.html#ac3cddb6b045dd78cc01163cd5f22f92a">MacroFramework.Setup</a>
+<li>IsActiveDelegate
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_command.html#aa62f2de0b16c964947a84b5fed87151f">MacroFramework.Commands.Command</a>
 </li>
 <li>IsCanceled
 : <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_dynamic_activator.html#a645f434bde8b47b8ab532b9ee1507cd3">MacroFramework.Commands.IDynamicActivator</a>
 </li>
 <li>IsCommandMode
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_text_command_creator.html#a8b0579215051a0534d6d2cb105751271">MacroFramework.Commands.TextCommandCreator</a>
+</li>
+<li>IsPaused
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html#ad68277baa6ad214775904054ee4f3f98">MacroFramework.Commands.Coroutine</a>
+</li>
+<li>IsRunning
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutine.html#a041312efbaf4c977d7260134c5ac3194">MacroFramework.Commands.Coroutine</a>
 </li>
 </ul>
 
@@ -195,6 +205,9 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 </li>
 <li>KeyboardHookRunning
 : <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html#a52963df4a13a098b16e84318e6d0100f">MacroFramework.Input.InputHook</a>
+</li>
+<li>KeyDownCount
+: <a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#a6e216a82c72075eceef28765e3372203">MacroFramework.Input.KeyStates</a>
 </li>
 <li>KeyExtendedMap
 : <a class="el" href="class_macro_framework_1_1_input_1_1_enhanced_key.html#a60221a585c5cd2e0ed09f613a7d8c793">MacroFramework.Input.EnhancedKey</a>
@@ -211,6 +224,12 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>LastKeyEventTime
 : <a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html#abe00b3376b0d326ecc776364f0d48cdd">MacroFramework.Input.KeyStates</a>
+</li>
+<li>LastMainLoopStart
+: <a class="el" href="class_macro_framework_1_1_macros.html#a48778b0d4d9da295b8d2c24fd674813d">MacroFramework.Macros</a>
+</li>
+<li>Logger
+: <a class="el" href="class_macro_framework_1_1_macro_setup.html#a09904c17b8119c9d144fb0ddadeb827c">MacroFramework.MacroSetup</a>
 </li>
 </ul>
 
@@ -233,37 +252,41 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 
 <h3><a id="index_o"></a>- o -</h3><ul>
 <li>OnActivate
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#af060306156d02ec33abae0990cc09ccd">MacroFramework.Commands.BindHoldActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#ac37a89cc9e4d67ae16d25b1f0df594ee">MacroFramework.Commands.BindHoldActivator</a>
 </li>
 <li>OnDeactivate
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#a0a6b0203d0c0253ef49b09839886eddb">MacroFramework.Commands.BindHoldActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#a559b90e91bd4a07edc81e8f34e44d549">MacroFramework.Commands.BindHoldActivator</a>
 </li>
 <li>OnEachActivate
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_repeat_activator.html#a46d6c04e1e889ade8101c762945bde90">MacroFramework.Commands.RepeatActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_repeat_activator.html#a33d57f0b63f5c9472ae5bfd7ec7de27c">MacroFramework.Commands.RepeatActivator</a>
 </li>
 <li>OnException
 : <a class="el" href="class_macro_framework_1_1_macros.html#ad7d7f01d5094ad528e755fa443853c7c">MacroFramework.Macros</a>
 </li>
 <li>OnExecute
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#ac6dfaebd4128c2f623c70b0e47017110">MacroFramework.Commands.DynamicActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_dynamic_activator.html#ad0143ddab59f680cdafed37fb72757bd">MacroFramework.Commands.DynamicActivator</a>
 </li>
 <li>OnMainLoop
-: <a class="el" href="class_macro_framework_1_1_macros.html#a756da2f84910713f2d2713617329919b">MacroFramework.Macros</a>
+: <a class="el" href="class_macro_framework_1_1_macros.html#a2ae6c62ef4a03cad7bf9395ef57f8ace">MacroFramework.Macros</a>
+</li>
+<li>OnMouseMove
+: <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a01e3e22226fddf56c92e17a69e281b65">MacroFramework.Input.InputEvents</a>
 </li>
 <li>OnTextCommandModeEnd
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#a14bbcbaebcbb5aa6bbfbb8b511e624fd">MacroFramework.Commands.TextCommands</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#aa62d2cb491b4f7744eede3ca54c4b97f">MacroFramework.Commands.TextCommands</a>
 </li>
 <li>OnTextCommandModeStart
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#abdc9452f2ae586442b23fc6d0fad3069">MacroFramework.Commands.TextCommands</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_text_commands.html#ab6808f43168b55d207ba78ea9f704238">MacroFramework.Commands.TextCommands</a>
 </li>
 <li>OnUpdate
-: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#a4264e7953d88f717c74aafb3b399d9cc">MacroFramework.Commands.BindHoldActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_hold_activator.html#a0e255a4cae090901ec73816b60fd9439">MacroFramework.Commands.BindHoldActivator</a>
 </li>
 <li>Order
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_bind_settings.html#ab80eecaecca29e46e1d74e9b66d1c932">MacroFramework.Commands.BindSettings</a>
 </li>
 <li>Owner
-: <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">MacroFramework.Commands.IActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutines_1_1_yield_instruction.html#a40837d6464b6d2bce5f62543022f76e8">MacroFramework.Commands.Coroutines.YieldInstruction</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#af4aa448f90bee4925c033cd58ab21569">MacroFramework.Commands.IActivator</a>
 </li>
 </ul>
 
@@ -292,7 +315,10 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 <li>Settings
 : <a class="el" href="class_macro_framework_1_1_commands_1_1_bind.html#af8a1995beff95f487af03da6680e582c">MacroFramework.Commands.Bind</a>
 , <a class="el" href="class_macro_framework_1_1_commands_1_1_text_activator.html#a589c4d49045b4e28af6f0357faec32ed">MacroFramework.Commands.TextActivator</a>
-, <a class="el" href="class_macro_framework_1_1_setup.html#a695520b6165b3f9e7d772a611bb0c9e4">MacroFramework.Setup</a>
+, <a class="el" href="class_macro_framework_1_1_macro_setup.html#a07585b3e734588c8f975d230af68e04c">MacroFramework.MacroSetup</a>
+</li>
+<li>Setup
+: <a class="el" href="class_macro_framework_1_1_macros.html#aba772e39e9404e46fa30251360cc7d4c">MacroFramework.Macros</a>
 </li>
 <li>State
 : <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html#af2f3a507ef00ce166d43272ac8c6f457">MacroFramework.Commands.IInputEvent</a>
@@ -321,7 +347,8 @@ $(document).ready(function(){initNavTree('functions_prop.html',''); initResizabl
 , <a class="el" href="struct_macro_framework_1_1_input_1_1_key_event.html#afbe44441ec3e1d984460d43cb8d4202c">MacroFramework.Input.KeyEvent</a>
 </li>
 <li>UpdateGroup
-: <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#ad9d383cb9bc0d186e6fd7060219e0d35">MacroFramework.Commands.IActivator</a>
+: <a class="el" href="class_macro_framework_1_1_commands_1_1_coroutines_1_1_yield_instruction.html#ae194abf0db1e0eb832182d17fe2155fd">MacroFramework.Commands.Coroutines.YieldInstruction</a>
+, <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_activator.html#ad9d383cb9bc0d186e6fd7060219e0d35">MacroFramework.Commands.IActivator</a>
 </li>
 </ul>
 </div><!-- contents -->

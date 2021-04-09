@@ -22,7 +22,19 @@ public class DynamicActivatorExample : Command {
         CommandActivator onSpace = new KeyActivator(KKey.Space, OneTimeOnPressSpace);
 
         // One time bind for space, lambda expression indicates that the activator is discarded after execution
-        onSpace.RegisterDynamicActivator(() => true);
+        IDynamicActivator dynamicOnSpace = onSpace.RegisterDynamicActivator(true);
+
+        // Identical functionality, different syntax
+        dynamicOnSpace = CommandContainer.AddDynamicActivator(new DynamicActivator(onSpace, true));
+
+        // Can be cancelled manualyl
+        CommandContainer.RemoveDynamicActivator(dynamicOnSpace);
+
+        // Can use delegate to decide when to remove
+        IDynamicActivator dynamic = new DynamicActivator(onSpace, RemoveActivatorAfterExecute);
+    }
+    private bool RemoveActivatorAfterExecute() {
+        return true;
     }
 
     private void OneTimeOnPressSpace(IInputEvent e) {

@@ -10,17 +10,20 @@ public class WindomManagementCommands : Command {
 
     private Window currentWindow = Window.FromMouse;
 
-    protected override void InitializeActivators(out CommandActivatorGroup activator) {
-        base.InitializeActivators(out activator);
+    protected override void InitializeActivators(ref ActivatorContainer acts) {
+
+        BindActivator ctrlClick = new BindActivator(new Bind(KKey.LCtrl, KKey.MouseLeft));
+        BindActivator ctrlRightClick = new BindActivator(new Bind(KKey.LCtrl, KKey.MouseLeft));
 
         // Maximize window on Ctrl + double click
-        activator.Add(new RepeatActivator(new BindActivator(new Bind(KKey.LCtrl, KKey.MouseLeft), MaximizeWindow)) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
+        new RepeatActivator(ctrlClick, MaximizeWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow }.AssignTo(acts);
 
-        // Minimize window on Ctrl + click
-        activator.Add(new RepeatActivator(new BindActivator(new Bind(KKey.LCtrl, KKey.MouseRight), MinimizeWindow)) { RepeatCount = 1, OnEachActivate = SetCurrentWindow });
+
+        // Minimize window on Ctrl + right click
+        new RepeatActivator(ctrlRightClick, MinimizeWindow) { RepeatCount = 1, OnEachActivate = SetCurrentWindow }.AssignTo(acts);
 
         // Close window on Ctrl + double right click
-        activator.Add(new RepeatActivator(new BindActivator(new Bind(KKey.LCtrl, KKey.MouseMiddle), CloseWindow)) { RepeatCount = 2, OnEachActivate = SetCurrentWindow });
+        new RepeatActivator(ctrlRightClick, CloseWindow) { RepeatCount = 2, OnEachActivate = SetCurrentWindow }.AssignTo(acts);
     }
 
     /// <summary>

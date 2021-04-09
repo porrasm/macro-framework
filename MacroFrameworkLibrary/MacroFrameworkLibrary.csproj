@@ -7,7 +7,7 @@
     <Company />
     <Product>MacroFramework</Product>
     <Copyright />
-    <Version>0.1.8</Version>
+    <Version>0.1.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A simple framework for creating macros on Windows. Documentation and examples on GitHub: https://github.com/porrasm/windows-macro-framework-library</Description>
     <AssemblyName>MacroFramework</AssemblyName>

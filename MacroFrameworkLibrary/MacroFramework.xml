@@ -688,7 +688,7 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnStart">
             <summary>
-            Called after <see cref="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,System.Action)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
+            Called after <see cref="M:MacroFramework.Macros.Start(MacroFramework.MacroSetup,System.Boolean,System.Action)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnUpdate">
@@ -913,6 +913,18 @@
         <member name="P:MacroFramework.Commands.Coroutines.YieldInstruction.UpdateGroup">
             <summary>
             The update group of this instruction
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutines.YieldInstruction.SetTimeout(System.UInt32,MacroFramework.Commands.TimeUnit)">
+            <summary>
+            Set a timeout in milliseconds. The coroutine will be canceled if the instruction did not continue within in the time limit.
+            </summary>
+            <param name="timeout">Timeout in ms</param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.Coroutines.YieldInstruction.TimeoutExceeded">
+            <summary>
+            Returns true if the timeout has been exceeded
             </summary>
         </member>
         <member name="T:MacroFramework.Commands.WaitFor">
@@ -2631,7 +2643,7 @@
             The last timestamp of the main update loop
             </summary>
         </member>
-        <member name="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,System.Action)">
+        <member name="M:MacroFramework.Macros.Start(MacroFramework.MacroSetup,System.Boolean,System.Action)">
             <summary>
             Starts the synchronous MacrosFramework application. Should be called from a method with an <see cref="T:System.STAThreadAttribute"/>.
             </summary>
@@ -2746,12 +2758,12 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.AllowKeyboardHook">
             <summary>
-            Whether to allow a certain device hook. Default = false
+            Whether to allow the keyboard hook. Default = true
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.AllowMouseHook">
             <summary>
-            Whether to allow a certain device hook. Default = false
+            Whether to allow the keyboard hook. Default = false
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">
@@ -2764,37 +2776,37 @@
             The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets. Default = 20000 ms
             </summary>
         </member>
-        <member name="T:MacroFramework.Setup">
+        <member name="T:MacroFramework.MacroSetup">
             <summary>
             Inherit this class in your project to finish the setup process
             </summary>
         </member>
-        <member name="P:MacroFramework.Setup.CommandAssembly">
+        <member name="P:MacroFramework.MacroSetup.CommandAssembly">
             <summary>
             The assembly in which your custom <see cref="T:MacroFramework.Commands.Command"/> classes reside in (can be null).
             </summary>
         </member>
-        <member name="P:MacroFramework.Setup.Settings">
+        <member name="P:MacroFramework.MacroSetup.Settings">
             <summary>
             The settings you wish to use
             </summary>
         </member>
-        <member name="P:MacroFramework.Setup.CommandsToUse">
+        <member name="P:MacroFramework.MacroSetup.CommandsToUse">
             <summary>
             Leave this untouched if you wish to use <see cref="N:System.Reflection"/> for automatically creating commands
             </summary>
         </member>
-        <member name="P:MacroFramework.Setup.Logger">
+        <member name="P:MacroFramework.MacroSetup.Logger">
             <summary>
             The logger to use. Can leave to null.
             </summary>
         </member>
-        <member name="M:MacroFramework.Setup.#ctor">
+        <member name="M:MacroFramework.MacroSetup.#ctor">
             <summary>
-            Creates a new <see cref="T:MacroFramework.Setup"/> instance
+            Creates a new <see cref="T:MacroFramework.MacroSetup"/> instance
             </summary>
         </member>
-        <member name="M:MacroFramework.Setup.DefaultSetup">
+        <member name="M:MacroFramework.MacroSetup.GetDefaultSetup">
             <summary>
             A default setup to use with the framewework
             </summary>

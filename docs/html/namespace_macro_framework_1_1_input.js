@@ -4,6 +4,7 @@ var namespace_macro_framework_1_1_input =
     [ "InputEvents", "class_macro_framework_1_1_input_1_1_input_events.html", "class_macro_framework_1_1_input_1_1_input_events" ],
     [ "InputHook", "class_macro_framework_1_1_input_1_1_input_hook.html", "class_macro_framework_1_1_input_1_1_input_hook" ],
     [ "KeyStates", "class_macro_framework_1_1_input_1_1_key_states.html", "class_macro_framework_1_1_input_1_1_key_states" ],
+    [ "KBDLLHOOKSTRUCT", "struct_macro_framework_1_1_input_1_1_k_b_d_l_l_h_o_o_k_s_t_r_u_c_t.html", "struct_macro_framework_1_1_input_1_1_k_b_d_l_l_h_o_o_k_s_t_r_u_c_t" ],
     [ "KeyEvent", "struct_macro_framework_1_1_input_1_1_key_event.html", "struct_macro_framework_1_1_input_1_1_key_event" ],
     [ "MouseEvent", "struct_macro_framework_1_1_input_1_1_mouse_event.html", "struct_macro_framework_1_1_input_1_1_mouse_event" ],
     [ "POINT", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t.html", "struct_macro_framework_1_1_input_1_1_p_o_i_n_t" ],

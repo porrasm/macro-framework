@@ -68,6 +68,13 @@ namespace MacroFramework.Commands.Coroutines {
                 return;
             }
 
+            if (instruction.TimeoutExceeded()) {
+                if (!StopCoroutine(instruction.Owner, false)) {
+                    throw new Exception("Error removing coroutine after finishing it");
+                }
+                return;
+            }
+
             // Check if current instruction is finished
             if (!instruction.MoveNext()) {
 

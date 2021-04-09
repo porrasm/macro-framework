@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Tools;
+using System;
 using System.Collections;
 
 namespace MacroFramework.Commands.Coroutines {
@@ -20,6 +21,30 @@ namespace MacroFramework.Commands.Coroutines {
         public object Current { get; protected set; }
 
         public abstract bool MoveNext();
+
+        private long startTime;
+        internal long Timeout { get; private set; }
+
+        public YieldInstruction() {
+            startTime = Timer.Milliseconds;
+        }
+
+        /// <summary>
+        /// Set a timeout in milliseconds. The coroutine will be canceled if the instruction did not continue within in the time limit.
+        /// </summary>
+        /// <param name="timeout">Timeout in ms</param>
+        /// <returns></returns>
+        public YieldInstruction SetTimeout(uint timeout, TimeUnit unit = TimeUnit.Seconds) {
+            this.Timeout = TimerActivator.ToMilliseconds(timeout, unit); ;
+            return this;
+        }
+
+        /// <summary>
+        /// Returns true if the timeout has been exceeded
+        /// </summary>
+        public bool TimeoutExceeded() {
+            return Timeout == 0 ? false : Timer.PassedFrom(startTime) >= Timeout;
+        }
 
         public void Reset() {
             throw new NotSupportedException("Reset is not supported on YieldInstruction");

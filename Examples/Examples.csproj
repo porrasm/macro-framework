@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivatorExamples\BindAndKeyActivatorExample.cs" />
+    <Compile Include="ActivatorExamples\BindHoldActivatorExample.cs" />
+    <Compile Include="ActivatorExamples\CoroutineExample.cs" />
     <Compile Include="ActivatorExamples\DynamicActivatorExample.cs" />
     <Compile Include="ActivatorExamples\RepeatActivatorExample.cs" />
     <Compile Include="CommandExamples\GoogleCommand.cs" />

@@ -17,7 +17,7 @@ namespace MacroFramework {
         /// <summary>
         /// The current setup instance
         /// </summary>
-        public static Setup Setup { get; private set; }
+        public static MacroSetup Setup { get; private set; }
 
         /// <summary>
         /// The different run states the application can be in
@@ -98,7 +98,7 @@ namespace MacroFramework {
         /// <param name="setup">The setup options</param>
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
         /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
-        public static void Start(Setup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
+        public static void Start(MacroSetup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
             setup.Logger?.LogMessage("Starting Macros");
 
             if (setup.Settings == null) {
@@ -145,7 +145,7 @@ namespace MacroFramework {
             }
         }
 
-        private static void InitializeApplication(Setup setup, bool runInLimitedMode) {
+        private static void InitializeApplication(MacroSetup setup, bool runInLimitedMode) {
             MainThread = Thread.CurrentThread;
             Macros.Setup = setup;
             Logger.Instance = setup.Logger;

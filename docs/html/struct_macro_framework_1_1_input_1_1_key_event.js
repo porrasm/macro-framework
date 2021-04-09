@@ -6,6 +6,7 @@ var struct_macro_framework_1_1_input_1_1_key_event =
     [ "AltDown", "struct_macro_framework_1_1_input_1_1_key_event.html#a9038e7b88fafbc5cdd33fe51bef4433a", null ],
     [ "Extended", "struct_macro_framework_1_1_input_1_1_key_event.html#a63e6748f1c35b86b4e00a4c0dcdf949d", null ],
     [ "ExtraInfo", "struct_macro_framework_1_1_input_1_1_key_event.html#ad5d291b5dd65a128290d66a8584f7819", null ],
+    [ "Flags", "struct_macro_framework_1_1_input_1_1_key_event.html#a44c968ee0a79c3c7fc4956854de864d3", null ],
     [ "Injected", "struct_macro_framework_1_1_input_1_1_key_event.html#a4b635da4b45e6abb416bbb1d6d1099c9", null ],
     [ "InjectedLower", "struct_macro_framework_1_1_input_1_1_key_event.html#a0b4caa2ad03cf114367bbfabb21022a0", null ],
     [ "Key", "struct_macro_framework_1_1_input_1_1_key_event.html#a42c44249133c890c3253d2b75b19bc28", null ],

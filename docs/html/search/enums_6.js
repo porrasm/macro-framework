@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scancode_654',['ScanCode',['../namespace_macro_framework_1_1_input.html#a20613a22c3f7c3ec060c30d7bfe418fb',1,'MacroFramework::Input']]]
+  ['runstate_685',['RunState',['../class_macro_framework_1_1_macros.html#ad7c81b9b00977d56b940a3057a536ec9',1,'MacroFramework::Macros']]]
 ];

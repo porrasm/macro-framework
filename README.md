@@ -12,36 +12,25 @@
 
 `Install-Package MacroFramework`
 
-### 2 Setup library
 
-You only need to setup 1 thing for this library. Inherit the `Setup` class and it's abstract methods.
+### 2 Setup settigns and preferences
+
+Setting up is simple. Use the `MacroSetup.GetDefaultSetup()` as your template (or don't change it at all).
 
 ```C#
-using MacroFramework;
+MacroSetup setup = MacroSetup.GetDefaultSetup();
 
-public class MySetup : Setup {
-    protected override MacroSettings GetSettings() {
-        MacroSettings settings = new MacroSettings();
+setup.Settings.GeneralBindKey = KKey.CapsLock;
+setup.Settings.CommandKey = KKey.LWin;
+setup.Settings.MainLoopTimestep = 15;
 
-        // Important, allow application to access keyboard hook
-        settings.AllowKeyboardHook = true;
-        
-        // Disallow mouse hook for now
-        settings.AllowMouseHook = false;
-        
-        settings.GeneralBindKey = KKey.CapsLock;
-        settings.CommandKey = KKey.LWin;
-
-        settings.MainLoopTimestep = 15;
-
-        return settings;
-    }
-
-    protected override Assembly GetMainAssembly() {
-        return Assembly.GetExecutingAssembly();
-    }
-}
+setup.Settings.AllowKeyboardHook = true;
+setup.Settings.AllowMouseHook = true;
 ```
+
+#### 2.1 Reflection
+
+The framework uses reflection to automatically parse classes you create in a given assembly definition. If you want to disable this feature, simply set `setup.CommandAssembly = null;`.
 
 ### 3 Create a macro
 
@@ -58,12 +47,11 @@ public class NotepadCommand : Command {
 }
 ```
 
-If you did not setup the executing assembly you need to activate the command manually using:
+If you disabled loading via reflection you need to activate the command manually using:
 
 ```C#
-using MacroFramework.Commands;
-...
-CommandContainer.AddCommand(new NotepadCommand());
+setup.CommandToUse = new HashSet<Type>();
+setup.CommandsToUse.Add(typeof(NotepadCommand));
 ```
 
 ### 4 Start the Macro framework on a STA thread
@@ -71,15 +59,15 @@ CommandContainer.AddCommand(new NotepadCommand());
 Start the Macro framework with your custom setup class as a paremeter.
 
 ```C#
-public class QuickSetupCodeExample {
+public class Program {
     [STAThread]
     static void Main(string[] args) {
-        MacroFramework.Macros.Start(new MySetup());
+        Macros.Start(MacroSetup.GetDefaultSetup());
     }
 }
 ```
 
-You have now started the application with a single macros. Ctrl+N will open the notepad for you!
+You have now started the application with a single macro. Ctrl+N will open the notepad for you!
 
 ### 5 Read the 'Geting started' guide
 

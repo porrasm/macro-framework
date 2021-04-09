@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MacroFramework
-   &#160;<span id="projectnumber">0.1.8</span>
+   &#160;<span id="projectnumber">0.1.9</span>
    </div>
    <div id="projectbrief">A framework for creating macros on the Windows platform.</div>
   </td>
@@ -84,7 +84,6 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_input_1_1_in
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_macro_framework_1_1_input_1_1_input_events-members.html">List of all members</a>  </div>
@@ -96,12 +95,6 @@ $(document).ready(function(){initNavTree('class_macro_framework_1_1_input_1_1_in
 <p>Static clas used to handle the keyevents captured by the <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html" title="Static class for receiving low level input from keyboard or mouse">Input.InputHook</a>  
  <a href="class_macro_framework_1_1_input_1_1_input_events.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:ab935ca11c7de765a52c7e4c7792aa9bf"><td class="memItemLeft" align="right" valign="top">delegate bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#ab935ca11c7de765a52c7e4c7792aa9bf">InputCallbackFunc</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a> k)</td></tr>
-<tr class="memdesc:ab935ca11c7de765a52c7e4c7792aa9bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">A delegate for receiving keyevents from the framework  <a href="class_macro_framework_1_1_input_1_1_input_events.html#ab935ca11c7de765a52c7e4c7792aa9bf">More...</a><br /></td></tr>
-<tr class="separator:ab935ca11c7de765a52c7e4c7792aa9bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ab16d19ea015bb54bc01454112f5187d8"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#ab16d19ea015bb54bc01454112f5187d8">RegisterHookKeyEvent</a> (<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a> k)</td></tr>
@@ -110,9 +103,12 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:af98e3a1d830e471db6ac34663a9f9c61"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#ab935ca11c7de765a52c7e4c7792aa9bf">InputCallbackFunc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#af98e3a1d830e471db6ac34663a9f9c61">InputCallback</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:af98e3a1d830e471db6ac34663a9f9c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">This delegate is invoked at every keypress, before it is registered by the <a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html" title="The static class handling the key states">KeyStates</a>. Return true to intercept key from other applications and the <a class="el" href="namespace_macro_framework.html">MacroFramework</a> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.  <a href="class_macro_framework_1_1_input_1_1_input_events.html#af98e3a1d830e471db6ac34663a9f9c61">More...</a><br /></td></tr>
-<tr class="separator:af98e3a1d830e471db6ac34663a9f9c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd0e82b88da3ba1bf60217f9530366a"><td class="memItemLeft" align="right" valign="top">static Func&lt; <a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a>, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#aacd0e82b88da3ba1bf60217f9530366a">InputCallback</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aacd0e82b88da3ba1bf60217f9530366a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This delegate is invoked at every keypress, before it is registered by the <a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html" title="The static class handling the key states">KeyStates</a>. Return true to intercept key from other applications and the <a class="el" href="namespace_macro_framework.html">MacroFramework</a> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.  <a href="class_macro_framework_1_1_input_1_1_input_events.html#aacd0e82b88da3ba1bf60217f9530366a">More...</a><br /></td></tr>
+<tr class="separator:aacd0e82b88da3ba1bf60217f9530366a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01e3e22226fddf56c92e17a69e281b65"><td class="memItemLeft" align="right" valign="top">static Action&lt; <a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html">MouseEvent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#a01e3e22226fddf56c92e17a69e281b65">OnMouseMove</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a01e3e22226fddf56c92e17a69e281b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Special event for KKey.MouseMove.  <a href="class_macro_framework_1_1_input_1_1_input_events.html#a01e3e22226fddf56c92e17a69e281b65">More...</a><br /></td></tr>
+<tr class="separator:a01e3e22226fddf56c92e17a69e281b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2235f287e5086d6a8a912d80deb02b7"><td class="memItemLeft" align="right" valign="top">static HashSet&lt; <a class="el" href="namespace_macro_framework_1_1_commands.html#ac733a395add7056b9b34f0c3e33e3540">KKey</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#af2235f287e5086d6a8a912d80deb02b7">BlockedKeys</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:af2235f287e5086d6a8a912d80deb02b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this block keys from other applications  <a href="class_macro_framework_1_1_input_1_1_input_events.html#af2235f287e5086d6a8a912d80deb02b7">More...</a><br /></td></tr>
 <tr class="separator:af2235f287e5086d6a8a912d80deb02b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,26 +119,6 @@ Properties</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Static clas used to handle the keyevents captured by the <a class="el" href="class_macro_framework_1_1_input_1_1_input_hook.html" title="Static class for receiving low level input from keyboard or mouse">Input.InputHook</a> </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab935ca11c7de765a52c7e4c7792aa9bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab935ca11c7de765a52c7e4c7792aa9bf">&#9670;&nbsp;</a></span>InputCallbackFunc()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">delegate bool MacroFramework.Input.InputEvents.InputCallbackFunc </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a>&#160;</td>
-          <td class="paramname"><em>k</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A delegate for receiving keyevents from the framework </p>
-
-</div>
-</div>
 <a id="ab16d19ea015bb54bc01454112f5187d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab16d19ea015bb54bc01454112f5187d8">&#9670;&nbsp;</a></span>RegisterHookKeyEvent()</h2>
 
@@ -227,8 +203,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="af98e3a1d830e471db6ac34663a9f9c61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af98e3a1d830e471db6ac34663a9f9c61">&#9670;&nbsp;</a></span>InputCallback</h2>
+<a id="aacd0e82b88da3ba1bf60217f9530366a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd0e82b88da3ba1bf60217f9530366a">&#9670;&nbsp;</a></span>InputCallback</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,7 +213,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_macro_framework_1_1_input_1_1_input_events.html#ab935ca11c7de765a52c7e4c7792aa9bf">InputCallbackFunc</a> MacroFramework.Input.InputEvents.InputCallback</td>
+          <td class="memname">Func&lt;<a class="el" href="interface_macro_framework_1_1_commands_1_1_i_input_event.html">IInputEvent</a>, bool&gt; MacroFramework.Input.InputEvents.InputCallback</td>
         </tr>
       </table>
   </td>
@@ -248,6 +224,30 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This delegate is invoked at every keypress, before it is registered by the <a class="el" href="class_macro_framework_1_1_input_1_1_key_states.html" title="The static class handling the key states">KeyStates</a>. Return true to intercept key from other applications and the <a class="el" href="namespace_macro_framework.html">MacroFramework</a> itself. This delegate is blocking and slow execution will cause OS wide latency for key events. </p>
+
+</div>
+</div>
+<a id="a01e3e22226fddf56c92e17a69e281b65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01e3e22226fddf56c92e17a69e281b65">&#9670;&nbsp;</a></span>OnMouseMove</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Action&lt;<a class="el" href="struct_macro_framework_1_1_input_1_1_mouse_event.html">MouseEvent</a>&gt; MacroFramework.Input.InputEvents.OnMouseMove</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Special event for KKey.MouseMove. </p>
 
 </div>
 </div>

@@ -4,9 +4,10 @@ var namespace_macro_framework =
     [ "Input", "namespace_macro_framework_1_1_input.html", "namespace_macro_framework_1_1_input" ],
     [ "Tools", "namespace_macro_framework_1_1_tools.html", "namespace_macro_framework_1_1_tools" ],
     [ "ILogger", "interface_macro_framework_1_1_i_logger.html", "interface_macro_framework_1_1_i_logger" ],
+    [ "Logger", "class_macro_framework_1_1_logger.html", "class_macro_framework_1_1_logger" ],
     [ "Macros", "class_macro_framework_1_1_macros.html", "class_macro_framework_1_1_macros" ],
     [ "MacroSettings", "class_macro_framework_1_1_macro_settings.html", "class_macro_framework_1_1_macro_settings" ],
-    [ "Setup", "class_macro_framework_1_1_setup.html", "class_macro_framework_1_1_setup" ],
+    [ "MacroSetup", "class_macro_framework_1_1_macro_setup.html", "class_macro_framework_1_1_macro_setup" ],
     [ "VKey", "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6b", [
       [ "LBUTTON", "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6badd32209cf932123ea5a103790cf75a45", null ],
       [ "RBUTTON", "namespace_macro_framework.html#a1522692dfd9bb4f98d5af79dd9c30a6ba742cd9c8f9db1ab511c7c49e7a67e9b2", null ],

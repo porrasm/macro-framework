@@ -8,25 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 public class Program {
+    [STAThread]
     static void Main(string[] args) {
-        Macros.Start(new MySetup());
-    }
-}
-
-public class MySetup : Setup {
-    protected override MacroSettings GetSettings() {
-        MacroSettings settings = new MacroSettings();
-
-        settings.GeneralBindKey = KKey.CapsLock;
-        settings.CommandKey = KKey.LWin;
-
-        settings.MainLoopTimestep = 15;
-
-        return settings;
+        Macros.Start(MacroSetup.GetDefaultSetup());
     }
 
-    protected override Assembly GetMainAssembly() {
-        return Assembly.GetExecutingAssembly();
+    public static MacroSetup MySetup() {
+        MacroSetup setup = MacroSetup.GetDefaultSetup();
+
+        setup.Settings.GeneralBindKey = KKey.CapsLock;
+        setup.Settings.CommandKey = KKey.LWin;
+        setup.Settings.MainLoopTimestep = 15;
+
+        setup.Settings.AllowKeyboardHook = true;
+        setup.Settings.AllowMouseHook = true;
+
+        return setup;
     }
 }
 

@@ -7,7 +7,7 @@ namespace MacroFramework {
     /// <summary>
     /// Inherit this class in your project to finish the setup process
     /// </summary>
-    public class Setup {
+    public class MacroSetup {
 
         #region fields
         /// <summary>
@@ -32,17 +32,17 @@ namespace MacroFramework {
         #endregion
 
         /// <summary>
-        /// Creates a new <see cref="Setup"/> instance
+        /// Creates a new <see cref="MacroSetup"/> instance
         /// </summary>
-        public Setup() {
+        public MacroSetup() {
             Settings = new MacroSettings();
         }
 
         /// <summary>
         /// A default setup to use with the framewework
         /// </summary>
-        public static Setup DefaultSetup() {
-            Setup setup = new Setup();
+        public static MacroSetup GetDefaultSetup() {
+            MacroSetup setup = new MacroSetup();
 
             setup.CommandAssembly = Assembly.GetExecutingAssembly();
             setup.Logger = new Logger();

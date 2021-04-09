@@ -37,9 +37,14 @@ namespace MacroFramework {
         public int TextCommandTimeout = 2500;
 
         /// <summary>
-        /// Whether to allow a certain device hook. Default = false
+        /// Whether to allow the keyboard hook. Default = true
         /// </summary>
-        public bool AllowKeyboardHook = false, AllowMouseHook = false;
+        public bool AllowKeyboardHook = true;
+
+        /// <summary>
+        /// Whether to allow the keyboard hook. Default = false
+        /// </summary>
+        public bool AllowMouseHook = false;
 
         /// <summary>
         /// The delay in milliseconds between every iteration of the main loop. Default = 10ms
