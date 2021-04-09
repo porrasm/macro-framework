@@ -1,8 +1,7 @@
 ﻿using MacroFramework.Commands;
-using System.Collections.Generic;
-using MacroFramework.Tools;
-using System;
 using MacroFramework.Commands.Coroutines;
+using System;
+using System.Collections.Generic;
 
 namespace MacroFramework.Input {
     /// <summary>
@@ -80,7 +79,7 @@ namespace MacroFramework.Input {
                 return true;
             }
 
-            if (k.Key == Setup.Instance.Settings.CommandKey && !TextCommandCreator.IsCommandMode) {
+            if (k.Key == Macros.Setup.Settings.CommandKey && !TextCommandCreator.IsCommandMode) {
                 if (k.State) {
                     TextCommandCreator.CommandKeyPress(true, true);
                 }
@@ -112,7 +111,6 @@ namespace MacroFramework.Input {
                 KeyStates.AddKeyEvent(k);
             }
             if (k.Unique) {
-                Logger.Log("Update binds with input event: " + k);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
 
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnInputEvent), false, $"Coroutine {CoroutineUpdateGroup.OnInputEvent}");

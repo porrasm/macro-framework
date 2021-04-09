@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -16,7 +14,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public void AddActivator(IActivator activator) {
             Activators.Add(activator);
-        } 
+        }
 
         internal static ActivatorContainer New => new ActivatorContainer() { Activators = new List<IActivator>() };
     }

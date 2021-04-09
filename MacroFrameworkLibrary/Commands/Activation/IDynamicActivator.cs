@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework.Commands {
+﻿namespace MacroFramework.Commands {
     /// <summary>
     /// An interface for adding <see cref="IActivator"/> instance based actions during runtime
     /// </summary>

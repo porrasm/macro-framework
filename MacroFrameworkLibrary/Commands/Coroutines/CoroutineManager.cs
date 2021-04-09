@@ -1,9 +1,6 @@
-﻿using MacroFramework.Tools;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace MacroFramework.Commands.Coroutines {
     /// <summary>
@@ -39,12 +36,10 @@ namespace MacroFramework.Commands.Coroutines {
         }
 
         internal bool StopCoroutine(Coroutine coroutine, bool finished) {
-            Console.WriteLine("Stop coroutine");
             if (!coroutines.Remove(coroutine)) {
-                Console.WriteLine("Coroutine not found");
                 return false;
             }
-            
+
             coroutine.Finish();
             coroutine.IsRunning = false;
 

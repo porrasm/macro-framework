@@ -58,7 +58,7 @@ namespace MacroFramework.Input {
             Flags = rawData.flags;
 
             Key = ((VKey)rawData.vkCode).AsCustom(Flags.HasFlag(KbdllFlags.Extended));
-            if (Key == Setup.Instance.Settings.GeneralBindKey) {
+            if (Key == Macros.Setup.Settings.GeneralBindKey) {
                 Key = KKey.GeneralBindKey;
             }
 

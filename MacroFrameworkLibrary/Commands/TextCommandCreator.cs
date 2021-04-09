@@ -72,7 +72,7 @@ namespace MacroFramework.Commands {
                 return;
             }
 
-            if (k.Key == Setup.Instance.Settings.CommandKey) {
+            if (k.Key == Macros.Setup.Settings.CommandKey) {
                 return;
             }
 
@@ -80,7 +80,7 @@ namespace MacroFramework.Commands {
                 return;
             }
 
-            if (k.Key == Setup.Instance.Settings.CommandActivateKey) {
+            if (k.Key == Macros.Setup.Settings.CommandActivateKey) {
                 CommandKeyPress(false, true);
                 return;
             }
@@ -92,7 +92,7 @@ namespace MacroFramework.Commands {
             }
 
             Logger.Log("Time since last command press: " + timeSince);
-            if (timeSince >= Setup.Instance.Settings.TextCommandTimeout) {
+            if (timeSince >= Macros.Setup.Settings.TextCommandTimeout) {
                 Logger.Log("End command mode on timeout");
                 CommandKeyPress(false, false);
                 return;

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -31,7 +29,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a new <see cref="Command"/> instance
         /// </summary>
-        internal Command() {
+        public Command() {
             ActivatorContainer activators = ActivatorContainer.New;
             InitializeActivators(ref activators);
 

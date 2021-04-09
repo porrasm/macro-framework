@@ -2,9 +2,7 @@
 using MacroFramework.Commands.Coroutines;
 using MacroFramework.Input;
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,6 +14,11 @@ namespace MacroFramework {
     public static class Macros {
 
         #region fields
+        /// <summary>
+        /// The current setup instance
+        /// </summary>
+        public static Setup Setup { get; private set; }
+
         /// <summary>
         /// The different run states the application can be in
         /// </summary>
@@ -96,6 +99,12 @@ namespace MacroFramework {
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
         /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
         public static void Start(Setup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
+            setup.Logger?.LogMessage("Starting Macros");
+
+            if (setup.Settings == null) {
+                throw new NullReferenceException("The settings inside a setup object cannot be null");
+            }
+
             if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA) {
                 throw new Exception("MacroFramwork must be started on an STA thread. See the [STAThread] attribute.");
             }
@@ -124,7 +133,6 @@ namespace MacroFramework {
                 Application.Run();
                 while (mainThreadJobQueue.Count > 0) {
                     try {
-                        Console.WriteLine("Executing queued job");
                         if (mainThreadJobQueue.TryDequeue(out Action cb)) {
                             cb();
                         } else {
@@ -139,8 +147,8 @@ namespace MacroFramework {
 
         private static void InitializeApplication(Setup setup, bool runInLimitedMode) {
             MainThread = Thread.CurrentThread;
-            Setup.SetInstance(setup);
-            Logger.Instance = setup.GetLogger();
+            Macros.Setup = setup;
+            Logger.Instance = setup.Logger;
 
             if (runInLimitedMode) {
                 State = RunState.RunningInLimitedMode;
@@ -165,6 +173,8 @@ namespace MacroFramework {
         /// Stops the MacroFramework application
         /// </summary>
         public static void Stop() {
+            Logger.Log("Stopping macros");
+
             InputHook.StopHooks();
             CommandContainer.Exit();
 
@@ -175,7 +185,7 @@ namespace MacroFramework {
             AppDomain.CurrentDomain.ProcessExit -= StopEvent;
 
             Application.Exit();
-            Setup.SetInstance(null);
+            Macros.Setup = null;
             State = RunState.NotRunning;
         }
 
@@ -188,7 +198,6 @@ namespace MacroFramework {
         /// </summary>
         /// <param name="action">The job to add to the queue</param>
         public static void QueueJobOnMainThread(Action action) {
-            Console.WriteLine("Queue main job: " + action);
             mainThreadJobQueue.Enqueue(action);
         }
 
@@ -227,7 +236,7 @@ namespace MacroFramework {
         private static void UpdateCommandFunctionality() {
             CommandContainer.ForEveryCommand((c) => c.OnUpdate(), false, "Main loop update");
 
-            int keyFixTimestep = Setup.Instance.Settings.KeyStateFixTimestep;
+            int keyFixTimestep = Macros.Setup.Settings.KeyStateFixTimestep;
             if (KeyStates.KeyDownCount < 0) {
                 Logger.Log("KeyDownCount desynced, fixing state automatically.");
                 KeyStates.ResetKeyStates(true);
@@ -247,7 +256,7 @@ namespace MacroFramework {
         }
 
         private static void MainLoopDelay() {
-            long delay = Setup.Instance.Settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
+            long delay = Macros.Setup.Settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
             delay = delay > 0 ? delay : 0;
             if (delay > 0) {
                 Thread.Sleep((int)delay);

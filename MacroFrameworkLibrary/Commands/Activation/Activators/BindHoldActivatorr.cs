@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -111,7 +109,7 @@ namespace MacroFramework.Commands {
         }
         private void End() {
             if (timerActivator != null) {
-                CommandContainer.RemoveDynamicActivator(timerActivator.ID);
+                CommandContainer.RemoveDynamicActivator(timerActivator);
                 timerActivator = null;
                 OnDeactivate?.Invoke();
             }

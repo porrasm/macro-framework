@@ -1,8 +1,6 @@
-﻿using System;
+﻿using MacroFramework.Commands.Coroutines;
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using MacroFramework.Commands.Coroutines;
 
 namespace MacroFramework.Commands {
     public abstract partial class Command {

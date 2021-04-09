@@ -43,7 +43,7 @@ namespace MacroFramework.Input {
         /// </summary>
         public static long LastKeyEventTime { get; private set; }
 
-        internal static long LastKeyResetTime {get; private set; }
+        internal static long LastKeyResetTime { get; private set; }
         #endregion
 
         static KeyStates() {
@@ -97,8 +97,6 @@ namespace MacroFramework.Input {
                 return;
             }
 
-            Logger.Log("Unique event: " + k);
-
             if (k.State) {
                 if (!IsPressingKey(k.Key)) {
                     KeyDownCount++;
@@ -127,7 +125,7 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Temporary solution for possible state mismatch due to lag/exceptions
         /// </summary>
-        
+
 
         private static void InitState(ref State state) {
             globalIndex++;
@@ -210,7 +208,7 @@ namespace MacroFramework.Input {
 
                 long time = GetKeyHoldTime(key);
 
-                if (time >= 0 && (forced || time >= Setup.Instance.Settings.KeyStateFixTimestep)) {
+                if (time >= 0 && (forced || time >= Macros.Setup.Settings.KeyStateFixTimestep)) {
                     Logger.Log("Reset " + key);
                     MockInput input = new MockInput(key, false, InputEventType.Keyboard);
                     input.ActivationType = ActivationEventType.OnFirstRelease;

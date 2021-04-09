@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MacroFramework.Commands.Coroutines {
+﻿namespace MacroFramework.Commands.Coroutines {
     /// <summary>
     /// The different update groups that a coroutine has
     /// </summary>

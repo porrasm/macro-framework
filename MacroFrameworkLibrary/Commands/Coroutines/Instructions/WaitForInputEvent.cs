@@ -1,8 +1,6 @@
 ﻿using MacroFramework.Commands.Coroutines;
 using MacroFramework.Input;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MacroFramework.Commands {
     /// <summary>

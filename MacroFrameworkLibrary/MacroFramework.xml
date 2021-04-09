@@ -688,7 +688,7 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnStart">
             <summary>
-            Called after <see cref="!:Macros.Start(Setup)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
+            Called after <see cref="M:MacroFramework.Macros.Start(MacroFramework.Setup,System.Boolean,System.Action)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnUpdate">
@@ -751,7 +751,7 @@
         </member>
         <member name="P:MacroFramework.Commands.CommandContainer.Commands">
             <summary>
-            List of active commands. You should not modify this collection.
+            Contains the active commands
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.CommandContainer.UpdateActivators(System.Type[])">
@@ -766,11 +766,19 @@
             </summary>
             <typeparam name="T">The type to update which implement <see cref="T:MacroFramework.Commands.IActivator"/></typeparam>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)">
+        <member name="M:MacroFramework.Commands.CommandContainer.GetCommand(System.Type,MacroFramework.Commands.Command@)">
             <summary>
-            Adds a command to the active command pool
+            Can be used to get retrieve a <see cref="T:MacroFramework.Commands.Command"/> by its type
             </summary>
-            <param name="c"></param>
+            <param name="t">The type of command to get</param>
+            <param name="command">The command</param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IActivator)">
+            <summary>
+            Can be used to add <see cref="T:MacroFramework.Commands.IActivator"/> (wrapped inside <see cref="T:MacroFramework.Commands.IDynamicActivator"/>) instances to the framework during runtime. Useful for e.g. events that should run only once.
+            </summary>
+            <param name="act">The dynamic activator to add</param>
         </member>
         <member name="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IDynamicActivator)">
             <summary>
@@ -786,7 +794,7 @@
             <param name="ignoreActiveStatus">Whether to ignroe the <see cref="M:MacroFramework.Commands.Command.IsActive"/> status</param>
             <param name="errorMessage">The error message to log should an error occur</param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(System.UInt32)">
+        <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(MacroFramework.Commands.IDynamicActivator)">
             <summary>
             Removes a <see cref="T:MacroFramework.Commands.IDynamicActivator"/> instance from the active list. Returns true if the element existed and was removed.
             </summary>
@@ -2539,9 +2547,19 @@
         <member name="F:MacroFramework.VKey.OEM_CLEAR">
             <summary>Clear key</summary>
         </member>
+        <member name="T:MacroFramework.Logger">
+            <summary>
+            Default logger implementation
+            </summary>
+        </member>
         <member name="T:MacroFramework.Macros">
             <summary>
             Static class used for starting the application with settings
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.Setup">
+            <summary>
+            The current setup instance
             </summary>
         </member>
         <member name="T:MacroFramework.Macros.RunState">
@@ -2698,72 +2716,57 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.UseGlobalExceptionHandler">
             <summary>
-            Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks.
+            Whether to use a global exception handler to catch uncaught exceptions. This can catch exception withing async Tasks. Default = true
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.HandleInjectedInputEvents">
             <summary>
-            If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour.
+            If true injected events (e.g. virtual input events sent by processes) will be handled by the application. Use with care as handling injected events can cause unwanted behaviour. Default = false
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.CommandKey">
             <summary>
-            The dedicated key on the keyboard which activates the text command mode.
+            The dedicated key on the keyboard which activates the text command mode. Default = <see cref="F:MacroFramework.Commands.KKey.None"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.GeneralBindKey">
             <summary>
-            A dedicated bind key which is always intercepted and tranformed into <see cref="!:VKey.GENERAL_BIND_KEY"/>
+            A dedicated bind key which is always intercepted and tranformed into <see cref="!:VKey.GENERAL_BIND_KEY"/>. Default = <see cref="F:MacroFramework.Commands.KKey.None"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.CommandActivateKey">
             <summary>
-            The dedicated key on the keyboard which executes the current command mode
-            </summary>
-        </member>
-        <member name="F:MacroFramework.MacroSettings.ListenerEnableKey">
-            <summary>
-            Not yet implemented. The dedicated key which enables the framework.
-            </summary>
-        </member>
-        <member name="F:MacroFramework.MacroSettings.ListenerDisableKey">
-            <summary>
-            Not yet implemented. The dedicated key which disables the <see cref="!:InputHook"/>
+            The dedicated key on the keyboard which executes the current command mode. Default = <see cref="F:MacroFramework.Commands.KKey.Enter"/>
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.TextCommandTimeout">
             <summary>
-            The timeout after the last keypress after which command mode is canceled
+            The timeout after the last keypress after which command mode is canceled. Default = 2500ms
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.AllowKeyboardHook">
             <summary>
-            Whether to allow a certain device hook
+            Whether to allow a certain device hook. Default = false
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.AllowMouseHook">
             <summary>
-            Whether to allow a certain device hook
+            Whether to allow a certain device hook. Default = false
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.MainLoopTimestep">
             <summary>
-            The delay in milliseconds between every iteration of the main loop
+            The delay in milliseconds between every iteration of the main loop. Default = 10ms
             </summary>
         </member>
         <member name="F:MacroFramework.MacroSettings.KeyStateFixTimestep">
             <summary>
-            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets.
+            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets. Default = 20000 ms
             </summary>
         </member>
         <member name="T:MacroFramework.Setup">
             <summary>
             Inherit this class in your project to finish the setup process
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Setup.Instance">
-            <summary>
-            The current singleton setup instance
             </summary>
         </member>
         <member name="P:MacroFramework.Setup.CommandAssembly">
@@ -2776,34 +2779,25 @@
             The settings you wish to use
             </summary>
         </member>
+        <member name="P:MacroFramework.Setup.CommandsToUse">
+            <summary>
+            Leave this untouched if you wish to use <see cref="N:System.Reflection"/> for automatically creating commands
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Setup.Logger">
+            <summary>
+            The logger to use. Can leave to null.
+            </summary>
+        </member>
         <member name="M:MacroFramework.Setup.#ctor">
             <summary>
             Creates a new <see cref="T:MacroFramework.Setup"/> instance
             </summary>
         </member>
-        <member name="M:MacroFramework.Setup.GetSettings">
+        <member name="M:MacroFramework.Setup.DefaultSetup">
             <summary>
-            Set the <see cref="T:MacroFramework.MacroSettings"/> to fit your needs here
+            A default setup to use with the framewework
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MacroFramework.Setup.GetMainAssembly">
-            <summary>
-            Return the <see cref="T:System.Reflection.Assembly"/> in which your <see cref="T:MacroFramework.Commands.Command"/> instances reside in (most likely <see cref="M:System.Reflection.Assembly.GetExecutingAssembly"/>). This allows automatically enabling your <see cref="T:MacroFramework.Commands.Command"/>. Return null if you don't wish to use this feature. Add commands manually either using <see cref="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)"/> or define a list of them with <see cref="M:MacroFramework.Setup.GetActiveCommands"/>/>
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MacroFramework.Setup.GetActiveCommands">
-            <summary>
-            Initialize active commands here. Return null if you defined the main assembly in <see cref="M:MacroFramework.Setup.GetMainAssembly"/> or if you wish to use <see cref="M:MacroFramework.Commands.CommandContainer.AddCommand(MacroFramework.Commands.Command)"/>
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MacroFramework.Setup.GetLogger">
-            <summary>
-            Use a custom <see cref="T:MacroFramework.ILogger"/>
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:MacroFramework.Tools.AutoDict`2">
             <summary>

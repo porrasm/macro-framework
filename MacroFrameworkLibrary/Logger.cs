@@ -1,7 +1,10 @@
 ﻿using System;
 
 namespace MacroFramework {
-    internal class Logger : ILogger {
+    /// <summary>
+    /// Default logger implementation
+    /// </summary>
+    public class Logger : ILogger {
         internal static ILogger Instance { get; set; }
         public void LogMessage(string s) {
             Console.WriteLine(s);

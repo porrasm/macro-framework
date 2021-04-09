@@ -12,9 +12,10 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Contains the active commands
         /// </summary>
-        internal static Dictionary<Type, Command> Commands { get; private set; }
+        internal static List<Command> Commands { get; private set; }
+        private static Dictionary<Type, List<IActivator>> commandActivatorGroups;
 
-        private static Dictionary<Type, List<IDynamicActivator>> dynamicActivators;
+        private static Dictionary<Type, List<IDynamicActivator>> dynamicActivatorGroups;
         private static uint dynamicActivatorID;
         internal static uint UniqueDynamicActivatorID => ++dynamicActivatorID;
         #endregion
@@ -34,22 +35,39 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-            HashSet<Type> setupCommands = Setup.Instance.GetActiveCommands();
-            if (Setup.Instance.CommandAssembly != null && setupCommands == null) {
-                foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.CommandAssembly)) {
-                    Commands.Add(c.GetType(), c);
+            if (Macros.Setup.CommandAssembly != null && Macros.Setup.CommandsToUse == null) {
+                try {
+                    foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.Setup.CommandAssembly)) {
+                        AddCommand(c);
+                    }
+                } catch (Exception e) {
+                    throw new Exception("Could not load Commands from default assembly. Try to set Setup.CommandAssembly to null", e);
                 }
             } else {
-                foreach (Type t in setupCommands) {
+                foreach (Type t in Macros.Setup.CommandsToUse) {
                     Command c = (Command)Activator.CreateInstance(t);
-                    Commands.Add(t, c);
+                    AddCommand(c);
                 }
+            }
+
+            Logger.Log($"Initialized command container with {Commands.Count} commands");
+        }
+
+        private static void AddCommand(Command c) {
+            Commands.Add(c);
+            foreach (IActivator act in c.Activators) {
+                Type g = act.UpdateGroup;
+                if (!commandActivatorGroups.ContainsKey(g)) {
+                    commandActivatorGroups.Add(g, new List<IActivator>());
+                }
+                commandActivatorGroups[g].Add(act);
             }
         }
 
         private static void Deinitialize() {
-            Commands = new Dictionary<Type, Command>();
-            dynamicActivators = new Dictionary<Type, List<IDynamicActivator>>();
+            Commands = new List<Command>();
+            commandActivatorGroups = new Dictionary<Type, List<IActivator>>();
+            dynamicActivatorGroups = new Dictionary<Type, List<IDynamicActivator>>();
         }
 
         /// <summary>
@@ -86,12 +104,12 @@ namespace MacroFramework.Commands {
         }
 
         private static void UpdateStaticActivators(Type t) {
-            Command c;
-            if (!Commands.TryGetValue(t, out c)) {
+            List<IActivator> acts;
+            if (!commandActivatorGroups.TryGetValue(t, out acts)) {
                 return;
             }
 
-            foreach (IActivator act in c.Activators) {
+            foreach (IActivator act in acts) {
                 if (act.IsActive()) {
                     ExecuteActivator(act);
                 }
@@ -107,11 +125,11 @@ namespace MacroFramework.Commands {
 
 
         private static void UpdateDynamicActivators(Type t) {
-            if (!dynamicActivators.ContainsKey(t)) {
+            if (!dynamicActivatorGroups.ContainsKey(t)) {
                 return;
             }
 
-            List<IDynamicActivator> acts = dynamicActivators[t];
+            List<IDynamicActivator> acts = dynamicActivatorGroups[t];
             for (int i = 0; i < acts.Count; i++) {
                 IDynamicActivator task = acts[i];
 
@@ -132,6 +150,7 @@ namespace MacroFramework.Commands {
                 }
             }
         }
+
         private static void RemoveFromList<T>(List<T> list, ref int index) {
             list.RemoveAt(index);
             index--;
@@ -145,21 +164,36 @@ namespace MacroFramework.Commands {
         /// <param name="command">The command</param>
         /// <returns></returns>
         public static bool GetCommand(Type t, out Command command) {
-            return Commands.TryGetValue(t, out command);
+            foreach (Command c in Commands) {
+                if (c.GetType() == t) {
+                    command = c;
+                    return true;
+                }
+            }
+
+            command = null;
+            return false;
         }
 
         /// <summary>
         /// Can be used to add <see cref="IActivator"/> (wrapped inside <see cref="IDynamicActivator"/>) instances to the framework during runtime. Useful for e.g. events that should run only once.
         /// </summary>
         /// <param name="act">The dynamic activator to add</param>
-        public static void AddDynamicActivator(IDynamicActivator act) {
+        public static IDynamicActivator AddDynamicActivator(IActivator act) => AddDynamicActivator(new DynamicActivator(act));
+
+        /// <summary>
+        /// Can be used to add <see cref="IActivator"/> (wrapped inside <see cref="IDynamicActivator"/>) instances to the framework during runtime. Useful for e.g. events that should run only once.
+        /// </summary>
+        /// <param name="act">The dynamic activator to add</param>
+        public static IDynamicActivator AddDynamicActivator(IDynamicActivator act) {
             Type t = act.Activator.UpdateGroup;
-            if (dynamicActivators.ContainsKey(t)) {
-                dynamicActivators[t].Add(act);
+            if (dynamicActivatorGroups.ContainsKey(t)) {
+                dynamicActivatorGroups[t].Add(act);
             } else {
-                dynamicActivators.Add(t, new List<IDynamicActivator>());
-                dynamicActivators[t].Add(act);
+                dynamicActivatorGroups.Add(t, new List<IDynamicActivator>());
+                dynamicActivatorGroups[t].Add(act);
             }
+            return act;
         }
 
         /// <summary>
@@ -169,7 +203,7 @@ namespace MacroFramework.Commands {
         /// <param name="ignoreActiveStatus">Whether to ignroe the <see cref="Command.IsActive"/> status</param>
         /// <param name="errorMessage">The error message to log should an error occur</param>
         public static void ForEveryCommand(Action<Command> it, bool ignoreActiveStatus, string errorMessage = "") {
-            foreach (Command c in Commands.Values) {
+            foreach (Command c in Commands) {
                 try {
                     if (ignoreActiveStatus || c.IsActive()) {
                         it(c);
@@ -183,10 +217,10 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Removes a <see cref="IDynamicActivator"/> instance from the active list. Returns true if the element existed and was removed.
         /// </summary>
-        public static bool RemoveDynamicActivator(uint id) {
-            foreach (var activators in dynamicActivators.Values) {
+        public static bool RemoveDynamicActivator(IDynamicActivator activator) {
+            foreach (var activators in dynamicActivatorGroups.Values) {
                 for (int i = 0; i < activators.Count; i++) {
-                    if (activators[i].ID == id) {
+                    if (activators[i].ID == activator.ID) {
                         activators.RemoveAt(i);
                         return true;
                     }

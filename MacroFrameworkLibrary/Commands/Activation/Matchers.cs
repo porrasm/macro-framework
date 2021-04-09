@@ -1,7 +1,4 @@
 ﻿using MacroFramework.Tools;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace MacroFramework.Commands {
@@ -15,7 +12,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public RegexWrapper[] TextMatchers { get; set; }
         #endregion
-        
+
         /// <summary>
         /// Creates a new <see cref="Matchers"/> instance
         /// </summary>

@@ -7,67 +7,48 @@ namespace MacroFramework {
     /// <summary>
     /// Inherit this class in your project to finish the setup process
     /// </summary>
-    public abstract class Setup {
+    public class Setup {
 
         #region fields
         /// <summary>
-        /// The current singleton setup instance
-        /// </summary>
-        public static Setup Instance { get; private set; }
-
-        internal static void SetInstance(Setup setup) {
-            Setup.Instance = setup;
-        }
-
-        /// <summary>
         /// The assembly in which your custom <see cref="Command"/> classes reside in (can be null).
         /// </summary>
-        public Assembly CommandAssembly { get; private set; }
+        public Assembly CommandAssembly { get; set; }
 
         /// <summary>
         /// The settings you wish to use
         /// </summary>
-        public MacroSettings Settings { get; private set; }
+        public MacroSettings Settings { get; set; }
+
+        /// <summary>
+        /// Leave this untouched if you wish to use <see cref="System.Reflection"/> for automatically creating commands
+        /// </summary>
+        public HashSet<Type> CommandsToUse { get; set; }
+
+        /// <summary>
+        /// The logger to use. Can leave to null.
+        /// </summary>
+        public ILogger Logger { get; set; }
         #endregion
 
         /// <summary>
         /// Creates a new <see cref="Setup"/> instance
         /// </summary>
         public Setup() {
-            CommandAssembly = GetMainAssembly();
-            Settings = GetSettings();
+            Settings = new MacroSettings();
         }
 
         /// <summary>
-        /// Set the <see cref="MacroSettings"/> to fit your needs here
+        /// A default setup to use with the framewework
         /// </summary>
-        /// <returns></returns>
-        protected virtual MacroSettings GetSettings() {
-            return new MacroSettings();
-        }
+        public static Setup DefaultSetup() {
+            Setup setup = new Setup();
 
-        /// <summary>
-        /// Return the <see cref="Assembly"/> in which your <see cref="Command"/> instances reside in (most likely <see cref="Assembly.GetExecutingAssembly"/>). This allows automatically enabling your <see cref="Commands.Command"/>. Return null if you don't wish to use this feature. Add commands manually either using <see cref="CommandContainer.AddCommand(Command)"/> or define a list of them with <see cref="GetActiveCommands"/>/>
-        /// </summary>
-        /// <returns></returns>
-        protected virtual Assembly GetMainAssembly() {
-            return null;
-        }
+            setup.CommandAssembly = Assembly.GetExecutingAssembly();
+            setup.Logger = new Logger();
+            setup.Settings = new MacroSettings();
 
-        /// <summary>
-        /// Initialize active commands here. Return null if you defined the main assembly in <see cref="GetMainAssembly"/> or if you wish to use <see cref="CommandContainer.AddCommand(Command)"/>
-        /// </summary>
-        /// <returns></returns>
-        internal protected virtual HashSet<Type> GetActiveCommands() {
-            return null;
-        }
-
-        /// <summary>
-        /// Use a custom <see cref="ILogger"/>
-        /// </summary>
-        /// <returns></returns>
-        internal protected virtual ILogger GetLogger() {
-            return new Logger();
+            return setup;
         }
     }
 }
