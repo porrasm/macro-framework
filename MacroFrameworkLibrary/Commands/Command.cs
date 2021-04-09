@@ -31,7 +31,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a new <see cref="Command"/> instance
         /// </summary>
-        public Command() {
+        internal Command() {
             ActivatorContainer activators = ActivatorContainer.New;
             InitializeActivators(ref activators);
 

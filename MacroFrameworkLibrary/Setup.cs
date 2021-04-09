@@ -1,4 +1,5 @@
 ﻿using MacroFramework.Commands;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -57,7 +58,7 @@ namespace MacroFramework {
         /// Initialize active commands here. Return null if you defined the main assembly in <see cref="GetMainAssembly"/> or if you wish to use <see cref="CommandContainer.AddCommand(Command)"/>
         /// </summary>
         /// <returns></returns>
-        internal protected virtual List<Command> GetActiveCommands() {
+        internal protected virtual HashSet<Type> GetActiveCommands() {
             return null;
         }
 

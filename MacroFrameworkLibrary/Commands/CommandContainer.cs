@@ -10,10 +10,10 @@ namespace MacroFramework.Commands {
 
         #region fields
         /// <summary>
-        /// List of active commands. You should not modify this collection.
+        /// Contains the active commands
         /// </summary>
-        public static List<Command> Commands { get; private set; }
-        private static Dictionary<Type, List<IActivator>> staticActivators;
+        internal static Dictionary<Type, Command> Commands { get; private set; }
+
         private static Dictionary<Type, List<IDynamicActivator>> dynamicActivators;
         private static uint dynamicActivatorID;
         internal static uint UniqueDynamicActivatorID => ++dynamicActivatorID;
@@ -34,21 +34,21 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-            List<Command> setupCommands = Setup.Instance.GetActiveCommands();
+            HashSet<Type> setupCommands = Setup.Instance.GetActiveCommands();
             if (Setup.Instance.CommandAssembly != null && setupCommands == null) {
                 foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Setup.Instance.CommandAssembly)) {
-                    AddCommand(c);
+                    Commands.Add(c.GetType(), c);
                 }
             } else {
-                foreach (Command c in setupCommands) {
-                    AddCommand(c);
+                foreach (Type t in setupCommands) {
+                    Command c = (Command)Activator.CreateInstance(t);
+                    Commands.Add(t, c);
                 }
             }
         }
 
         private static void Deinitialize() {
-            Commands = new List<Command>();
-            staticActivators = new Dictionary<Type, List<IActivator>>();
+            Commands = new Dictionary<Type, Command>();
             dynamicActivators = new Dictionary<Type, List<IDynamicActivator>>();
         }
 
@@ -86,11 +86,12 @@ namespace MacroFramework.Commands {
         }
 
         private static void UpdateStaticActivators(Type t) {
-            if (!staticActivators.ContainsKey(t)) {
+            Command c;
+            if (!Commands.TryGetValue(t, out c)) {
                 return;
             }
 
-            foreach (IActivator act in staticActivators[t]) {
+            foreach (IActivator act in c.Activators) {
                 if (act.IsActive()) {
                     ExecuteActivator(act);
                 }
@@ -136,27 +137,15 @@ namespace MacroFramework.Commands {
             index--;
         }
 
-        
 
         /// <summary>
-        /// Adds a command to the active command pool
+        /// Can be used to get retrieve a <see cref="Command"/> by its type
         /// </summary>
-        /// <param name="c"></param>
-        public static void AddCommand(Command c) {
-            Commands.Add(c);
-            AddActivators(c);
-        }
-
-        private static void AddActivators(Command c) {
-            foreach (IActivator act in c.Activators) {
-                Type t = act.UpdateGroup;
-                if (staticActivators.ContainsKey(t)) {
-                    staticActivators[t].Add(act);
-                } else {
-                    staticActivators.Add(t, new List<IActivator>());
-                    staticActivators[t].Add(act);
-                }
-            }
+        /// <param name="t">The type of command to get</param>
+        /// <param name="command">The command</param>
+        /// <returns></returns>
+        public static bool GetCommand(Type t, out Command command) {
+            return Commands.TryGetValue(t, out command);
         }
 
         /// <summary>
@@ -180,7 +169,7 @@ namespace MacroFramework.Commands {
         /// <param name="ignoreActiveStatus">Whether to ignroe the <see cref="Command.IsActive"/> status</param>
         /// <param name="errorMessage">The error message to log should an error occur</param>
         public static void ForEveryCommand(Action<Command> it, bool ignoreActiveStatus, string errorMessage = "") {
-            foreach (Command c in Commands) {
+            foreach (Command c in Commands.Values) {
                 try {
                     if (ignoreActiveStatus || c.IsActive()) {
                         it(c);
