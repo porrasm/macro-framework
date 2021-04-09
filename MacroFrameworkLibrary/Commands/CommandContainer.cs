@@ -56,6 +56,7 @@ namespace MacroFramework.Commands {
         private static void AddCommand(Command c) {
             Commands.Add(c);
             foreach (IActivator act in c.Activators) {
+                act.Owner = c;
                 Type g = act.UpdateGroup;
                 if (!commandActivatorGroups.ContainsKey(g)) {
                     commandActivatorGroups.Add(g, new List<IActivator>());
@@ -116,6 +117,9 @@ namespace MacroFramework.Commands {
             }
         }
         private static void ExecuteActivator(IActivator activator) {
+            if (activator.GetType() != typeof(TimerActivator)) {
+                Console.WriteLine("Execute act: " + activator.GetType());
+            }
             try {
                 activator.Execute();
             } catch (Exception e) {

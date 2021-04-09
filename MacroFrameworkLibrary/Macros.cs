@@ -256,6 +256,9 @@ namespace MacroFramework {
         }
 
         private static void MainLoopDelay() {
+            if (Macros.Setup == null) {
+                return;
+            }
             long delay = Macros.Setup.Settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
             delay = delay > 0 ? delay : 0;
             if (delay > 0) {
