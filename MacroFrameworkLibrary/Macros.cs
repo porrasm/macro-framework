@@ -209,14 +209,14 @@ namespace MacroFramework {
                 }
                 UpdateCommandFunctionality();
                 MainLoopDelay();
-                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
+                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
             }
         }
         private static void MainLoopStart() {
             LastMainLoopStart = Tools.Timer.Milliseconds;
 
             OnMainLoop?.Invoke();
-            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
+            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnBeforeUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnBeforeUpdate}");
 
             if (State != RunState.Running) {
                 TryContinue();
@@ -225,10 +225,13 @@ namespace MacroFramework {
 
 
         private static void UpdateCommandFunctionality() {
-            CommandContainer.ForEveryCommand((c) => c.OnUpdate(), "Main loop update");
+            CommandContainer.ForEveryCommand((c) => c.OnUpdate(), false, "Main loop update");
 
             int keyFixTimestep = Setup.Instance.Settings.KeyStateFixTimestep;
-            if (keyFixTimestep > 0 && KeyStates.KeyDownCount > 0 && Tools.Timer.PassedFrom(KeyStates.LastKeyResetTime) >= keyFixTimestep) {
+            if (KeyStates.KeyDownCount < 0) {
+                Logger.Log("KeyDownCount desynced, fixing state automatically.");
+                KeyStates.ResetKeyStates(true);
+            } else if (keyFixTimestep > 0 && KeyStates.KeyDownCount > 0 && Tools.Timer.PassedFrom(KeyStates.LastKeyResetTime) >= keyFixTimestep) {
                 KeyStates.ResetKeyStates(false);
             }
 
@@ -237,7 +240,7 @@ namespace MacroFramework {
             }
 
             CommandContainer.UpdateActivators<TimerActivator>();
-            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnTimerUpdate), $"Coroutine {CoroutineUpdateGroup.OnTimerUpdate}");
+            CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnTimerUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnTimerUpdate}");
 
 
             TextCommands.ExecuteTextCommandQueue();
@@ -334,7 +337,7 @@ namespace MacroFramework {
 
             continueDelegate = null;
             State = RunState.Running;
-            CommandContainer.ForEveryCommand((c) => c.OnResume());
+            CommandContainer.ForEveryCommand((c) => c.OnResume(), false);
             KeyStates.ResetKeyStates(true);
             QueueJobOnMainThread(() => InputHook.StartHooks());
             ExecuteMainThreadJobs();
@@ -349,7 +352,7 @@ namespace MacroFramework {
             }
             Logger.Log("Pause Macros");
             State = RunState.Paused;
-            CommandContainer.ForEveryCommand((c) => c.OnPause());
+            CommandContainer.ForEveryCommand((c) => c.OnPause(), false);
             InputHook.StopHooks();
         }
 

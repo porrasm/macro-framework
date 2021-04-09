@@ -4,6 +4,16 @@
         <name>MacroFramework</name>
     </assembly>
     <members>
+        <member name="T:MacroFramework.Commands.ActivatorContainer">
+            <summary>
+            A container which is used in the initialize state to define all the <see cref="T:MacroFramework.Commands.IActivator"/> instances a command owns.
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.ActivatorContainer.AddActivator(MacroFramework.Commands.IActivator)">
+            <summary>
+            Adds an activator to this group
+            </summary>
+        </member>
         <member name="T:MacroFramework.Commands.BindActivator">
             <summary>
             <see cref="T:MacroFramework.Commands.CommandActivator"/> instance for keybind callbacks
@@ -368,7 +378,7 @@
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus">
             <summary>
-            If true, the active status of the owner (<see cref="P:MacroFramework.Commands.Command.IsActive"/>) is ignored
+            If true, the active status of the owner (<see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/>) is ignored
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.CommandCallback">
@@ -383,15 +393,15 @@
             <param name="command">The callback to be called when this activator becomes active</param>
             <param name="ignoreOwnerContext"><see cref="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus"/></param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandActivator.AssignTo(MacroFramework.Commands.CommandActivatorGroup)">
+        <member name="M:MacroFramework.Commands.CommandActivator.AssignTo(MacroFramework.Commands.ActivatorContainer)">
             <summary>
-            Adds this <see cref="T:MacroFramework.Commands.CommandActivator"/> to a <see cref="T:MacroFramework.Commands.CommandActivatorGroup"/> using <see cref="M:MacroFramework.Commands.CommandActivatorGroup.Add(MacroFramework.Commands.IActivator)"/>
+            Syntactic sugar for adding this <see cref="T:MacroFramework.Commands.CommandActivator"/> to a <see cref="T:MacroFramework.Commands.Command"/> using <see cref="M:MacroFramework.Commands.ActivatorContainer.AddActivator(MacroFramework.Commands.IActivator)"/>
             </summary>
-            <param name="group">The group to add this to</param>
+            <param name="acts">The group to add this to</param>
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.IsActive">
             <summary>
-            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="P:MacroFramework.Commands.Command.IsActive"/>
+            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/>
             </summary>
             <returns></returns>
         </member>
@@ -425,35 +435,6 @@
             Asynchronously waits for the <see cref="T:MacroFramework.Commands.IActivator"/> to become active using <see cref="T:MacroFramework.Commands.IDynamicActivator"/>. This is called sometime after the activator becomes active, not immeditaly so using e.g. <see cref="P:MacroFramework.Input.InputEvents.CurrentInputEvent"/> or <see cref="P:MacroFramework.Commands.TextCommands.CurrentTextCommand"/> will not work. Returns false if the operation was cancelled.
             </summary>
             <param name="timeout">Timeout in milliseconds after which the operation is cancelled. Set to 0 or less to ignore timeout</param>
-        </member>
-        <member name="T:MacroFramework.Commands.CommandActivatorGroup">
-            <summary>
-            A wrapper class for storing multiple <see cref="T:MacroFramework.Commands.IActivator"/> instances
-            </summary>
-        </member>
-        <member name="P:MacroFramework.Commands.CommandActivatorGroup.Activators">
-            <summary>
-            The list of all <see cref="T:MacroFramework.Commands.IActivator"/> instances owner by this class.
-            </summary>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.#ctor(MacroFramework.Commands.Command)">
-            <summary>
-            Creates a new <see cref="T:MacroFramework.Commands.CommandActivatorGroup"/> instance
-            </summary>
-            <param name="owner">The owner command class of this activator group</param>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.Add(MacroFramework.Commands.IActivator)">
-            <summary>
-            Adds an activator to the group and sets the <see cref="P:MacroFramework.Commands.IActivator.Owner"/> of the activator
-            </summary>
-            <param name="activator">The activator to add</param>
-        </member>
-        <member name="M:MacroFramework.Commands.CommandActivatorGroup.IsActive(MacroFramework.Commands.CommandActivator@)">
-            <summary>
-            Returns true if any of the <see cref="T:MacroFramework.Commands.CommandActivator"/> instances is active
-            </summary>
-            <param name="activeActivator"></param>
-            <returns></returns>
         </member>
         <member name="T:MacroFramework.Commands.DynamicActivator">
             <summary>
@@ -660,9 +641,9 @@
             Base class for all macro functionality
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Command.activatorGroup">
+        <member name="P:MacroFramework.Commands.Command.Activators">
             <summary>
-            Container for the set of <see cref="T:MacroFramework.Commands.CommandActivator"/> instances of this command
+            The list of <see cref="T:MacroFramework.Commands.IActivator"/> instances this command owns
             </summary>
         </member>
         <member name="F:MacroFramework.Commands.Command.DefaultContext">
@@ -670,9 +651,9 @@
             The default context used in all <see cref="T:MacroFramework.Commands.Command"/> instances. Returns true on default but can be changed.
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.Command.IsActive">
+        <member name="P:MacroFramework.Commands.Command.IsActiveDelegate">
             <summary>
-            Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="P:MacroFramework.Commands.Command.ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
+            Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="!:ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.#ctor">
@@ -680,14 +661,19 @@
             Creates a new <see cref="T:MacroFramework.Commands.Command"/> instance
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.InitializeActivators(MacroFramework.Commands.CommandActivatorGroup@)">
+        <member name="M:MacroFramework.Commands.Command.InitializeActivators(MacroFramework.Commands.ActivatorContainer@)">
             <summary>
-            Abstract method for initializing <see cref="T:MacroFramework.Commands.IActivator"/> and class functionality. Use this like you would use a constructor. CommandActivators array mustn't be null and has to have at least 1 activator.
+            Virtual method for registering activators of a <see cref="T:MacroFramework.Commands.Command"/> instance. Activators can only be added to a command in this method. Use <see cref="T:MacroFramework.Commands.IDynamicActivator"/>s instead if you wish to register activators on the fly.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.Dispose">
             <summary>
             
+            </summary>
+        </member>
+        <member name="M:MacroFramework.Commands.Command.IsActive">
+            <summary>
+            Returns true if the command is active. Identical to the result of <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/> or true if <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/> is null. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnExecuteStart">
@@ -702,7 +688,7 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnStart">
             <summary>
-            Called after <see cref="!:Macros.Start(Setup)"/>
+            Called after <see cref="!:Macros.Start(Setup)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnUpdate">
@@ -712,7 +698,7 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnClose">
             <summary>
-            Called after <see cref="M:MacroFramework.Macros.Stop"/>
+            Called after <see cref="M:MacroFramework.Macros.Stop"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.Command.OnPause">
@@ -727,7 +713,7 @@
         </member>
         <member name="M:MacroFramework.Commands.Command.OnTextCommand(System.String,System.Boolean)">
             <summary>
-            This method is called whenever a text command is executed
+            This method is called whenever a text command is executed but only if the command is active
             </summary>
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
@@ -792,10 +778,13 @@
             </summary>
             <param name="act">The dynamic activator to add</param>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.ForEveryCommand(System.Action{MacroFramework.Commands.Command},System.String)">
+        <member name="M:MacroFramework.Commands.CommandContainer.ForEveryCommand(System.Action{MacroFramework.Commands.Command},System.Boolean,System.String)">
             <summary>
             Executes some action for every command in a try clause
             </summary>
+            <param name="it">The action to complete</param>
+            <param name="ignoreActiveStatus">Whether to ignroe the <see cref="M:MacroFramework.Commands.Command.IsActive"/> status</param>
+            <param name="errorMessage">The error message to log should an error occur</param>
         </member>
         <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(System.UInt32)">
             <summary>
@@ -1471,6 +1460,11 @@
         <member name="P:MacroFramework.Input.InputEvents.InputCallback">
             <summary>
             This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyStates"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputEvents.OnMouseMove">
+            <summary>
+            Special event for <see cref="F:MacroFramework.Commands.KKey.MouseMove"/>.
             </summary>
         </member>
         <member name="P:MacroFramework.Input.InputEvents.BlockedKeys">

@@ -17,6 +17,11 @@ namespace MacroFramework.Input {
         public static Func<IInputEvent, bool> InputCallback { get; set; }
 
         /// <summary>
+        /// Special event for <see cref="KKey.MouseMove"/>.
+        /// </summary>
+        public static Action<MouseEvent> OnMouseMove { get; set; }
+
+        /// <summary>
         /// Use this block keys from other applications
         /// </summary>
         public static HashSet<KKey> BlockedKeys { get; set; }
@@ -48,7 +53,16 @@ namespace MacroFramework.Input {
                 return true;
             }
 
-            if (k.Injected || k.Key == KKey.MouseMove) {
+            if (k.Injected) {
+                return false;
+            }
+
+            if (k.Key == KKey.MouseMove) {
+                try {
+                    OnMouseMove?.Invoke((MouseEvent)k);
+                } catch (Exception e) {
+                    Logger.Exception(e, "Error on OnMouseMove event");
+                }
                 return false;
             }
 
@@ -100,7 +114,8 @@ namespace MacroFramework.Input {
             if (k.Unique) {
                 Logger.Log("Update binds with input event: " + k);
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
-                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnInputEvent), $"Coroutine {CoroutineUpdateGroup.OnInputEvent}");
+
+                CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnInputEvent), false, $"Coroutine {CoroutineUpdateGroup.OnInputEvent}");
             }
             if (!k.State) {
                 KeyStates.AddKeyEvent(k);

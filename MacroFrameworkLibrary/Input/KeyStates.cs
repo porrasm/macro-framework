@@ -100,15 +100,19 @@ namespace MacroFramework.Input {
             Logger.Log("Unique event: " + k);
 
             if (k.State) {
+                if (!IsPressingKey(k.Key)) {
+                    KeyDownCount++;
+                }
                 State state = keyDown[k.Key];
                 InitState(ref state);
                 keyDown[k.Key] = state;
-                KeyDownCount++;
             } else {
+                if (IsPressingKey(k.Key)) {
+                    KeyDownCount--;
+                }
                 State state = keyUp[k.Key];
                 InitState(ref state);
                 keyUp[k.Key] = state;
-                KeyDownCount--;
             }
         }
 

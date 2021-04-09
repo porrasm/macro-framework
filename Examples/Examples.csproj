@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="ActivatorExamples\BindAndKeyActivatorExample.cs" />
     <Compile Include="ActivatorExamples\DynamicActivatorExample.cs" />
+    <Compile Include="ActivatorExamples\RepeatActivatorExample.cs" />
     <Compile Include="CommandExamples\GoogleCommand.cs" />
     <Compile Include="CommandExamples\ScreenshotCommand.cs" />
     <Compile Include="CommandExamples\WindowDraggerCommand.cs" />

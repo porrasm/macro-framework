@@ -25,11 +25,11 @@ namespace MacroFramework.Commands {
 
         internal static void Start() {
             Initialize();
-            ForEveryCommand((c) => c.OnStart(), "OnStart");
+            ForEveryCommand((c) => c.OnStart(), true, "OnStart");
         }
 
         internal static void Exit() {
-            ForEveryCommand((c) => c.Dispose(), "OnClose");
+            ForEveryCommand((c) => c.Dispose(), true, "OnClose");
             Deinitialize();
         }
 
@@ -148,7 +148,7 @@ namespace MacroFramework.Commands {
         }
 
         private static void AddActivators(Command c) {
-            foreach (IActivator act in c.ActivatorGroup.Activators) {
+            foreach (IActivator act in c.Activators) {
                 Type t = act.UpdateGroup;
                 if (staticActivators.ContainsKey(t)) {
                     staticActivators[t].Add(act);
@@ -176,10 +176,15 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Executes some action for every command in a try clause
         /// </summary>
-        public static void ForEveryCommand(Action<Command> it, string errorMessage = "") {
+        /// <param name="it">The action to complete</param>
+        /// <param name="ignoreActiveStatus">Whether to ignroe the <see cref="Command.IsActive"/> status</param>
+        /// <param name="errorMessage">The error message to log should an error occur</param>
+        public static void ForEveryCommand(Action<Command> it, bool ignoreActiveStatus, string errorMessage = "") {
             foreach (Command c in Commands) {
                 try {
-                    it(c);
+                    if (ignoreActiveStatus || c.IsActive()) {
+                        it(c);
+                    }
                 } catch (Exception e) {
                     Logger.Exception(e, $"Error iterating command with type {c.GetType()}: {errorMessage}");
                 }

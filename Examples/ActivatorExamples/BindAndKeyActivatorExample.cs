@@ -4,19 +4,18 @@ using System;
 public class BindAndKeyActivatorExample : Command {
 
     // Alternate to using attributes
-    protected override void InitializeActivators(out CommandActivatorGroup activator) {
-        activator = new CommandActivatorGroup(this);
+    protected override void InitializeActivators(ref ActivatorContainer acts) {
 
-        activator.Add(new KeyActivator(KKey.Space, OnPressSpacebar));
+        new KeyActivator(KKey.Space, OnPressSpacebar).AssignTo(acts);
 
         // Defaults to ordered press of [A, B, C] and then releasing any key.
-        activator.Add(new BindActivator(new Bind(KKey.A, KKey.B, KKey.C), OnReleaseABC));
+        new BindActivator(new Bind(KKey.A, KKey.B, KKey.C), OnReleaseABC).AssignTo(acts);
 
         // Activated when A is followed by B is followed by C and when no other keys are pressed
-        activator.Add(new BindActivator(new Bind(new BindSettings(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered), KKey.A, KKey.B, KKey.C), OnPressABC));
+        new BindActivator(new Bind(new BindSettings(ActivationEventType.OnPress, KeyMatchType.ExactKeyMatch, KeyPressOrder.Ordered), KKey.A, KKey.B, KKey.C), OnPressABC).AssignTo(acts);
 
         // Activated when A-Z or 0-9 is pressed
-        activator.Add(new KeyActivator((e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9), OnPressAlphanumeric));
+        new KeyActivator((e) => (e.Key >= KKey.A && e.Key <= KKey.Z) || (e.Key >= KKey.D0 && e.Key <= KKey.D9), OnPressAlphanumeric).AssignTo(acts);
     }
 
     [KeyActivator(KKey.Space)]

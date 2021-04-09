@@ -60,7 +60,7 @@ namespace MacroFramework.Commands {
             CurrentTextCommand = s;
             CommandWasAccepted = false;
             CommandContainer.UpdateActivators<TextActivator>();
-            CommandContainer.ForEveryCommand((c) => c.OnTextCommand(s, CommandWasAccepted), "OnTextCommand");
+            CommandContainer.ForEveryCommand((c) => c.OnTextCommand(s, CommandWasAccepted), false, "OnTextCommand");
             CurrentTextCommand = null;
         }
 

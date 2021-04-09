@@ -5,16 +5,14 @@ using System.Text.RegularExpressions;
 class TextActivatorExample : Command {
 
     // Alternate to using attributes
-    protected override void InitializeActivators(out CommandActivatorGroup activator) {
-        activator = new CommandActivatorGroup(this);
-
-        activator.Add(new TextActivator("test command", OnTestCommand));
+    protected override void InitializeActivators(ref ActivatorContainer acts) {
+        new TextActivator("test command", OnTestCommand).AssignTo(acts);
 
         // Multiple matchers
-        activator.Add(new TextActivator(new Matchers("stop", "exit", "quit"), ExitApplication));
+        new TextActivator(new Matchers("stop", "exit", "quit"), ExitApplication).AssignTo(acts);
 
         // Regex
-        activator.Add(new TextActivator(new Regex("print [A-Z]+"), PrintParameter));
+        new TextActivator(new Regex("print [A-Z]+"), PrintParameter).AssignTo(acts);
     }
 
     [TextActivator("test command", TextActivatorAttribute.MatchType.StringMatch)]

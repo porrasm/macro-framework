@@ -11,7 +11,7 @@ namespace MacroFramework.Commands {
         public Command Owner { get; set; }
 
         /// <summary>
-        /// If true, the active status of the owner (<see cref="Command.IsActive"/>) is ignored
+        /// If true, the active status of the owner (<see cref="Command.IsActiveDelegate"/>) is ignored
         /// </summary>
         public bool IgnoreOwnerActiveStatus { get; set; }
 
@@ -31,19 +31,22 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Adds this <see cref="CommandActivator"/> to a <see cref="CommandActivatorGroup"/> using <see cref="CommandActivatorGroup.Add(IActivator)"/>
+        /// Syntactic sugar for adding this <see cref="CommandActivator"/> to a <see cref="Command"/> using <see cref="ActivatorContainer.AddActivator(IActivator)"/>
         /// </summary>
-        /// <param name="group">The group to add this to</param>
-        public void AssignTo(CommandActivatorGroup group) {
-            group.Add(this);
+        /// <param name="acts">The group to add this to</param>
+        public void AssignTo(ActivatorContainer acts) {
+            if (acts.Activators == null) {
+                throw new Exception("Can't assign activator to a container which is not directly owned by a Command instance");
+            }
+            acts.AddActivator(this);
         }
 
         /// <summary>
-        /// Returns true if the activator is active. Also takes into account the context of the owner: <see cref="Command.IsActive"/>
+        /// Returns true if the activator is active. Also takes into account the context of the owner: <see cref="Command.IsActiveDelegate"/>
         /// </summary>
         /// <returns></returns>
         public bool IsActive() {
-            if (IgnoreOwnerActiveStatus || (Owner?.IsActive() ?? true)) {
+            if (IgnoreOwnerActiveStatus || (Owner.IsActive())) {
                 return IsActivatorActive();
             }
             return false;
