@@ -4,12 +4,7 @@ using System;
 
 namespace MacroFramework.Input {
     internal struct MockInput : IInputEvent {
-        public MockInput(KKey key, bool state, InputEventType type) : this() {
-            Key = key;
-            State = state;
-            ReceiveTimestamp = Timer.Milliseconds;
-            Type = type;
-        }
+        public ulong Index { get; }
 
         public KKey Key { get; set; }
 
@@ -28,6 +23,15 @@ namespace MacroFramework.Input {
         public ActivationEventType ActivationType { get; set; }
 
         public bool Unique { get; set; }
+
+        public MockInput(KKey key, bool state, InputEventType type) : this() {
+            Index = InputEvents.NetInputEventIndex;
+            Key = key;
+            State = state;
+            ReceiveTimestamp = Timer.Milliseconds;
+            Type = type;
+        }
+
 
         public IInputEvent GetCopy() {
             MockInput copy = this;

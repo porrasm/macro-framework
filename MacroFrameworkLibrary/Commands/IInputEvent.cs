@@ -7,6 +7,11 @@ namespace MacroFramework.Commands {
     /// </summary>
     public interface IInputEvent {
         /// <summary>
+        /// The unique index of this input event which can be generated using <see cref="InputEvents.NetInputEventIndex"/>
+        /// </summary>
+        ulong Index { get; }
+
+        /// <summary>
         /// The corresponding key
         /// </summary>
         KKey Key { get; set; }

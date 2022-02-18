@@ -31,6 +31,13 @@ namespace MacroFramework.Commands.Coroutines {
 
             coroutine.IsRunning = true;
             coroutine.MoveNext();
+
+            // Coroutine did not have any yield returns
+            if (coroutine.CurrentInstruction == null) {
+                StopCoroutine(coroutine, true);
+                return;
+            }
+
             int groupIndex = (int)coroutine.CurrentInstruction.UpdateGroup;
             groups[groupIndex].Add(coroutine.CurrentInstruction);
         }

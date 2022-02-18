@@ -11,9 +11,26 @@ namespace MacroFramework.Input {
 
         #region fields
         /// <summary>
+        /// Returns the current maximum index of any input event
+        /// </summary>
+        public static ulong MaximumInputEventIndex { get; private set; }
+
+        /// <summary>
+        /// Retrieves the next unique input event index
+        /// </summary>
+        public static ulong NetInputEventIndex { get => ++MaximumInputEventIndex; }
+
+        /// <summary>
         /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
         /// </summary>
-        public static Func<IInputEvent, bool> InputCallback { get; set; }
+        public static Func<IInputEvent, KeyBlockType> InputCallback { get; set; }
+
+        public enum KeyBlockType {
+            None,
+            BlockFromOS,
+            BlockFromApp,
+            BlockFromBoth
+        }
 
         /// <summary>
         /// Special event for <see cref="KKey.MouseMove"/>.
@@ -31,6 +48,11 @@ namespace MacroFramework.Input {
         /// Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.
         /// </summary>
         public static IInputEvent CurrentInputEvent { get; private set; }
+
+        /// <summary>
+        /// Executed right before an input event is handled in the framework. If true is returned this keybind will not be handled by any activators
+        /// </summary>
+        public static Func<IInputEvent, bool> OnBeforeInputEvent { get; set; }
         #endregion
 
         internal static void Initialize() {
@@ -48,21 +70,20 @@ namespace MacroFramework.Input {
             bool releaseForDownKey = !k.State && KeyStates.AbsoluteKeystates[k.Key];
             KeyStates.AddAbsoluteEvent(k);
 
-            if (InputCallback?.Invoke(k) ?? false) {
+            KeyBlockType block = Callbacks.ExecuteFunc(InputCallback, k, KeyBlockType.None, "Error in InputEventCallback", () => Console.WriteLine("optional fail callback"));
+
+            if (block == KeyBlockType.BlockFromBoth) {
                 return true;
             }
-
-            if (k.Injected) {
+            if (block == KeyBlockType.BlockFromApp || k.Injected) {
                 return false;
             }
 
+            bool blockOS = block == KeyBlockType.BlockFromOS;
+
             if (k.Key == KKey.MouseMove) {
-                try {
-                    OnMouseMove?.Invoke((MouseEvent)k);
-                } catch (Exception e) {
-                    Logger.Exception(e, "Error on OnMouseMove event");
-                }
-                return false;
+                Callbacks.ExecuteAction(OnMouseMove, (MouseEvent)k, "Error on OnMouseMove event");
+                return blockOS;
             }
 
             keyEventQueue.Enqueue(k);
@@ -71,7 +92,7 @@ namespace MacroFramework.Input {
                 return true;
             }
 
-            return BlockedKeys.Contains(k.Key);
+            return blockOS || BlockedKeys.Contains(k.Key);
         }
 
         private static bool IsBlockedKey(IInputEvent k, bool releaseForDownKey) {
@@ -107,12 +128,15 @@ namespace MacroFramework.Input {
                 return;
             }
 
+            if (Callbacks.ExecuteFunc(OnBeforeInputEvent, CurrentInputEvent, false, "OnBeforeInputEvent")) {
+                return;
+            }
+
             if (k.State) {
                 KeyStates.AddKeyEvent(k);
             }
             if (k.Unique) {
                 CommandContainer.UpdateActivators(typeof(KeyActivator), typeof(BindActivator));
-
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnInputEvent), false, $"Coroutine {CoroutineUpdateGroup.OnInputEvent}");
             }
             if (!k.State) {

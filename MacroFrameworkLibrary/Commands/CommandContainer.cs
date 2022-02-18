@@ -117,14 +117,7 @@ namespace MacroFramework.Commands {
             }
         }
         private static void ExecuteActivator(IActivator activator) {
-            if (activator.GetType() != typeof(TimerActivator)) {
-                Console.WriteLine("Execute act: " + activator.GetType());
-            }
-            try {
-                activator.Execute();
-            } catch (Exception e) {
-                Logger.Exception(e, "ExecuteActivator");
-            }
+            Callbacks.ExecuteAction(activator.Execute, "ExecuteActivator");
         }
 
 
@@ -143,11 +136,7 @@ namespace MacroFramework.Commands {
                 }
 
                 if (task.Activator.IsActive()) {
-                    try {
-                        task.Execute();
-                    } catch (Exception e) {
-                        Logger.Exception(e, $"Error on task finish, {task.Activator.Owner?.GetType()}");
-                    }
+                    Callbacks.ExecuteAction(task.Execute, $"Error on task finish, {task.Activator.Owner?.GetType()}");
                     if (task.RemoveAfterExecution()) {
                         RemoveFromList(acts, ref i);
                     }
@@ -167,16 +156,46 @@ namespace MacroFramework.Commands {
         /// <param name="t">The type of command to get</param>
         /// <param name="command">The command</param>
         /// <returns></returns>
-        public static bool GetCommand(Type t, out Command command) {
+        public static bool GetCommand<T>(out T command) where T : Command {
             foreach (Command c in Commands) {
-                if (c.GetType() == t) {
-                    command = c;
+                if (c.GetType() == typeof(T)) {
+                    command = (T)c;
                     return true;
                 }
             }
 
-            command = null;
+            command = default;
             return false;
+        }
+
+        /// <summary>
+        /// Allows you to get the list of activators
+        /// </summary>
+        /// <param name="filter">Optional filter</param>
+        /// <returns></returns>
+        public static List<IActivator> GetActivators(Func<IActivator, bool> filter = null) {
+            List<IActivator> activatorsToGet = new List<IActivator>();
+            foreach (IActivator act in commandActivatorGroups.Values) {
+                if (filter?.Invoke(act) ?? true) {
+                    activatorsToGet.Add(act);
+                }
+            }
+            return activatorsToGet;
+        }
+
+        /// <summary>
+        /// Allows you to get the list of current dynamic activators
+        /// </summary>
+        /// <param name="filter">Optional filter</param>
+        /// <returns></returns>
+        public static List<IDynamicActivator> GetDynamicActivators(Func<IDynamicActivator, bool> filter = null) {
+            List<IDynamicActivator> activatorsToGet = new List<IDynamicActivator>();
+            foreach (IDynamicActivator act in dynamicActivatorGroups.Values) {
+                if (filter?.Invoke(act) ?? true) {
+                    activatorsToGet.Add(act);
+                }
+            }
+            return activatorsToGet;
         }
 
         /// <summary>
@@ -208,12 +227,8 @@ namespace MacroFramework.Commands {
         /// <param name="errorMessage">The error message to log should an error occur</param>
         public static void ForEveryCommand(Action<Command> it, bool ignoreActiveStatus, string errorMessage = "") {
             foreach (Command c in Commands) {
-                try {
-                    if (ignoreActiveStatus || c.IsActive()) {
-                        it(c);
-                    }
-                } catch (Exception e) {
-                    Logger.Exception(e, $"Error iterating command with type {c.GetType()}: {errorMessage}");
+                if (ignoreActiveStatus || c.IsActive()) {
+                    Callbacks.ExecuteAction(it, c, $"Error iterating command with type {c.GetType()}: {errorMessage}");
                 }
             }
         }

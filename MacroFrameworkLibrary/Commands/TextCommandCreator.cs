@@ -32,11 +32,7 @@ namespace MacroFramework.Commands {
         internal static void StartCommand() {
             lastCommandModeTimestamp = Timer.Milliseconds;
             keyCommand.Clear();
-            try {
-                TextCommands.OnTextCommandModeStart?.Invoke();
-            } catch (System.Exception e) {
-                Logger.Log($"Error executing OnTextCommandModeStart: " + e);
-            }
+            Callbacks.ExecuteAction(TextCommands.OnTextCommandModeStart, $"Error executing OnTextCommandModeStart");
         }
         internal static void EndCommand(bool activate) {
             if (activate) {
@@ -45,11 +41,7 @@ namespace MacroFramework.Commands {
                 TextCommands.Execute(command);
             }
             keyCommand.Clear();
-            try {
-                TextCommands.OnTextCommandModeEnd?.Invoke();
-            } catch (System.Exception e) {
-                Logger.Log($"Error executing OnTextCommandModeEnd: " + e);
-            }
+            Callbacks.ExecuteAction(TextCommands.OnTextCommandModeEnd, $"Error executing OnTextCommandModeEnd");
         }
 
         #region keyevents

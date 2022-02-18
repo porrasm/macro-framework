@@ -7,6 +7,8 @@ namespace MacroFramework.Input {
     /// Contains information about the current keyevent
     /// </summary>
     public struct KeyEvent : IInputEvent {
+        public ulong Index { get; }
+
         /// <summary>
         /// The corresponding key
         /// </summary>
@@ -50,7 +52,7 @@ namespace MacroFramework.Input {
         /// Creates a new <see cref="KeyEvent"/> instance from a low level input event
         /// </summary>
         internal KeyEvent(IntPtr wParam, KBDLLHOOKSTRUCT rawData) {
-
+            Index = InputEvents.NetInputEventIndex;
             ReceiveTimestamp = Timer.Milliseconds;
 
             WindowsMessage msg = (WindowsMessage)wParam;

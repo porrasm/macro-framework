@@ -89,6 +89,11 @@ namespace MacroFramework {
         /// The last timestamp of the main update loop
         /// </summary>
         public static long LastMainLoopStart { get; private set; }
+
+        /// <summary>
+        /// The index of the current running main loop
+        /// </summary>
+        public static ulong MainLoopIndex { get; private set; }
         #endregion
 
         #region management
@@ -132,14 +137,10 @@ namespace MacroFramework {
             while (State != RunState.NotRunning) {
                 Application.Run();
                 while (mainThreadJobQueue.Count > 0) {
-                    try {
-                        if (mainThreadJobQueue.TryDequeue(out Action cb)) {
-                            cb();
-                        } else {
-                            throw new Exception("Could not dequeue job");
-                        }
-                    } catch (Exception e) {
-                        Logger.Exception(e, "MainThread job");
+                    if (mainThreadJobQueue.TryDequeue(out Action cb)) {
+                        Callbacks.ExecuteAction(cb, "MainThread job");
+                    } else {
+                        throw new Exception("Could not dequeue job");
                     }
                 }
             }
@@ -219,6 +220,7 @@ namespace MacroFramework {
                 UpdateCommandFunctionality();
                 MainLoopDelay();
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
+                MainLoopIndex++;
             }
         }
         private static void MainLoopStart() {
@@ -267,12 +269,8 @@ namespace MacroFramework {
         }
 
         private static void TryContinue() {
-            try {
-                if (continueDelegate?.Invoke() ?? false) {
-                    Resume();
-                }
-            } catch (Exception e) {
-                Logger.Exception(e, "MainLoop continue delegate");
+            if (Callbacks.ExecuteFunc(continueDelegate, false, "MainLoop continue delegate")) {
+                Resume();
             }
         }
         #endregion

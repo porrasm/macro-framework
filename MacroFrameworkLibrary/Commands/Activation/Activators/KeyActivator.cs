@@ -60,15 +60,11 @@ namespace MacroFramework.Commands {
         }
 
         protected override bool IsActivatorActive() {
-            return keyFilter(InputEvents.CurrentInputEvent);
+            return keyFilter == null ? true : keyFilter(InputEvents.CurrentInputEvent);
         }
 
         public override void Execute() {
-            try {
-                cb?.Invoke(InputEvents.CurrentInputEvent);
-            } catch (Exception e) {
-                Logger.Log("Error executing KeyCallback: " + e.Message);
-            }
+            Callbacks.ExecuteAction(cb, InputEvents.CurrentInputEvent, "Error executing KeyCallback");
         }
     }
 }

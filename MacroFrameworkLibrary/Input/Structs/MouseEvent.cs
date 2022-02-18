@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 
 namespace MacroFramework.Input {
     public struct MouseEvent : IInputEvent {
+        public ulong Index { get; }
+
         public KKey Key { get; set; }
 
         public bool State { get; set; }
@@ -31,6 +33,7 @@ namespace MacroFramework.Input {
         public ActivationEventType ActivationType { get; set; }
 
         public MouseEvent(IntPtr wParam, IntPtr lParam) {
+            Index = InputEvents.NetInputEventIndex;
             ReceiveTimestamp = Timer.Milliseconds;
             MSLLHOOKSTRUCT raw = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
 

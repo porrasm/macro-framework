@@ -70,10 +70,12 @@ namespace MacroFramework.Commands {
         }
 
         protected override bool IsActivatorActive() {
+
             if (currentRepeatCount > 0 && Timer.PassedFrom(lastActiveTimeStamp) > RepeatInterval) {
                 bool isActive = !ActivateImmediately && IsRepeatActivatorActive();
                 Reset();
                 if (isActive) {
+                    Console.WriteLine("Repeat active with count: " + currentRepeatCount);
                     return true;
                 }
             }
@@ -91,6 +93,7 @@ namespace MacroFramework.Commands {
         }
 
         private void Reset() {
+            Console.WriteLine("Reset repeat act");
             currentRepeatCount = 0;
             lastActiveTimeStamp = 0;
         }

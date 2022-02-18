@@ -4,6 +4,11 @@
         <name>MacroFramework</name>
     </assembly>
     <members>
+        <member name="T:MacroFramework.Callbacks">
+            <summary>
+            A class for executing <see cref="T:System.Action"/> and <see cref="T:System.Func`2"/> objects in a try clause
+            </summary>
+        </member>
         <member name="T:MacroFramework.Commands.ActivatorContainer">
             <summary>
             A container which is used in the initialize state to define all the <see cref="T:MacroFramework.Commands.IActivator"/> instances a command owns.
@@ -766,12 +771,26 @@
             </summary>
             <typeparam name="T">The type to update which implement <see cref="T:MacroFramework.Commands.IActivator"/></typeparam>
         </member>
-        <member name="M:MacroFramework.Commands.CommandContainer.GetCommand(System.Type,MacroFramework.Commands.Command@)">
+        <member name="M:MacroFramework.Commands.CommandContainer.GetCommand``1(``0@)">
             <summary>
             Can be used to get retrieve a <see cref="T:MacroFramework.Commands.Command"/> by its type
             </summary>
             <param name="t">The type of command to get</param>
             <param name="command">The command</param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.CommandContainer.GetActivators(System.Func{MacroFramework.Commands.IActivator,System.Boolean})">
+            <summary>
+            Allows you to get the list of activators
+            </summary>
+            <param name="filter">Optional filter</param>
+            <returns></returns>
+        </member>
+        <member name="M:MacroFramework.Commands.CommandContainer.GetDynamicActivators(System.Func{MacroFramework.Commands.IDynamicActivator,System.Boolean})">
+            <summary>
+            Allows you to get the list of current dynamic activators
+            </summary>
+            <param name="filter">Optional filter</param>
             <returns></returns>
         </member>
         <member name="M:MacroFramework.Commands.CommandContainer.AddDynamicActivator(MacroFramework.Commands.IActivator)">
@@ -1059,6 +1078,11 @@
         <member name="T:MacroFramework.Commands.IInputEvent">
             <summary>
             Interface for representing device input
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Commands.IInputEvent.Index">
+            <summary>
+            The unique index of this input event which can be generated using <see cref="P:MacroFramework.Input.InputEvents.NetInputEventIndex"/>
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.IInputEvent.Key">
@@ -1477,6 +1501,16 @@
             Static clas used to handle the keyevents captured by the <see cref="T:MacroFramework.Input.InputHook"/>
             </summary>
         </member>
+        <member name="P:MacroFramework.Input.InputEvents.MaximumInputEventIndex">
+            <summary>
+            Returns the current maximum index of any input event
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputEvents.NetInputEventIndex">
+            <summary>
+            Retrieves the next unique input event index
+            </summary>
+        </member>
         <member name="P:MacroFramework.Input.InputEvents.InputCallback">
             <summary>
             This delegate is invoked at every keypress, before it is registered by the <see cref="T:MacroFramework.Input.KeyStates"/>. Return true to intercept key from other applications and the <see cref="N:MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
@@ -1495,6 +1529,11 @@
         <member name="P:MacroFramework.Input.InputEvents.CurrentInputEvent">
             <summary>
             Returns the current KeyEvent. This can be used by Command classes to access the current KeyEvent.
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Input.InputEvents.OnBeforeInputEvent">
+            <summary>
+            Executed right before an input event is handled in the framework. If true is returned this keybind will not be handled by any activators
             </summary>
         </member>
         <member name="M:MacroFramework.Input.InputEvents.RegisterHookKeyEvent(MacroFramework.Commands.IInputEvent)">
@@ -2641,6 +2680,11 @@
         <member name="P:MacroFramework.Macros.LastMainLoopStart">
             <summary>
             The last timestamp of the main update loop
+            </summary>
+        </member>
+        <member name="P:MacroFramework.Macros.MainLoopIndex">
+            <summary>
+            The index of the current running main loop
             </summary>
         </member>
         <member name="M:MacroFramework.Macros.Start(MacroFramework.MacroSetup,System.Boolean,System.Action)">
