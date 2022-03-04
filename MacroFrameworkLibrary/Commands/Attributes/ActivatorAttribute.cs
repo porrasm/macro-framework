@@ -13,6 +13,6 @@ namespace MacroFramework.Commands {
         /// <param name="owner">Command which owns <paramref name="assignedMethod"/></param>
         /// <param name="assignedMethod">The method to call</param>
         /// <returns></returns>
-        public abstract IActivator GetCommandActivator(Command owner, MethodInfo assignedMethod);
+        public abstract IActivator GetCommandActivator(CommandBase owner, MethodInfo assignedMethod);
     }
 }

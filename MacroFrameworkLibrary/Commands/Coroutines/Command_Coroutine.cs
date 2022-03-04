@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 
 namespace MacroFramework.Commands {
-    public abstract partial class Command {
+    public abstract partial class CommandBase {
 
         #region fields
         internal CoroutineManager Coroutines { get; } = new CoroutineManager();

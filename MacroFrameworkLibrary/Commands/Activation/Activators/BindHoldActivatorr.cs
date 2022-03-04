@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MacroFramework.Tools;
+using System;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -13,7 +14,8 @@ namespace MacroFramework.Commands {
         public Bind Bind {
             get => bindActivator.Bind;
             set {
-                this.bindActivator = new BindActivator(value);
+                Bind fixedBind = new Bind(new BindSettings(ActivationEventType.OnPress, value.Settings.MatchType, value.Settings.Order), value.Keys);
+                this.bindActivator = new BindActivator(fixedBind);
             }
         }
         private BindActivator bindActivator;
@@ -25,16 +27,18 @@ namespace MacroFramework.Commands {
         public Action OnActivate { get; set; }
 
         /// <summary>
-        /// Called on each main loop iteration for as long as the <see cref="Bind"/> stays active. Called after <see cref="OnActivate"/> and before <see cref="OnDeactivate"/>.
+        /// Called on each main loop iteration for as long as the <see cref="Bind"/> stays active. Called after <see cref="OnActivate"/> and before <see cref="OnDeactivate"/>. Gets the current hold time (ms) as a paremeter.
         /// </summary>
-        public Action OnUpdate { get; set; }
+        public Action<int> OnUpdate { get; set; }
 
         /// <summary>
-        /// Called when the <see cref="Bind"/> becomes inactive. Called after <see cref="OnActivate"/> and <see cref="OnUpdate"/>.
+        /// Called when the <see cref="Bind"/> becomes inactive. Called after <see cref="OnActivate"/> and <see cref="OnUpdate"/>. Gets the total hold time (ms) as a paremeter.
         /// </summary>
-        public Action OnDeactivate { get; set; }
+        public Action<int> OnDeactivate { get; set; }
 
         public override Type UpdateGroup => typeof(BindActivator);
+
+        private long startTime;
         #endregion
 
         #region constructors
@@ -53,7 +57,7 @@ namespace MacroFramework.Commands {
         /// <param name="onActivate"><see cref="OnActivate"/></param>
         /// <param name="onUpdate"><see cref="OnUpdate"/></param>
         /// <param name="onDeactivate"><see cref="OnDeactivate"/></param>
-        public BindHoldActivator(Bind bind, Action onActivate, Action onUpdate, Action onDeactivate) : base(null) {
+        public BindHoldActivator(Bind bind, Action onActivate, Action<int> onUpdate, Action<int> onDeactivate) : base(null) {
             this.Bind = bind;
             OnActivate = onActivate;
             OnUpdate = onUpdate;
@@ -75,7 +79,7 @@ namespace MacroFramework.Commands {
         /// Sets the <see cref="OnUpdate"/>
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindHoldActivator SetOnUpdate(Action cb) {
+        public BindHoldActivator SetOnUpdate(Action<int> cb) {
             this.OnUpdate = cb;
             return this;
         }
@@ -84,7 +88,7 @@ namespace MacroFramework.Commands {
         /// Sets the <see cref="OnDeactivate"/>
         /// </summary>
         /// <param name="cb">The callback to use</param>
-        public BindHoldActivator SetOnDeactivate(Action cb) {
+        public BindHoldActivator SetOnDeactivate(Action<int> cb) {
             this.OnDeactivate = cb;
             return this;
         }
@@ -97,6 +101,7 @@ namespace MacroFramework.Commands {
         public override void Execute() {
             End();
             timerActivator = new TimerActivator(0).SetCallback(Update).RegisterDynamicActivator(false);
+            startTime = Timer.Milliseconds;
             OnActivate?.Invoke();
         }
 
@@ -105,13 +110,13 @@ namespace MacroFramework.Commands {
                 End();
                 return;
             }
-            OnUpdate?.Invoke();
+            OnUpdate?.Invoke((int)Timer.PassedFrom(startTime));
         }
         private void End() {
             if (timerActivator != null) {
                 CommandContainer.RemoveDynamicActivator(timerActivator);
                 timerActivator = null;
-                OnDeactivate?.Invoke();
+                OnDeactivate?.Invoke((int)Timer.PassedFrom(startTime));
             }
         }
     }

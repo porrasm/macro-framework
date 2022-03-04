@@ -48,7 +48,7 @@ namespace MacroFramework.Commands {
             this.type = MatchType.StringMatch;
         }
 
-        public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
+        public override IActivator GetCommandActivator(CommandBase command, MethodInfo assignedMethod) {
             return new TextActivator(new Matchers(GetRegexWrappers()), (s) => assignedMethod?.Invoke(command, null));
         }
 

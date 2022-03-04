@@ -1,7 +1,7 @@
 ﻿using MacroFramework.Commands.Coroutines;
 using System;
 using System.Collections;
-
+using System.Threading.Tasks;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -15,7 +15,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public Func<IEnumerator> EnumeratorSource { get; set; }
 
-        private Command owner;
+        private CommandBase owner;
         private Action<Coroutine> onEnd;
         private IEnumerator enumerator;
         internal YieldInstruction CurrentInstruction { get; private set; }
@@ -77,7 +77,7 @@ namespace MacroFramework.Commands {
         /// Starts this coroutine in the given <see cref="Command"/> class
         /// </summary>
         /// <param name="owner"></param>
-        public Coroutine Start(Command owner) {
+        public Coroutine Start(CommandBase owner) {
             SetOwner(owner);
             return StartThisCoroutine();
         }
@@ -102,7 +102,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Set the owner of this coroutine
         /// </summary>
-        public void SetOwner(Command owner) {
+        public void SetOwner(CommandBase owner) {
             if (owner == null) {
                 throw new Exception("Owner cannot be null");
             }
@@ -170,8 +170,11 @@ namespace MacroFramework.Commands {
             }
 
             if (o is Coroutine) {
-                throw new NotImplementedException();
-                // return new WaitForCoroutine((Coroutine)o);
+                return new CoroutineInstruction((Coroutine)o);
+            }
+
+            if (o is Task) {
+                return new TaskInstruction((Task)o);
             }
 
             throw new Exception("Invalid value returned from coroutine");
@@ -186,5 +189,7 @@ namespace MacroFramework.Commands {
             return 1213502048 + ID.GetHashCode();
         }
         #endregion
+
+        public static YieldInstruction Async(Func<Task> task) => new TaskInstruction(task());
     }
 }

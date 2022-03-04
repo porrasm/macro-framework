@@ -7,10 +7,10 @@ namespace MacroFramework.Tools {
     internal static class ReflectiveEnumerator {
         static ReflectiveEnumerator() { }
 
-        internal static IEnumerable<T> GetEnumerableOfType<T>(Assembly ass) where T : class {
+        internal static IEnumerable<T> GetEnumerableOfType<T>(Assembly assembly) where T : class {
             List<T> objects = new List<T>();
             foreach (Type type in
-                GetLoadableTypes(ass)
+                GetLoadableTypes(assembly)
                 .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T)))) {
                 objects.Add((T)Activator.CreateInstance(type));
             }

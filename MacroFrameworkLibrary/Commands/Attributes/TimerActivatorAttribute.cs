@@ -23,7 +23,7 @@ namespace MacroFramework.Commands {
             this.callAtStart = callAtStart;
         }
 
-        public override IActivator GetCommandActivator(Command c, MethodInfo m) {
+        public override IActivator GetCommandActivator(CommandBase c, MethodInfo m) {
             return new TimerActivator(delay, unit, callAtStart, () => m.Invoke(c, null));
         }
     }

@@ -46,7 +46,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a <see cref="BindHoldActivator"/> from this bind
         /// </summary>
-        public BindHoldActivator CreateBindHoldActivator(Action onActivate, Action onUpdate, Action onDeactivate) {
+        public BindHoldActivator CreateBindHoldActivator(Action onActivate, Action<int> onUpdate, Action<int> onDeactivate) {
             return new BindHoldActivator(this, onActivate, onUpdate, onDeactivate);
         }
         #endregion

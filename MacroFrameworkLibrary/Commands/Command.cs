@@ -3,12 +3,22 @@ using System.Linq;
 using System.Reflection;
 
 namespace MacroFramework.Commands {
+    public class Command : CommandBase {
+        /// <summary>
+        /// A static command which is automatically initialized at application start. Static commands are essentially singletons and only one can exist at a time.
+        /// </summary>
+        /// <returns></returns>
+        internal override bool IsStatic() => true;
+    }
+
     /// <summary>
     /// Base class for all macro functionality
     /// </summary>
-    public abstract partial class Command {
+    public abstract partial class CommandBase {
 
         #region fields
+        internal abstract bool IsStatic();
+
         /// <summary>
         /// The list of <see cref="IActivator"/> instances this command owns
         /// </summary>
@@ -29,7 +39,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// Creates a new <see cref="Command"/> instance
         /// </summary>
-        public Command() {
+        internal CommandBase() {
             ActivatorContainer activators = ActivatorContainer.New;
             InitializeActivators(ref activators);
 

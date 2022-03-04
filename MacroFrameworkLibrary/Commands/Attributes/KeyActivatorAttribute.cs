@@ -17,7 +17,7 @@ namespace MacroFramework.Commands {
             this.key = key;
         }
 
-        public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
+        public override IActivator GetCommandActivator(CommandBase command, MethodInfo assignedMethod) {
             return new KeyActivator(key, (IInputEvent k) => assignedMethod.Invoke(command, null));
         }
     }

@@ -39,7 +39,7 @@ namespace MacroFramework.Commands {
             this.keys = keys;
         }
 
-        public override IActivator GetCommandActivator(Command command, MethodInfo assignedMethod) {
+        public override IActivator GetCommandActivator(CommandBase command, MethodInfo assignedMethod) {
             if (useDefaults) {
                 return new BindActivator(new Bind(keys), () => assignedMethod.Invoke(command, null));
             }

@@ -65,12 +65,12 @@
         </member>
         <member name="P:MacroFramework.Commands.BindHoldActivator.OnUpdate">
             <summary>
-            Called on each main loop iteration for as long as the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> stays active. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and before <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>.
+            Called on each main loop iteration for as long as the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> stays active. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and before <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>. Gets the current hold time (ms) as a paremeter.
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate">
             <summary>
-            Called when the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> becomes inactive. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>.
+            Called when the <see cref="P:MacroFramework.Commands.BindHoldActivator.Bind"/> becomes inactive. Called after <see cref="P:MacroFramework.Commands.BindHoldActivator.OnActivate"/> and <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>. Gets the total hold time (ms) as a paremeter.
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind)">
@@ -79,7 +79,7 @@
             </summary>
             <param name="bind">The bind to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind,System.Action,System.Action,System.Action)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.#ctor(MacroFramework.Commands.Bind,System.Action,System.Action{System.Int32},System.Action{System.Int32})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.BindHoldActivator"/> instance
             </summary>
@@ -94,13 +94,13 @@
             </summary>
             <param name="cb">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnUpdate(System.Action)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnUpdate(System.Action{System.Int32})">
             <summary>
             Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnUpdate"/>
             </summary>
             <param name="cb">The callback to use</param>
         </member>
-        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnDeactivate(System.Action)">
+        <member name="M:MacroFramework.Commands.BindHoldActivator.SetOnDeactivate(System.Action{System.Int32})">
             <summary>
             Sets the <see cref="P:MacroFramework.Commands.BindHoldActivator.OnDeactivate"/>
             </summary>
@@ -316,7 +316,7 @@
             </summary>
             <param name="cb">Callback</param>
         </member>
-        <member name="M:MacroFramework.Commands.Bind.CreateBindHoldActivator(System.Action,System.Action,System.Action)">
+        <member name="M:MacroFramework.Commands.Bind.CreateBindHoldActivator(System.Action,System.Action{System.Int32},System.Action{System.Int32})">
             <summary>
             Creates a <see cref="T:MacroFramework.Commands.BindHoldActivator"/> from this bind
             </summary>
@@ -383,7 +383,7 @@
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.IgnoreOwnerActiveStatus">
             <summary>
-            If true, the active status of the owner (<see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/>) is ignored
+            If true, the active status of the owner (<see cref="!:Command.IsActiveDelegate"/>) is ignored
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.CommandActivator.CommandCallback">
@@ -406,7 +406,7 @@
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.IsActive">
             <summary>
-            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/>
+            Returns true if the activator is active. Also takes into account the context of the owner: <see cref="!:Command.IsActiveDelegate"/>
             </summary>
             <returns></returns>
         </member>
@@ -418,7 +418,7 @@
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.Execute">
             <summary>
-            Executes the callback of the activator as well as the <see cref="M:MacroFramework.Commands.Command.OnExecuteStart"/> and <see cref="M:MacroFramework.Commands.Command.OnExecutionComplete"/> methods if <see cref="P:MacroFramework.Commands.CommandActivator.Owner"/> is assigned
+            Executes the callback of the activator as well as the <see cref="!:Command.OnExecuteStart"/> and <see cref="!:Command.OnExecutionComplete"/> methods if <see cref="P:MacroFramework.Commands.CommandActivator.Owner"/> is assigned
             </summary>
         </member>
         <member name="M:MacroFramework.Commands.CommandActivator.RegisterDynamicActivator(System.Boolean)">
@@ -557,7 +557,7 @@
             The base class for all <see cref="T:MacroFramework.Commands.IActivator"/> attributes
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.ActivatorAttribute.GetCommandActivator(MacroFramework.Commands.Command,System.Reflection.MethodInfo)">
+        <member name="M:MacroFramework.Commands.ActivatorAttribute.GetCommandActivator(MacroFramework.Commands.CommandBase,System.Reflection.MethodInfo)">
             <summary>
             Returns a corresponding <see cref="T:MacroFramework.Commands.IActivator"/> object
             </summary>
@@ -641,110 +641,110 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "M:MacroFramework.Commands.TimerActivatorAttribute.#ctor(System.Int32,MacroFramework.Commands.TimeUnit,System.Boolean)" -->
-        <member name="T:MacroFramework.Commands.Command">
+        <member name="T:MacroFramework.Commands.CommandBase">
             <summary>
             Base class for all macro functionality
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.Command.Activators">
+        <member name="P:MacroFramework.Commands.CommandBase.Activators">
             <summary>
             The list of <see cref="T:MacroFramework.Commands.IActivator"/> instances this command owns
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.Command.DefaultContext">
+        <member name="F:MacroFramework.Commands.CommandBase.DefaultContext">
             <summary>
             The default context used in all <see cref="T:MacroFramework.Commands.Command"/> instances. Returns true on default but can be changed.
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.Command.IsActiveDelegate">
+        <member name="P:MacroFramework.Commands.CommandBase.IsActiveDelegate">
             <summary>
             Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="!:ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.Command"/> instance is effectively disabled for the moment.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.#ctor">
+        <member name="M:MacroFramework.Commands.CommandBase.#ctor">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.Command"/> instance
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.InitializeActivators(MacroFramework.Commands.ActivatorContainer@)">
+        <member name="M:MacroFramework.Commands.CommandBase.InitializeActivators(MacroFramework.Commands.ActivatorContainer@)">
             <summary>
             Virtual method for registering activators of a <see cref="T:MacroFramework.Commands.Command"/> instance. Activators can only be added to a command in this method. Use <see cref="T:MacroFramework.Commands.IDynamicActivator"/>s instead if you wish to register activators on the fly.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.Dispose">
+        <member name="M:MacroFramework.Commands.CommandBase.Dispose">
             <summary>
             
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.IsActive">
+        <member name="M:MacroFramework.Commands.CommandBase.IsActive">
             <summary>
-            Returns true if the command is active. Identical to the result of <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/> or true if <see cref="P:MacroFramework.Commands.Command.IsActiveDelegate"/> is null. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
+            Returns true if the command is active. Identical to the result of <see cref="P:MacroFramework.Commands.CommandBase.IsActiveDelegate"/> or true if <see cref="P:MacroFramework.Commands.CommandBase.IsActiveDelegate"/> is null. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnExecuteStart">
+        <member name="M:MacroFramework.Commands.CommandBase.OnExecuteStart">
             <summary>
             Called before the execution of any <see cref="T:MacroFramework.Commands.IActivator"/> callback starts
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnExecutionComplete">
+        <member name="M:MacroFramework.Commands.CommandBase.OnExecutionComplete">
             <summary>
             Called after the execution of every <see cref="T:MacroFramework.Commands.IActivator"/> callback
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnStart">
+        <member name="M:MacroFramework.Commands.CommandBase.OnStart">
             <summary>
             Called after <see cref="M:MacroFramework.Macros.Start(MacroFramework.MacroSetup,System.Boolean,System.Action)"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnUpdate">
+        <member name="M:MacroFramework.Commands.CommandBase.OnUpdate">
             <summary>
             Called on every iteration of <see cref="P:MacroFramework.Macros.OnMainLoop"/> before any <see cref="T:MacroFramework.Commands.IActivator"/> updates. Differs only in exectuion order with a <see cref="T:MacroFramework.Commands.TimerActivator"/> with a 0 as a parameter.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnClose">
+        <member name="M:MacroFramework.Commands.CommandBase.OnClose">
             <summary>
             Called after <see cref="M:MacroFramework.Macros.Stop"/>. Called even if the <see cref="T:MacroFramework.Commands.Command"/> is inactive.
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnPause">
+        <member name="M:MacroFramework.Commands.CommandBase.OnPause">
             <summary>
             Called when the framrwork is paused
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnResume">
+        <member name="M:MacroFramework.Commands.CommandBase.OnResume">
             <summary>
             Called when the framrwork is unpaused
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Command.OnTextCommand(System.String,System.Boolean)">
+        <member name="M:MacroFramework.Commands.CommandBase.OnTextCommand(System.String,System.Boolean)">
             <summary>
             This method is called whenever a text command is executed but only if the command is active
             </summary>
             <param name="command">The text command which was executed</param>
             <param name="commandWasAccepted">True if any <see cref="T:MacroFramework.Commands.TextActivator"/> instance executed the text command. False if command was not executed.</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Collections.IEnumerator,System.Action{MacroFramework.Commands.Coroutine})">
+        <member name="M:MacroFramework.Commands.CommandBase.StartCoroutine(System.Collections.IEnumerator,System.Action{MacroFramework.Commands.Coroutine})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance from the given <see cref="T:System.Collections.IEnumerator"/> parameters, starts it and then returns the new coroutine.
             </summary>
             <param name="enumerator">The enumerator to use</param>
             <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StartCoroutine(System.Func{System.Collections.IEnumerator},System.Action{MacroFramework.Commands.Coroutine})">
+        <member name="M:MacroFramework.Commands.CommandBase.StartCoroutine(System.Func{System.Collections.IEnumerator},System.Action{MacroFramework.Commands.Coroutine})">
             <summary>
             Creates a new <see cref="T:MacroFramework.Commands.Coroutine"/> instance from the given <see cref="T:System.Collections.IEnumerator"/> parameters, starts it and then returns the new coroutine.
             </summary>
             <param name="enumeratorSource">Function to get the enumerator to use</param>
             /// <param name="onEnd">Action to run after the end or cancel of this coroutine</param>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StopCoroutine(MacroFramework.Commands.Coroutine)">
+        <member name="M:MacroFramework.Commands.CommandBase.StopCoroutine(MacroFramework.Commands.Coroutine)">
             <summary>
             Returns true if the corotuine was running and stopped
             </summary>
             <param name="coroutine"></param>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Commands.Command.StopAllCoroutines">
+        <member name="M:MacroFramework.Commands.CommandBase.StopAllCoroutines">
             <summary>
             Stops all coroutines running in this <see cref="T:MacroFramework.Commands.Command"/> instance
             </summary>
@@ -810,7 +810,7 @@
             Executes some action for every command in a try clause
             </summary>
             <param name="it">The action to complete</param>
-            <param name="ignoreActiveStatus">Whether to ignroe the <see cref="M:MacroFramework.Commands.Command.IsActive"/> status</param>
+            <param name="ignoreActiveStatus">Whether to ignroe the <see cref="!:Command.IsActive"/> status</param>
             <param name="errorMessage">The error message to log should an error occur</param>
         </member>
         <member name="M:MacroFramework.Commands.CommandContainer.RemoveDynamicActivator(MacroFramework.Commands.IDynamicActivator)">
@@ -862,7 +862,7 @@
             Starts this coroutine
             </summary>
         </member>
-        <member name="M:MacroFramework.Commands.Coroutine.Start(MacroFramework.Commands.Command)">
+        <member name="M:MacroFramework.Commands.Coroutine.Start(MacroFramework.Commands.CommandBase)">
             <summary>
             Starts this coroutine in the given <see cref="T:MacroFramework.Commands.Command"/> class
             </summary>
@@ -879,7 +879,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MacroFramework.Commands.Coroutine.SetOwner(MacroFramework.Commands.Command)">
+        <member name="M:MacroFramework.Commands.Coroutine.SetOwner(MacroFramework.Commands.CommandBase)">
             <summary>
             Set the owner of this coroutine
             </summary>
