@@ -18,7 +18,7 @@ namespace MacroFramework.Commands {
         /// <summary>
         /// The owner of this activator or null if it is used independently
         /// </summary>
-        Command Owner { get; set; }
+        CommandBase Owner { get; set; }
 
         /// <summary>
         /// This activator will be updated with this update group when <see cref="CommandContainer.UpdateActivators(Type)"/> is called

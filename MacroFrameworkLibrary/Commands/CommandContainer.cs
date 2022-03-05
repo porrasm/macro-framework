@@ -10,10 +10,18 @@ namespace MacroFramework.Commands {
 
         #region fields
         /// <summary>
+        /// Permanent set of commands which contains a single instance of every class which inherits <see cref="Command"/>. This does not change during execution.
+        /// </summary>
+        public static CommandGroup<Command> StaticCommands { get; private set; }
+
+        /// <summary>
+        /// A set of commands which can be changed during execution. This set can contain multiple command instances of the same type.
+        /// </summary>
+        public static CommandGroup<RuntimeCommand> DynamicCommands { get; private set; }
+
+        /// <summary>
         /// Contains the active commands
         /// </summary>
-        internal static List<Command> Commands { get; private set; }
-        private static Dictionary<Type, List<IActivator>> commandActivatorGroups;
 
         private static Dictionary<Type, List<IDynamicActivator>> dynamicActivatorGroups;
         private static uint dynamicActivatorID;
@@ -35,39 +43,19 @@ namespace MacroFramework.Commands {
         }
 
         private static void Initialize() {
-            if (Macros.Setup.CommandAssembly != null && Macros.Setup.CommandsToUse == null) {
-                try {
-                    foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.Setup.CommandAssembly)) {
-                        AddCommand(c);
-                    }
-                } catch (Exception e) {
-                    throw new Exception("Could not load Commands from default assembly. Try to set Setup.CommandAssembly to null", e);
+            try {
+                foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.Setup.CommandAssembly)) {
+                    StaticCommands.Add(c);
                 }
-            } else {
-                foreach (Type t in Macros.Setup.CommandsToUse) {
-                    Command c = (Command)Activator.CreateInstance(t);
-                    AddCommand(c);
-                }
+            } catch (Exception e) {
+                throw new Exception("Could not load Commands from the given assembly. Make sure the assembly is correct. If the error persists, inherit from 'RuntimeCommand' instead of 'Command' and add it manually.", e);
             }
 
-            Logger.Log($"Initialized command container with {Commands.Count} commands");
-        }
-
-        private static void AddCommand(Command c) {
-            Commands.Add(c);
-            foreach (IActivator act in c.Activators) {
-                act.Owner = c;
-                Type g = act.UpdateGroup;
-                if (!commandActivatorGroups.ContainsKey(g)) {
-                    commandActivatorGroups.Add(g, new List<IActivator>());
-                }
-                commandActivatorGroups[g].Add(act);
-            }
+            Logger.Log($"Initialized command container with {StaticCommands.Count} commands");
         }
 
         private static void Deinitialize() {
-            Commands = new List<Command>();
-            commandActivatorGroups = new Dictionary<Type, List<IActivator>>();
+            StaticCommands = new CommandGroup<Command>();
             dynamicActivatorGroups = new Dictionary<Type, List<IDynamicActivator>>();
         }
 
@@ -100,26 +88,11 @@ namespace MacroFramework.Commands {
                 throw new NotSupportedException("Invalid type argument given: " + t);
             }
 
-            UpdateStaticActivators(t);
+            StaticCommands.UpdateActivators(t);
+            DynamicCommands.UpdateActivators(t);
+
             UpdateDynamicActivators(t);
         }
-
-        private static void UpdateStaticActivators(Type t) {
-            List<IActivator> acts;
-            if (!commandActivatorGroups.TryGetValue(t, out acts)) {
-                return;
-            }
-
-            foreach (IActivator act in acts) {
-                if (act.IsActive()) {
-                    ExecuteActivator(act);
-                }
-            }
-        }
-        private static void ExecuteActivator(IActivator activator) {
-            Callbacks.ExecuteAction(activator.Execute, "ExecuteActivator");
-        }
-
 
         private static void UpdateDynamicActivators(Type t) {
             if (!dynamicActivatorGroups.ContainsKey(t)) {
@@ -149,38 +122,13 @@ namespace MacroFramework.Commands {
             index--;
         }
 
-
-        /// <summary>
-        /// Can be used to get retrieve a <see cref="Command"/> by its type
-        /// </summary>
-        /// <param name="t">The type of command to get</param>
-        /// <param name="command">The command</param>
-        /// <returns></returns>
-        public static bool GetCommand<T>(out T command) where T : Command {
-            foreach (Command c in Commands) {
-                if (c.GetType() == typeof(T)) {
-                    command = (T)c;
-                    return true;
-                }
-            }
-
-            command = default;
-            return false;
-        }
-
         /// <summary>
         /// Allows you to get the list of activators
         /// </summary>
         /// <param name="filter">Optional filter</param>
         /// <returns></returns>
         public static List<IActivator> GetActivators(Func<IActivator, bool> filter = null) {
-            List<IActivator> activatorsToGet = new List<IActivator>();
-            foreach (IActivator act in commandActivatorGroups.Values) {
-                if (filter?.Invoke(act) ?? true) {
-                    activatorsToGet.Add(act);
-                }
-            }
-            return activatorsToGet;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -225,12 +173,9 @@ namespace MacroFramework.Commands {
         /// <param name="it">The action to complete</param>
         /// <param name="ignoreActiveStatus">Whether to ignroe the <see cref="Command.IsActive"/> status</param>
         /// <param name="errorMessage">The error message to log should an error occur</param>
-        public static void ForEveryCommand(Action<Command> it, bool ignoreActiveStatus, string errorMessage = "") {
-            foreach (Command c in Commands) {
-                if (ignoreActiveStatus || c.IsActive()) {
-                    Callbacks.ExecuteAction(it, c, $"Error iterating command with type {c.GetType()}: {errorMessage}");
-                }
-            }
+        public static void ForEveryCommand(Action<CommandBase> it, bool ignoreActiveStatus, string errorMessage = "") {
+            StaticCommands.ForEveryCommand(it, ignoreActiveStatus, errorMessage);
+            DynamicCommands.ForEveryCommand(it, ignoreActiveStatus, errorMessage);
         }
 
         /// <summary>

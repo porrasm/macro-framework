@@ -11,7 +11,7 @@ namespace MacroFramework {
 
         #region fields
         /// <summary>
-        /// The assembly in which your custom <see cref="Command"/> classes reside in (can be null).
+        /// The assembly in which your custom <see cref="Command"/> classes reside in. Defaults to <see cref="Assembly.GetExecutingAssembly"/>.
         /// </summary>
         public Assembly CommandAssembly { get; set; }
 
@@ -19,11 +19,6 @@ namespace MacroFramework {
         /// The settings you wish to use
         /// </summary>
         public MacroSettings Settings { get; set; }
-
-        /// <summary>
-        /// Leave this untouched if you wish to use <see cref="System.Reflection"/> for automatically creating commands
-        /// </summary>
-        public HashSet<Type> CommandsToUse { get; set; }
 
         /// <summary>
         /// The logger to use. Can leave to null.
@@ -35,20 +30,8 @@ namespace MacroFramework {
         /// Creates a new <see cref="MacroSetup"/> instance
         /// </summary>
         public MacroSetup() {
+            CommandAssembly = Assembly.GetExecutingAssembly();
             Settings = new MacroSettings();
-        }
-
-        /// <summary>
-        /// A default setup to use with the framewework
-        /// </summary>
-        public static MacroSetup GetDefaultSetup() {
-            MacroSetup setup = new MacroSetup();
-
-            setup.CommandAssembly = Assembly.GetExecutingAssembly();
-            setup.Logger = new Logger();
-            setup.Settings = new MacroSettings();
-
-            return setup;
         }
     }
 }

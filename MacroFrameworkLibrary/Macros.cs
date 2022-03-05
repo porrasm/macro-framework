@@ -388,7 +388,7 @@ namespace MacroFramework {
         }
 
         /// <summary>
-        /// Pauses the application until a certain condition becomes true
+        /// Pauses the application the condition becomes true
         /// </summary>
         /// <param name="continueDelegate">Continuation condition delegate</param>
         public static void SetLimitedModeUntil(Func<bool> continueDelegate) {

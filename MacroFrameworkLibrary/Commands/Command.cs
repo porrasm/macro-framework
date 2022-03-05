@@ -11,6 +11,23 @@ namespace MacroFramework.Commands {
         internal override bool IsStatic() => true;
     }
 
+    public class RuntimeCommand : CommandBase {
+        /// <summary>
+        /// A static command which is automatically initialized at application start. Static commands are essentially singletons and only one can exist at a time.
+        /// </summary>
+        /// <returns></returns>
+        internal override bool IsStatic() => false;
+
+        /// <summary>
+        /// Removes the command at the end of the current update loop.
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Remove() {
+            Dispose();
+            throw new NotImplementedException();
+        }
+    }
+
     /// <summary>
     /// Base class for all macro functionality
     /// </summary>
@@ -25,14 +42,19 @@ namespace MacroFramework.Commands {
         internal IActivator[] Activators { get; }
 
         /// <summary>
-        /// The default context used in all <see cref="Command"/> instances. Returns true on default but can be changed.
+        /// The default context used in all <see cref="CommandBase"/> instances. Returns true on default but can be changed.
         /// </summary>
         public static Func<bool> DefaultContext = () => true;
 
         /// <summary>
-        /// Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="ActivatorGroup"/> are active eiher and this <see cref="Command"/> instance is effectively disabled for the moment.
+        /// Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="ActivatorGroup"/> are active eiher and this <see cref="CommandBase"/> instance is effectively disabled for the moment.
         /// </summary>
         public virtual Func<bool> IsActiveDelegate { private get; set; }
+
+        /// <summary>
+        /// The order in which the <see cref="CommandBase"/> instances are executed in
+        /// </summary>
+        public virtual int ExecutionOrderIndex => 0;
         #endregion
 
         #region initialization
@@ -86,7 +108,7 @@ namespace MacroFramework.Commands {
         }
 
         /// <summary>
-        /// Returns true if the command is active. Identical to the result of <see cref="IsActiveDelegate"/> or true if <see cref="IsActiveDelegate"/> is null. Called even if the <see cref="Command"/> is inactive.
+        /// Returns true if the command is active. Identical to the result of <see cref="IsActiveDelegate"/> or true if <see cref="IsActiveDelegate"/> is null. Called even if the <see cref="CommandBase"/> is inactive.
         /// </summary>
         public bool IsActive() => IsActiveDelegate?.Invoke() ?? true;
 

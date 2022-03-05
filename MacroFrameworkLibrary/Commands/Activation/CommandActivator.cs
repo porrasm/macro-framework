@@ -8,7 +8,7 @@ namespace MacroFramework.Commands {
     /// </summary>
     public abstract class CommandActivator : IActivator {
 
-        public Command Owner { get; set; }
+        public CommandBase Owner { get; set; }
 
         /// <summary>
         /// If true, the active status of the owner (<see cref="Command.IsActiveDelegate"/>) is ignored
