@@ -192,5 +192,21 @@ namespace MacroFramework.Commands {
             }
             return false;
         }
+
+        /// <summary>
+        /// Adds a command to the application
+        /// </summary>
+        /// <param name="c"></param>
+        public static void AddCommand(RuntimeCommand c) {
+            DynamicCommands.QueueAdd(c);
+        }
+
+        /// <summary>
+        /// Removes a command from the application
+        /// </summary>
+        /// <param name="c"></param>
+        public static void RemoveCommand(RuntimeCommand c) {
+            DynamicCommands.QueueRemove(c);
+        }
     }
 }

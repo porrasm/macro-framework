@@ -220,6 +220,7 @@ namespace MacroFramework {
                 UpdateCommandFunctionality();
                 MainLoopDelay();
                 CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnAfterUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnAfterUpdate}");
+                CommandContainer.DynamicCommands.Update();
                 MainLoopIndex++;
             }
         }
@@ -252,7 +253,6 @@ namespace MacroFramework {
 
             CommandContainer.UpdateActivators<TimerActivator>();
             CommandContainer.ForEveryCommand(c => c.Coroutines.UpdateCoroutines(CoroutineUpdateGroup.OnTimerUpdate), false, $"Coroutine {CoroutineUpdateGroup.OnTimerUpdate}");
-
 
             TextCommands.ExecuteTextCommandQueue();
         }

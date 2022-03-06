@@ -23,8 +23,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public void Remove() {
-            Dispose();
-            throw new NotImplementedException();
+            CommandContainer.RemoveCommand(this);
         }
     }
 

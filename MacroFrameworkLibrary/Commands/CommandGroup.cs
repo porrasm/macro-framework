@@ -8,6 +8,8 @@ namespace MacroFramework.Commands {
         #region fields
         internal List<T> Commands { get; private set; }
         internal Dictionary<Type, List<IActivator>> ActivatorsByType { get; private set; }
+        private Queue<T> addQueue;
+        private Queue<T> removeQueue;
 
         /// <summary>
         /// Returns the amount of commands
@@ -27,8 +29,31 @@ namespace MacroFramework.Commands {
         }
 
         private void Initialize() {
+            removeQueue = new Queue<T>();
             Commands = new List<T>();
             ActivatorsByType = new Dictionary<Type, List<IActivator>>();
+        }
+
+        internal void QueueAdd(T c) {
+            if (addQueue.Contains(c)) {
+                return;
+            }
+            addQueue.Enqueue(c);
+        }
+        internal void QueueRemove(T c) {
+            if (removeQueue.Contains(c)) {
+                return;
+            }
+            removeQueue.Enqueue(c);
+        }
+
+        internal void Update() {
+            while (removeQueue.Count > 0) {
+                Remove(removeQueue.Dequeue());
+            }
+            while (addQueue.Count > 0) {
+                Add(addQueue.Dequeue());
+            }
         }
 
         internal void Add(T c) {
@@ -52,9 +77,10 @@ namespace MacroFramework.Commands {
                 }
                 ActivatorsByType[g].Add(act);
             }
-        }
 
-        internal void Remove(T c) {
+            c.OnStart();
+        }
+        private void Remove(T c) {
             Commands.Remove(c);
 
             foreach (IActivator act in c.Activators) {
@@ -68,6 +94,8 @@ namespace MacroFramework.Commands {
                     ActivatorsByType.Remove(g);
                 }
             }
+
+            c.Dispose();
         }
 
         internal void UpdateActivators(Type t) {
