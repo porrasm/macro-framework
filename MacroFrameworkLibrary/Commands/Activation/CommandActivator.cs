@@ -68,54 +68,5 @@ namespace MacroFramework.Commands {
             CommandCallback?.Invoke();
             Owner?.OnExecutionComplete();
         }
-
-        #region dynamic activators
-        /// <summary>
-        /// Wraps this <see cref="CommandActivator"/> into a <see cref="DynamicActivator"/> instance and adds it to the list of active activators using <see cref="CommandContainer.AddDynamicActivator(IDynamicActivator)"/>
-        /// </summary>
-        /// <param name="removeAfterFirstActivation">Indicates whether the dynamic activator should be discarded after the first activation</param>
-        /// <returns></returns>
-        public DynamicActivator RegisterDynamicActivator(bool removeAfterFirstActivation) {
-            DynamicActivator dynamic = new DynamicActivator(this, removeAfterFirstActivation);
-            CommandContainer.AddDynamicActivator(dynamic);
-            return dynamic;
-        }
-
-        /// <summary>
-        /// Wraps this <see cref="CommandActivator"/> into a <see cref="DynamicActivator"/> instance and adds it to the list of active activators using <see cref="CommandContainer.AddDynamicActivator(IDynamicActivator)"/>
-        /// </summary>
-        /// <param name="removeAfterFirstActivation"></param>
-        /// <returns></returns>
-        public DynamicActivator RegisterDynamicActivator(Func<bool> removeAfterFirstActivation) {
-            DynamicActivator dynamic = new DynamicActivator(this, removeAfterFirstActivation);
-            CommandContainer.AddDynamicActivator(dynamic);
-            return dynamic;
-        }
-
-        /// <summary>
-        /// Asynchronously waits for the <see cref="IActivator"/> to become active using <see cref="IDynamicActivator"/>. This is called sometime after the activator becomes active, not immeditaly so using e.g. <see cref="Input.InputEvents.CurrentInputEvent"/> or <see cref="TextCommands.CurrentTextCommand"/> will not work. Returns false if the operation was cancelled.
-        /// </summary>
-        /// <param name="timeout">Timeout in milliseconds after which the operation is cancelled. Set to 0 or less to ignore timeout</param>
-        public async Task<bool> WaitForActivation(int timeout = 10000) {
-            TaskCompletionSource<bool> job = new TaskCompletionSource<bool>();
-            AsyncDynamicActivator task = new AsyncDynamicActivator(this, job);
-            CommandContainer.AddDynamicActivator(task);
-
-            CancellationTokenSource timeoutCancel = new CancellationTokenSource();
-            Task timeoutTask = timeout <= 0 ? Task.Delay(0) : Task.Delay(timeout, timeoutCancel.Token);
-            await Task.WhenAny(job.Task, timeoutTask);
-
-            if (job.Task.IsCompleted) {
-                timeoutCancel.Cancel();
-                timeoutTask?.Dispose();
-                return true;
-            } else {
-                job.TrySetCanceled();
-                job.Task.Dispose();
-                task.IsCanceled = true;
-                return false;
-            }
-        }
-        #endregion
     }
 }

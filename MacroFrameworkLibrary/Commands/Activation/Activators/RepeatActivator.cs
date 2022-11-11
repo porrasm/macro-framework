@@ -34,9 +34,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         public Action OnEachActivate { get; set; }
 
-        public override Type UpdateGroup => typeof(TimerActivator);
-
-        private DynamicActivator dynamicActivator;
+        public override Type UpdateGroup => activator.UpdateGroup;
 
         private bool isLocalActivatorActive;
         private int currentRepeatCount;
@@ -50,9 +48,6 @@ namespace MacroFramework.Commands {
         /// <param name="callback">The callback to execute</param>
         public RepeatActivator(IActivator activator, Action callback = null) : base(callback) {
             this.activator = activator;
-            dynamicActivator = new DynamicActivator(activator, false);
-            dynamicActivator.OnExecute = OnLocalActivatorActive;
-            CommandContainer.AddDynamicActivator(dynamicActivator);
         }
 
         /// <summary>
@@ -70,6 +65,9 @@ namespace MacroFramework.Commands {
         }
 
         protected override bool IsActivatorActive() {
+            if (activator.IsActive()) {
+                OnLocalActivatorActive();
+            }
 
             if (currentRepeatCount > 0 && Timer.PassedFrom(lastActiveTimeStamp) > RepeatInterval) {
                 bool isActive = !ActivateImmediately && IsRepeatActivatorActive();

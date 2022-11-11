@@ -1,5 +1,6 @@
 ﻿using MacroFramework.Tools;
 using System;
+using System.Collections;
 
 namespace MacroFramework.Commands {
     /// <summary>
@@ -19,7 +20,7 @@ namespace MacroFramework.Commands {
             }
         }
         private BindActivator bindActivator;
-        private DynamicActivator timerActivator;
+        private Coroutine onUpdateCoroutine;
 
         /// <summary>
         /// Called when the <see cref="Bind"/> becomes active. Called before <see cref="OnUpdate"/> and <see cref="OnDeactivate"/>.
@@ -100,9 +101,18 @@ namespace MacroFramework.Commands {
 
         public override void Execute() {
             End();
-            timerActivator = new TimerActivator(0).SetCallback(Update).RegisterDynamicActivator(false);
+       
             startTime = Timer.Milliseconds;
             OnActivate?.Invoke();
+
+            onUpdateCoroutine = new Coroutine(OnUpdateCoroutineRun());
+            onUpdateCoroutine.SetOwner(Owner);
+            onUpdateCoroutine.Start();
+        }
+
+        private IEnumerator OnUpdateCoroutineRun() {
+            Update();
+            yield break;
         }
 
         private void Update() {
@@ -113,9 +123,9 @@ namespace MacroFramework.Commands {
             OnUpdate?.Invoke((int)Timer.PassedFrom(startTime));
         }
         private void End() {
-            if (timerActivator != null) {
-                CommandContainer.RemoveDynamicActivator(timerActivator);
-                timerActivator = null;
+            if (onUpdateCoroutine != null) {
+                onUpdateCoroutine.Stop();
+                onUpdateCoroutine = null;
                 OnDeactivate?.Invoke((int)Timer.PassedFrom(startTime));
             }
         }

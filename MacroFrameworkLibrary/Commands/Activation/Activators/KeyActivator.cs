@@ -9,7 +9,7 @@ namespace MacroFramework.Commands {
 
         #region fields
         private Func<IInputEvent, bool> keyFilter;
-        private Action<IInputEvent> cb;
+        private Action<IInputEvent> callback;
         #endregion
 
         #region constructors
@@ -20,7 +20,7 @@ namespace MacroFramework.Commands {
         /// <param name="callback">The key event callback</param>
         public KeyActivator(KKey key, Action<IInputEvent> callback) : base(null) {
             this.keyFilter = (e) => e.Key == key;
-            this.cb = callback;
+            this.callback = callback;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace MacroFramework.Commands {
         /// <param name="callback">The key event callback</param>
         public KeyActivator(Func<IInputEvent, bool> keyFilter, Action<IInputEvent> callback) : base(null) {
             this.keyFilter = keyFilter;
-            this.cb = callback;
+            this.callback = callback;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <param name="cb">The callback to use</param>
         public KeyActivator SetCallback(Action<IInputEvent> cb) {
-            this.cb = cb;
+            this.callback = cb;
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace MacroFramework.Commands {
         }
 
         public override void Execute() {
-            Callbacks.ExecuteAction(cb, InputEvents.CurrentInputEvent, "Error executing KeyCallback");
+            Callbacks.ExecuteAction(callback, InputEvents.CurrentInputEvent, "Error executing KeyCallback");
         }
     }
 }
