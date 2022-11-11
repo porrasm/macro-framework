@@ -47,11 +47,6 @@ namespace MacroFramework.Commands {
         internal IActivator[] Activators { get; }
 
         /// <summary>
-        /// The default context used in all <see cref="CommandBase"/> instances. Returns true on default but can be changed.
-        /// </summary>
-        public static Func<bool> DefaultContext = () => true;
-
-        /// <summary>
         /// Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="ActivatorGroup"/> are active eiher and this <see cref="CommandBase"/> instance is effectively disabled for the moment.
         /// </summary>
         public virtual Func<bool> IsActiveDelegate { private get; set; }

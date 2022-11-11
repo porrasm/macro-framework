@@ -5,9 +5,14 @@ using System.Text;
 
 namespace MacroFramework.Commands {
     public class CommandGroup<T> : IEnumerable<T> where T : CommandBase {
+        internal struct ActivatorWithOwner {
+            public IActivator Activator;
+            public CommandBase Owner;
+        }
+
         #region fields
         internal List<T> Commands { get; private set; }
-        internal Dictionary<Type, List<IActivator>> ActivatorsByType { get; private set; }
+        internal Dictionary<Type, List<ActivatorWithOwner>> ActivatorsByType { get; private set; }
         private Queue<T> addQueue;
         private Queue<T> removeQueue;
 
@@ -31,7 +36,7 @@ namespace MacroFramework.Commands {
         private void Initialize() {
             removeQueue = new Queue<T>();
             Commands = new List<T>();
-            ActivatorsByType = new Dictionary<Type, List<IActivator>>();
+            ActivatorsByType = new Dictionary<Type, List<ActivatorWithOwner>>();
         }
 
         internal void QueueAdd(T c) {
@@ -56,57 +61,61 @@ namespace MacroFramework.Commands {
             }
         }
 
-        internal void Add(T c) {
-            int curr = c.ExecutionOrderIndex;
+        internal void Add(T command) {
+            int curr = command.ExecutionOrderIndex;
 
             for (int i = 0; i < Commands.Count; i++) {
                 int prev = Commands[i].ExecutionOrderIndex;
                 if (curr > prev) {
-                    Commands.Insert(i, c);
+                    Commands.Insert(i, command);
                     return;
                 }
             }
 
-            Commands.Add(c);
+            Commands.Add(command);
 
-            foreach (IActivator act in c.Activators) {
-                act.Owner = c;
+            foreach (IActivator act in command.Activators) {
+                ActivatorWithOwner withOwner = new ActivatorWithOwner() {
+                    Activator = act,
+                    Owner = command
+                };
+
+
                 Type g = act.UpdateGroup;
                 if (!ActivatorsByType.ContainsKey(g)) {
-                    ActivatorsByType.Add(g, new List<IActivator>());
+                    ActivatorsByType.Add(g, new List<ActivatorWithOwner>());
                 }
-                ActivatorsByType[g].Add(act);
+                ActivatorsByType[g].Add(withOwner);
             }
 
-            c.OnStart();
+            command.OnStart();
         }
-        private void Remove(T c) {
-            Commands.Remove(c);
+        private void Remove(T command) {
+            Commands.Remove(command);
 
-            foreach (IActivator act in c.Activators) {
-                act.Owner = c;
+            foreach (IActivator act in command.Activators) {
                 Type g = act.UpdateGroup;
 
-                List<IActivator> typeActs = ActivatorsByType[g];
-                typeActs.Remove(act);
+                List<ActivatorWithOwner> typeActs = ActivatorsByType[g];
+                typeActs.RemoveAll((a) => a.Owner == command);
 
                 if (typeActs.Count == 0) {
                     ActivatorsByType.Remove(g);
                 }
             }
 
-            c.Dispose();
+            command.Dispose();
         }
 
         internal void UpdateActivators(Type t) {
-            List<IActivator> acts;
+            List<ActivatorWithOwner> acts;
             if (!ActivatorsByType.TryGetValue(t, out acts)) {
                 return;
             }
 
-            foreach (IActivator act in acts) {
-                if (act.IsActive()) {
-                    Callbacks.ExecuteAction(act.Execute, "ExecuteActivator");
+            foreach (ActivatorWithOwner act in acts) {
+                if (act.Activator.IsActive()) {
+                    Callbacks.ExecuteAction(act.Activator.Execute, "ExecuteActivator");
                 }
             }
         }

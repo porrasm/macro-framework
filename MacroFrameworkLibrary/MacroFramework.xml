@@ -437,11 +437,6 @@
             Executes the action related to this activator
             </summary>
         </member>
-        <member name="P:MacroFramework.Commands.IActivator.Owner">
-            <summary>
-            The owner of this activator or null if it is used independently
-            </summary>
-        </member>
         <member name="P:MacroFramework.Commands.IActivator.UpdateGroup">
             <summary>
             This activator will be updated with this update group when <see cref="M:MacroFramework.Commands.CommandContainer.UpdateActivators(System.Type)"/> is called
