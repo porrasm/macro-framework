@@ -25,7 +25,7 @@ namespace MacroFramework.Input {
         public bool Unique { get; set; }
 
         public MockInput(KKey key, bool state, InputEventType type) : this() {
-            Index = InputEvents.NetInputEventIndex;
+            Index = InputEvents.NextInputEventIndex;
             Key = key;
             State = state;
             ReceiveTimestamp = Timer.Milliseconds;

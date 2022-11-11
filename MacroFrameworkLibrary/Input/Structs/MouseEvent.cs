@@ -33,7 +33,7 @@ namespace MacroFramework.Input {
         public ActivationEventType ActivationType { get; set; }
 
         public MouseEvent(IntPtr wParam, IntPtr lParam) {
-            Index = InputEvents.NetInputEventIndex;
+            Index = InputEvents.NextInputEventIndex;
             ReceiveTimestamp = Timer.Milliseconds;
             MSLLHOOKSTRUCT raw = (MSLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(MSLLHOOKSTRUCT));
 

@@ -72,7 +72,7 @@ namespace MacroFramework.Input {
         /// Start hooking keyboard
         /// </summary>
         public static void StartKeyboardHook() {
-            if (!KeyboardHookRunning && Macros.Setup.Settings.AllowKeyboardHook) {
+            if (!KeyboardHookRunning && Macros.Setup.AllowKeyboardHook) {
                 Logger.Log("Hook keyboard");
                 KeyboardHook = SetHook(keyboardProc, KEYBOARD_HOOK_ID);
                 KeyboardHookRunning = true;
@@ -94,7 +94,7 @@ namespace MacroFramework.Input {
         /// Start hooking mouse
         /// </summary>
         public static void StartMouseHook() {
-            if (!MouseHookRunning && Macros.Setup.Settings.AllowMouseHook) {
+            if (!MouseHookRunning && Macros.Setup.AllowMouseHook) {
                 Logger.Log("Hook mouse");
                 MouseHook = SetHook(mouseProc, MOUSE_HOOK_ID);
                 MouseHookRunning = true;

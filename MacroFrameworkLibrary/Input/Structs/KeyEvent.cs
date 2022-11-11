@@ -52,7 +52,7 @@ namespace MacroFramework.Input {
         /// Creates a new <see cref="KeyEvent"/> instance from a low level input event
         /// </summary>
         internal KeyEvent(IntPtr wParam, KBDLLHOOKSTRUCT rawData) {
-            Index = InputEvents.NetInputEventIndex;
+            Index = InputEvents.NextInputEventIndex;
             ReceiveTimestamp = Timer.Milliseconds;
 
             WindowsMessage msg = (WindowsMessage)wParam;
@@ -60,7 +60,7 @@ namespace MacroFramework.Input {
             Flags = rawData.flags;
 
             Key = ((VKey)rawData.vkCode).AsCustom(Flags.HasFlag(KbdllFlags.Extended));
-            if (Key == Macros.Setup.Settings.GeneralBindKey) {
+            if (Key == Macros.Setup.GeneralBindKey) {
                 Key = KKey.GeneralBindKey;
             }
 

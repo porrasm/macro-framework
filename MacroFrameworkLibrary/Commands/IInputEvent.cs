@@ -7,7 +7,7 @@ namespace MacroFramework.Commands {
     /// </summary>
     public interface IInputEvent {
         /// <summary>
-        /// The unique index of this input event which can be generated using <see cref="InputEvents.NetInputEventIndex"/>
+        /// The unique index of this input event which can be generated using <see cref="InputEvents.NextInputEventIndex"/>
         /// </summary>
         ulong Index { get; }
 

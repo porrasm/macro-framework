@@ -199,16 +199,17 @@ namespace MacroFramework.Input {
         #endregion
 
         /// <summary>
-        /// Resets the key states
+        /// Resets the key states. Can be used to 'unstuck' keys for which the keyup event was missed. 
         /// </summary>
-        /// <param name="forced">If false, only resets keys that have been held down long enough. If true resets all keys which are held down.</param>
-        public static void ResetKeyStates(bool forced) {
+        /// <param name="resetAll">If false, only resets keys that have been held down for more than 20 seconds. If true resets all keys which are held down.</param>
+        /// <param name="keyHoldTime">Resets all keys which have been held down longer than this parameter (milliseconds)</param>
+        public static void ResetKeyStates(int keyHoldTime) {
             Logger.Log("Reset keystates");
             foreach (KKey key in Enum.GetValues(typeof(KKey))) {
 
                 long time = GetKeyHoldTime(key);
 
-                if (time >= 0 && (forced || time >= Macros.Setup.Settings.KeyStateFixTimestep)) {
+                if (time >= 0 && time >= keyHoldTime) {
                     Logger.Log("Reset " + key);
                     MockInput input = new MockInput(key, false, InputEventType.Keyboard);
                     input.ActivationType = ActivationEventType.OnFirstRelease;

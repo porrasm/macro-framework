@@ -108,12 +108,10 @@ namespace MacroFramework {
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
         /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
         public static void Start(MacroSetup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
-            State = RunState.Initializing;
-            setup.Logger?.LogMessage("Starting Macros");
-
-            if (setup.Settings == null) {
-                throw new NullReferenceException("The settings inside a setup object cannot be null");
+            if (setup == null) {
+                throw new NullReferenceException("The setup object cannot be null");
             }
+            setup.Logger?.LogMessage("Starting Macros");
 
             if (Thread.CurrentThread.GetApartmentState() != ApartmentState.STA) {
                 throw new Exception("MacroFramwork must be started on an STA thread. See the [STAThread] attribute.");
@@ -121,6 +119,8 @@ namespace MacroFramework {
             if (State != RunState.NotRunning) {
                 return;
             }
+            State = RunState.Initializing;
+
             usingCustomEventLoop = customEventLoop != null;
             InitializeApplication(setup, runInLimitedMode);
 
@@ -160,7 +160,7 @@ namespace MacroFramework {
             CommandContainer.Start();
 
             // Subscriptions
-            if (setup.Settings.UseGlobalExceptionHandler) {
+            if (setup.UseGlobalExceptionHandler) {
                 Application.ThreadException += ThreadException;
                 AppDomain.CurrentDomain.UnhandledException += UnhandledException;
                 TaskScheduler.UnobservedTaskException += UnobservedTaskException;
@@ -244,12 +244,12 @@ namespace MacroFramework {
         private static void UpdateCommandFunctionality() {
             CommandContainer.ForEveryCommand((c) => c.OnUpdate(), false, "Main loop update");
 
-            int keyFixTimestep = Macros.Setup.Settings.KeyStateFixTimestep;
+            int keyFixTimestep = Macros.Setup.KeyStateFixTimestep;
             if (KeyStates.KeyDownCount < 0) {
                 Logger.Log("KeyDownCount desynced, fixing state automatically.");
-                KeyStates.ResetKeyStates(true);
+                KeyStates.ResetKeyStates(0);
             } else if (keyFixTimestep > 0 && KeyStates.KeyDownCount > 0 && Tools.Timer.PassedFrom(KeyStates.LastKeyResetTime) >= keyFixTimestep) {
-                KeyStates.ResetKeyStates(false);
+                KeyStates.ResetKeyStates(keyFixTimestep);
             }
 
             if (State == RunState.Running) {
@@ -266,7 +266,7 @@ namespace MacroFramework {
             if (Macros.Setup == null) {
                 return;
             }
-            long delay = Macros.Setup.Settings.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
+            long delay = Macros.Setup.MainLoopTimestep - Tools.Timer.PassedFrom(LastMainLoopStart);
             delay = delay > 0 ? delay : 0;
             if (delay > 0) {
                 Thread.Sleep((int)delay);
@@ -353,7 +353,7 @@ namespace MacroFramework {
             continueDelegate = null;
             State = RunState.Running;
             CommandContainer.ForEveryCommand((c) => c.OnResume(), false);
-            KeyStates.ResetKeyStates(true);
+            KeyStates.ResetKeyStates(0);
             QueueJobOnMainThread(() => InputHook.StartHooks());
             ExecuteMainThreadJobs();
         }

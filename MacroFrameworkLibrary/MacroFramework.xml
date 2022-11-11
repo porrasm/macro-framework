@@ -585,11 +585,6 @@
             The list of <see cref="T:MacroFramework.Commands.IActivator"/> instances this command owns
             </summary>
         </member>
-        <member name="F:MacroFramework.Commands.CommandBase.DefaultContext">
-            <summary>
-            The default context used in all <see cref="T:MacroFramework.Commands.CommandBase"/> instances. Returns true on default but can be changed.
-            </summary>
-        </member>
         <member name="P:MacroFramework.Commands.CommandBase.IsActiveDelegate">
             <summary>
             Override this property to create custom contexts for your command. If false is returned, none of the activators in <see cref="!:ActivatorGroup"/> are active eiher and this <see cref="T:MacroFramework.Commands.CommandBase"/> instance is effectively disabled for the moment.
@@ -1035,7 +1030,7 @@
         </member>
         <member name="P:MacroFramework.Commands.IInputEvent.Index">
             <summary>
-            The unique index of this input event which can be generated using <see cref="P:MacroFramework.Input.InputEvents.NetInputEventIndex"/>
+            The unique index of this input event which can be generated using <see cref="P:MacroFramework.Input.InputEvents.NextInputEventIndex"/>
             </summary>
         </member>
         <member name="P:MacroFramework.Commands.IInputEvent.Key">
@@ -1459,7 +1454,7 @@
             Returns the current maximum index of any input event
             </summary>
         </member>
-        <member name="P:MacroFramework.Input.InputEvents.NetInputEventIndex">
+        <member name="P:MacroFramework.Input.InputEvents.NextInputEventIndex">
             <summary>
             Retrieves the next unique input event index
             </summary>
@@ -1643,11 +1638,12 @@
             </summary>
             <param name="bind">The bind to check</param>
         </member>
-        <member name="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)">
+        <member name="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Int32)">
             <summary>
-            Resets the key states
+            Resets the key states. Can be used to 'unstuck' keys for which the keyup event was missed. 
             </summary>
-            <param name="forced">If false, only resets keys that have been held down long enough. If true resets all keys which are held down.</param>
+            <param name="resetAll">If false, only resets keys that have been held down for more than 20 seconds. If true resets all keys which are held down.</param>
+            <param name="keyHoldTime">Resets all keys which have been held down longer than this parameter (milliseconds)</param>
         </member>
         <member name="M:MacroFramework.Input.KeyStates.GetCurrentActivationEventType(System.Boolean)">
             <summary>
@@ -2775,7 +2771,7 @@
         </member>
         <member name="F:MacroFramework.MacroSettings.KeyStateFixTimestep">
             <summary>
-            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Boolean)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets. Default = 20000 ms
+            The <see cref="T:MacroFramework.Input.KeyStates"/> can lose track of keystates if another application intercepts keys. This can cause keys to get stuck down and <see cref="T:MacroFramework.Commands.Bind"/>s stop working. Use this timestep to reset the keys using <see cref="M:MacroFramework.Input.KeyStates.ResetKeyStates(System.Int32)"/> at regular intervals if no keys have been pressed for a while. Set to 0 to disable automatic keystate resets. Default = 20000 ms
             </summary>
         </member>
         <member name="T:MacroFramework.MacroSetup">

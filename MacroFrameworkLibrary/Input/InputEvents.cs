@@ -18,7 +18,7 @@ namespace MacroFramework.Input {
         /// <summary>
         /// Retrieves the next unique input event index
         /// </summary>
-        public static ulong NetInputEventIndex { get => ++MaximumInputEventIndex; }
+        public static ulong NextInputEventIndex { get => ++MaximumInputEventIndex; }
 
         /// <summary>
         /// This delegate is invoked at every keypress, before it is registered by the <see cref="KeyStates"/>. Return true to intercept key from other applications and the <see cref="MacroFramework"/> itself. This delegate is blocking and slow execution will cause OS wide latency for key events.
@@ -100,7 +100,7 @@ namespace MacroFramework.Input {
                 return true;
             }
 
-            if (k.Key == Macros.Setup.Settings.CommandKey && !TextCommandCreator.IsCommandMode) {
+            if (k.Key == Macros.Setup.CommandKey && !TextCommandCreator.IsCommandMode) {
                 if (k.State) {
                     TextCommandCreator.CommandKeyPress(true, true);
                 }
