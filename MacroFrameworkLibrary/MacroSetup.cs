@@ -38,7 +38,9 @@ namespace MacroFramework {
         public KKey CommandKey { get; set; } = KKey.None;
 
         /// <summary>
-        /// A dedicated bind key which is always intercepted and tranformed into <see cref="VKey.GENERAL_BIND_KEY"/>. Default = <see cref="KKey.None"/>
+        /// A dedicated bind key which is always intercepted and tranformed into <see cref="VKey.GENERAL_BIND_KEY"/>. Default = <see cref="KKey.None"/>. 
+        /// <br/><br/>
+        /// Example: General bind key is set to <see cref="KKey.LeftAlt"/>. The user presses <see cref="KKey.LAlt"/> + <see cref="KKey.F4"/>. The framework will intercept the <see cref="KKey.LAlt"/> and transform it into <see cref="KKey.GeneralBindKey"/>. You can now assign a command to this key combination without any other application receiving that command (i.e. the keys only affect the macro framework).
         /// </summary>
         public KKey GeneralBindKey { get; set; } = KKey.None;
 
