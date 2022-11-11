@@ -19,10 +19,6 @@ namespace MacroFramework.Commands {
         /// </summary>
         public static CommandGroup<RuntimeCommand> DynamicCommands { get; private set; }
 
-        /// <summary>
-        /// Contains the active commands
-        /// </summary>
-
         private static Dictionary<Type, List<IDynamicActivator>> dynamicActivatorGroups;
         private static uint dynamicActivatorID;
         internal static uint UniqueDynamicActivatorID => ++dynamicActivatorID;

@@ -28,6 +28,10 @@ namespace MacroFramework {
             /// </summary>
             NotRunning,
             /// <summary>
+            /// The application is being initialized
+            /// </summary>
+            Initializing,
+            /// <summary>
             /// The application is running in a normal state
             /// </summary>
             Running,
@@ -104,6 +108,7 @@ namespace MacroFramework {
         /// <param name="runInLimitedMode">If true the application is set to <see cref="RunState.RunningInLimitedMode"/></param>
         /// <param name="customEventLoop">You can use this delegate to override the default event loop, which is <see cref="Application.Run"/> without a form. Leave as null to use default.</param>
         public static void Start(MacroSetup setup, bool runInLimitedMode = false, Action customEventLoop = null) {
+            State = RunState.Initializing;
             setup.Logger?.LogMessage("Starting Macros");
 
             if (setup.Settings == null) {
@@ -151,13 +156,6 @@ namespace MacroFramework {
             Macros.Setup = setup;
             Logger.Instance = setup.Logger;
 
-            if (runInLimitedMode) {
-                State = RunState.RunningInLimitedMode;
-            } else {
-                State = RunState.Running;
-                InputHook.StartHooks();
-            }
-
             InputEvents.Initialize();
             CommandContainer.Start();
 
@@ -168,6 +166,13 @@ namespace MacroFramework {
                 TaskScheduler.UnobservedTaskException += UnobservedTaskException;
             }
             AppDomain.CurrentDomain.ProcessExit += StopEvent;
+
+            if (runInLimitedMode) {
+                State = RunState.RunningInLimitedMode;
+            } else {
+                State = RunState.Running;
+                InputHook.StartHooks();
+            }
         }
 
         /// <summary>

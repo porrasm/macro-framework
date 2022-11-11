@@ -9,6 +9,12 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <returns></returns>
         internal override bool IsStatic() => true;
+
+        internal Command() {
+            if (Macros.State != Macros.RunState.Initializing) {
+                throw new Exception("You cannot create new instances of static commands");
+            }
+        }
     }
 
     public class RuntimeCommand : CommandBase {
