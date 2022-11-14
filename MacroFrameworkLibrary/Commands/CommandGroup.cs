@@ -34,6 +34,7 @@ namespace MacroFramework.Commands {
         }
 
         private void Initialize() {
+            addQueue = new Queue<T>();
             removeQueue = new Queue<T>();
             Commands = new List<T>();
             ActivatorsByType = new Dictionary<Type, List<ActivatorWithOwner>>();
@@ -62,17 +63,16 @@ namespace MacroFramework.Commands {
         }
 
         internal void Add(T command) {
-            int curr = command.ExecutionOrderIndex;
-
-            for (int i = 0; i < Commands.Count; i++) {
-                int prev = Commands[i].ExecutionOrderIndex;
-                if (curr > prev) {
-                    Commands.Insert(i, command);
-                    return;
-                }
+            if (command == null) {
+                throw new ArgumentNullException(nameof(command));
             }
-
+            if (Commands.Contains(command)) {
+                throw new Exception("Tried to add existing command");
+            }
+            command.IsRegisteredToApp = true;
+            
             Commands.Add(command);
+            Commands.Sort((a, b) => a.ExecutionOrderIndex.CompareTo(b.ExecutionOrderIndex));
 
             foreach (IActivator act in command.Activators) {
                 ActivatorWithOwner withOwner = new ActivatorWithOwner() {
@@ -91,7 +91,10 @@ namespace MacroFramework.Commands {
             command.OnStart();
         }
         private void Remove(T command) {
-            Commands.Remove(command);
+            if (!Commands.Remove(command)) {
+                throw new Exception("Tried to remove non-existing command");
+            }
+            command.IsRegisteredToApp = false;
 
             foreach (IActivator act in command.Activators) {
                 Type g = act.UpdateGroup;

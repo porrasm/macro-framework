@@ -5,6 +5,8 @@ namespace MacroFramework.Commands {
     /// <summary>
     /// <see cref="CommandActivator"/> instance for repeating activators (e.g. double click). Requires that you set <see cref="MacroSettings.MainLoopTimestep"/> low enough.
     /// </summary>
+
+    // TODO NOT WORKING
     public class RepeatActivator : CommandActivator {
         #region fields
         private IActivator activator;

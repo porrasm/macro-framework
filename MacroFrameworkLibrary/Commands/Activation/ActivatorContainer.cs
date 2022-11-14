@@ -16,6 +16,15 @@ namespace MacroFramework.Commands {
             Activators.Add(activator);
         }
 
+        /// <summary>
+        /// Adds an activator to this group
+        /// </summary>
+        public void AddActivators(params IActivator[] activators) {
+            foreach (IActivator a in activators) {
+                Activators.Add(a);
+            }
+        }
+
         internal static ActivatorContainer New => new ActivatorContainer() { Activators = new List<IActivator>() };
     }
 }

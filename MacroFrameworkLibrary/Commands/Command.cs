@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Xml;
 
 namespace MacroFramework.Commands {
     public class Command : CommandBase {
@@ -10,9 +11,9 @@ namespace MacroFramework.Commands {
         /// <returns></returns>
         internal override bool IsStatic() => true;
 
-        internal Command() {
+        public Command() {
             if (Macros.State != Macros.RunState.Initializing) {
-                throw new Exception("You cannot create new instances of static commands");
+                throw new Exception("You cannot create new instances of static commands. Use RuntimeCommand instead");
             }
         }
     }
@@ -25,12 +26,28 @@ namespace MacroFramework.Commands {
         internal override bool IsStatic() => false;
 
         /// <summary>
-        /// Removes the command at the end of the current update loop.
+        /// Adds this command instance to the application if it isn't already registered.
+        /// </summary>
+        /// <returns>this</returns>
+        public RuntimeCommand Register() {
+            if (!IsRegisteredToApp) {
+                CommandContainer.AddCommand(this);
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Removes the command at the end of the current update loop if it is registered.
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public void Remove() {
-            CommandContainer.RemoveCommand(this);
+        public void Unregister() {
+            if (IsRegisteredToApp) {
+                CommandContainer.RemoveCommand(this);
+            }
         }
+
+
     }
 
     /// <summary>
@@ -39,6 +56,19 @@ namespace MacroFramework.Commands {
     public abstract partial class CommandBase {
 
         #region fields
+        /// <summary>
+        /// If true this <see cref="CommandBase"/> instance is currently registered in the framework. Always true for instances of <see cref="Command"/> (except in the very beginning after starting).
+        /// </summary>
+        public bool IsRegisteredToApp { get; internal set; }
+
+        private static long IDCounter = 0;
+        private readonly long id;
+
+        /// <summary>
+        /// The unique ID of this command
+        /// </summary>
+        public long UniqueID => id;
+
         internal abstract bool IsStatic();
 
         /// <summary>
@@ -62,6 +92,7 @@ namespace MacroFramework.Commands {
         /// Creates a new <see cref="Command"/> instance
         /// </summary>
         internal CommandBase() {
+            this.id = IDCounter++;
             ActivatorContainer activators = ActivatorContainer.New;
             InitializeActivators(ref activators);
 
@@ -153,5 +184,14 @@ namespace MacroFramework.Commands {
         /// <param name="command">The text command which was executed</param>
         /// <param name="commandWasAccepted">True if any <see cref="TextActivator"/> instance executed the text command. False if command was not executed.</param>
         public virtual void OnTextCommand(string command, bool commandWasAccepted) { }
+
+        public override bool Equals(object obj) {
+            return obj is CommandBase @base &&
+                   id == @base.id;
+        }
+
+        public override int GetHashCode() {
+            return 1877310944 + id.GetHashCode();
+        }
     }
 }

@@ -10,6 +10,11 @@ namespace MacroFramework.Commands {
 
         #region fields
         /// <summary>
+        /// Empty command instance required for e.g. running coroutines without a command. Has no functionality. Has an <see cref="CommandBase.ExecutionOrderIndex"/> of -1.
+        /// </summary>
+        public static Command DefaultCommand { get; private set; }
+
+        /// <summary>
         /// Permanent set of commands which contains a single instance of every class which inherits <see cref="Command"/>. This does not change during execution.
         /// </summary>
         public static CommandGroup<Command> StaticCommands { get; private set; }
@@ -36,11 +41,21 @@ namespace MacroFramework.Commands {
 
         private static void Initialize() {
             try {
-                foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.Setup.CommandAssembly)) {
-                    StaticCommands.Add(c);
+                if (Macros.Setup.CommandAssembly != null) {
+                    foreach (Command c in ReflectiveEnumerator.GetEnumerableOfType<Command>(Macros.Setup.CommandAssembly)) {
+                        StaticCommands.Add(c);
+                    }
                 }
             } catch (Exception e) {
                 throw new Exception("Could not load Commands from the given assembly. Make sure the assembly is correct. If the error persists, inherit from 'RuntimeCommand' instead of 'Command' and add it manually.", e);
+            }
+
+            bool hasDefaultCommand = StaticCommands.GetCommand<DefaultCommand>(out var defaultCommand);
+            if (!hasDefaultCommand) {
+                DefaultCommand = new DefaultCommand();
+                StaticCommands.Add(DefaultCommand);
+            } else {
+                DefaultCommand = defaultCommand;
             }
 
             Logger.Log($"Initialized command container with {StaticCommands.Count} commands");
@@ -48,6 +63,7 @@ namespace MacroFramework.Commands {
 
         private static void Deinitialize() {
             StaticCommands = new CommandGroup<Command>();
+            DynamicCommands = new CommandGroup<RuntimeCommand>();
         }
 
         /// <summary>
@@ -83,20 +99,6 @@ namespace MacroFramework.Commands {
             DynamicCommands.UpdateActivators(t);
         }
 
-        private static void RemoveFromList<T>(List<T> list, ref int index) {
-            list.RemoveAt(index);
-            index--;
-        }
-
-        /// <summary>
-        /// Allows you to get the list of activators
-        /// </summary>
-        /// <param name="filter">Optional filter</param>
-        /// <returns></returns>
-        public static List<IActivator> GetActivators(Func<IActivator, bool> filter = null) {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Executes some action for every command in a try clause
         /// </summary>
@@ -122,6 +124,19 @@ namespace MacroFramework.Commands {
         /// <param name="c"></param>
         public static void RemoveCommand(RuntimeCommand c) {
             DynamicCommands.QueueRemove(c);
+        }
+
+        /// <summary>
+        /// Gets a static command of type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static void GetCommand<T>(out T command) where T : Command {
+            bool succes = StaticCommands.GetCommand(out command);
+            if (!succes) {
+                throw new Exception("Unexpected error: Could not find static command of type " + typeof(T));
+            }
         }
     }
 }

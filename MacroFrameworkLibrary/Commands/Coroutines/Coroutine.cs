@@ -15,7 +15,9 @@ namespace MacroFramework.Commands {
         /// </summary>
         public Func<IEnumerator> EnumeratorSource { get; set; }
 
-        private CommandBase owner;
+        private CommandBase assignedOwner;
+        private CommandBase effectiveOwner => assignedOwner ?? CommandContainer.DefaultCommand;
+        
         private Action<Coroutine> onEnd;
         private IEnumerator enumerator;
         internal YieldInstruction CurrentInstruction { get; private set; }
@@ -96,7 +98,10 @@ namespace MacroFramework.Commands {
         /// </summary>
         /// <returns></returns>
         public bool Stop() {
-            return owner.Coroutines.StopCoroutine(this, false);
+            if (!IsRunning) {
+                return false;
+            }
+            return effectiveOwner.Coroutines.StopCoroutine(this, false);
         }
 
         /// <summary>
@@ -106,7 +111,7 @@ namespace MacroFramework.Commands {
             if (owner == null) {
                 throw new Exception("Owner cannot be null");
             }
-            this.owner = owner;
+            assignedOwner = owner;
         }
 
         internal Coroutine StartThisCoroutine() {
@@ -118,7 +123,7 @@ namespace MacroFramework.Commands {
                 throw new Exception("Cannot start with a null enumerator");
             }
 
-            owner.Coroutines.StartCoroutine(this);
+            effectiveOwner.Coroutines.StartCoroutine(this);
             return this;
         }
 

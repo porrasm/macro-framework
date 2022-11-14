@@ -6,6 +6,9 @@ namespace MacroFramework.Commands {
     /// <summary>
     /// <see cref="CommandActivator"/> instance for keybind hold callbacks. Provides more detailed events than a regular <see cref="BindActivator"/>
     /// </summary>
+    
+    // TODO make into more generic HoldActivator
+    // TODO doesnt work
     public class BindHoldActivator : CommandActivator {
 
         #region fields
@@ -106,7 +109,6 @@ namespace MacroFramework.Commands {
             OnActivate?.Invoke();
 
             onUpdateCoroutine = new Coroutine(OnUpdateCoroutineRun());
-            onUpdateCoroutine.SetOwner(Owner);
             onUpdateCoroutine.Start();
         }
 
